@@ -7,4 +7,12 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
+// 1. Import the initial variables
+@import "~bulma/sass/utilities/initial-variables";
+
+// Customizations go here
+
+// 2. Import the rest of Bulma
+@import "~bulma";
+
 </style>
