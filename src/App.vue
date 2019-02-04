@@ -12,6 +12,8 @@
 
 // Customizations go here
 
+$family-sans-serif: 'Roboto', sans-serif;
+
 // 2. Import the rest of Bulma
 @import "~bulma";
 
