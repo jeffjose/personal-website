@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "bulma": "^0.7.2",
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "^2.3.2",
     "firebase-tools": "^6.3.1",
     "vue": "^2.5.22",
+    "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -20,7 +23,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",

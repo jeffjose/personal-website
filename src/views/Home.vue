@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    background
     section.hero.is-fullheight.welcome
       .hero-body
         .container
@@ -8,13 +9,15 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import Header from '@/components/Header.vue'
+import Background from '@/components/Background.vue'
 
 export default {
   name: 'home',
   components: {
-    Header
+    Header,
+    Background,
   }
 }
 </script>
