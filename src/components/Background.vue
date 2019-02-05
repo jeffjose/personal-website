@@ -1,10 +1,9 @@
 <template lang="pug">
 
  div#background
-    svg(@click="handleClick();")
+    svg(@click="handleClick($event);")
       g#wrapper
-         circle(cx=100, cy=100, r=20, style="opacity: 0.4")
-         circle(cx=300, cy=150, r=20, style="opacity: 0.4")
+         circle(v-for="point in points", r=20, :cx="point.x", :cy="point.y") {{point}}
 </template>
 
 
@@ -12,9 +11,21 @@
 
 export default {
   name: 'background'
-  methods: {
-    handleClick: () -> console.log(13)
-    }
+  data: () ->
+
+    data =
+      points: [{x: 100, y: 100}, {x: 180, y:300}]
+
+    return data
+
+  methods:
+    handleClick: (event) ->
+      console.log(event)
+      @addCircle(event.clientX, event.clientY)
+
+    addCircle: (x, y) ->
+      console.log(@points)
+      @points.push({x: x, y: y})
 }
 
 
