@@ -13,6 +13,8 @@
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.3.2",
     "firebase-tools": "^6.3.1",
+    "gsap": "^2.0.2",
+    "lodash": "^4.17.11",
     "vue": "^2.5.22",
     "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-router": "^3.0.1",

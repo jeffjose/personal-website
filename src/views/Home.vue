@@ -9,20 +9,23 @@
 </template>
 
 <script>
-
-import Header from '@/components/Header.vue'
-import Background from '@/components/Background.vue'
-
-export default {
-  name: 'home',
-  components: {
-    Header,
-    Background,
+  import Header from '@/components/Header.vue'
+  import Background from '@/components/Background.vue'
+  
+  export default {
+    name: 'home',
+    components: {
+      Header,
+      Background,
+    }
   }
-}
 </script>
 
 <style scoped lang="sass">
+
+.container
+  pointer-events: none
+  user-select: none
 
 .title
   @extend .title
