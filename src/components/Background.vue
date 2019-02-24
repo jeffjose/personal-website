@@ -1,7 +1,7 @@
 <template lang="pug">
 
  div#background
-    svg(@mousedown="start($event)" @mouseup="stop")
+    svg(@contextmenu="$event.preventDefault()", @mousedown="start($event.clientX, $event.clientY)" @mouseup="stop", @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)", @touchend="stop", @touchcancel="stop")
       g#wrapper
          g#test(v-for="point, index in points" :key="index")
            circle(:r="point.r", :cx="point.x", :cy="point.y", :fill="allColors[(index%allColors.length)]")
@@ -18,8 +18,6 @@ export default {
   data: () ->
 
     data =
-      startTime: 0
-      stopTime: 0
 
       interval: false
       clickDuration: 0
@@ -51,12 +49,11 @@ export default {
 
   methods:
 
-    start:(event) -> 
-      @startTime = Date.now()
+    start:(x, y) -> 
 
       if not @interval
         @clickDuration = 0
-        @addCircle(event.clientX, event.clientY)
+        @addCircle(x, y)
         @interval = setInterval(() => 
                                 @clickDuration = @clickDuration + 1
                                 @lastCircle.r = @clickDuration
@@ -68,7 +65,6 @@ export default {
       TweenMax.staggerTo(@points, @duration, cycle: {r: (target, index) => @random(8, 40)}, onComplete: @animate)
 
     stop:() -> 
-      @stopTime = Date.now()
 
       clearInterval(@interval)
       @interval = false
@@ -77,9 +73,6 @@ export default {
 
     random: (min, max) -> Math.floor(Math.random() * max) + min
     
-    handleClick: (event) ->
-      @addCircle(event.clientX, event.clientY)
-
     addCircle: (x, y) ->
       @lastCircle = {x:x, y:y, id: Date.now(), r: 0}
       @points.push(@lastCircle)
