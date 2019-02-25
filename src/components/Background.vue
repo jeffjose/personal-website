@@ -62,7 +62,10 @@ export default {
         @updateCircle()
 
     animate: () ->
-      TweenMax.staggerTo(@points, @duration, cycle: {r: (target, index) => @random(8, 40)}, onComplete: @animate)
+      TweenMax.staggerTo(@points, @duration, cycle: {
+        x: (index, target) => @wiggle(target.x),
+        r: (index, target) => @random(8, 40)
+        }, onComplete: @animate)
 
     stop:() -> 
 
@@ -71,10 +74,21 @@ export default {
       @animate()
 
 
-    random: (min, max) -> Math.floor(Math.random() * max) + min
+    wiggle: (val) -> 
+      v = parseInt(val)
+
+      max = Math.max(0, v-10)
+      min = Math.min(100, v+10)
+
+      r = @random(max, min)
+
+      return "#{r}%"
+
+    random: (min, max) -> 
+      return Math.floor(Math.random()*(parseInt(max)-parseInt(min)+1)+parseInt(min))
     
     addCircle: (x, y) ->
-      @lastCircle = {x:x, y:y, id: Date.now(), r: 0}
+      @lastCircle = {x:"#{x*100/window.innerWidth}%", y:y, id: Date.now(), r: 0}
       @points.push(@lastCircle)
 
       @points.ease = Quad.EaseIn
