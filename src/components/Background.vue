@@ -77,8 +77,8 @@ export default {
     wiggle: (val) -> 
       v = parseInt(val)
 
-      max = Math.max(0, v-10)
-      min = Math.min(100, v+10)
+      max = Math.max(0, v-3)
+      min = Math.min(100, v+3)
 
       r = @random(max, min)
 
@@ -91,7 +91,7 @@ export default {
       @lastCircle = {x:"#{x*100/window.innerWidth}%", y:y, id: Date.now(), r: 0}
       @points.push(@lastCircle)
 
-      @points.ease = Quad.EaseIn
+      @points.ease = Quad.EaseInOut
 
 }
 
