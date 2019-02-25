@@ -1,7 +1,12 @@
 <template lang="pug">
 
  div#background
-    svg(@contextmenu="$event.preventDefault()", @mousedown="start($event.clientX, $event.clientY)" @mouseup="stop", @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)", @touchend="stop", @touchcancel="stop")
+    svg(@contextmenu="$event.preventDefault()", 
+      @mousedown="start($event.clientX, $event.clientY)", 
+      @mouseup="stop", 
+      @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)", 
+      @touchend="stop", 
+      @touchcancel="stop")
       g#wrapper
          g#test(v-for="point, index in points" :key="index")
            circle(:r="point.r", :cx="point.x", :cy="point.y", :fill="allColors[(index%allColors.length)]")
@@ -12,6 +17,7 @@
 
 _ = require 'lodash'
 {TweenLite, TweenMax} = require 'gsap'
+chroma = require 'chroma-js'
 
 export default {
   name: 'background'
@@ -26,7 +32,7 @@ export default {
 
       duration: 5
       points: []
-      allColors: [
+      defaultColors: [
         '#f44336'
         '#E91E63'
         '#9C27B0'
@@ -47,7 +53,20 @@ export default {
 
     return data
 
+  created: () -> 
+    window.addEventListener('keyup', @key)
+    @allColors = @defaultColors
+
   methods:
+
+    key: (event) -> 
+      if event.code is not 'Space'
+        return
+
+      #r1 = chroma.random()
+      #r2 = chroma.random()
+      #@allColors = chroma.scale([r1, r2]).mode('lab').colors(5)
+      
 
     start:(x, y) -> 
 
