@@ -1,8 +1,8 @@
 <template lang="pug">
 
  div#background
-    svg(@contextmenu="$event.preventDefault()", 
-      @mousedown="start($event.clientX, $event.clientY)", 
+    svg(
+      @mousedown.left="start($event.clientX, $event.clientY)",
       @mouseup="stop", 
       @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)", 
       @touchend="stop", 
