@@ -11,9 +11,12 @@
 <script>
   import Header from '@/components/Header.vue'
   import Background from '@/components/Background.vue'
-  
+
   export default {
     name: 'home',
+    created () {
+      document.title = document.location.hostname;
+    },
     components: {
       Header,
       Background,
