@@ -11,13 +11,9 @@
   "dependencies": {
     "bulma": "^0.7.2",
     "chroma-js": "^2.0.3",
-    "coffee-loader": "^0.9.0",
-    "coffeescript": "^2.3.2",
-    "firebase-tools": "^6.3.1",
     "gsap": "^2.0.2",
     "lodash": "^4.17.11",
     "vue": "^2.5.22",
-    "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -25,6 +21,10 @@
     "terser": "3.14.1"
   },
   "devDependencies": {
+    "coffee-loader": "^0.9.0",
+    "vue-cli-plugin-coffeescript": "^0.0.3",
+    "coffeescript": "^2.3.2",
+    "firebase-tools": "^6.3.1",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
     "babel-eslint": "^10.0.1",
