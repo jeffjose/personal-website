@@ -1,4 +1,4 @@
-# stats
+# statsdist
 
 ## Project setup
 ```
