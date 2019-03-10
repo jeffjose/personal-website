@@ -1,42 +1,39 @@
-<template>
-  <div id="app">
-      <div :style="themeColor" class="header">
-          <div class="title">INTERACTIVE STATISTICAL DISTRIBUTIONS</div>
-      </div>
+<template lang="pug">
+#app
+  .header(:style='themeColor')
+    .title INTERACTIVE STATISTICAL DISTRIBUTIONS
+  #continuous.seperator(:style='seperatorColor')
+    .content
+      | continuous distributions
+      a.jump(href='#discrete') // discrete 🡒
+  graph(title='Beta Distribution', :props='beta', :dist='jstat.jStat.beta', width='900', height='400', :samples='[0, 1, 0.01]')
+  graph(title='Gamma Distribution', :props='gamma', :dist='jstat.jStat.gamma', width='900', height='400', :samples='[0, 20, 0.01]')
+  graph(title='Normal Distribution', :props='normal', :dist='jstat.jStat.normal', width='900', height='400', :samples='[0, 1, 0.01]')
+  graph(title='Weibull Distribution', :props='weibull', :dist='jstat.jStat.weibull', width='900', height='400', :samples='[0, 20, 0.01]')
+  graph(title='Chi-squared Distribution', :props='chisq', :dist='jstat.jStat.chisquare', width='900', height='400', :samples='[0, 500, 1]')
+  graph(title='Exponential Distribution', :props='exp', :dist='jstat.jStat.exponential', width='900', height='400', :samples='[0, 500, 1]')
+  graph(title='Log-normal Distribution', :props='lognormal', :dist='jstat.jStat.lognormal', width='900', height='400', :samples='[0, 500, 1]')
+  graph(title='Pareto Distribution', :props='pareto', :dist='jstat.jStat.pareto', width='900', height='400', :samples='[0, 500, 1]')
+  #discrete.seperator(:style='seperatorColor')
+    .content
+      | discrete distributions
+      a.jump(href='#continuous') // continuous 🡒
+  graph(title='Poisson Distribution', :props='poisson', :dist='jstat.jStat.poisson', width='900', height='400', :samples='[0, 100, 1]')
+  graph(title='Negative Binomial Distribution', :props='negbin', :dist='jstat.jStat.negbin', width='900', height='400', :samples='[0, 500, 1]')
+  graph(title='Binomial Distribution', :props='bin', :dist='jstat.jStat.binomial', width='900', height='400', :samples='[0, 500, 1]')
+  .footer(:style='themeColor')
+    .content
+      p
+        | Made by
+        a(href='http://jeffreyjose.com') Jeffrey Jose
+        | .
+      p
+        | Questions, bugs, feature requests? Ping here
+        a(href='http://twitter.com/jeffjose') @jeffjose
+      p
+        | Statistical Distributions come from the excellent
+        a(href='http://jstat.github.io/') jStat
 
-      <div id="continuous" :style="seperatorColor" class="seperator"><div class="content">continuous distributions <a href="#discrete" class="jump">// discrete 🡒</a></div> </div>
-      <graph title="Beta Distribution" :props="beta" :dist="jstat.jStat.beta" width=900 height=400 :samples="[0, 1, 0.01]"></graph>
-
-      <graph title="Gamma Distribution" :props="gamma" :dist="jstat.jStat.gamma" width="900" height="400" :samples="[0, 20, 0.01]"></graph>
-
-      <graph title="Normal Distribution" :props="normal" :dist="jstat.jStat.normal" width="900" height="400" :samples="[0, 1, 0.01]"></graph>
-
-      <graph title="Weibull Distribution" :props="weibull" :dist="jstat.jStat.weibull" width="900" height="400" :samples="[0, 20, 0.01]"></graph>
-
-      <graph title="Chi-squared Distribution" :props="chisq" :dist="jstat.jStat.chisquare" width="900" height="400" :samples="[0, 500, 1]"></graph>
-
-      <graph title="Exponential Distribution" :props="exp" :dist="jstat.jStat.exponential" width="900" height="400" :samples="[0, 500, 1]"></graph>
-
-      <graph title="Log-normal Distribution" :props="lognormal" :dist="jstat.jStat.lognormal" width="900" height="400" :samples="[0, 500, 1]"></graph>
-
-      <graph title="Pareto Distribution" :props="pareto" :dist="jstat.jStat.pareto" width="900" height="400" :samples="[0, 500, 1]"></graph>
-
-      <div id="discrete" :style="seperatorColor" class="seperator"><div class="content">discrete distributions <a href="#continuous" class="jump">// continuous 🡒</a></div> </div>
-      <graph title="Poisson Distribution" :props="poisson" :dist="jstat.jStat.poisson" width="900" height="400" :samples="[0, 100, 1]"></graph>
-
-      <graph title="Negative Binomial Distribution" :props="negbin" :dist="jstat.jStat.negbin" width="900" height="400":samples="[0, 500, 1]"></graph>
-
-      <graph title="Binomial Distribution" :props="bin" :dist="jstat.jStat.binomial" width="900" height="400":samples="[0, 500, 1]"></graph>
-
-      <div :style="themeColor" class="footer">
-          <div class="content">
-              <p>Made by <a href="http://jeffreyjose.com">Jeffrey Jose</a>.</p>
-              <p>Questions, bugs, feature requests? Ping here <a href="http://twitter.com/jeffjose">@jeffjose</a></p>
-              <p>Statistical Distributions come from the excellent <a href="http://jstat.github.io/">jStat</a></p>
-          </div>
-      </div>
-
-  </div>
 </template>
 
 <script lang="coffee">
@@ -53,12 +50,11 @@ export default {
   components: {Graph},
   mixins: [Utils],
   methods:
-      getColor: (tag="dark") -> randomcolor('luminosity': tag)
       round: (val) -> Math.round(100 * val) / 100
   data: () ->
     jstat: jstat
     themeColor:
-      backgroundColor: '#715B9B'
+      backgroundColor: '#107FC9'
     seperatorColor:
       backgroundColor: '#f6f9fc'
     beta: [

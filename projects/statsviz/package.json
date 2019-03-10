@@ -24,6 +24,7 @@
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.3.2",
     "less-loader": "^4.1.0",
+    "pug-loader": "^2.4.0",
     "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-template-compiler": "^2.5.21"
   },

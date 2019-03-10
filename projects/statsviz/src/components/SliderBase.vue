@@ -1,22 +1,16 @@
-<template>
-    <div :class='{noPointerEvents: readonly}'class="wrapper" @wheel.prevent="wheel($event.wheelDelta)">
-      <div class="left">
-          <span class="label"><p>{{label}}</p></span>
-          <input class="slider" type="range" v-bind:value.number="value" v-on:input="update($event.target.value)" :min="cmin" :max="cmax" :step="step">
-      </div>
+<template lang="pug">
+.wrapper(:class='{noPointerEvents: readonly}', @wheel.prevent='wheel($event.wheelDelta)')
+  .left
+    span.label
+      p {{label}}
+    input.slider(type='range', v-bind:value.number='value', v-on:input='update($event.target.value)', :min='cmin', :max='cmax', :step='step')
+  .right
+    span.buttons
+      input.plus(type='button', value='+', @click.prevent='increment')
+      input.minus(type='button', value='-', @click.prevent='decrement')
+    span.text
+      input.value(v-bind:value.number='value', @wheel='wheel($event.wheelDelta)', v-on:input='update($event.target.value)', :min='cmin', :max='cmax', :step='step')
 
-      <div class="right">
-          <span class="buttons">
-              <input class="plus" type="button" value="+" @click.prevent="increment"></input>
-              <input class="minus" type="button" value="-" @click.prevent="decrement"></input>
-          </span>
-
-          <span class="text">
-              <input class="value" v-bind:value.number="value" @wheel="wheel($event.wheelDelta)" v-on:input="update($event.target.value)" :min="cmin" :max="cmax" :step="step">
-          </span>
-
-     </div>
-    </div>
 </template>
 
 <script lang="coffee">

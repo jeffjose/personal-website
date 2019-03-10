@@ -1,9 +1,9 @@
-<template>
-    <div class="graph panel">
-        <h1 class="title">{{ title }}</h1>
-      <slider :stats="stats" :props="props"></slider>
-      <curve :values="values" :width="width" :height="height" :title="title" :discrete="discrete" :points="points" :shaded="shaded"></curve>
-    </div>
+<template lang="pug">
+.graph.panel
+  h1.title {{ title }}
+  slider(:stats='stats', :props='props')
+  curve(:values='values', :width='width', :height='height', :title='title', :discrete='discrete', :points='points', :shaded='shaded')
+
 </template>
 
 <script lang="coffee">

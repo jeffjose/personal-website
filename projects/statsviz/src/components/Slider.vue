@@ -1,28 +1,31 @@
-<template>
-    <div class="slider-wrapper">
-        <div v-for="prop, i in props" class="slider" :style="{'background-color': colors(i)}">
-            <div class="top">
-                <div class="mode" :class="{bg: prop.mode != 'cdf'}" @click="prop.mode = 'pdf'">pdf</div>
-                <div class="mode" :class="{bg: prop.mode == 'cdf'}" @click="prop.mode = 'cdf'">cdf</div>
-                <div class="seperator">|</div>
-                <div v-if="prop.discrete == null" class="toggle" :class="{bg: prop.area == true}" @click="prop.area = !prop.area">shade</div>
-                <div v-if="prop.discrete != null" class="toggle" :class="{bg: prop.dots == true}" @click="prop.dots = !prop.dots">points</div>
-                <i v-show='props.length > 1' @click="remove(i)" class="material-icons close">close</i>
-            </div>
-            <div class="all-sliders">
-                <slider-base v-for="p in prop.p" v-model="p.data" :label="p.name" :min=p.min :max=p.max :step=p.step :bounded=p.bounded :readonly=p.readonly></slider-base>
-            </div>
-            <div class="bottom">
-                <div class="stat">mean:   <div class="val">{{stats[i].mean | clean}}    </div></div>
-                <div class="stat">median: <div class="val">{{stats[i].median | clean}}  </div></div>
-                <div class="stat">mode:   <div class="val">{{stats[i].mode | clean}}    </div></div>
-                <div class="stat">var:    <div class="val">{{stats[i].variance | clean}}</div></div>
-            </div>
-        </div>
-        <div @click="add" class="add-another">
-            <i class="material-icons add">add</i>
-        </div>
-    </div>
+<template lang="pug">
+.slider-wrapper
+  .slider(v-for='prop, i in props', :style="{'background-color': colors(i)}")
+    .top
+      .mode(:class="{bg: prop.mode != 'cdf'}", @click="prop.mode = 'pdf'") pdf
+      .mode(:class="{bg: prop.mode == 'cdf'}", @click="prop.mode = 'cdf'") cdf
+      .seperator |
+      .toggle(v-if='prop.discrete == null', :class='{bg: prop.area == true}', @click='prop.area = !prop.area') shade
+      .toggle(v-if='prop.discrete != null', :class='{bg: prop.dots == true}', @click='prop.dots = !prop.dots') points
+      i.material-icons.close(v-show='props.length > 1', @click='remove(i)') close
+    .all-sliders
+      slider-base(v-for='p in prop.p', v-model='p.data', :label='p.name', :min='p.min', :max='p.max', :step='p.step', :bounded='p.bounded', :readonly='p.readonly')
+    .bottom
+      .stat
+        | mean:   
+        .val {{stats[i].mean | clean}}    
+      .stat
+        | median: 
+        .val {{stats[i].median | clean}}  
+      .stat
+        | mode:   
+        .val {{stats[i].mode | clean}}    
+      .stat
+        | var:    
+        .val {{stats[i].variance | clean}}
+  .add-another(@click='add')
+    i.material-icons.add add
+
 </template>
 
 <script lang="coffee">

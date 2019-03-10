@@ -1,12 +1,10 @@
-<template>
-    <div>
-        <h1>{{ msg }}</h1>
-        <svg width="500" height="270">
-            <g style="transform: translate(0, 20px)">
-                <path :d="line" stroke="red" stroke-width="2" fill='none'/>
-            </g>
-        </svg>
-    </div>
+<template lang="pug">
+div
+  h1 {{ msg }}
+  svg(width='500', height='270')
+    g(style='transform: translate(0, 20px)')
+      path(:d='line', stroke='red', stroke-width='2', fill='none')
+
 </template>
 
 <script lang="coffee">

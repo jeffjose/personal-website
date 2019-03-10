@@ -1,12 +1,10 @@
-<template>
-    <div>
-        <svg :height="height" :width="width">
-            <g class="wrapper">
-                <path v-for="line, i in lines" :stroke="colors(i)" class="line" :d="line"/>
-                <path v-for="area, i in areas" :fill="colors(i)" class="area" :class="uuid[i]" :d="area"/>
-            </g>
-        </svg>
-    </div>
+<template lang="pug">
+div
+  svg(:height='height', :width='width')
+    g.wrapper
+      path.line(v-for='line, i in lines', :stroke='colors(i)', :d='line')
+      path.area(v-for='area, i in areas', :fill='colors(i)', :class='uuid[i]', :d='area')
+
 </template>
 
 <script lang="coffee">

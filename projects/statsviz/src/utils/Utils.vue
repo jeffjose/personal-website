@@ -1,5 +1,3 @@
-<template>
-</template>
 <script lang="coffee">
 
 d3       = require('d3')
