@@ -1,5 +1,5 @@
 {
-  "name": "statsdist",
+  "name": "statsviz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,28 +20,12 @@
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
-    "vue-cli-plugin-coffeescript": "^0.0.3",
     "babel-eslint": "^10.0.1",
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.3.2",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
     "less-loader": "^4.1.0",
+    "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-template-compiler": "^2.5.21"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {

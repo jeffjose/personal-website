@@ -1,6 +1,6 @@
 module.exports = {
-  publicPath: 'statsdist/',
-  outputDir: '../../dist/statsdist/',
+  publicPath: 'statsviz/',
+  outputDir: '../../dist/statsviz/',
   assetsDir: undefined,
   runtimeCompiler: undefined,
   productionSourceMap: undefined,

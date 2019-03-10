@@ -180,7 +180,7 @@ export default {
     // For material icons
     // .. from http://google.github.io/material-design-icons/
 
-    @import (css) url('https://fonts.googleapis.com/css?family=Poiret+One|Comfortaa|Material+Icons');
+    @import (css) url('https://fonts.googleapis.com/css?family=Comfortaa|Material+Icons');
 
     .material-icons {
       font-family: 'Material Icons';
@@ -221,7 +221,7 @@ export default {
             font-size: 24px;
             padding: 10px;
             margin: auto 0px;
-            font-family: 'Poiret One', sans-serif;
+            font-family: 'Comfortaa', sans-serif;
             text-transform: capitalize;
             font-weight: bold;
         }
@@ -284,7 +284,7 @@ export default {
         flex-flow: row nowrap;
 
         .content {
-            font-family: 'Comfortaa', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             margin: auto 10px;
 
             .jump {
