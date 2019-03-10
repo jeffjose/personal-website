@@ -134,7 +134,7 @@ export default {
     margin: 3px;
     padding: 5px 0px;
     border: 1px solid rgba(0, 0, 0, 0);
-    transition: all ease-in-out 100ms;
+    transition: all ease-in-out 80ms;
 
     align-self: center;
 

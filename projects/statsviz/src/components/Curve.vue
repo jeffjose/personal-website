@@ -287,7 +287,7 @@ rect.bars {
 }
 
 g.axis {
-    transition: all ease-in-out 100ms;
+    transition: all ease-in-out 80ms;
 
     &.xaxis {
         cursor: col-resize;

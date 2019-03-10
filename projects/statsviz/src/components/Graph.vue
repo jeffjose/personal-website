@@ -84,7 +84,7 @@ export default {
     padding: 10px;
     background-color: @BGColor;
     &:hover {
-        background-color: darken(@BGColor, 5%);
+        background-color: #f6f9fc;
     }
 
     h1.title {

@@ -75,7 +75,7 @@ export default {
 
 <style scoped lang="less">
 
-@addAnotherBGColor: #E0E0E0;
+@addAnotherBGColor: darken(#f6f9fc, 5%);
 
 @textColorDark: #333333;
 @textColorLight: #FFFFFF;
@@ -133,7 +133,7 @@ export default {
 
         .bottom {
             font-size: 10px;
-            transition: all ease-in-out 100ms;
+            transition: all ease-in-out 80ms;
             margin: 0px;
             padding: 5px;
             border-top: 1px solid fade(@textColorLight, 30%);
@@ -171,7 +171,7 @@ export default {
 
 
     .add-another {
-        transition: all ease-in-out 100ms;
+        transition: all ease-in-out 80ms;
         display: flex;
         margin: 1px;
 
@@ -180,7 +180,7 @@ export default {
         vertical-align: middle;
         cursor: pointer;
 
-        color: darken(@addAnotherBGColor, 30%);
+        color: darken(@addAnotherBGColor, 15%);
         line-height: 24px;
 
         flex-direction:  column;
@@ -192,10 +192,10 @@ export default {
         }
 
         &:hover {
-            background-color: darken(@addAnotherBGColor, 5%);
+            background-color: darken(@addAnotherBGColor, 3%);
 
             .add {
-                color: darken(@addAnotherBGColor, 50%);
+                color: darken(@addAnotherBGColor, 30%);
 
             }
         }

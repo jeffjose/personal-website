@@ -61,8 +61,10 @@ export default {
       round: (val) -> Math.round(100 * val) / 100
   data: () ->
     jstat: jstat
-    themeColor: {backgroundColor: @getColor()}
-    seperatorColor: {backgroundColor: @getColor('light')}
+    themeColor:
+      backgroundColor: '#097AB2'
+    seperatorColor:
+      backgroundColor: '#f6f9fc'
     beta: [
         mode: 'pdf'
         area: false
@@ -174,7 +176,7 @@ export default {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
-      color: #2c3e50;
+      color: #525252;
     }
 
     // For material icons
@@ -227,7 +229,7 @@ export default {
         }
 
         .madeby {
-            transition: all ease-in-out 100ms;
+            transition: all ease-in-out 80ms;
             margin: auto 10px auto auto;
             color: @textColor;
             line-height: 20px;
@@ -235,7 +237,7 @@ export default {
             span, a {
                 color: @textColor;
                 text-decoration: none;
-                transition: all ease-in-out 100ms;
+                transition: all ease-in-out 80ms;
             }
 
             &:hover {
@@ -263,7 +265,7 @@ export default {
             line-height: 15px;
 
             a {
-                transition: all ease-in-out 100ms;
+                transition: all ease-in-out 80ms;
                 text-decoration: none;
                 color: @textColor;
                 border-bottom: 1px solid @textColor;
