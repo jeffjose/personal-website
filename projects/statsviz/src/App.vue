@@ -2,9 +2,6 @@
   <div id="app">
       <div :style="themeColor" class="header">
           <div class="title">INTERACTIVE STATISTICAL DISTRIBUTIONS</div>
-          <div class="madeby">
-              <a href="http://jeffreyjose.com">Made by <span>Jeffrey Jose</span></a>
-          </div>
       </div>
 
       <div id="continuous" :style="seperatorColor" class="seperator"><div class="content">continuous distributions <a href="#discrete" class="jump">// discrete 🡒</a></div> </div>
@@ -36,7 +33,6 @@
               <p>Made by <a href="http://jeffreyjose.com">Jeffrey Jose</a>.</p>
               <p>Questions, bugs, feature requests? Ping here <a href="http://twitter.com/jeffjose">@jeffjose</a></p>
               <p>Statistical Distributions come from the excellent <a href="http://jstat.github.io/">jStat</a></p>
-              <p>Built using <a href="https://vuejs.org">VueJs</a> by <a href="http://evanyou.me/">Evan You</a> and <a href="https://d3js.org/">d3js</a> by <a href="https://bost.ocks.org/mike/">Mike Bostock</a>.</p>
           </div>
       </div>
 
@@ -62,7 +58,7 @@ export default {
   data: () ->
     jstat: jstat
     themeColor:
-      backgroundColor: '#097AB2'
+      backgroundColor: '#715B9B'
     seperatorColor:
       backgroundColor: '#f6f9fc'
     beta: [
@@ -175,7 +171,6 @@ export default {
       font-family: 'Open Sans', 'Avenir', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-align: center;
       color: #525252;
     }
 
@@ -225,40 +220,19 @@ export default {
             margin: auto 0px;
             font-family: 'Comfortaa', sans-serif;
             text-transform: capitalize;
-            font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        .madeby {
-            transition: all ease-in-out 80ms;
-            margin: auto 10px auto auto;
-            color: @textColor;
-            line-height: 20px;
-
-            span, a {
-                color: @textColor;
-                text-decoration: none;
-                transition: all ease-in-out 80ms;
-            }
-
-            &:hover {
-
-                color: white;
-
-                span, a {
-                    color: white;
-                }
-            }
-        }
 
 
     }
 
     .footer {
-        height: 150px;
+        height: 110px;
         display: flex;
 
         .content {
-            margin: auto;
+            margin-left: 3%;
             width: 80%;
             height: 200px;
             color: @textColor;

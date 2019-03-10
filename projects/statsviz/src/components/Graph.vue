@@ -90,7 +90,7 @@ export default {
     h1.title {
         font-family: 'Comfortaa', sans-serif;
         text-transform: uppercase;
-
+        letter-spacing: 1px;
     }
 }
 </style>
