@@ -81,16 +81,16 @@ export default {
 <style lang="less">
 @BGColor: white;
 .panel {
-    padding: 10px;
-    background-color: @BGColor;
-    &:hover {
-        background-color: #f6f9fc;
-    }
+  padding: 10px;
+  background-color: @BGColor;
+  &:hover {
+    background-color: #f6f9fc;
+  }
 
-    h1.title {
-        font-family: 'Comfortaa', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+  h1.title {
+    font-family: "Comfortaa", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 }
 </style>

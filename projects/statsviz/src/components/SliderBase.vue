@@ -118,145 +118,136 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 @textColorDark: #333333;
-@textColorLight: #FFFFFF;
+@textColorLight: #ffffff;
 
 .wrapper {
-    height: 20px;
-    width: 200px;
-    margin: 3px;
-    padding: 5px 0px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    transition: all ease-in-out 80ms;
+  height: 20px;
+  width: 200px;
+  margin: 3px;
+  padding: 5px 0px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  transition: all ease-in-out 80ms;
 
-    align-self: center;
+  align-self: center;
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
-
 .left {
+  float: left;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+
+  .label {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    color: fade(@textColorLight, 80%);
     float: left;
+    font-size: 12px;
+    padding: 0px 5px;
+    width: 40px;
+    user-select: none;
+
+    p {
+      float: right;
+      margin: 0px;
+
+      margin-top: 1px;
+    }
+  }
+  .slider {
     height: 20px;
-    margin-right: 10px;
-    margin-left: 5px;
+    margin: 0px;
 
-    .label {
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        text-align: center;
-        color: fade(@textColorLight, 80%);
-        float: left;
-        font-size: 12px;
-        padding: 0px 5px;
-        width: 40px;
-        user-select: none;
+    width: 70px;
+    opacity: 0.9;
 
-        p {
-            float: right;
-            margin: 0px;
-
-            margin-top: 1px;
-        }
-
+    &:hover {
+      opacity: 1;
     }
-    .slider {
-        height: 20px;
-        margin: 0px;
-
-        width: 70px;
-        opacity: 0.9;
-
-        &:hover {
-            opacity: 1;
-        }
-
-    }
+  }
 }
 
 .right {
+  .text {
+    input {
+      float: left;
+      border: none;
+      padding: 0px;
+      color: @textColorLight;
+      background-color: rgba(0, 0, 0, 0);
+      width: 50px;
+      height: 20px;
 
-    .text {
+      font-size: 14px;
+      line-height: 0px;
+      vertical-align: middle;
+      text-align: center;
 
-        input {
-            float: left;
-            border: none;
-            padding: 0px;
-            color: @textColorLight;
-            background-color: rgba(0, 0, 0, 0);
-            width: 50px;
-            height: 20px;
+      margin: 0px 2px;
 
-            font-size: 14px;
-            line-height: 0px;
-            vertical-align: middle;
-            text-align: center;
+      &:hover {
+        color: @textColorLight;
+        border-bottom: 1px solid @textColorLight;
+      }
 
-            margin: 0px 2px;
+      &:focus {
+        outline: none;
+      }
 
-            &:hover {
-                color: @textColorLight;
-                border-bottom: 1px solid @textColorLight;
-            }
+      &::selection {
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+      }
+    }
+  }
 
-            &:focus {
-                outline: none;
-            }
+  .buttons {
+    float: left;
+    input {
+      width: 10px;
+      height: 10px;
+      line-height: 0px;
+      border: none;
+      padding: 0px;
+      display: block;
+      font-size: 10px;
 
-            &::selection {
-                background-color: rgba(0, 0, 0, 0.3);
-                padding: 10px;
-            }
+      color: @textColorDark;
 
-        }
+      &:hover {
+        background-color: darken(white, 20%);
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
-    .buttons {
-        float: left;
-        input {
-            width: 10px;
-            height: 10px;
-            line-height: 0px;
-            border: none;
-            padding: 0px;
-            display: block;
-            font-size: 10px;
-
-            color: @textColorDark;
-
-            &:hover {
-                background-color: darken(white, 20%);
-            }
-
-            &:focus {
-                outline: none;
-            }
-
-        }
-
-        .minus {
-        }
-
-        .plus {
-        }
+    .minus {
     }
+
+    .plus {
+    }
+  }
 }
 
 .noPointerEvents {
-    pointer-events: none;
-    cursor: pointer;
+  pointer-events: none;
+  cursor: pointer;
 
-	background: repeating-linear-gradient(
-	  45deg,
-      rgba(200, 200, 200, 0.6),
-      rgba(200, 200, 200, 0.6) 10px,
-      rgba(200, 200, 200, 0.1) 10px,
-      rgba(200, 200, 200, 0.1) 20px,
-	);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(200, 200, 200, 0.6),
+    rgba(200, 200, 200, 0.6) 10px,
+    rgba(200, 200, 200, 0.1) 10px,
+    rgba(200, 200, 200, 0.1) 20px
+  );
 }
-
 </style>

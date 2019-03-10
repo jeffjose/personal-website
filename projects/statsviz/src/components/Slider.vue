@@ -77,132 +77,123 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 @addAnotherBGColor: darken(#f6f9fc, 5%);
 
 @textColorDark: #333333;
-@textColorLight: #FFFFFF;
+@textColorLight: #ffffff;
 
 .slider-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-bottom: 20px;
+  transition: all ease-in-out 500ms;
 
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin-bottom: 20px;
+  .slider {
     transition: all ease-in-out 500ms;
+    margin: 1px;
+    cursor: default;
 
-    .slider {
-        transition: all ease-in-out 500ms;
-        margin: 1px;
-        cursor: default;
+    .top {
+      height: 19px;
+      display: flex;
+      padding-bottom: 5px;
+      padding-left: 2.5px;
+      border-bottom: 1px solid fade(@textColorLight, 30%);
 
-        .top {
-            height: 19px;
-            display: flex;
-            padding-bottom: 5px;
-            padding-left: 2.5px;
-            border-bottom: 1px solid fade(@textColorLight, 30%);
+      .seperator {
+        color: fade(@textColorLight, 80%);
+      }
 
-            .seperator{
-                color: fade(@textColorLight, 80%);
-            }
+      .mode,
+      .toggle {
+        font-size: 10px;
+        color: fade(@textColorLight, 80%);
+        margin: 5px 2.5px 0px 2.5px;
+        padding: 0px 3px;
+        user-select: none;
 
-            .mode, .toggle {
-                font-size: 10px;
-                color: fade(@textColorLight, 80%);
-                margin: 5px 2.5px 0px 2.5px;
-                padding: 0px 3px;
-                user-select: none;
-
-                &.bg {
-                    background-color: rgba(255, 255, 255, 0.2);
-                }
-
-                cursor: pointer;
-            }
-            .close {
-                margin-left: auto;
-                margin: 5px 5px 0px auto;
-                font-size: 14px;
-                color: fade(@textColorLight, 80%);
-                cursor: pointer;
-
-                &:hover {
-                    color: @textColorLight;
-                }
-            }
+        &.bg {
+          background-color: rgba(255, 255, 255, 0.2);
         }
 
-
-        .bottom {
-            font-size: 10px;
-            transition: all ease-in-out 80ms;
-            margin: 0px;
-            padding: 5px;
-            border-top: 1px solid fade(@textColorLight, 30%);
-
-            color: fade(@textColorLight, 80%);
-            display: flex;
-            flex-flow: row;
-
-            .stat {
-                display: inline-block;
-                padding: 3px;
-                user-select: none;
-                &:hover {
-                    background-color: rgba(255, 255, 255, 0.2);
-                    color: white;
-                }
-
-                .val {
-                    width: 24px;
-                    color: white;
-                    display: inline-block;
-                }
-            }
-        }
-
-
-    }
-
-    .all-sliders {
-
-        display: flex;
-        flex-flow: column;
-    }
-
-
-
-    .add-another {
-        transition: all ease-in-out 80ms;
-        display: flex;
-        margin: 1px;
-
-        width: 254.67px; // from eye-balling in chrome
-        background-color: @addAnotherBGColor;
-        vertical-align: middle;
+        cursor: pointer;
+      }
+      .close {
+        margin-left: auto;
+        margin: 5px 5px 0px auto;
+        font-size: 14px;
+        color: fade(@textColorLight, 80%);
         cursor: pointer;
 
-        color: darken(@addAnotherBGColor, 15%);
-        line-height: 24px;
-
-        flex-direction:  column;
-
-        align-items: center;
-        .add {
-            font-size: 32px;
-            margin: auto 0px;
-        }
-
         &:hover {
-            background-color: darken(@addAnotherBGColor, 3%);
-
-            .add {
-                color: darken(@addAnotherBGColor, 30%);
-
-            }
+          color: @textColorLight;
         }
+      }
     }
 
+    .bottom {
+      font-size: 10px;
+      transition: all ease-in-out 80ms;
+      margin: 0px;
+      padding: 5px;
+      border-top: 1px solid fade(@textColorLight, 30%);
+
+      color: fade(@textColorLight, 80%);
+      display: flex;
+      flex-flow: row;
+
+      .stat {
+        display: inline-block;
+        padding: 3px;
+        user-select: none;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+          color: white;
+        }
+
+        .val {
+          width: 24px;
+          color: white;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .all-sliders {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .add-another {
+    transition: all ease-in-out 80ms;
+    display: flex;
+    margin: 1px;
+
+    width: 254.67px; // from eye-balling in chrome
+    background-color: @addAnotherBGColor;
+    vertical-align: middle;
+    cursor: pointer;
+
+    color: darken(@addAnotherBGColor, 15%);
+    line-height: 24px;
+
+    flex-direction: column;
+
+    align-items: center;
+    .add {
+      font-size: 32px;
+      margin: auto 0px;
+    }
+
+    &:hover {
+      background-color: darken(@addAnotherBGColor, 3%);
+
+      .add {
+        color: darken(@addAnotherBGColor, 30%);
+      }
+    }
+  }
 }
 </style>

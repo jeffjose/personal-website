@@ -161,111 +161,106 @@ export default {
 @textColor: rgba(0, 0, 0, 0.8);
 @textColor: rgba(255, 255, 255, 0.5);
 
-    @import (css) url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import (css) url("https://fonts.googleapis.com/css?family=Open+Sans");
 
-    #app {
-      font-family: 'Open Sans', 'Avenir', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      color: #525252;
+#app {
+  font-family: "Open Sans", "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #525252;
+}
+
+// For material icons
+// .. from http://google.github.io/material-design-icons/
+
+@import (css)
+  url("https://fonts.googleapis.com/css?family=Comfortaa|Material+Icons");
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .title {
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    margin: auto 0px;
+    font-family: "Comfortaa", sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+  }
+}
+
+.footer {
+  height: 110px;
+  display: flex;
+
+  .content {
+    margin-left: 3%;
+    width: 80%;
+    height: 200px;
+    color: @textColor;
+    line-height: 15px;
+
+    a {
+      transition: all ease-in-out 80ms;
+      text-decoration: none;
+      color: @textColor;
+      border-bottom: 1px solid @textColor;
+
+      &:hover {
+        color: white;
+        border-bottom: 1px solid white;
+      }
     }
+  }
+}
 
-    // For material icons
-    // .. from http://google.github.io/material-design-icons/
+.seperator {
+  height: 30px;
+  background-color: red;
+  margin: 5px 0px;
+  display: flex;
+  flex-flow: row nowrap;
 
-    @import (css) url('https://fonts.googleapis.com/css?family=Comfortaa|Material+Icons');
+  .content {
+    font-family: "Open Sans", sans-serif;
+    margin: auto 10px;
 
-    .material-icons {
-      font-family: 'Material Icons';
-      font-weight: normal;
-      font-style: normal;
-      font-size: 24px;  /* Preferred icon size */
-      display: inline-block;
-      line-height: 1;
-      text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
-      white-space: nowrap;
-      direction: ltr;
-
-      /* Support for all WebKit browsers. */
-      -webkit-font-smoothing: antialiased;
-      /* Support for Safari and Chrome. */
-      text-rendering: optimizeLegibility;
-
-      /* Support for Firefox. */
-      -moz-osx-font-smoothing: grayscale;
-
-      /* Support for IE. */
-      font-feature-settings: 'liga';
+    .jump {
+      text-decoration: none;
+      font-size: 12px;
+      margin-left: 10px;
+      line-height: 0px;
     }
-
-
-
-    .header {
-        height: 60px;
-        width: 100%;
-        background-color: red;
-        display: flex;
-        flex-flow: row nowrap;
-
-        .title {
-            color: white;
-            font-size: 24px;
-            padding: 10px;
-            margin: auto 0px;
-            font-family: 'Comfortaa', sans-serif;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-        }
-
-
-
-    }
-
-    .footer {
-        height: 110px;
-        display: flex;
-
-        .content {
-            margin-left: 3%;
-            width: 80%;
-            height: 200px;
-            color: @textColor;
-            line-height: 15px;
-
-            a {
-                transition: all ease-in-out 80ms;
-                text-decoration: none;
-                color: @textColor;
-                border-bottom: 1px solid @textColor;
-
-                &:hover {
-                    color: white;
-                    border-bottom: 1px solid white;
-                }
-            }
-        }
-    }
-
-    .seperator {
-        height: 30px;
-        background-color: red;
-        margin: 5px 0px;
-        display: flex;
-        flex-flow: row nowrap;
-
-        .content {
-            font-family: 'Open Sans', sans-serif;
-            margin: auto 10px;
-
-            .jump {
-                text-decoration: none;
-                font-size: 12px;
-                margin-left: 10px;
-                line-height: 0px;
-            }
-        }
-    }
-
+  }
+}
 </style>

@@ -265,65 +265,65 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-
-@axisColor: #9E9E9E;
+@axisColor: #9e9e9e;
 //@lineColor: #E91E63;
-@lineColor: #FF7043;
+@lineColor: #ff7043;
 
 path.line {
-    stroke-width: 2;
-    fill: none;
+  stroke-width: 2;
+  fill: none;
 }
 
 path.area {
-    stroke: none;
-    opacity: 0.2;
+  stroke: none;
+  opacity: 0.2;
 }
 
 rect.bars {
-    opacity: 1;
+  opacity: 1;
 }
 
 g.axis {
-    transition: all ease-in-out 80ms;
+  transition: all ease-in-out 80ms;
 
-    &.xaxis {
-        cursor: col-resize;
-    }
-    &.yaxis {
-        cursor: row-resize;
-    }
-    &:hover {
-        path, line {
-            stroke: darken(@axisColor, 20%);
-        }
-
-        text {
-            fill: darken(@axisColor, 20%);
-        }
-    }
-
-    path, line {
-        stroke: @axisColor;
-
-
+  &.xaxis {
+    cursor: col-resize;
+  }
+  &.yaxis {
+    cursor: row-resize;
+  }
+  &:hover {
+    path,
+    line {
+      stroke: darken(@axisColor, 20%);
     }
 
     text {
-        fill: @axisColor;
+      fill: darken(@axisColor, 20%);
     }
+  }
 
-    &.yaxis .tick * , &.xaxis .tick * {
-        stroke: none;
-    }
+  path,
+  line {
+    stroke: @axisColor;
+  }
+
+  text {
+    fill: @axisColor;
+  }
+
+  &.yaxis .tick *,
+  &.xaxis .tick * {
+    stroke: none;
+  }
 }
 
 .transparent {
-    stroke-opacity: 0.2;
+  stroke-opacity: 0.2;
 }
 
 circle.points {
-    fill: @lineColor;
-    //fill-opacity: 0.6;
+  fill: @lineColor;
+  //fill-opacity: 0.6;
 }
 </style>
