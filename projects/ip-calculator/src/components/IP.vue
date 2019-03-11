@@ -1,7 +1,7 @@
 <template lang="pug">
   span.ip
-    span.kind(:class="kind") {{kind}}
-    span.address  {{ip}}
+    span.kind(@click="index = index + 1", :class="kind") {{kind}}
+    span.address  {{format(ip)}}
 </template>
 
 <script>
@@ -10,18 +10,23 @@ import ip6addr from "ip6addr"
 
 export default {
   name: 'ip',
-  props: {
-    ip: String
+  data: function (){
+    return {
+      index: 0,
+      formats: ["v4", "v4-mapped", "v6"]
+    }
+  },
+  props: ['ip'],
+  methods: {
+    format: function(ip) {
+      return ip.toString({format: this.formats[this.index % this.formats.length]})
+
+    },
   },
   computed: {
     kind: function() {
 
-      try {
-        return ip6addr.parse(this.ip).kind().replace('', '')
-      }
-      catch (e) {
-        return ""
-      }
+        return this.formats[this.index % this.formats.length]
 
     }
   }
@@ -30,6 +35,7 @@ export default {
 <style scoped lang="sass">
 
 $ipv4color: #E5A0B1
+$ipv4mappedcolor: #F1CDBD
 $ipv6color: #92ACAF
 
 
@@ -49,7 +55,7 @@ $ipv6color: #92ACAF
    padding: 0px 3px
 
 
-   &.ipv4
+   &.v4
      color: darken($ipv4color, 20%)
      border: 1px solid lighten($ipv4color, 15%)
      background-color: lighten($ipv4color, 20%)
@@ -57,7 +63,15 @@ $ipv6color: #92ACAF
      &:hover
        background-color: lighten($ipv4color, 21%)
 
-   &.ipv6
+   &.v4-mapped
+     color: darken($ipv4mappedcolor, 20%)
+     border: 1px solid lighten($ipv4mappedcolor, 15%)
+     background-color: lighten($ipv4mappedcolor, 20%)
+
+     &:hover
+       background-color: lighten($ipv4mappedcolor, 21%)
+
+   &.v6
      color: darken($ipv6color, 20%)
      border: 1px solid lighten($ipv6color, 15%)
      background-color: lighten($ipv6color, 20%)

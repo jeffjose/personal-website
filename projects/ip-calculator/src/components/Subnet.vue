@@ -9,12 +9,12 @@
       div.column
         div.results-one-line
           div.columns.is-centered
-            div.column.is-two-thirds
+            div.column.is-full
               div.columns.titles
                   div.column.is-one-quarter
                     p Network
                   div.column.is-one-half
-                    p IP Range ({{subnet.hosts}} hosts)
+                    p IP range
                   div.column.is-one-quarter
                     p Broadcast
               div.columns.ips
@@ -26,6 +26,21 @@
                     ip(:ip="subnet.last")
                   div.column.is-one-quarter
                     ip(:ip="subnet.broadcast")
+          div.columns.is-centered
+            div.column.is-full
+              div.columns.titles
+                  div.column.is-one-quarter
+                    p Subnet mask
+                  div.column.is-one-half
+                    p Available IPs
+                  div.column.is-one-quarter
+                    p Broadcast
+              div.columns.ips
+                  div.column.is-one-quarter
+                    p {{subnet.mask}}
+                  div.column.is-half
+                    p {{subnet.hosts}}
+                  div.column.is-one-quarter
 
     //div.columns.is-centered.subnetresults
     //  div.column
@@ -104,18 +119,18 @@ export default {
         let hosts = ''
 
         try {
-          network =  ipaddrjs.IPv4.networkAddressFromCIDR(this.cidr.toString()).toString()
-          mask = ipaddrjs.IPv4.subnetMaskFromPrefixLength(this.cidr.prefixLength.toString()).toString()
-          broadcast = this.cidr.broadcast().toString()
+          network =  ip6addr.parse(ipaddrjs.IPv4.networkAddressFromCIDR(this.cidr.toString()).toString())
+          mask = ipaddrjs.IPv4.subnetMaskFromPrefixLength(this.cidr.prefixLength()).toString()
+          broadcast = this.cidr.broadcast()
           hosts = this.cidr.last().toLong() - this.cidr.first().toLong() + 1
         }
         catch (e) {
         }
 
         return {
-          'first': this.cidr.first().toString(),
-          'last': this.cidr.last().toString(),
-          'address': this.cidr.address().toString(),
+          'first': this.cidr.first(),
+          'last': this.cidr.last(),
+          'address': this.cidr.address(),
           'prefixLength': this.cidr.prefixLength(),
           'network': network,
           'mask': mask,
