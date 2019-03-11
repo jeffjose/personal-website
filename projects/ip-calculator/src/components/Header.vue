@@ -2,7 +2,7 @@
   nav.navbar.is-white(role="navigation", aria-label="main navigation")
      div.navbar-brand
        a.navbar-item(href="/")
-         img(src="logo.white.png", height=28)
+         img(:src="`${publicPath}logo.white.png`", height=28)
        p  // {{title}}
 
 
@@ -13,7 +13,12 @@ export default {
   name: "Header",
   props: {
     title: String
-  }
+  },
+  data () {
+    return {
+      publicPath: process.env.BASE_URL
+    }
+  },
 };
 </script>
 
