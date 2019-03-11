@@ -11,6 +11,10 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "profile.jpg",
+        "destination": "/homepage/profile.jpg"
       }
     ]
   }
