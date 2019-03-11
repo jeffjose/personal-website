@@ -5,8 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "buildall": "yarn-recursive --cmd build",
+    "installall": "yarn-recursive --cmd install",
     "lint": "vue-cli-service lint",
-    "deploy": "yarn build && firebase deploy"
+    "deploy": "yarn buildall && firebase deploy"
   },
   "dependencies": {
     "bulma": "^0.7.2",
