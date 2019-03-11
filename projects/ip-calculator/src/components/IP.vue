@@ -19,15 +19,23 @@ export default {
   props: ['ip'],
   methods: {
     format: function(ip) {
+      if(ip.length == 0) {
+        return
+      }
+      if (ip.kind() == 'ipv4') {
       return ip.toString({format: this.formats[this.index % this.formats.length]})
+      } else {
+      return ip.toString()
+      }
 
     },
   },
   computed: {
     kind: function() {
-
-        return this.formats[this.index % this.formats.length]
-
+      //return this.formats[this.index % this.formats.length]
+      if(this.ip.length > 0) {
+      return this.ip.kind()
+      }
     }
   }
 }

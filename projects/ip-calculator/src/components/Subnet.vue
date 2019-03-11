@@ -90,7 +90,8 @@
 <script>
 
 import ip6addr from "ip6addr"
-import ipaddress from "ip-address"
+var  Address4 = require("ip-address").Address4
+var  Address6 = require("ip-address").Address6
 import ipaddrjs from "ipaddr.js"
 
 import ip from "@/components/IP.vue"
@@ -102,10 +103,55 @@ export default {
   },
   data: function() {
     return {
-      input: "192.168.1.0/24",
-      //input: "::ffff:c774:76cf/24",
+      //input: "192.168.1.0/24",
+      input: "2001:db8:85a3::8a2e:370:7334/64",
       cidir: undefined
     }
+  },
+  methods: {
+    getMask: function(cidr) {
+      try{
+
+          return ipaddrjs.IPv4.subnetMaskFromPrefixLength(this.cidr.prefixLength()).toString()
+        //return new Address4(cidr.toString()).mask()
+      } catch(e) {
+        return new Address6(cidr.toString()).mask()
+      }
+    },
+
+    getNetwork: function(cidr) {
+
+      try{
+
+      //return ip6addr.parse(ipaddrjs.IPv4.networkAddressFromCIDR(cidr.toString()).toString())
+
+        return new ip6addr.parse(Address4(cidr.toString()).startAddress().correctForm())
+      } catch(e) {
+
+        return ip6addr.parse(new Address6(cidr.toString()).startAddress().correctForm())
+      }
+    },
+    getBroadcast: function(cidr) {
+      try {
+      return cidr.broadcast()
+      } catch(e) {
+        return ""
+
+      }
+    },
+    getHosts: function(ip1, ip2) {
+      try {
+      return ip1.toLong() - ip2.toLong() + 1
+      }
+      catch (e) {
+
+        let int1 = new Address6(ip1.toString()).bigInteger()
+        let int2 = new Address6(ip2.toString()).bigInteger()
+
+        return int1.subtract(int2).toString()
+
+      }
+    },
   },
   computed: {
     subnet: function() {
@@ -119,13 +165,15 @@ export default {
         let hosts = ''
 
         try {
-          network =  ip6addr.parse(ipaddrjs.IPv4.networkAddressFromCIDR(this.cidr.toString()).toString())
-          mask = ipaddrjs.IPv4.subnetMaskFromPrefixLength(this.cidr.prefixLength()).toString()
-          broadcast = this.cidr.broadcast()
-          hosts = this.cidr.last().toLong() - this.cidr.first().toLong() + 1
+          hosts = this.getHosts(this.cidr.last(), this.cidr.first())
+          broadcast = this.getBroadcast(this.cidr)
+          network = this.getNetwork(this.cidr)
+          mask = this.getMask(this.cidr)
         }
         catch (e) {
+          console.log(e)
         }
+
 
         return {
           'first': this.cidr.first(),
