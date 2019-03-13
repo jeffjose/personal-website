@@ -11,10 +11,9 @@ export default {
     val: String
   },
   data() {
-    return {
-    };
+    return {};
   }
-}
+};
 </script>
 <style scoped lang="sass">
 .color

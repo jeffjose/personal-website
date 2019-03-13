@@ -17,11 +17,9 @@ export default {
   },
   components: {
     Header,
-    Color,
+    Color
   }
 };
 </script>
 
-<style scoped lang="sass">
-
-</style>
+<style scoped lang="sass"></style>

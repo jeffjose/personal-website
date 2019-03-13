@@ -88,13 +88,12 @@
 </template>
 
 <script>
+import ip6addr from "ip6addr";
+var Address4 = require("ip-address").Address4;
+var Address6 = require("ip-address").Address6;
+import ipaddrjs from "ipaddr.js";
 
-import ip6addr from "ip6addr"
-var  Address4 = require("ip-address").Address4
-var  Address6 = require("ip-address").Address6
-import ipaddrjs from "ipaddr.js"
-
-import ip from "@/components/IP.vue"
+import ip from "@/components/IP.vue";
 
 export default {
   name: "subnet",
@@ -106,93 +105,88 @@ export default {
       //input: "192.168.1.0/24",
       input: "2001:db8:85a3::8a2e:370:7334/64",
       cidir: undefined
-    }
+    };
   },
   methods: {
     getMask: function(cidr) {
-      try{
-
-          return ipaddrjs.IPv4.subnetMaskFromPrefixLength(this.cidr.prefixLength()).toString()
+      try {
+        return ipaddrjs.IPv4.subnetMaskFromPrefixLength(
+          this.cidr.prefixLength()
+        ).toString();
         //return new Address4(cidr.toString()).mask()
-      } catch(e) {
-        return new Address6(cidr.toString()).mask()
+      } catch (e) {
+        return new Address6(cidr.toString()).mask();
       }
     },
 
     getNetwork: function(cidr) {
+      try {
+        //return ip6addr.parse(ipaddrjs.IPv4.networkAddressFromCIDR(cidr.toString()).toString())
 
-      try{
-
-      //return ip6addr.parse(ipaddrjs.IPv4.networkAddressFromCIDR(cidr.toString()).toString())
-
-        return new ip6addr.parse(Address4(cidr.toString()).startAddress().correctForm())
-      } catch(e) {
-
-        return ip6addr.parse(new Address6(cidr.toString()).startAddress().correctForm())
+        return new ip6addr.parse(
+          Address4(cidr.toString())
+            .startAddress()
+            .correctForm()
+        );
+      } catch (e) {
+        return ip6addr.parse(
+          new Address6(cidr.toString()).startAddress().correctForm()
+        );
       }
     },
     getBroadcast: function(cidr) {
       try {
-      return cidr.broadcast()
-      } catch(e) {
-        return ""
-
+        return cidr.broadcast();
+      } catch (e) {
+        return "";
       }
     },
     getHosts: function(ip1, ip2) {
       try {
-      return ip1.toLong() - ip2.toLong() + 1
+        return ip1.toLong() - ip2.toLong() + 1;
+      } catch (e) {
+        let int1 = new Address6(ip1.toString()).bigInteger();
+        let int2 = new Address6(ip2.toString()).bigInteger();
+
+        return int1.subtract(int2).toString();
       }
-      catch (e) {
-
-        let int1 = new Address6(ip1.toString()).bigInteger()
-        let int2 = new Address6(ip2.toString()).bigInteger()
-
-        return int1.subtract(int2).toString()
-
-      }
-    },
+    }
   },
   computed: {
     subnet: function() {
       try {
+        this.cidr = ip6addr.createCIDR(this.input);
 
-        this.cidr =  ip6addr.createCIDR(this.input);
-
-        let network = ''
-        let mask = ''
-        let broadcast = ''
-        let hosts = ''
+        let network = "";
+        let mask = "";
+        let broadcast = "";
+        let hosts = "";
 
         try {
-          hosts = this.getHosts(this.cidr.last(), this.cidr.first())
-          broadcast = this.getBroadcast(this.cidr)
-          network = this.getNetwork(this.cidr)
-          mask = this.getMask(this.cidr)
+          hosts = this.getHosts(this.cidr.last(), this.cidr.first());
+          broadcast = this.getBroadcast(this.cidr);
+          network = this.getNetwork(this.cidr);
+          mask = this.getMask(this.cidr);
+        } catch (e) {
+          console.log(e);
         }
-        catch (e) {
-          console.log(e)
-        }
-
 
         return {
-          'first': this.cidr.first(),
-          'last': this.cidr.last(),
-          'address': this.cidr.address(),
-          'prefixLength': this.cidr.prefixLength(),
-          'network': network,
-          'mask': mask,
-          'broadcast': broadcast,
-          'hosts': hosts,
-    }
-        }
-      catch(e) {
-        this.cidir = undefined
-        return e
+          first: this.cidr.first(),
+          last: this.cidr.last(),
+          address: this.cidr.address(),
+          prefixLength: this.cidr.prefixLength(),
+          network: network,
+          mask: mask,
+          broadcast: broadcast,
+          hosts: hosts
+        };
+      } catch (e) {
+        this.cidir = undefined;
+        return e;
       }
-
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -14,11 +14,11 @@ export default {
   props: {
     title: String
   },
-  data () {
+  data() {
     return {
       publicPath: process.env.BASE_URL
-    }
-  },
+    };
+  }
 };
 </script>
 

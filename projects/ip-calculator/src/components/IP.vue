@@ -5,40 +5,40 @@
 </template>
 
 <script>
-
-import ip6addr from "ip6addr"
+import ip6addr from "ip6addr";
 
 export default {
-  name: 'ip',
-  data: function (){
+  name: "ip",
+  data: function() {
     return {
       index: 0,
       formats: ["v4", "v4-mapped", "v6"]
-    }
+    };
   },
-  props: ['ip'],
+  props: ["ip"],
   methods: {
     format: function(ip) {
-      if(ip.length == 0) {
-        return
+      if (ip.length == 0) {
+        return;
       }
-      if (ip.kind() == 'ipv4') {
-      return ip.toString({format: this.formats[this.index % this.formats.length]})
+      if (ip.kind() == "ipv4") {
+        return ip.toString({
+          format: this.formats[this.index % this.formats.length]
+        });
       } else {
-      return ip.toString()
+        return ip.toString();
       }
-
-    },
+    }
   },
   computed: {
     kind: function() {
       //return this.formats[this.index % this.formats.length]
-      if(this.ip.length > 0) {
-      return this.ip.kind()
+      if (this.ip.length > 0) {
+        return this.ip.kind();
       }
     }
   }
-}
+};
 </script>
 <style scoped lang="sass">
 
@@ -87,4 +87,3 @@ $ipv6color: #92ACAF
      &:hover
        background-color: lighten($ipv6color, 21%)
 </style>
-

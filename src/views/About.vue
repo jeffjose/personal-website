@@ -4,10 +4,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'about',
-    created () {
-      document.title = document.location.hostname;
-    }
+export default {
+  name: "about",
+  created() {
+    document.title = document.location.hostname;
   }
+};
 </script>

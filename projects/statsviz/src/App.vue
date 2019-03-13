@@ -173,8 +173,7 @@ export default {
 // For material icons
 // .. from http://google.github.io/material-design-icons/
 
-@import (css)
-  url("https://fonts.googleapis.com/css?family=Comfortaa|Material+Icons");
+@import (css) url("https://fonts.googleapis.com/css?family=Comfortaa|Material+Icons");
 
 .material-icons {
   font-family: "Material Icons";
