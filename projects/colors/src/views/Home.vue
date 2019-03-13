@@ -2,11 +2,13 @@
   div.home
     Header(title="Colors")
     section.section
-      h1 foo
+      Color(val="#000000")
+
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import Color from "@/components/Color.vue";
 
 export default {
   name: "home",
@@ -15,6 +17,7 @@ export default {
   },
   components: {
     Header,
+    Color,
   }
 };
 </script>

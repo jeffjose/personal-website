@@ -2,8 +2,8 @@
   nav.navbar.is-white(role="navigation", aria-label="main navigation")
      div.navbar-brand
        a.navbar-item(href="/")
-         img(:src="`${publicPath}logo.white.png`", height=28)
-       p  // {{title}}
+         img(:src="`${publicPath}android-chrome-512x512.png`", height=28)
+       p {{title}}
 
 
 </template>
@@ -14,18 +14,22 @@ export default {
   props: {
     title: String
   },
-  data () {
+  data() {
     return {
       publicPath: process.env.BASE_URL
-    }
-  },
+    };
+  }
 };
 </script>
 
 <style scoped lang="sass">
 @import "~bulma/sass/utilities/initial-variables"
+
+$brandcolor: $white
+
+
 .navbar
-  background-color: #F1CDBD
+  background-color: $brandcolor
 
 .navbar-item
   font-size: 0.90rem
@@ -33,7 +37,7 @@ export default {
   transition: 100ms all ease-in-out
 
   &:hover
-    background-color: darken(#F1CDBD, 3%) !important
+    background-color: darken($brandcolor, 3%) !important
 
   img
     margin-right: 5px
@@ -43,5 +47,4 @@ p
   margin-top: 11px
   margin-left: 5px
   color: $grey-dark
-
 </style>
