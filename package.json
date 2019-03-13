@@ -8,7 +8,8 @@
     "buildall": "yarn-recursive --cmd build",
     "installall": "yarn-recursive --cmd install",
     "lint": "vue-cli-service lint",
-    "deploy": "yarn buildall && firebase deploy"
+    "deploy": "yarn buildall && firebase deploy",
+    "upgradeall": "yarn-recursive --cmd upgrade"
   },
   "dependencies": {
     "bulma": "^0.7.2",
@@ -29,16 +30,16 @@
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.3.2",
     "eslint": "^5.8.0",
-    "global": "^4.3.2",
-    "yarn-recursive": "^1.0.7",
     "eslint-plugin-vue": "^5.0.0",
     "firebase-tools": "^6.3.1",
+    "global": "^4.3.2",
     "node-sass": "^4.11.0",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-coffeescript": "^0.0.3",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "yarn-recursive": "^1.0.7"
   },
   "eslintConfig": {
     "root": true,
