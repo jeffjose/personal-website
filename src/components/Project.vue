@@ -1,6 +1,6 @@
 <template lang="pug">
-.column.wrapper
-  p.toptext {{title}}
+.column.wrapper(@click="goto")
+    p.toptext {{title}}
 </template>
 
 <script>
@@ -10,6 +10,11 @@ export default {
     title: String,
     url: String,
     desc: String
+  },
+  methods: {
+    goto: function() {
+      this.$router.push(this.url);
+    }
   }
 };
 </script>
@@ -25,6 +30,7 @@ export default {
   border-radius: 4px
   color: darken(rgb(246, 249, 252), 35%)
   pointer-events: all
+  cursor: pointer
 
   & p
     transition: all 80ms ease-in-out
