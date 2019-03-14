@@ -30,6 +30,7 @@ $brandcolor: $white
 
 .navbar
   background-color: $brandcolor
+  border-bottom: 1px solid #DDDDDD
 
 .navbar-item
   font-size: 0.90rem
@@ -45,6 +46,5 @@ $brandcolor: $white
 p
   font-size: 1.3em
   margin-top: 11px
-  margin-left: 5px
   color: $grey-dark
 </style>
