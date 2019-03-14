@@ -14,7 +14,6 @@
             #Type(value="Hello world", font="Roboto")
             #Type(value="Nice to meet you", font="Open Sans")
             #Type(value="hi hi hi hi hi Nice to meet you", font="Open Sans")
-
 </template>
 
 <script>
