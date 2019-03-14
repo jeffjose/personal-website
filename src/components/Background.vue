@@ -3,9 +3,9 @@
  div#background
     svg(
       @mousedown.left="start($event.clientX, $event.clientY)",
-      @mouseup="stop", 
-      @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)", 
-      @touchend="stop", 
+      @mouseup="stop",
+      @touchstart="start($event.touches[0].clientX, $event.touches[0].clientY)",
+      @touchend="stop",
       @touchcancel="stop")
       g#wrapper
          g#test(v-for="point, index in points" :key="index")
@@ -17,7 +17,6 @@
 
 _ = require 'lodash'
 {TweenLite, TweenMax} = require 'gsap'
-chroma = require 'chroma-js'
 
 export default {
   name: 'background'
@@ -53,27 +52,23 @@ export default {
 
     return data
 
-  created: () -> 
+  created: () ->
     window.addEventListener('keyup', @key)
     @allColors = @defaultColors
 
   methods:
 
-    key: (event) -> 
+    key: (event) ->
       if event.code is not 'Space'
         return
 
-      #r1 = chroma.random()
-      #r2 = chroma.random()
-      #@allColors = chroma.scale([r1, r2]).mode('lab').colors(5)
-      
 
-    start:(x, y) -> 
+    start:(x, y) ->
 
       if not @interval
         @clickDuration = 0
         @addCircle(x, y)
-        @interval = setInterval(() => 
+        @interval = setInterval(() =>
                                 @clickDuration = @clickDuration + 1
                                 @lastCircle.r = @clickDuration
           , 10)
@@ -86,14 +81,14 @@ export default {
         r: (index, target) => @random(8, 40)
         }, onComplete: @animate)
 
-    stop:() -> 
+    stop:() ->
 
       clearInterval(@interval)
       @interval = false
       @animate()
 
 
-    wiggle: (val) -> 
+    wiggle: (val) ->
       v = parseInt(val)
 
       max = Math.max(0, v-3)
@@ -103,9 +98,9 @@ export default {
 
       return "#{r}%"
 
-    random: (min, max) -> 
+    random: (min, max) ->
       return Math.floor(Math.random()*(parseInt(max)-parseInt(min)+1)+parseInt(min))
-    
+
     addCircle: (x, y) ->
       @lastCircle = {x:"#{x*100/window.innerWidth}%", y:y, id: Date.now(), r: 0}
       @points.push(@lastCircle)
