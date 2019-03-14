@@ -2,7 +2,7 @@
   nav.navbar.is-white(role="navigation", aria-label="main navigation")
      div.navbar-brand
        a.navbar-item(href="/")
-         img(:src="`${publicPath}logo.white.png`", height=28)
+         img(:src="`${publicPath}apple-touch-icon.png`", height=28)
        p  // {{title}}
 
 
