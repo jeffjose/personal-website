@@ -1,6 +1,7 @@
 <template lang="pug">
 .column.wrapper(@click="goto")
     p.toptext {{title}}
+    p.desc {{desc}}
 </template>
 
 <script>
@@ -32,12 +33,13 @@ export default {
   pointer-events: all
   cursor: pointer
 
-  & p
+  & p.desc
     transition: all 80ms ease-in-out
-    margin-top: -10px
-    opacity: 0
+    //margin-top: +10px
+    //opacity: 0
+    vertical-align: bottom
 
-  &:hover p
+  &:hover p.desc
     margin-top: 0px
     opacity: 1
 </style>

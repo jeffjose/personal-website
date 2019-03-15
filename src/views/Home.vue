@@ -7,7 +7,7 @@
           p.title Jeffrey Jose
           p.subtitle Product Manager at Google
           .columns
-            Project(title="Interactive Statistical Distribution", url="/statsviz")
+            Project(title="Interactive Statistical Distribution", url="/statsviz", desc="Visualize discrete and continuous probability visualizations")
             Project(title="Subnet/IP Calculator", url="/ip-calculator")
             Project(title="Colors", url="/colors")
 </template>
