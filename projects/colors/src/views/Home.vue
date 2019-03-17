@@ -12,6 +12,7 @@
             Color(:value=['#DD6463', '#027DB9', '#FFFAC5'])
             Color(:value=['#0D5B58', '#D46A1F', '#F4BB12', '#511422'])
             Color(:value=['#50ae96', '#3c78d8'])
+            Color(:value=['#f94a7a', '#2ac06d', '#4A9FF9'])
             #Type(value="Hello world", font="Roboto")
             #Type(value="Nice to meet you", font="Open Sans")
             #Type(value="hi hi hi hi hi Nice to meet you", font="Open Sans")
