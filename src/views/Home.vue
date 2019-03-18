@@ -33,16 +33,19 @@ export default {
 <style scoped lang="sass">
 .wrapper
   display: grid
-  grid-template-columns: 1fr 3fr 3fr 3fr 1fr
-  grid-template-rows: 10px 50px 2fr 1fr 3fr
+  grid-template-columns: 1fr [main-start] 3fr 3fr 3fr 1fr
+  grid-template-rows: 10px 2fr [title-start] 1fr [main-start] 3fr
   height: 100vh
   pointer-events: none
   user-select: none
+  align-items: center
 
 .header
-  grid-column: 2/5
-  grid-row: 4
+  grid-column: main-start
+  grid-row: title-start
   padding: 1rem
+  display: grid
+  align-items: center
 
 .title
   font-family: 'Roboto'
@@ -64,9 +67,8 @@ export default {
 .logo
   height: 4rem
   width: 4rem
-  grid-row: 4
+  grid-row: title-start
   justify-self: end
-  padding-top: .8rem
 
 .dark
   background-color: #333
