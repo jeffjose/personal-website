@@ -33,15 +33,15 @@ export default {
 <style scoped lang="sass">
 .wrapper
   display: grid
-  grid-template-columns: 1fr [main-start] 3fr 3fr 3fr 1fr
-  grid-template-rows: 10px 2fr [title-start] 1fr [main-start] 3fr
+  grid-template-columns: 1fr [main-start] repeat(6, 1.5fr) 1fr
+  grid-template-rows: 2fr [title-start] 1fr [main-start] repeat(8, .25fr)
   height: 100vh
   pointer-events: none
   user-select: none
   align-items: center
 
 .header
-  grid-column: main-start
+  grid-column: main-start / span 2
   grid-row: title-start
   padding: 1rem
   display: grid
