@@ -2,6 +2,7 @@
   div
     background
     div.wrapper
+      img.logo(src="/homepage/android-chrome-192x192.png")
       div.header
         div.title
           span.name Jeffrey Jose
@@ -34,7 +35,7 @@ export default {
 .header
   grid-column: 2/5
   grid-row: 4
-  padding: 1em
+  padding: 1rem
   pointer-events: none
   user-select: none
 
@@ -48,23 +49,17 @@ export default {
   height: 8vh
   position: relative
 
-  &::after
-    content: ""
-    background-image: url(/android-chrome-192x192.png)
-    background-size: contain
-    //background-color: lighten(rgb(51, 51, 51), 10%)
-    //border-left: 2em solid black;
-    height: 4rem
-    width: 4rem
-    position: absolute
-    top: -.2rem
-    bottom: 100%
-    left: -5rem
-
   & .name
     font-size: 1.4rem
     color: lighten(rgb(51, 51, 51), 10%)
   & .desc
     font-size: 1rem
     color: lighten(rgb(51, 51, 51), 30%)
+
+.logo
+  height: 4rem
+  width: 4rem
+  grid-row: 4
+  justify-self: end
+  padding-top: .8rem
 </style>
