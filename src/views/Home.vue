@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(:class="{'dark': darkmode}")
     background
     div.wrapper
       img.logo(src="/homepage/android-chrome-192x192.png")
@@ -21,6 +21,11 @@ export default {
   components: {
     Project,
     Background
+  },
+  data: function() {
+    return {
+      darkmode: false
+    };
   }
 };
 </script>
@@ -28,16 +33,16 @@ export default {
 <style scoped lang="sass">
 .wrapper
   display: grid
-  grid-template-columns: 1fr 3fr 4fr 3fr 1fr
-  grid-template-rows: 50px 1fr 1fr 1fr 3fr
+  grid-template-columns: 1fr 3fr 3fr 3fr 1fr
+  grid-template-rows: 10px 50px 2fr 1fr 3fr
   height: 100vh
+  pointer-events: none
+  user-select: none
 
 .header
   grid-column: 2/5
   grid-row: 4
   padding: 1rem
-  pointer-events: none
-  user-select: none
 
 .title
   font-family: 'Roboto'
@@ -62,4 +67,13 @@ export default {
   grid-row: 4
   justify-self: end
   padding-top: .8rem
+
+.dark
+  background-color: #333
+
+  .name
+    color: darken(white, 20%)
+
+  .desc
+    color: darken(white, 40%)
 </style>
