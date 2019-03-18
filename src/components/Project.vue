@@ -1,7 +1,6 @@
 <template lang="pug">
 .column.wrapper(@click="goto")
     p.toptext {{title}}
-    p.desc {{desc}}
 </template>
 
 <script>
@@ -9,8 +8,7 @@ export default {
   name: "Project",
   props: {
     title: String,
-    url: String,
-    desc: String
+    url: String
   },
   methods: {
     goto: function() {
@@ -33,13 +31,9 @@ export default {
   pointer-events: all
   cursor: pointer
 
-  & p.desc
+  & p.toptext
+    font-size: 1em
     transition: all 80ms ease-in-out
-    //margin-top: +10px
-    //opacity: 0
-    vertical-align: bottom
 
-  &:hover p.desc
-    margin-top: 0px
-    opacity: 1
+  &:hover p.toptext
 </style>

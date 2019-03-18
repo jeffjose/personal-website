@@ -1,15 +1,11 @@
 <template lang="pug">
   div
     background
-    section.hero.is-fullheight.welcome
-      .hero-body
-        .container
-          p.title Jeffrey Jose
-          p.subtitle Product Manager at Google
-          .columns
-            Project(title="Interactive Statistical Distribution", url="/statsviz", desc="Visualize discrete and continuous probability visualizations")
-            Project(title="Subnet/IP Calculator", url="/ip-calculator")
-            Project(title="Colors", url="/colors")
+    div.wrapper
+      div.header
+        div.title
+          span.name Jeffrey Jose
+          span.desc Product Manager at Google
 </template>
 
 <script>
@@ -29,21 +25,46 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.wrapper
+  display: grid
+  grid-template-columns: 1fr 3fr 4fr 3fr 1fr
+  grid-template-rows: 50px 1fr 1fr 1fr 3fr
+  height: 100vh
 
-.container
+.header
+  grid-column: 2/5
+  grid-row: 4
+  padding: 1em
   pointer-events: none
   user-select: none
 
 .title
-  @extend .title
+  font-family: 'Roboto'
   font-weight: 400
-  color: darken(rgb(246, 249, 252), 65%)
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: 1fr 1fr
+  align-items: center
+  height: 8vh
+  position: relative
 
-.subtitle
-  @extend .subtitle
-  font-weight: 300
-  color: darken(rgb(246, 249, 252), 65%)
+  &::after
+    content: ""
+    background-image: url(/android-chrome-192x192.png)
+    background-size: contain
+    //background-color: lighten(rgb(51, 51, 51), 10%)
+    //border-left: 2em solid black;
+    height: 4rem
+    width: 4rem
+    position: absolute
+    top: -.2rem
+    bottom: 100%
+    left: -5rem
 
-.welcome
-  //background: radial-gradient(circle at 10% 20%, rgb(223, 181, 251) 0%, rgb(251, 181, 246) 35.5%, rgb(251, 207, 181) 63.5%, rgb(250, 253, 197) 90%)
+  & .name
+    font-size: 1.4rem
+    color: lighten(rgb(51, 51, 51), 10%)
+  & .desc
+    font-size: 1rem
+    color: lighten(rgb(51, 51, 51), 30%)
 </style>
