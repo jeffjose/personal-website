@@ -16,7 +16,9 @@
     "serve": "firebase serve --only functions",
     "shell": "firebase experimental:functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "deployjs": "firebase deploy --only functions",
+    "deploypy": "gcloud functions deploy endpoint --runtime python37 --trigger-http",
+    "deploy": "yarn deployjs; yarn deploypy",
     "logs": "firebase functions:log"
   },
   "private": true
