@@ -35,12 +35,12 @@ export default {
     this.loadColors();
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("colors", {
       colors: "colors"
     })
   },
   methods: {
-    ...mapActions({
+    ...mapActions("colors", {
       loadColors: "colors"
     })
   },
