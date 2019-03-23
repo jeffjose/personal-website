@@ -17,7 +17,7 @@
     "shell": "firebase experimental:functions:shell",
     "start": "npm run shell",
     "deployjs": "firebase deploy --only functions",
-    "deploypy": "gcloud functions deploy endpoint --runtime python37 --trigger-http",
+    "deploypy": "gcloud functions deploy getcolors --runtime python37 --trigger-http",
     "deploy": "yarn deployjs; yarn deploypy",
     "logs": "firebase functions:log"
   },
