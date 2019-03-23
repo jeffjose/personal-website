@@ -20,7 +20,7 @@ const mutations = {
   [UPDATE_COLOR](state, color) {
     var index = _.findIndex(state.colors, { id: color.id });
 
-    state.colors.splice(index, 1, color.colors);
+    state.colors.splice(index, 1, color);
   }
 };
 
@@ -32,7 +32,7 @@ const actions = {
   colors({ commit }) {
     db.collection("colors").onSnapshot(snapshot => {
       snapshot.docChanges.forEach(function(change) {
-        console.log(change, change.doc.data());
+        console.log(change.type, change.doc.id, change.doc.data());
         if (change.type == "added") {
           commit(PUSH_COLOR, {
             id: change.doc.id,
