@@ -1,5 +1,6 @@
 <template lang="pug">
   div.home
+    p  {{colors}}
     Header(title="Colors")
     .container
       .columns
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Header from "@/components/Header.vue";
 
 import Color from "@/components/Color.vue";
@@ -30,6 +32,17 @@ export default {
   name: "home",
   created() {
     document.title = document.location.hostname;
+    this.loadColors();
+  },
+  computed: {
+    ...mapGetters({
+      colors: "colors"
+    })
+  },
+  methods: {
+    ...mapActions({
+      loadColors: "colors"
+    })
   },
   components: {
     Header,
