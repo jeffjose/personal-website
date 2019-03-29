@@ -4,8 +4,10 @@
 </template>
 
 <style lang="sass">
-@import url("https://fonts.googleapis.com/css?family=Roboto|Material+Icons")
+@import url("https://fonts.googleapis.com/css?family=Roboto|Spectral")
 
 html
   background-color: white
+body
+  font-family: Spectral, serif
 </style>
