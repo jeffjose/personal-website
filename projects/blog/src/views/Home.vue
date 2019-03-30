@@ -1,11 +1,13 @@
 <template lang="pug">
   div.blog
-    p blog
+    post
 </template>
 
 <script>
+import Post from "@/components/Post";
 export default {
-  name: "home"
+  name: "home",
+  components: { Post }
 };
 </script>
 
