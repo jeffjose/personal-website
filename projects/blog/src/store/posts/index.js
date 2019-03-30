@@ -3,38 +3,43 @@ import Vuex from "vuex";
 
 import axios from "axios";
 
-import { PUSH_POSTS, GET_POST_LIST } from "./mutations";
+import { PUSH_POSTS, PUSH_CONTENT } from "./mutations";
 
 Vue.use(Vuex);
 
 const state = {
-  postList: [],
-  postContents: {}
+  posts: [],
+  contents: {}
 };
 
 const mutations = {
   [PUSH_POSTS](state, posts) {
-    Vue.set(state, "postList", posts);
+    Vue.set(state, "posts", posts);
+    console.log("done");
+  },
+  [PUSH_CONTENT](state, post, content) {
+    state.contents[post] = content;
   }
 };
 
 const getters = {
-  postList: ({ postList }) => postList
+  posts: ({ posts }) => posts
 };
 
 const actions = {
-  getPostList({ commit }) {
-    axios({
+  getPosts({ commit }) {
+    console.log("getposts");
+    return axios({
       url:
-        "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts",
-      method: "GET",
-      headers: {
-        Authorization: "ec4b16a71008ae36c9b7fddeb156edc2605cdccc"
-      }
+        "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts"
     }).then(function(response) {
       console.log(response);
       commit(PUSH_POSTS, response.data);
     });
+  },
+  getPostContents({ commit, getters }, title) {
+    console.log("getPostContents");
+    console.log(getters.posts[0]);
   }
 };
 
