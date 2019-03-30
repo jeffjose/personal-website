@@ -1,6 +1,7 @@
 <template lang="pug">
   div.post
     p content
+    p {{postContent}}
 </template>
 
 <script>
@@ -13,8 +14,14 @@ export default {
   },
   computed: {
     ...mapGetters("posts", {
-      posts: "posts"
-    })
+      posts: "posts",
+      contents: "contents"
+    }),
+    postContent() {
+      console.log(this.contents);
+      console.log(this.$route);
+      return this.contents[this.$route.params.title];
+    }
   },
   methods: {
     ...mapActions("posts", {

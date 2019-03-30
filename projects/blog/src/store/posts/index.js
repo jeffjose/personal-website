@@ -17,18 +17,18 @@ const mutations = {
     Vue.set(state, "posts", posts);
     console.log("done");
   },
-  [PUSH_CONTENT](state, post, content) {
-    state.contents[post] = content;
+  [PUSH_CONTENT](state, payload) {
+    state.contents[payload.title] = payload.content;
   }
 };
 
 const getters = {
-  posts: ({ posts }) => posts
+  posts: ({ posts }) => posts,
+  contents: ({ contents }) => contents
 };
 
 const actions = {
   getPosts({ commit }) {
-    console.log("getposts");
     return axios({
       url:
         "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts"
@@ -37,9 +37,16 @@ const actions = {
       commit(PUSH_POSTS, response.data);
     });
   },
-  getPostContents({ commit, getters }, title) {
-    console.log("getPostContents");
-    console.log(getters.posts[0]);
+  getPostContents({ commit, getters }, payload) {
+    console.log(payload.url);
+    console.log(payload.title);
+    return axios({
+      url: payload.url
+    }).then(function(response) {
+      console.log(payload.url);
+      console.log(payload.title);
+      commit(PUSH_CONTENT, { title: payload.title, content: response.data });
+    });
   }
 };
 
