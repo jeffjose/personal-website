@@ -20,6 +20,7 @@ export default new Router({
       path: "/",
       component: HomeWrapper,
       beforeEnter: (to, from, next) => {
+        console.log("[/]: beforeEnter");
         store.dispatch("posts/getPosts").then(function(response) {
           next();
         });
@@ -34,11 +35,15 @@ export default new Router({
           component: FourOFour
         },
         {
-          path: ":title",
+          path: ":title.:ext?",
           component: Post,
-          beforeEnter: (to, from, next) => {
-            console.log(to.params.title);
-            console.log(store);
+          beforeEnter(to, from, next) {
+            // This is the same function as HomeWrapper.vue -> beforeRouteUpdate
+            //
+            // The following is called when user goes directly to /post-title
+            // The other one is called when user navigates between /post-title1 -> /post-title2 (component reuse)
+            //
+            console.log("[/:title]: beforeEnter");
             let posts = store.getters["posts/posts"];
             var index = _.findIndex(posts, {
               name: `${to.params.title}.md`
@@ -49,7 +54,6 @@ export default new Router({
               next({ path: "404" });
               return;
             }
-
             store
               .dispatch("posts/getPostContents", {
                 url: posts[index].download_url,

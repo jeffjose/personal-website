@@ -15,10 +15,9 @@ const state = {
 const mutations = {
   [PUSH_POSTS](state, posts) {
     Vue.set(state, "posts", posts);
-    console.log("done");
   },
   [PUSH_CONTENT](state, payload) {
-    state.contents[payload.title] = payload.content;
+    Vue.set(state.contents, payload.title, payload.content);
   }
 };
 
@@ -33,20 +32,36 @@ const actions = {
       url:
         "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts"
     }).then(function(response) {
-      console.log(response);
+      console.log("getPosts", response);
       commit(PUSH_POSTS, response.data);
     });
   },
   getPostContents({ commit, getters }, payload) {
-    console.log(payload.url);
-    console.log(payload.title);
-    return axios({
+    let inCache = _.has(getters.contents, payload.title);
+
+    // The order is important
+    //
+    // Make a request to backend right away
+    let t = new Date().getTime();
+    let request = axios({
       url: payload.url
     }).then(function(response) {
-      console.log(payload.url);
-      console.log(payload.title);
-      commit(PUSH_CONTENT, { title: payload.title, content: response.data });
+      console.log("getPostContents", t, response);
+      commit(PUSH_CONTENT, {
+        title: payload.title,
+        content: response.data + t
+      });
     });
+
+    // But return quickly if it is in the backend
+    if (inCache == true) {
+      let x = getters.contents[payload.title];
+      console.log("Already existing, not making a request", x);
+      return x;
+    }
+
+    // Return here when it a cache-miss
+    return request;
   }
 };
 

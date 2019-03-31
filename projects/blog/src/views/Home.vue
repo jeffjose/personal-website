@@ -1,7 +1,10 @@
 <template lang="pug">
   div.blog
-    p home
-    p {{posts}}
+    h1 home
+    h2 POST LIST
+    div(v-for="post in posts")
+      router-link(:to="{path: post.name}") {{post.name}} {{post.time}}
+    div non-exist
 </template>
 
 <script>

@@ -1,7 +1,11 @@
 <template lang="pug">
   div.post
-    p content
+    h1 content
     p {{postContent}}
+    h2 OTHER POSTS
+    div(v-for="post in posts")
+      router-link(:to="{path: post.name}") {{post.name}}
+    div non-exist
 </template>
 
 <script>
@@ -18,8 +22,6 @@ export default {
       contents: "contents"
     }),
     postContent() {
-      console.log(this.contents);
-      console.log(this.$route);
       return this.contents[this.$route.params.title];
     }
   },
