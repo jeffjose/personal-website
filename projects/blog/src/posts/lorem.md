@@ -1,6 +1,6 @@
 # This is a long heading. This goes on for a while
 
-An image ![test](https://unsplash.it/1920/1080?random)
+![test](https://unsplash.it/1920/1080?random)
 
 
 Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
