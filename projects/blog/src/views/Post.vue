@@ -1,7 +1,7 @@
 <template lang="pug">
   div.post
     h1 content
-    p {{postContent}}
+    div(v-html="kramed(postContent)")
     h2 OTHER POSTS
     div(v-for="post in posts")
       router-link(:to="{path: post.name}") {{post.name}}
@@ -10,6 +10,8 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+
+var kramed = require("kramed");
 
 export default {
   name: "post",
@@ -29,7 +31,8 @@ export default {
     ...mapActions("posts", {
       getPosts: "getPosts",
       getPostContents: "getPostContents"
-    })
+    }),
+    kramed: kramed
   }
 };
 </script>
