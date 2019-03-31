@@ -5,7 +5,7 @@
     h2 OTHER POSTS
     div(v-for="post in posts")
       router-link(:to="{path: post.name}") {{post.name}}
-    div non-exist
+    router-link(:to="{path: 'non-exist'}") non-exist
 </template>
 
 <script>

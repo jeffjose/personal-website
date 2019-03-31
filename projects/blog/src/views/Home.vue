@@ -4,7 +4,7 @@
     h2 POST LIST
     div(v-for="post in posts")
       router-link(:to="{path: post.name}") {{post.name}} {{post.time}}
-    div non-exist
+    router-link(:to="{path: 'non-exist'}") non-exist
 </template>
 
 <script>

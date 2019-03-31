@@ -42,14 +42,13 @@ const actions = {
     // The order is important
     //
     // Make a request to backend right away
-    let t = new Date().getTime();
     let request = axios({
       url: payload.url
     }).then(function(response) {
-      console.log("getPostContents", t, response);
+      console.log("getPostContents", response);
       commit(PUSH_CONTENT, {
         title: payload.title,
-        content: response.data + t
+        content: response.data
       });
     });
 
