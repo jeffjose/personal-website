@@ -1,7 +1,5 @@
-
 This is a long heading. This goes on for a while
 ================================================
-
 
 This is a long heading. This goes on for a while
 ------------------------------------------------
