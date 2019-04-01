@@ -1184,6 +1184,13 @@ array-unique@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
 
+asciidoctor-highlight.js@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/asciidoctor-highlight.js/-/asciidoctor-highlight.js-0.1.2.tgz#f28f176ac57d7c1d1095d2cdbb68b1cf17ff22f8"
+  integrity sha512-cToAPisxqpmoKsyDZCjYTnqOg68vCLt/8YoMQrIinPzpVKhGRpVy+p+BEoaPmGZPRQ6thFP6XLDdnd9JFv8xKA==
+  dependencies:
+    highlight.js "^9.0.0"
+
 asciidoctor-opal-runtime@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/asciidoctor-opal-runtime/-/asciidoctor-opal-runtime-0.3.0.tgz#df327a870ddd3cd5eb0e162d64ed4dcdd3fe3fee"
@@ -3397,6 +3404,11 @@ he@1.2.x, he@^1.1.0:
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
+
+highlight.js@^9.0.0:
+  version "9.15.6"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
+  integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

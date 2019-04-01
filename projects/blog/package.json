@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "asciidoctor": "^2.0.0-rc.2",
+    "asciidoctor-highlight.js": "^0.1.2",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "vue": "^2.6.6",
