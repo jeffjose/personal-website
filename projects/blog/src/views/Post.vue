@@ -76,8 +76,15 @@ export default {
     convert: function(str) {
       let x = `
 
-This is a long long heading. It goes on and on for a long time.
-===============================================================
+= How I designed this blog and you can do it too
+
+[.subtitle]
+And why you thought this was going to be a fruitless excercise for no good reason
+
+[.date]
+Apr 1, 2019 | 2min read
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
 image::https://unsplash.it/1920/1080?random[]
 
@@ -280,6 +287,8 @@ $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
 $bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten(#5f6368, 10%)
+$gray-color: lighten($blockquote-color, 35%)
 
 
 $font-size: 1.35rem
@@ -295,6 +304,7 @@ $font-size: 1.35rem
 
     *
       grid-column: word
+
 
     // Post styles go here
     ::selection
@@ -435,5 +445,22 @@ $font-size: 1.35rem
         left: 0
         width: 100%
         height: 100%
+
+    .subtitle
+      margin-top: -1.5rem
+      color: $gray-color
+
+      p
+        margin-top: 0rem
+        font-size: 1.5rem
+        line-height: 2rem
+
+    .date
+      color: $gray-color
+      margin-top: 0rem
+
+      p
+        margin-top: 0rem
+        font-size: 1rem
 
 </style>
