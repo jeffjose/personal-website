@@ -13,6 +13,8 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+var _ = require("lodash");
+
 //var kramed = require("kramed");
 
 var asciidoctor = require("asciidoctor")();
@@ -27,9 +29,19 @@ class CustomConverter {
       return node.getContent();
     } else if (node.getNodeName() == "section") {
       console.log(node.getNodeName(), node.getContent());
-      // TODO: Add attributes/classes here
+      let attrs = "";
+
+      // TODO
+      //if(_.has(node, 'attributes.$$smap.role')) {
+      //  let attrs = `${attrs} class=${node.attributes.$smap.role}`;
+      //}
+
+      //if(_.has(node, 'attributes.$$smap.id') ){
+      //  let attrs = `${attrs} id=${node.attributes.$smap.id}`;
+      //}
+
       return `
-        <h${node.level + 1}>${node.title}</h${node.level + 1}>
+        <h${node.level + 1} ${attrs}>${node.title}</h${node.level + 1}>
         ${node.getContent()}
         `;
     } else {
@@ -76,10 +88,9 @@ Lorem *ipsum dolor* amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-
 
 
 
+[nicer#id1#id2.class1.class2]
 Main header
 ===========
-
-xx yy
 
 image::https://unsplash.it/1920/1080?random[]
 
