@@ -22,15 +22,20 @@ class CustomConverter {
     this.baseConverter = asciidoctor.Html5Converter.$new();
   }
   convert(node, transform) {
-    console.log(node.getNodeName());
-    if (
-      node.getNodeName() === "preamble" ||
-      node.getNodeName() === "open" ||
-      node.getNodeName() === "section"
-    ) {
+    if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {
+      console.log(node.getNodeName(), node.getContent());
       return node.getContent();
+    } else if (node.getNodeName() == "section") {
+      console.log(node.getNodeName(), node.getContent());
+      // TODO: Add attributes/classes here
+      return `
+        <h${node.level + 1}>${node.title}</h${node.level + 1}>
+        ${node.getContent()}
+        `;
+    } else {
+      console.log(node.getNodeName());
+      return this.baseConverter.convert(node, transform);
     }
-    return this.baseConverter.convert(node, transform);
   }
 }
 
@@ -67,10 +72,14 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 
 _Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch._
 
-Lorem *ipsum dolor* amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch. Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. The command +ls -ltr+ can typically be used right before. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+Lorem *ipsum dolor* amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch. Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet this one is long hey!^] man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. The command +main.py+ can typically be used right before. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+
+
 
 Main header
 ===========
+
+xx yy
 
 image::https://unsplash.it/1920/1080?random[]
 
@@ -81,6 +90,15 @@ Second heading
 
 [.fullbleed]
 image::https://unsplash.it/1920/1080?random[]
+
+[source, python]
+----
+def add(x, y):
+  return x + y
+
+if __main__ == "__main__":
+  add(1, 2)
+----
 
 Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
 
@@ -100,6 +118,8 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 </script>
 
 <style scoped lang="sass">
+
+$text-color: rgba(0, 0, 0, .84)
 .post
 
   &::v-deep .wrapper
@@ -107,7 +127,7 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
     display: grid
     grid-template-columns: 1fr [content-start] 1fr [word-start] 43rem [word-end] 1fr [content-end] 1fr
 
-    color: rgba(0, 0, 0, 0.84)
+    color: $text-color
 
     *
       grid-column: word
@@ -139,4 +159,18 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 
     .fullbleed
       grid-column: 1 / -1
+
+    // For inline code
+    p > code
+      background-color: rgba(0, 0, 0, 0.07)
+      padding: 3px 4px
+      margin: 0 2px
+      font-size: 1.2rem
+      color: green
+
+    .listingblock
+      background-color: rgba(0, 0, 0, 0.07)
+
+    a
+      color: $text-color
 </style>
