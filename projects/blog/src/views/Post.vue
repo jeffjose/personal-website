@@ -6,7 +6,6 @@
     //div(v-for="post in posts")
     //  router-link(:to="{path: post.name}") {{post.name}}
     //router-link(:to="{path: 'non-exist'}") non-exist
-    p {{convert(postContent)}}
     div
     div.wrapper(v-html="convert(postContent)")
 </template>
@@ -16,7 +15,26 @@ import { mapGetters, mapActions } from "vuex";
 
 //var kramed = require("kramed");
 
-var asciidoctor = require("asciidoctor");
+var asciidoctor = require("asciidoctor")();
+
+class CustomConverter {
+  constructor() {
+    this.baseConverter = asciidoctor.Html5Converter.$new();
+  }
+  convert(node, transform) {
+    console.log(node.getNodeName());
+    if (
+      node.getNodeName() === "preamble" ||
+      node.getNodeName() === "open" ||
+      node.getNodeName() === "section"
+    ) {
+      return node.getContent();
+    }
+    return this.baseConverter.convert(node, transform);
+  }
+}
+
+asciidoctor.ConverterFactory.register(new CustomConverter(), ["html5"]);
 
 export default {
   name: "post",
@@ -38,8 +56,44 @@ export default {
       getPostContents: "getPostContents"
     }),
     convert: function(str) {
-      debugger;
-      return asciidoctor().convert(str);
+      let x = `
+
+This is a long long heading. It goes on and on for a long time.
+===============================================================
+
+image::https://unsplash.it/1920/1080?random[]
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+
+_Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch._
+
+Lorem *ipsum dolor* amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch. Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. The command +ls -ltr+ can typically be used right before. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+
+Main header
+===========
+
+image::https://unsplash.it/1920/1080?random[]
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+
+Second heading
+--------------
+
+[.fullbleed]
+image::https://unsplash.it/1920/1080?random[]
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
+
+`;
+
+      return asciidoctor.convert(x, {
+        doctype: "book",
+        attributes: { showtitle: true }
+      });
+      //return new CustomConverter().convert(str, {
+      //  doctype: "book",
+      //  attributes: { showtitle: true }
+      //});
     }
   }
 };
@@ -47,25 +101,32 @@ export default {
 
 <style scoped lang="sass">
 .post
-  display: grid
-  grid-template-columns: 1fr [content-start] 1fr [word-start] repeat(4, 1fr) [word-end] 1fr [content-end] 1fr
-  grid-template-rows: 2rem [content-start] 1fr [content-end] 2rem
 
   &::v-deep .wrapper
-    grid-column: content
-    grid-row: content
-
+    margin-top: 3rem
     display: grid
-    grid-template-columns: [content-start] 1fr [word-start] repeat(4, 1fr) [word-end] 1fr [content-end]
+    grid-template-columns: 1fr [content-start] 1fr [word-start] 43rem [word-end] 1fr [content-end] 1fr
 
+    color: rgba(0, 0, 0, 0.84)
+
+    *
+      grid-column: word
 
     // Post styles go here
-    p
-      grid-column: word
-
     h1
-      grid-column: word
       font-size: 2.7rem
+      font-weight: 500
+      letter-spacing: -2px
+      line-height: 3.5rem
+
+    h2
+      font-size: 2.3rem
+      font-weight: 500
+      letter-spacing: -2px
+      line-height: 3.5rem
+
+    h3
+      font-size: 2.0rem
       font-weight: 500
       letter-spacing: -2px
       line-height: 3.5rem
@@ -73,6 +134,9 @@ export default {
     img
       width: 100%
 
-    p:has(+ img)
-      grid-column: content
+    p
+      font-size: 1.35rem
+
+    .fullbleed
+      grid-column: 1 / -1
 </style>
