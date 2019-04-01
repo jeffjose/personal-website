@@ -1,4 +1,7 @@
-= This is a long heading. This goes on for a while
+
+This is a long heading. This goes on for a while
+================================================
+
 
 image::https://unsplash.it/1920/1080?random[]
 
