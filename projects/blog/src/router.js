@@ -46,7 +46,7 @@ export default new Router({
             console.log("[/:title]: beforeEnter");
             let posts = store.getters["posts/posts"];
             var index = _.findIndex(posts, {
-              name: `${to.params.title}.md`
+              name: `${to.params.title}.adoc`
             });
 
             if (index < 0) {

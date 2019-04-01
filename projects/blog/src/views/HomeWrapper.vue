@@ -23,7 +23,7 @@ export default {
     console.log("[HomeWrapper]: beforeRouteUpdate", to, from);
     let posts = store.getters["posts/posts"];
     var index = _.findIndex(posts, {
-      name: `${to.params.title}.md`
+      name: `${to.params.title}.adoc`
     });
 
     if (index < 0) {
