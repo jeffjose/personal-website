@@ -13,7 +13,7 @@
 <script>
 const x = `
 
-= How I designed this blog and you can do it too
+= Lorem ipsum super fluid
 
 [.subtitle]
 And why you thought this was going to be a fruitless excercise for no good reason
@@ -302,12 +302,17 @@ export default {
 
 <style scoped lang="sass">
 
-$text-color: rgba(0, 0, 0, .84)
+$font-size: 1.35rem
+
+// ----------- night mode ----------------
+
+$text-color: white
 $accent-color: #FF0088
-$bg-color: #f6f9fc
+$box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten(#5f6368, 10%)
 $gray-color: lighten($blockquote-color, 35%)
+$bg-color: black
 
 
 $blue: #4285f4
@@ -316,234 +321,251 @@ $red: #ea4335
 $green: #34a853
 
 
-$font-size: 1.35rem
+// ----------- light mode ----------------
+
+$text-color: rgba(0, 0, 0, .84)
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten(#5f6368, 10%)
+$gray-color: lighten($blockquote-color, 35%)
+$bg-color: white
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
 
 .post
 
-  &::v-deep .wrapper
-    margin-top: 3rem
-    display: grid
-    grid-template-columns: 1fr [content-start] minmax(auto, 15rem) [word-start] 43rem [word-end] minmax(auto, 15rem) [content-end] 1fr
+   background-color: $bg-color
 
-    color: $text-color
+   &::v-deep .wrapper
+     margin-top: 3rem
+     display: grid
+     grid-template-columns: 1fr [content-start] minmax(1rem, 15rem) [word-start] 43rem [word-end] minmax(1rem, 15rem) [content-end] 1fr
 
-    *
-      grid-column: word
+     color: $text-color
 
-
-    // Post styles go here
-    ::selection
-      background: lighten($accent-color, 40%)
-    h1
-      font-size: 2.7rem
-      font-weight: 500
-      letter-spacing: -2px
-      line-height: 3.5rem
-
-    h2
-      font-size: 2.3rem
-      font-weight: 500
-      letter-spacing: -1px
-
-    h3
-      font-size: 2.0rem
-      font-weight: 500
-      letter-spacing: -1px
-      margin: 2rem 0 1rem 0
-
-    h4
-      font-size: 1.9rem
-      font-weight: 500
-      letter-spacing: -1px
-      margin: 2rem 0 1rem 0
-
-    h5
-      font-size: 1.5rem
-      font-weight: 500
-      letter-spacing: -1px
-      margin: 2rem 0 1rem 0
-
-    img
-      width: 100%
-
-    p
-      font-size: $font-size
-
-      em
-        font-size: 1.45rem
-
-        code
-          font-style: normal
-
-    .fullbleed
-      grid-column: 1 / -1
-
-    .imageblock
-
-      .title
-        text-align: center
-        font-size: 1.1rem
-        margin: 1rem 0
-
-    .big
-      grid-column: content
-
-    // For inline code
-    p  code
-      background-color: $bg-color
-      padding: 3px 4px
-      font-size: 1.2rem
-      color: $accent-color
+     *
+       grid-column: word
 
 
-    .listingblock
-      padding: 0 1rem
-      #border-radius: .2rem
-      background-color: $bg-color
-      margin-top: 1em
+     // Post styles go here
+     ::selection
+       background: lighten($accent-color, 40%)
+     h1
+       font-size: 2.7rem
+       font-weight: 500
+       letter-spacing: -2px
+       line-height: 3.5rem
 
-      .content
+     h2
+       font-size: 2.3rem
+       font-weight: 500
+       letter-spacing: -1px
 
-        code::selection
-          background: darken($bg-color, 30%)
-          color: white
+     h3
+       font-size: 2.0rem
+       font-weight: 500
+       letter-spacing: -1px
+       margin: 2rem 0 1rem 0
 
-      .title
-        color: darken($bg-color, 30%)
-        float: right
-        margin-top: .5rem
-        pointer-events: none
+     h4
+       font-size: 1.9rem
+       font-weight: 500
+       letter-spacing: -1px
+       margin: 2rem 0 1rem 0
 
-    a
-      color: $text-color
+     h5
+       font-size: 1.5rem
+       font-weight: 500
+       letter-spacing: -1px
+       margin: 2rem 0 1rem 0
 
-    .checklist
-       list-style-type: none
+     img
+       width: 100%
 
-       ul
-         padding:0
+     p
+       font-size: $font-size
 
-    dl
-      dt
-        font-size: $font-size
-        font-weight: 700
-      dd
-        p
-          margin-top: 0.5rem
+       em
+         font-size: 1.45rem
 
-    .quoteblock
-      font-size: 1.7rem
-      color: $blockquote-color
-      //border-left: .5rem solid $accent-color
+         code
+           font-style: normal
 
-      blockquote
-        margin-left: 3rem
-        font-style: italic
-        margin-right: 0
+     .fullbleed
+       grid-column: 1 / -1
 
-      .attribution
-        text-align: right
-        margin-top: -1rem
-        margin-bottom: 1rem
+     .imageblock
 
-        a
-          color: $blockquote-color
+       .title
+         text-align: center
+         font-size: 1.1rem
+         margin: 1rem 0
 
-        br
-          display: block
-          margin: -0.5rem 0
-          content: ""
+     .big
+       grid-column: content
 
-        cite
-          font-size: 1.1rem
-          line-height: 0
+     // For inline code
+     p  code
+       background-color: $box-bg-color
+       padding: 3px 4px
+       font-size: 1.2rem
+       color: $accent-color
 
-    .videoblock
-      position: relative
-      width: 100%
-      height: 0
-      padding-bottom: 56.25%
 
-      iframe
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
+     .listingblock
+       padding: 0 1rem
+       #border-radius: .2rem
+       background-color: $box-bg-color
+       margin-top: 1em
 
-    .subtitle
-      margin-top: -1.5rem
-      color: $gray-color
+       .content
 
-      p
-        margin-top: 0rem
-        font-size: 1.5rem
-        line-height: 2rem
+         code::selection
+           background: darken($box-bg-color, 30%)
+           color: white
 
-    .date
-      color: $gray-color
-      margin-top: 0rem
+       .title
+         color: darken($box-bg-color, 30%)
+         float: right
+         margin-top: .5rem
+         pointer-events: none
 
-      p
-        margin-top: 0rem
-        font-size: 1rem
+     a
+       color: $text-color
 
-    .admonitionblock
-      font-size: $font-size
+     .checklist
+        list-style-type: none
 
-      &.note, &.tip, &.important, &.warning, &.caution
-        padding: 1rem 0
+        ul
+          padding:0
 
-        td.icon
-          div
-            margin: 0 2rem
-            font-weight: 700
-            font-size: 1rem
-            text-transform: uppercase
-            user-select: none
+     dl
+       dt
+         font-size: $font-size
+         font-weight: 700
+       dd
+         p
+           margin-top: 0.5rem
 
-      &.note
-        background-color: $bg-color
-        border: 1px solid darken($bg-color, 10%)
-        border-radius: 3px
+     .quoteblock
+       font-size: 1.7rem
+       color: $blockquote-color
+       //border-left: .5rem solid $accent-color
 
-        td.icon
-          div
-            color: darken($bg-color, 30%)
+       blockquote
+         margin-left: 3rem
+         font-style: italic
+         margin-right: 0
 
-      &.tip
-        background-color: lighten($green, 45%)
-        border: 1px solid darken(lighten($green, 45%), 10%)
-        border-radius: 3px
+       .attribution
+         text-align: right
+         margin-top: -1rem
+         margin-bottom: 1rem
 
-        td.icon
-          div
-            color: $green
+         a
+           color: $blockquote-color
 
-      &.important
-        background-color: lighten($blue, 35%)
-        border: 1px solid darken(lighten($blue, 35%), 10%)
-        border-radius: 3px
+         br
+           display: block
+           margin: -0.5rem 0
+           content: ""
 
-        td.icon
-          div
-            color: $blue
+         cite
+           font-size: 1.1rem
+           line-height: 0
 
-      &.warning
-        background-color: lighten($yellow, 35%)
-        border: 1px solid darken(lighten($yellow, 35%), 10%)
-        border-radius: 3px
+     .videoblock
+       position: relative
+       width: 100%
+       height: 0
+       padding-bottom: 56.25%
 
-        td.icon
-          div
-            color: darken($yellow, 10%)
+       iframe
+         position: absolute
+         top: 0
+         left: 0
+         width: 100%
+         height: 100%
 
-      &.caution
-        background-color: lighten($red, 35%)
-        border: 1px solid darken(lighten($red, 35%), 10%)
-        border-radius: 3px
+     .subtitle
+       margin-top: -1.5rem
+       color: $gray-color
 
-        td.icon
-          div
-            color: $red
+       p
+         margin-top: 0rem
+         font-size: 1.5rem
+         line-height: 2rem
+
+     .date
+       color: $gray-color
+       margin-top: 0rem
+
+       p
+         margin-top: 0rem
+         font-size: 1rem
+
+     .admonitionblock
+       font-size: $font-size
+
+       &.note, &.tip, &.important, &.warning, &.caution
+         padding: 1rem 0
+
+         td.icon
+           div
+             margin: 0 2rem
+             font-weight: 700
+             font-size: 1rem
+             text-transform: uppercase
+             user-select: none
+
+       &.note
+         background-color: $box-bg-color
+         border: 1px solid darken($box-bg-color, 10%)
+         border-radius: 3px
+
+         td.icon
+           div
+             color: darken($box-bg-color, 30%)
+
+       &.tip
+         background-color: lighten($green, 45%)
+         border: 1px solid darken(lighten($green, 45%), 10%)
+         border-radius: 3px
+
+         td.icon
+           div
+             color: $green
+
+       &.important
+         background-color: lighten($blue, 35%)
+         border: 1px solid darken(lighten($blue, 35%), 10%)
+         border-radius: 3px
+
+         td.icon
+           div
+             color: $blue
+
+       &.warning
+         background-color: lighten($yellow, 35%)
+         border: 1px solid darken(lighten($yellow, 35%), 10%)
+         border-radius: 3px
+
+         td.icon
+           div
+             color: darken($yellow, 10%)
+
+       &.caution
+         background-color: lighten($red, 35%)
+         border: 1px solid darken(lighten($red, 35%), 10%)
+         border-radius: 3px
+
+         td.icon
+           div
+             color: $red
 </style>

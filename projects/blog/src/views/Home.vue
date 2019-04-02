@@ -31,7 +31,7 @@ export default {
 <style scoped lang="sass">
 .blog
   display: grid
-  grid-template-columns: 2fr [content-start] repeat(4, 1fr) [content-end] 2fr
+  grid-template-columns: 1fr [content-start] minmax(1rem, 15rem) [word-start] 43rem [word-end] minmax(1rem, 15rem) [content-end] 1fr
   grid-column-gap: 1rem
 
   div
