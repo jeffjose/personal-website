@@ -13,7 +13,6 @@ export default {
 
 <style scoped lang="sass">
 
-@import url('https://fonts.googleapis.com/css?family=Roboto')
 
 .toolbar
   height: 3rem
