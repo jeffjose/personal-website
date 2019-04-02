@@ -6,75 +6,12 @@
     //div(v-for="post in posts")
     //  router-link(:to="{path: post.name}") {{post.name}}
     //router-link(:to="{path: 'non-exist'}") non-exist
-    div
+    //div {{readingTime(postContent)}}
     div.wrapper(v-html="convert(postContent)")
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
-const _ = require("lodash");
-
-const asciidoctor = require("asciidoctor")();
-//const highlightJsExt = require("asciidoctor-highlight.js");
-
-class CustomConverter {
-  constructor() {
-    this.baseConverter = asciidoctor.Html5Converter.$new();
-  }
-  convert(node, transform) {
-    if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {
-      //console.log(node.getNodeName(), node.getContent());
-      return node.getContent();
-    } else if (node.getNodeName() == "section") {
-      //console.log(node.getNodeName(), node.getContent());
-      let attrs = "";
-
-      // TODO
-      //if(_.has(node, 'attributes.$$smap.role')) {
-      //  let attrs = `${attrs} class=${node.attributes.$smap.role}`;
-      //}
-
-      //if(_.has(node, 'attributes.$$smap.id') ){
-      //  let attrs = `${attrs} id=${node.attributes.$smap.id}`;
-      //}
-
-      return `
-        <h${node.level + 1} ${attrs}>${node.title}</h${node.level + 1}>
-        ${node.getContent()}
-        `;
-    } else {
-      //console.log(node.getNodeName());
-      return this.baseConverter.convert(node, transform);
-    }
-  }
-}
-
-//const registry = asciidoctor.Extensions.create()
-//highlightJsExt.register(registry)
-asciidoctor.ConverterFactory.register(new CustomConverter(), ["html5"]);
-
-export default {
-  name: "post",
-  created() {
-    this.getPostContents(this.$route.params.title);
-  },
-  computed: {
-    ...mapGetters("posts", {
-      posts: "posts",
-      contents: "contents"
-    }),
-    postContent() {
-      return this.contents[this.$route.params.title];
-    }
-  },
-  methods: {
-    ...mapActions("posts", {
-      getPosts: "getPosts",
-      getPostContents: "getPostContents"
-    }),
-    convert: function(str) {
-      let x = `
+const x = `
 
 = How I designed this blog and you can do it too
 
@@ -276,6 +213,74 @@ This section should be the ending. Hope you had fun reading this
 
 `;
 
+import { mapGetters, mapActions } from "vuex";
+
+const readingTime = require("reading-time");
+
+const _ = require("lodash");
+
+const asciidoctor = require("asciidoctor")();
+//const highlightJsExt = require("asciidoctor-highlight.js");
+
+class CustomConverter {
+  constructor() {
+    this.baseConverter = asciidoctor.Html5Converter.$new();
+  }
+  convert(node, transform) {
+    if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {
+      //console.log(node.getNodeName(), node.getContent());
+      return node.getContent();
+    } else if (node.getNodeName() == "section") {
+      //console.log(node.getNodeName(), node.getContent());
+      let attrs = "";
+
+      // TODO
+      //if(_.has(node, 'attributes.$$smap.role')) {
+      //  let attrs = `${attrs} class=${node.attributes.$smap.role}`;
+      //}
+
+      //if(_.has(node, 'attributes.$$smap.id') ){
+      //  let attrs = `${attrs} id=${node.attributes.$smap.id}`;
+      //}
+
+      return `
+        <h${node.level + 1} ${attrs}>${node.title}</h${node.level + 1}>
+        ${node.getContent()}
+        `;
+    } else {
+      //console.log(node.getNodeName());
+      return this.baseConverter.convert(node, transform);
+    }
+  }
+}
+
+//const registry = asciidoctor.Extensions.create()
+//highlightJsExt.register(registry)
+asciidoctor.ConverterFactory.register(new CustomConverter(), ["html5"]);
+
+export default {
+  name: "post",
+  created() {
+    this.getPostContents(this.$route.params.title);
+  },
+  computed: {
+    ...mapGetters("posts", {
+      posts: "posts",
+      contents: "contents"
+    }),
+    postContent() {
+      return this.contents[this.$route.params.title];
+    }
+  },
+  methods: {
+    ...mapActions("posts", {
+      getPosts: "getPosts",
+      getPostContents: "getPostContents"
+    }),
+    readingTime: function(str) {
+      return readingTime(x);
+    },
+    convert: function(str) {
       return asciidoctor.convert(x, {
         doctype: "book",
         //extension_registry: registry,
@@ -295,6 +300,12 @@ $bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten(#5f6368, 10%)
 $gray-color: lighten($blockquote-color, 35%)
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
 
 
 $font-size: 1.35rem
@@ -479,27 +490,52 @@ $font-size: 1.35rem
           div
             margin: 0 2rem
             font-weight: 700
-            font-size: 1.5rem
+            font-size: 1rem
+            text-transform: uppercase
             user-select: none
 
       &.note
         background-color: $bg-color
+        border: 1px solid darken($bg-color, 10%)
+        border-radius: 3px
 
         td.icon
           div
             color: darken($bg-color, 30%)
 
       &.tip
-        background-color: lighten(#fbbc04, 40%)
+        background-color: lighten($green, 45%)
+        border: 1px solid darken(lighten($green, 45%), 10%)
+        border-radius: 3px
 
         td.icon
           div
-            color: #fbbc04
+            color: $green
 
       &.important
-        background-color: lighten(#4285f4, 35%)
+        background-color: lighten($blue, 35%)
+        border: 1px solid darken(lighten($blue, 35%), 10%)
+        border-radius: 3px
 
         td.icon
           div
-            color: #4285f4
+            color: $blue
+
+      &.warning
+        background-color: lighten($yellow, 35%)
+        border: 1px solid darken(lighten($yellow, 35%), 10%)
+        border-radius: 3px
+
+        td.icon
+          div
+            color: darken($yellow, 10%)
+
+      &.caution
+        background-color: lighten($red, 35%)
+        border: 1px solid darken(lighten($red, 35%), 10%)
+        border-radius: 3px
+
+        td.icon
+          div
+            color: $red
 </style>
