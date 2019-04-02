@@ -19,7 +19,7 @@ const x = `
 And why you thought this was going to be a fruitless excercise for no good reason
 
 [.date]
-Apr 1, 2019 | 2min read
+Apr 1, 2019
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
@@ -225,6 +225,7 @@ const asciidoctor = require("asciidoctor")();
 class CustomConverter {
   constructor() {
     this.baseConverter = asciidoctor.Html5Converter.$new();
+    this.readingTime = readingTime;
   }
   convert(node, transform) {
     if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {
@@ -247,6 +248,13 @@ class CustomConverter {
         <h${node.level + 1} ${attrs}>${node.title}</h${node.level + 1}>
         ${node.getContent()}
         `;
+    } else if (
+      node.getNodeName() == "paragraph" &&
+      node.attributes.$$smap.role == "date"
+    ) {
+      node.lines = [`${node.lines[0]} · ${this.readingTime(x).text}`];
+
+      return this.baseConverter.convert(node, transform);
     } else {
       //console.log(node.getNodeName());
       return this.baseConverter.convert(node, transform);
