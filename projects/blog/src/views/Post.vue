@@ -228,20 +228,26 @@ Final thoughts
 
 Lorem ipsum dolor amet #skateboard# pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.  Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v austin four loko vaporware skateboard cray brunch.
 
-//NOTE: An admonition paragraph draws the reader's attention to
-//auxiliary information.
-//Its purpose is determined by the label
-//at the beginning of the paragraph.
+NOTE: An admonition paragraph draws the reader's attention to
+auxiliary information.
+Its purpose is determined by the label
+at the beginning of the paragraph.
 
-//Here are the other built-in admonition types:
-//
-//TIP: Pro tip...
-//
-//IMPORTANT: Don't forget...
-//
-//WARNING: Watch out for...
-//
-//CAUTION: Ensure that...
+Here are the other built-in admonition types:
+
+TIP: Pro tip...
+
+here comes important section
+
+IMPORTANT: Don't forget...
+
+Always remember
+
+WARNING: Watch out for...
+
+And this too
+
+CAUTION: Ensure that...
 
 ==== Final thoughts
 This section should be the ending. Hope you had fun reading this
@@ -463,4 +469,37 @@ $font-size: 1.35rem
         margin-top: 0rem
         font-size: 1rem
 
+    .admonitionblock
+      font-size: $font-size
+
+      &.note, &.tip, &.important, &.warning, &.caution
+        padding: 1rem 0
+
+        td.icon
+          div
+            margin: 0 2rem
+            font-weight: 700
+            font-size: 1.5rem
+            user-select: none
+
+      &.note
+        background-color: $bg-color
+
+        td.icon
+          div
+            color: darken($bg-color, 30%)
+
+      &.tip
+        background-color: lighten(#fbbc04, 40%)
+
+        td.icon
+          div
+            color: #fbbc04
+
+      &.important
+        background-color: lighten(#4285f4, 35%)
+
+        td.icon
+          div
+            color: #4285f4
 </style>
