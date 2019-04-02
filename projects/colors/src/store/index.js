@@ -1,12 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import vue from "vue";
+import vuex from "vuex";
 
 import user from "@/store/user";
 import colors from "@/store/colors";
 
-Vue.use(Vuex);
+vue.use(vuex);
 
-const store = new Vuex.Store({
+const store = new vuex.Store({
   state: {},
 
   modules: {
