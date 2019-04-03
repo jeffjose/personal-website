@@ -22,7 +22,7 @@ export default {
   grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
 
   @media (max-width: 800px)
-      grid-template-columns: 10px [content-start] 0fr [word-start] max-content [word-end] 0fr [content-end] 10px
+      grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
 
   .brand
