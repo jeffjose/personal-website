@@ -19,7 +19,16 @@ export default {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
-  grid-template-columns: 1fr [content-start] minmax(auto, 15rem) [word-start] 43rem [word-end] minmax(auto, 15rem) [content-end] 1fr
+  grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+
+  @media (max-width: 800px)
+      grid-template-columns: 5fr [content-start] 2fr [word-start] 620px [word-end] 2fr [content-end] 5fr
+
+  @media (max-width: 700px)
+      grid-template-columns: 5fr [content-start] 2fr [word-start] 580px [word-end] 2fr [content-end] 5fr
+
+  @media (max-width: 450px)
+      grid-template-columns: 5fr [content-start] 2fr [word-start] 380px [word-end] 2fr [content-end] 5fr
 
   .brand
     grid-column: word
@@ -41,5 +50,4 @@ export default {
       padding: 0
       margin: .3rem 0 0 0
       font-size: 1.1rem
-
 </style>

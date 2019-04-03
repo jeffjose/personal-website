@@ -21,7 +21,6 @@ html
   background-color: white
   color: #333
 
-  @media (max-width: 800px)
 
 body
   font-family: Spectral, serif

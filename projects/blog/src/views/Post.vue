@@ -345,9 +345,18 @@ $green: #34a853
    &::v-deep .wrapper
      margin-top: 3rem
      display: grid
-     grid-template-columns: 1fr [content-start] minmax(1rem, 15rem) [word-start] 43rem [word-end] minmax(1rem, 15rem) [content-end] 1fr
+     grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
 
      color: $text-color
+
+     @media (max-width: 800px)
+       grid-template-columns: 5fr [content-start] 2fr [word-start] 620px [word-end] 2fr [content-end] 5fr
+
+     @media (max-width: 700px)
+       grid-template-columns: 5fr [content-start] 2fr [word-start] 580px [word-end] 2fr [content-end] 5fr
+
+     @media (max-width: 450px)
+       grid-template-columns: 5fr [content-start] 2fr [word-start] 380px [word-end] 2fr [content-end] 5fr
 
      *
        grid-column: word
