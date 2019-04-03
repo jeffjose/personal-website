@@ -350,13 +350,8 @@ $green: #34a853
      color: $text-color
 
      @media (max-width: 800px)
-       grid-template-columns: 5fr [content-start] 2fr [word-start] 620px [word-end] 2fr [content-end] 5fr
+       grid-template-columns: 10px [content-start] 2fr [word-start] auto [word-end] 2fr [content-end] 10px
 
-     @media (max-width: 700px)
-       grid-template-columns: 5fr [content-start] 2fr [word-start] 580px [word-end] 2fr [content-end] 5fr
-
-     @media (max-width: 450px)
-       grid-template-columns: 5fr [content-start] 2fr [word-start] 380px [word-end] 2fr [content-end] 5fr
 
      *
        grid-column: word
