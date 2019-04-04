@@ -1,8 +1,6 @@
 <template lang="pug">
   div.toolbar
-    div.brand
-      img.logo(src="/android-chrome-192x192.png")
-      p Jeffrey Jose
+    p Jeffrey Jose
 </template>
 
 <script>
@@ -15,11 +13,11 @@ export default {
 
 
 .toolbar
-  height: 3rem
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.07)
+  height: 4rem
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
-  grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+  grid-template-columns: 2fr [content-start] 5fr [word-start] 720px [word-end] 5fr [content-end] 2fr
 
   @media (max-width: 800px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
@@ -34,15 +32,14 @@ export default {
     justify-items: center
     align-items: center
 
-    img
-      height: 30px
-      margin-right: 1rem
+  p
+    grid-column-start: word-start
+    font-family: "Spectral", sans-serif
+    color: #4d4d4d
 
-    p
-      font-family: "Roboto", sans-serif
-      color: #4d4d4d
+    margin: auto
 
-      padding: 0
-      margin: .3rem 0 0 0
-      font-size: 1.1rem
+    padding-top: 7px
+    font-size: 1.8rem
+    text-transform: uppercase
 </style>
