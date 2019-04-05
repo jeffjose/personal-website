@@ -310,7 +310,6 @@ $text-color: white
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten(#5f6368, 10%)
 $gray-color: lighten($blockquote-color, 35%)
 $bg-color: black
 
@@ -327,7 +326,6 @@ $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten(#5f6368, 10%)
 $gray-color: lighten($blockquote-color, 35%)
 $bg-color: white
 
@@ -341,7 +339,7 @@ $green: #34a853
 .post
 
    background-color: $bg-color
-   margin-top: 2rem
+   margin-top: 1rem
 
    &::v-deep .wrapper
      display: grid

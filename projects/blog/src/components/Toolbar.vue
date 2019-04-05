@@ -1,11 +1,9 @@
 <template lang="pug">
   div.toolbar
-    div
+    div.left
+      img(src="android-chrome-192x192.png")
+    div.middle
       p.name Jeffrey Jose
-    div
-      p.links Home
-      p.links Blog
-      p.links Projects
 </template>
 
 <script>
@@ -16,35 +14,39 @@ export default {
 
 <style scoped lang="sass">
 
-@import url('https://fonts.googleapis.com/css?family=Bitter')
-
+$text-color: rgba(0, 0, 0, .84)
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 35%)
 
 .toolbar
-  height: 9rem
-  #box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
+  height: 5rem
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
-  grid-template-columns: 2fr [content-start] 5fr [word-start] 720px [word-end] 5fr [content-end] 2fr
-  grid-template-rows: 3fr 1fr
+  grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
 
   @media (max-width: 800px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
 
-  div
+  .left
+    grid-column-start: 1
+    display: flex
+    align-items: center
+
+    img
+      height: 2.2rem
+      margin-left: 30px
+
+  .middle
     grid-column-start: word-start
     display: flex
     justify-content: center
 
     p
-      font-family: "Bitter", sans-serif
-      color: #4d4d4d
-      font-size: 1.2rem
+      font-family: "Roboto", sans-serif
       margin: auto .5rem
-
-      text-transform: uppercase
-
-      &.name
-        font-size: 1.5rem
-
+      letter-spacing: 1px
+      font-size: 1.5rem
+      color: $text-color
 </style>
