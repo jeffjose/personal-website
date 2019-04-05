@@ -1,7 +1,5 @@
 <template lang="pug">
   div.toolbar
-    div.left
-      img(src="android-chrome-192x192.png")
     div.middle
       p.name Jeffrey Jose
 </template>
@@ -14,12 +12,15 @@ export default {
 
 <style scoped lang="sass">
 
+@import url('https://fonts.googleapis.com/css?family=Lato')
+
 $text-color: rgba(0, 0, 0, .84)
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 35%)
+$accent-color: #FF0088
 
 .toolbar
-  height: 5rem
+  height: 4rem
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
@@ -29,24 +30,21 @@ $gray-color: lighten($blockquote-color, 35%)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
 
-  .left
-    grid-column-start: 1
-    display: flex
-    align-items: center
-
-    img
-      height: 2.2rem
-      margin-left: 30px
-
   .middle
     grid-column-start: word-start
     display: flex
-    justify-content: center
+    align-content: center
 
     p
-      font-family: "Roboto", sans-serif
-      margin: auto .5rem
-      letter-spacing: 1px
+      font-family: "Lato", sans-serif
       font-size: 1.5rem
       color: $text-color
+      text-transform: uppercase
+      letter-spacing: 1px
+      transition: 80ms all ease-in-out
+      cursor: default
+      margin: auto 0
+
+      &:hover
+        color: $accent-color
 </style>
