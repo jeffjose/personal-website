@@ -31,6 +31,11 @@ export default {
 </script>
 
 <style scoped lang="sass">
+
+$text-color: rgba(0, 0, 0, .84)
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 35%)
+
 .wrapper
   display: grid
   grid-template-columns: 1fr [main-start] repeat(6, 1.5fr) 1fr
@@ -58,10 +63,12 @@ export default {
 
   & .name
     font-size: 1.4rem
-    color: lighten(rgb(51, 51, 51), 10%)
+    color: $text-color
+
+    letter-spacing: 1px
   & .desc
     font-size: 1rem
-    color: lighten(rgb(51, 51, 51), 30%)
+    color: $gray-color
 
 .logo
   height: 4rem
