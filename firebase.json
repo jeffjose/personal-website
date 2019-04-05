@@ -2,15 +2,27 @@
   "hosting": {
     "public": "dist",
     "trailingSlash": false,
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "profile.jpg",
         "destination": "/homepage/profile.jpg"
+      },
+      {
+        "source": "blog/**",
+        "destination": "/blog/index.html"
+      },
+      {
+        "source": "colors/**",
+        "destination": "/colors/index.html"
+      },
+      {
+        "source": "ip-calculator/**",
+        "destination": "/ip-calculator/index.html"
+      },
+      {
+        "source": "statsviz",
+        "destination": "/statsviz/index.html"
       },
       {
         "source": "**",
