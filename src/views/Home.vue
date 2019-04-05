@@ -54,7 +54,6 @@ export default {
   grid-template-columns: 1fr
   grid-template-rows: 1fr 1fr
   align-items: center
-  height: 8vh
   position: relative
 
   & .name
