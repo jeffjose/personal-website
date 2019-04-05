@@ -1,6 +1,11 @@
 <template lang="pug">
   div.toolbar
-    p Jeffrey Jose
+    div
+      p.name Jeffrey Jose
+    div
+      p.links Home
+      p.links Blog
+      p.links Projects
 </template>
 
 <script>
@@ -11,35 +16,35 @@ export default {
 
 <style scoped lang="sass">
 
+@import url('https://fonts.googleapis.com/css?family=Bitter')
+
 
 .toolbar
-  height: 4rem
-  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
+  height: 9rem
+  #box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
   grid-template-columns: 2fr [content-start] 5fr [word-start] 720px [word-end] 5fr [content-end] 2fr
+  grid-template-rows: 3fr 1fr
 
   @media (max-width: 800px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
 
-  .brand
-    grid-column: word
-
-    align-self: center
-
-    display: flex
-    justify-items: center
-    align-items: center
-
-  p
+  div
     grid-column-start: word-start
-    font-family: "Spectral", sans-serif
-    color: #4d4d4d
+    display: flex
+    justify-content: center
 
-    margin: auto
+    p
+      font-family: "Bitter", sans-serif
+      color: #4d4d4d
+      font-size: 1.2rem
+      margin: auto .5rem
 
-    padding-top: 7px
-    font-size: 1.8rem
-    text-transform: uppercase
+      text-transform: uppercase
+
+      &.name
+        font-size: 1.5rem
+
 </style>

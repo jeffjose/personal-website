@@ -341,9 +341,9 @@ $green: #34a853
 .post
 
    background-color: $bg-color
+   margin-top: 2rem
 
    &::v-deep .wrapper
-     margin-top: 3rem
      display: grid
      grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
 
