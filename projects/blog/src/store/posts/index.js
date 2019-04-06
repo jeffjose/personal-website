@@ -23,20 +23,32 @@ const mutations = {
 
 const getters = {
   posts: ({ posts }) => posts,
-  contents: ({ contents }) => contents
+  contents: ({ contents }) => contents,
+
+  content: (state, getters) => title => {
+    title = `${title.replace(/\.adoc/, "")}.adoc`;
+    return state.contents[title];
+  }
 };
 
 const actions = {
-  getPosts({ commit }) {
+  getPosts({ commit, dispatch }) {
     return axios({
       url:
         "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts"
     }).then(function(response) {
       console.log("getPosts", response);
       commit(PUSH_POSTS, response.data);
+
+      _.map(response.data, function(x) {
+        console.log("Marking a request for ", x.name, x.download_url);
+        dispatch("getPostContents", { title: x.name, url: x.download_url });
+      });
     });
   },
   getPostContents({ commit, getters }, payload) {
+    payload.title = `${payload.title.replace(/\.adoc/, "")}.adoc`;
+
     let inCache = _.has(getters.contents, payload.title);
 
     // The order is important

@@ -57,7 +57,7 @@ export default new Router({
             store
               .dispatch("posts/getPostContents", {
                 url: posts[index].download_url,
-                title: to.params.title
+                title: posts[index].name
               })
               .then(function(response) {
                 next();

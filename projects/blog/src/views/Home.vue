@@ -5,24 +5,21 @@
     //div(v-for="post in posts")
     //  router-link(:to="{path: post.name}") {{post.name}} {{post.time}}
     //router-link(:to="{path: 'non-exist'}") non-exist
-    div
-    div
-    div
-    div
-    div
-    div
-    div
-    div
+    div.postitem(v-for="post in posts")
+      PostItem(:adoc = "contents[post.name]")
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import PostItem from "@/components/PostItem.vue";
 
 export default {
   name: "home",
+  components: { PostItem },
   computed: {
     ...mapGetters("posts", {
-      posts: "posts"
+      posts: "posts",
+      contents: "contents"
     })
   }
 };
@@ -30,11 +27,12 @@ export default {
 
 <style scoped lang="sass">
 .blog
-  display: grid
-  grid-template-columns: 1fr [content-start] minmax(1rem, 15rem) [word-start] 43rem [word-end] minmax(1rem, 15rem) [content-end] 1fr
-  grid-column-gap: 1rem
+  //display: grid
+  //grid-gap: 2px
+  ////grid-template-columns: 1fr [content-start] 5fr [content-end] 1fr
+  //grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+  //grid-template-rows: repeat(6, 2fr)
 
-  div
-    height: 100vh
-    background: lighten(blue, 40%)
+  //.postitem
+  //  grid-column: 1
 </style>
