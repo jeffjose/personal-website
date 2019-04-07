@@ -5,8 +5,9 @@ import store from "./store";
 
 var _ = require("lodash");
 
-import HomeWrapper from "./views/HomeWrapper.vue";
 import Home from "./views/Home.vue";
+import BlogWrapper from "./views/BlogWrapper.vue";
+import Blog from "./views/Blog.vue";
 import Post from "./views/Post.vue";
 import FourOFour from "./views/FourOFour.vue";
 
@@ -22,32 +23,33 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: HomeWrapper,
-      pathToRegexpOptions: { strict: true },
+      name: "home",
+      component: Home
+    },
+    {
+      path: "/blog",
+      component: BlogWrapper,
       beforeEnter: (to, from, next) => {
-        console.log("[/]: beforeEnter");
+        console.log("[/]: beforeEnter", to, from);
         store.dispatch("posts/getPosts").then(function(response) {
           next();
         });
       },
       children: [
         {
-          name: "home",
+          name: "blog",
           path: "",
-          component: Home,
-          pathToRegexpOptions: { strict: true }
+          component: Blog
         },
         {
           path: "/404",
-          component: FourOFour,
-          pathToRegexpOptions: { strict: true }
+          component: FourOFour
         },
         {
           path: ":title.:ext?",
           component: Post,
-          pathToRegexpOptions: { strict: true },
           beforeEnter(to, from, next) {
-            // This is the same function as HomeWrapper.vue -> beforeRouteUpdate
+            // This is the same function as BlogWrapper.vue -> beforeRouteUpdate
             //
             // The following is called when user goes directly to /post-title
             // The other one is called when user navigates between /post-title1 -> /post-title2 (component reuse)

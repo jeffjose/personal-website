@@ -2,7 +2,7 @@
   div.toolbar
     div.middle
       p.name
-       router-link(:to="{name: 'home'}") Jeffrey Jose
+       router-link(:to="{path: '/'}") Jeffrey Jose
 </template>
 
 <script>

@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     goto() {
-      return this.title.replace(/\.adoc/, "");
+      return "/blog/" + this.title.replace(/\.adoc/, "");
     }
   },
   props: ["adoc", "index", "title"],

@@ -1,14 +1,18 @@
-<template>
-  <router-view></router-view>
+<template lang="pug">
+  div.blogwrapper
+    Toolbar
+    router-view
 </template>
 
 <script>
 import store from "@/store";
 
+import Toolbar from "@/components/Toolbar.vue";
+
 var _ = require("lodash");
 export default {
-  name: "homewrapper",
-
+  name: "blogwrapper",
+  components: { Toolbar },
   beforeRouteUpdate(to, from, next) {
     if (to.path == "/404" || to.path == "/") {
       next();
@@ -20,7 +24,7 @@ export default {
     // The following is called when user navigates between /post-title1 -> /post-title2 (component reuse)
     // The other one is called when user goes directly to /post-title
     //
-    console.log("[HomeWrapper]: beforeRouteUpdate", to, from);
+    console.log("[BlogWrapper]: beforeRouteUpdate", to, from);
     let posts = store.getters["posts/posts"];
     var index = _.findIndex(posts, {
       name: `${to.params.title}.adoc`

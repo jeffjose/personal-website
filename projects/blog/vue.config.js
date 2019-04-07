@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "blog/",
+  publicPath: "/",
   outputDir: "../../dist/blog/",
   assetsDir: undefined,
   runtimeCompiler: undefined,
