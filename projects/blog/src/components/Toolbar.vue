@@ -39,7 +39,6 @@ $accent-color: #FF0088
     p
       font-family: "Lato", sans-serif
       font-size: 1.5rem
-      color: $text-color
       text-transform: uppercase
       letter-spacing: 1px
       transition: 80ms all ease-in-out
@@ -48,6 +47,7 @@ $accent-color: #FF0088
 
       a
         text-decoration: none
+        color: $text-color
 
 
         &:hover
