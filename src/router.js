@@ -17,7 +17,6 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   scrollBehavior(to, from, savedPosition) {
-    console.log("scroll");
     return { x: 0, y: 0 };
   },
   routes: [
@@ -30,7 +29,7 @@ export default new Router({
       path: "/blog",
       component: BlogWrapper,
       beforeEnter: (to, from, next) => {
-        console.log("[/]: beforeEnter", to, from);
+        console.log("[/]: beforeEnter");
         store.dispatch("posts/getPosts").then(function(response) {
           next();
         });
@@ -40,10 +39,6 @@ export default new Router({
           name: "blog",
           path: "",
           component: Blog
-        },
-        {
-          path: "/404",
-          component: FourOFour
         },
         {
           path: ":title.:ext?",
@@ -62,7 +57,7 @@ export default new Router({
 
             if (index < 0) {
               console.log("404");
-              next({ path: "404" });
+              next({ name: "fourofour" });
               return;
             }
             store
@@ -76,6 +71,11 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: "*",
+      name: "fourofour",
+      component: FourOFour
     }
   ]
 });

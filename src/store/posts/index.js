@@ -35,13 +35,11 @@ const actions = {
   getPosts({ commit, dispatch }) {
     return axios({
       url:
-        "https://api.github.com/repos/jeffjose/personal-website/contents/projects/blog/src/posts"
+        "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
     }).then(function(response) {
-      console.log("getPosts", response);
       commit(PUSH_POSTS, response.data);
 
       _.map(response.data, function(x) {
-        console.log("Marking a request for ", x.name, x.download_url);
         dispatch("getPostContents", { title: x.name, url: x.download_url });
       });
     });
@@ -57,7 +55,6 @@ const actions = {
     let request = axios({
       url: payload.url
     }).then(function(response) {
-      console.log("getPostContents", response);
       commit(PUSH_CONTENT, {
         title: payload.title,
         content: response.data
@@ -66,9 +63,7 @@ const actions = {
 
     // But return quickly if it is in the backend
     if (inCache == true) {
-      let x = getters.contents[payload.title];
-      console.log("Already existing, not making a request", x);
-      return x;
+      return getters.contents[payload.title];
     }
 
     // Return here when it a cache-miss

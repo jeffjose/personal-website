@@ -41,7 +41,6 @@ class CustomConverter {
       node.attributes.$$smap.role == "date"
     ) {
       node.lines = [`${node.lines[0]} · ${this.readingTime}`];
-
       return this.baseConverter.convert(node, transform);
     } else {
       return this.baseConverter.convert(node, transform);
@@ -64,6 +63,10 @@ export default {
   props: ["adoc", "index", "title"],
   methods: {
     convert: function(str) {
+      if (str === undefined) {
+        return;
+      }
+
       return asciidoctor.convert(str, {
         doctype: "book",
         attributes: { showtitle: true }

@@ -14,7 +14,12 @@ export default {
   name: "blogwrapper",
   components: { Toolbar },
   beforeRouteUpdate(to, from, next) {
-    if (to.path == "/404" || to.path == "/") {
+    if (
+      to.path == "/404" ||
+      to.path == "/blog" ||
+      to.path == "/blog/" ||
+      to.path == "/"
+    ) {
       next();
       return;
     }

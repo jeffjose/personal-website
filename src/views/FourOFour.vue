@@ -1,5 +1,6 @@
 <template lang="pug">
-  div.blog
+  div.fourofour
+    Toolbar
     h1 404
     h2 POST LIST
     div(v-for="post in posts")
@@ -10,8 +11,11 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+import Toolbar from "@/components/Toolbar.vue";
+
 export default {
   name: "FourOFour",
+  components: { Toolbar },
   computed: {
     ...mapGetters("posts", {
       posts: "posts"
