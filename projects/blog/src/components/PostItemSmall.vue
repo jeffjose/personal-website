@@ -129,6 +129,9 @@ $green: #34a853
      @media (max-width: 800px)
        grid-template-columns: 20px [content-start] 2fr [word-start] auto [word-end] 2fr [content-end] 20px
 
+     ::selection
+       background: lighten($accent-color, 40%)
+
      *
        grid-column: word
        display: none
@@ -155,6 +158,10 @@ $green: #34a853
      h1
         grid-row: bottom
         margin: 0
+
+        font-weight: 500
+        letter-spacing: -1px
+        line-height: 3.5rem
 
      &.item-0
        .imageblock.hero
