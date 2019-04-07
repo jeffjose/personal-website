@@ -7,10 +7,7 @@
 <script>
 const readingTime = require("reading-time");
 
-const _ = require("lodash");
-
 const asciidoctor = require("asciidoctor")();
-//const highlightJsExt = require("asciidoctor-highlight.js");
 
 class CustomConverter {
   constructor(adoc) {
@@ -19,42 +16,38 @@ class CustomConverter {
     this.readingTime = "xx mins";
   }
   convert(node, transform) {
-    if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {
-      //console.log(node.getNodeName(), node.getContent());
+    let nodeName = node.getNodeName();
+
+    // For PostItemSmall we dont need to render the whole post
+    if (
+      nodeName == "admonition" ||
+      nodeName == "section" ||
+      nodeName == "inline_quoted" ||
+      nodeName == "dlist" ||
+      nodeName == "inline_anchor"
+    ) {
+      return "";
+    }
+
+    // Only `date` needs to be rendered
+    if (nodeName == "paragraph" && node.attributes.$$smap.role != "date") {
+      return "";
+    }
+
+    if (nodeName === "preamble" || nodeName === "open") {
       return node.getContent();
-    } else if (node.getNodeName() == "section") {
-      //console.log(node.getNodeName(), node.getContent());
-      let attrs = "";
-
-      // TODO
-      //if(_.has(node, 'attributes.$$smap.role')) {
-      //  let attrs = `${attrs} class=${node.attributes.$smap.role}`;
-      //}
-
-      //if(_.has(node, 'attributes.$$smap.id') ){
-      //  let attrs = `${attrs} id=${node.attributes.$smap.id}`;
-      //}
-
-      return `
-        <h${node.level + 1} ${attrs}>${node.title}</h${node.level + 1}>
-        ${node.getContent()}
-        `;
     } else if (
-      node.getNodeName() == "paragraph" &&
+      nodeName == "paragraph" &&
       node.attributes.$$smap.role == "date"
     ) {
       node.lines = [`${node.lines[0]} · ${this.readingTime}`];
 
       return this.baseConverter.convert(node, transform);
     } else {
-      //console.log(node.getNodeName());
       return this.baseConverter.convert(node, transform);
     }
   }
 }
-
-//const registry = asciidoctor.Extensions.create()
-//highlightJsExt.register(registry)
 
 export default {
   name: "PostItemSmall",
@@ -73,8 +66,6 @@ export default {
     convert: function(str) {
       return asciidoctor.convert(str, {
         doctype: "book",
-        //extension_registry: registry,
-        //attributes: { showtitle: true, "source-highlighter": "highlightjs-ext" }
         attributes: { showtitle: true }
       });
     }

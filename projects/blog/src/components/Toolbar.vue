@@ -1,7 +1,8 @@
 <template lang="pug">
   div.toolbar
     div.middle
-      p.name Jeffrey Jose
+      p.name
+       a(href="/") Jeffrey Jose
 </template>
 
 <script>
@@ -45,6 +46,10 @@ $accent-color: #FF0088
       cursor: default
       margin: auto 0
 
-      &:hover
-        color: $accent-color
+      a
+        text-decoration: none
+
+
+        &:hover
+          color: $accent-color
 </style>
