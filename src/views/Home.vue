@@ -7,6 +7,10 @@
         div.title
           span.name Jeffrey Jose
           span.desc Product Manager at Google
+          div.links
+            //router-link.link(:to="{path: '/blog'}") Blog
+            a.link(href="https://twitter.com/jeffjose") Twitter
+            a.link(href="https://www.linkedin.com/in/jeffreyjose/") Linkedin
 </template>
 
 <script>
@@ -25,9 +29,35 @@ export default {
 
 <style scoped lang="sass">
 
-$text-color: rgba(0, 0, 0, .84)
+
+$text-color: white
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 35%)
+$bg-color: black
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
+
+// ----------- light mode ----------------
+
+$text-color: rgba(0, 0, 0, .84)
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 35%)
+$bg-color: white
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
 
 .wrapper
   display: grid
@@ -87,4 +117,16 @@ $gray-color: lighten($blockquote-color, 35%)
   grid-row: logo
   grid-column: logo
   justify-self: end
+
+.links
+  margin-top: .3rem
+  a
+    display: inline-block
+    pointer-events: all
+    text-decoration: none
+    color: $text-color
+    margin-right: .4rem
+
+    &:hover
+      color: $accent-color
 </style>
