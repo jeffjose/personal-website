@@ -1,7 +1,7 @@
 <template lang="pug">
-  div.postitemsmall
+  div.postitemblock
     router-link(:to="{path: goto}")
-      div.wrapper(v-html="convert(adoc)", :class="'item-' + index")
+      div.wrapper(v-html="convert(adoc)")
 </template>
 
 <script>
@@ -24,13 +24,9 @@ class CustomConverter {
       nodeName == "section" ||
       nodeName == "inline_quoted" ||
       nodeName == "dlist" ||
+      nodeName == "paragraph" ||
       nodeName == "inline_anchor"
     ) {
-      return "";
-    }
-
-    // Only `date` needs to be rendered
-    if (nodeName == "paragraph" && node.attributes.$$smap.role != "date") {
       return "";
     }
 
@@ -50,7 +46,7 @@ class CustomConverter {
 }
 
 export default {
-  name: "PostItemSmall",
+  name: "PostItemBlock",
   created() {
     asciidoctor.ConverterFactory.register(new CustomConverter(this.adoc), [
       "html5"
@@ -61,7 +57,7 @@ export default {
       return this.title.replace(/\.adoc/, "");
     }
   },
-  props: ["adoc", "index", "title"],
+  props: ["adoc", "title"],
   methods: {
     convert: function(str) {
       return asciidoctor.convert(str, {
@@ -109,25 +105,20 @@ $red: #ea4335
 $green: #34a853
 
 
-.postitemsmall
+.postitemblock
 
    background-color: $bg-color
-   margin: 2rem 0
 
    a
      text-decoration: none
 
    &::v-deep .wrapper
      display: grid
-     grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
-     grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end]
+     grid-template-columns: [content-start] auto [content-end]
+     grid-template-rows: [top-start] auto [top-end bottom-start] auto [bottom-end]
 
      color: $text-color
      cursor: pointer
-
-
-     @media (max-width: 800px)
-       grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
 
      ::selection
        background: lighten($accent-color, 40%)
@@ -142,21 +133,21 @@ $green: #34a853
      img
        width: 100%
 
-     h1, .date
+     h1, .imageblock
        display: unset
+       justify-self: center
+       align-self: center
+
+
        *
-        display: unset
+         display: unset
+         justify-self: center
+         align-self: center
 
 
      // styles
      .imageblock.hero
         grid-row: top
-        grid-column: word
-
-     .date
-        grid-row: middle
-        color: $gray-color
-
 
      h1
         grid-row: bottom
@@ -164,26 +155,5 @@ $green: #34a853
 
         font-weight: 500
         letter-spacing: -1px
-        line-height: 3.5rem
-
-
-     &.item-0
-       .imageblock.hero
-
-          display: unset
-
-          grid-row: top
-          grid-column: word
-
-          *
-            display: unset
-
-       .date
-          grid-row: middle
-          color: $gray-color
-
-
-       h1
-          grid-row: bottom
-          margin: 0
+        font-size: 1.5rem
 </style>

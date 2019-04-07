@@ -1,6 +1,16 @@
 <template lang="pug">
   div.post
-    PostItem(:adoc="postContent")
+    div.postitem
+      PostItem(:adoc="postContent")
+
+    div.postitemblock
+      PostItemBlock(:adoc="postContent", :title="$route.params.title")
+    div.postitemblock
+      PostItemBlock(:adoc="postContent", :title="$route.params.title")
+    div.postitemblock
+      PostItemBlock(:adoc="postContent", :title="$route.params.title")
+    div.postitemblock
+      PostItemBlock(:adoc="postContent", :title="$route.params.title")
 </template>
 
 <script>
@@ -207,12 +217,13 @@ This section should be the ending. Hope you had fun reading this
 `;
 
 import PostItem from "@/components/PostItem.vue";
+import PostItemBlock from "@/components/PostItemBlock.vue";
 
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "post",
-  components: { PostItem },
+  components: { PostItem, PostItemBlock },
   created() {
     // TODO: This wont work since there's no payload.url
     this.getPostContents({
@@ -239,4 +250,23 @@ export default {
 };
 </script>
 
-<style scoped lang="sass"></style>
+<style scoped lang="sass">
+.post
+
+  display: grid
+  grid-template-columns: [main-start] 1fr [word-start left-start] 350px [left-end] 20px [right-start]350px [right-end word-end] 1fr [main-end]
+
+  grid-row-gap: 20px
+
+  @media (max-width: 800px)
+    grid-template-columns: [main-start] 20px [word-start left-start right-start] auto [left-end right-end] 20px [main-end]
+
+  .postitem
+    grid-column: main
+
+  .postitemblock:nth-child(even)
+    grid-column: left
+
+  .postitemblock:nth-child(odd)
+    grid-column: right
+</style>
