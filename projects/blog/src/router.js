@@ -19,6 +19,7 @@ export default new Router({
     {
       path: "/",
       component: HomeWrapper,
+      pathToRegexpOptions: { strict: true },
       beforeEnter: (to, from, next) => {
         console.log("[/]: beforeEnter");
         store.dispatch("posts/getPosts").then(function(response) {
@@ -28,15 +29,18 @@ export default new Router({
       children: [
         {
           path: "",
-          component: Home
+          component: Home,
+          pathToRegexpOptions: { strict: true }
         },
         {
           path: "/404",
-          component: FourOFour
+          component: FourOFour,
+          pathToRegexpOptions: { strict: true }
         },
         {
           path: ":title.:ext?",
           component: Post,
+          pathToRegexpOptions: { strict: true },
           beforeEnter(to, from, next) {
             // This is the same function as HomeWrapper.vue -> beforeRouteUpdate
             //

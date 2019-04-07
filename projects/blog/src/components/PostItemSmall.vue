@@ -1,6 +1,6 @@
 <template lang="pug">
   div.postitem
-    a(:href="goto")
+    router-link(:to="{path: goto}")
       div.wrapper(v-html="convert(adoc)", :class="'item-' + index")
 </template>
 
@@ -58,10 +58,10 @@ export default {
   },
   computed: {
     goto() {
-      return this.href.replace(/\.adoc/, "");
+      return this.title.replace(/\.adoc/, "");
     }
   },
-  props: ["adoc", "index", "href"],
+  props: ["adoc", "index", "title"],
   methods: {
     convert: function(str) {
       return asciidoctor.convert(str, {

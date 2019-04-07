@@ -10,7 +10,7 @@ export default {
   name: "homewrapper",
 
   beforeRouteUpdate(to, from, next) {
-    if (to.path == "/404") {
+    if (to.path == "/404" || to.path == "/") {
       next();
       return;
     }
