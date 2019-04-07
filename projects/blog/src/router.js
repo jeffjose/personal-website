@@ -28,6 +28,7 @@ export default new Router({
       },
       children: [
         {
+          name: "home",
           path: "",
           component: Home,
           pathToRegexpOptions: { strict: true }
