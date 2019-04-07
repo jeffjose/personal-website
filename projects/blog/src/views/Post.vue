@@ -3,13 +3,16 @@
     div.postitem
       PostItem(:adoc="postContent")
 
-    div.postitemblock
+
+    h2 More posts
+
+    div.postitemblock.one
       PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock
+    div.postitemblock.two
       PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock
+    div.postitemblock.three
       PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock
+    div.postitemblock.four
       PostItemBlock(:adoc="postContent", :title="$route.params.title")
 </template>
 
@@ -264,9 +267,12 @@ export default {
   .postitem
     grid-column: main
 
+  h2
+    grid-column: word
+
   .postitemblock:nth-child(even)
-    grid-column: left
+    grid-column: right
 
   .postitemblock:nth-child(odd)
-    grid-column: right
+    grid-column: left
 </style>
