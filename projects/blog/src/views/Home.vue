@@ -3,7 +3,7 @@
     //div(v-for="post in posts")
     //  router-link(:to="{path: post.name}") {{post.name}} {{post.time}}
     //router-link(:to="{path: 'non-exist'}") non-exist
-    PostItemSmall(v-for="post, key in posts" :adoc = "contents[post.name]", :index="key")
+    PostItemSmall(v-for="post, key in posts" :adoc = "contents[post.name]", :index="key", :href='"/blog/" + post.name')
 </template>
 
 <script>

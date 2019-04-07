@@ -1,6 +1,7 @@
 <template lang="pug">
   div.postitem
-    div.wrapper(v-html="convert(adoc)", :class="'item-' + index")
+    a(:href="goto")
+      div.wrapper(v-html="convert(adoc)", :class="'item-' + index")
 </template>
 
 <script>
@@ -62,7 +63,12 @@ export default {
       "html5"
     ]);
   },
-  props: ["adoc", "index"],
+  computed: {
+    goto() {
+      return this.href.replace(/\.adoc/, "");
+    }
+  },
+  props: ["adoc", "index", "href"],
   methods: {
     convert: function(str) {
       return asciidoctor.convert(str, {
@@ -117,6 +123,9 @@ $green: #34a853
    background-color: $bg-color
    margin: 2rem 0
 
+   a
+     text-decoration: none
+
    &::v-deep .wrapper
      display: grid
      //grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
@@ -124,6 +133,7 @@ $green: #34a853
      grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end]
 
      color: $text-color
+     cursor: pointer
 
 
      @media (max-width: 800px)
@@ -131,6 +141,9 @@ $green: #34a853
 
      ::selection
        background: lighten($accent-color, 40%)
+
+     &:hover
+       color: $accent-color
 
      *
        grid-column: word
@@ -162,6 +175,7 @@ $green: #34a853
         font-weight: 500
         letter-spacing: -1px
         line-height: 3.5rem
+
 
      &.item-0
        .imageblock.hero
