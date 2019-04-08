@@ -5,19 +5,11 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "profile.jpg",
-        "destination": "/homepage/profile.jpg"
-      },
-      {
-        "source": "blog/**",
-        "destination": "/blog/index.html"
-      },
-      {
-        "source": "colors/**",
+        "source": "colors*",
         "destination": "/colors/index.html"
       },
       {
-        "source": "ip-calculator/**",
+        "source": "ip-calculator",
         "destination": "/ip-calculator/index.html"
       },
       {
@@ -26,7 +18,7 @@
       },
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/homepage/index.html"
       }
     ]
   }

@@ -2,7 +2,7 @@
   div
     background
     div.wrapper
-      img.logo(src="/homepage/android-chrome-192x192.png")
+      img.logo(src="/android-chrome-192x192.png")
       div.header
         div.title
           span.name Jeffrey Jose
