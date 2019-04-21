@@ -5,20 +5,20 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "colors*",
+        "source": "colors{,/**}",
         "destination": "/colors/index.html"
       },
       {
-        "source": "ip-calculator",
+        "source": "ip-calculator{,/**}",
         "destination": "/ip-calculator/index.html"
       },
       {
-        "source": "statsviz",
+        "source": "statsviz{,/**}",
         "destination": "/statsviz/index.html"
       },
       {
         "source": "**",
-        "destination": "/homepage/index.html"
+        "destination": "/index.html"
       }
     ]
   }
