@@ -5,15 +5,9 @@
 
 
     h2 More posts
+    div.postitemblock(v-for="post in getMorePosts()")
+      PostItemBlock(:adoc="post[1]", :title="post[0]")
 
-    div.postitemblock.one
-      PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock.two
-      PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock.three
-      PostItemBlock(:adoc="postContent", :title="$route.params.title")
-    div.postitemblock.four
-      PostItemBlock(:adoc="postContent", :title="$route.params.title")
 </template>
 
 <script>
@@ -237,7 +231,8 @@ export default {
     ...mapGetters("posts", {
       posts: "posts",
       contents: "contents",
-      content: "content"
+      content: "content",
+      relatedContents: "relatedContents"
     }),
     postContent() {
       //return x;
@@ -247,7 +242,10 @@ export default {
   methods: {
     ...mapActions("posts", {
       getPosts: "getPosts",
-      getPostContents: "getPostContents"
+      getPostContents: "getPostContents",
+      getMorePosts: function() {
+        return this.relatedContents(this.$route.params.title);
+      }
     })
   }
 };

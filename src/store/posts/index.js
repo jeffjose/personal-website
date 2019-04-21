@@ -28,6 +28,12 @@ const getters = {
   content: (state, getters) => title => {
     title = `${title.replace(/\.adoc/, "")}.adoc`;
     return state.contents[title];
+  },
+
+  relatedContents: (state, getters) => title => {
+    title = `${title.replace(/\.adoc/, "")}.adoc`;
+
+    return _.toPairs(_.omit(state.contents, title));
   }
 };
 
