@@ -1,7 +1,7 @@
 <template lang="pug">
   div.blogwrapper
     Toolbar
-    router-view
+    router-view(:key="$route.fullPath")
 </template>
 
 <script>
