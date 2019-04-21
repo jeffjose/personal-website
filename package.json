@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --host 0.0.0.0",
     "build": "vue-cli-service build --no-clean",
+    "buildclean": "vue-cli-service build",
     "buildall": "yarn-recursive --cmd build",
     "installall": "yarn-recursive --cmd install",
     "lint": "vue-cli-service lint",
