@@ -215,12 +215,13 @@ This section should be the ending. Hope you had fun reading this
 
 import PostItem from "@/components/PostItem.vue";
 import PostItemBlock from "@/components/PostItemBlock.vue";
+import Footer from "@/components/Footer.vue";
 
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "post",
-  components: { PostItem, PostItemBlock },
+  components: { PostItem, PostItemBlock, Footer },
   created() {
     // TODO: This wont work since there's no payload.url
     this.getPostContents({

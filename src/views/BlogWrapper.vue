@@ -2,17 +2,19 @@
   div.blogwrapper
     Toolbar
     router-view(:key="$route.fullPath")
+    Footer
 </template>
 
 <script>
 import store from "@/store";
 
 import Toolbar from "@/components/Toolbar.vue";
+import Footer from "@/components/Footer.vue";
 
 var _ = require("lodash");
 export default {
   name: "blogwrapper",
-  components: { Toolbar },
+  components: { Toolbar, Footer },
   beforeRouteUpdate(to, from, next) {
     if (
       to.path == "/404" ||
