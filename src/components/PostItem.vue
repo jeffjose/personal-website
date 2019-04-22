@@ -152,7 +152,7 @@ $green: #34a853
        font-size: 2.0rem
        font-weight: 500
        letter-spacing: -1px
-       margin: 2rem 0 0 0
+       margin: 1.5rem 0 0 0
 
      h4
        font-size: 1.9rem
@@ -203,7 +203,7 @@ $green: #34a853
      .listingblock
        padding: 0 1rem
        background-color: $box-bg-color
-       margin-top: 1em
+       margin: 0.5em 0
 
        .content
          padding: 0.8rem
@@ -271,6 +271,8 @@ $green: #34a853
        width: 100%
        height: 0
        padding-bottom: 56.25%
+       border: .5rem solid darken($accent-color, 5%)
+       margin: 1rem 0
 
        iframe
          position: absolute

@@ -267,6 +267,7 @@ export default {
     grid-column: main
 
   h2
+    margin-top: 4rem
     grid-column: word
 
   .postitemblock:nth-child(even)

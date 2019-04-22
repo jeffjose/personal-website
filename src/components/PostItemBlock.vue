@@ -138,7 +138,6 @@ $green: #34a853
        justify-self: center
        align-self: center
 
-
        *
          display: unset
          justify-self: center
@@ -154,6 +153,5 @@ $green: #34a853
         margin: 0
 
         font-weight: 500
-        letter-spacing: -1px
-        font-size: 1.5rem
+        font-size: 1.2rem
 </style>
