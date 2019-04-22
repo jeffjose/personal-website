@@ -83,7 +83,7 @@ We don't take this lightly: hopefully once you've experienced Svelte 3 you'll un
 
 === Still to come
 
-As grueling as this release has been, we're nowhere near finished. We have a ton of ideas for generating smarter, more compact code, and a long feature wish-list. , our Next.js-style app framework, is still in the middle of being updated to use Svelte 3. The  community project, which allows you to write Android and iOS apps in Svelte, is making solid progress but deserves more complete support from core. We don't yet have the bounty of editor extensions, syntax highlighters, component kits, devtools and so on that other frameworks have, and we should fix that. We really want to add first-class TypeScript support.
+As grueling as this release has been, we're nowhere near finished. We have a ton of ideas for generating smarter, more compact code, and a long feature wish-list. https://sapper.svelte.technology/[Sapper], our Next.js-style app framework, is still in the middle of being updated to use Svelte 3. The https://svelte-native.technology/[Svelte Native] community project, which allows you to write Android and iOS apps in Svelte, is making solid progress but deserves more complete support from core. We don't yet have the bounty of editor extensions, syntax highlighters, component kits, devtools and so on that other frameworks have, and we should fix that. We really want to add first-class TypeScript support.
 
 But in the meantime we think Svelte 3 is the best way to build web apps yet. Take an hour to go through the  and we hope to convince you of the same. Either way, we'd love to see you in our  and on  — everyone is welcome, especially you.
 
