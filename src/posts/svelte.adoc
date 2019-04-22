@@ -10,7 +10,7 @@ After several months of being just days away, we are over the moon to announce t
 
 We think you're going to love it.
 
-== What is Svelte?
+=== What is Svelte?
 
 Svelte is a component framework — like React or Vue — but with an important difference. Traditional frameworks allow you to write declarative state-driven code, but there's a penalty: the browser must do extra work to convert those declarative structures into DOM operations, using techniques like https://svelte.dev/blog/virtual-dom-is-pure-overhead[virtual DOM diffing] that eat into your frame budget and tax the garbage collector.
 
@@ -24,7 +24,7 @@ To make that possible we first needed to rethink the concept at the heart of mod
 
 video::AdNJ3fydeao[youtube]
 
-== Moving reactivity into the language
+=== Moving reactivity into the language
 
 In old Svelte, you would tell the computer that some state had changed by calling the `this.set` method:
 
@@ -70,17 +70,17 @@ count += 1; $$invalidate('count', count);
 
 Importantly, we can do all this without the overhead and complexity of using proxies or accessors. It's just a variable.
 
-== New look
+=== New look
 Your components aren't the only thing that's getting a facelift. Svelte itself has a completely new look and feel, thanks to the amazing design work of  who created our new logo and website, which has moved from  to .
 
 We've also changed our tagline, from 'The magical disappearing UI framework' to 'Cybernetically enhanced web apps'. Svelte has many aspects — outstanding performance, small bundles, accessibility, built-in style encapsulation, declarative transitions, ease of use, the fact that it's a compiler, etc — that focusing on any one of them feels like an injustice to the others. 'Cybernetically enhanced' is designed to instead evoke Svelte's overarching philosophy that our tools should work as intelligent extensions of ourselves — hopefully with a retro, William Gibson-esque twist.
 
-== Upgrading from version 2
+=== Upgrading from version 2
 If you're an existing Svelte 2 user, I'm afraid there is going to be some manual upgrading involved. In the coming days we'll release a migration guide and an updated version of  which will do the best it can to automate the process, but this is a significant change and not everything can be handled automatically.
 
 We don't take this lightly: hopefully once you've experienced Svelte 3 you'll understand why we felt it was necessary to break with the past.
 
-== Still to come
+=== Still to come
 
 As grueling as this release has been, we're nowhere near finished. We have a ton of ideas for generating smarter, more compact code, and a long feature wish-list. , our Next.js-style app framework, is still in the middle of being updated to use Svelte 3. The  community project, which allows you to write Android and iOS apps in Svelte, is making solid progress but deserves more complete support from core. We don't yet have the bounty of editor extensions, syntax highlighters, component kits, devtools and so on that other frameworks have, and we should fix that. We really want to add first-class TypeScript support.
 
