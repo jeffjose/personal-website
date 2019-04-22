@@ -1,7 +1,7 @@
 == Svelte 3: Rethinking reactivity
 
 [.subtitle]
-Its finally here
+It's finally here
 
 [.date]
 Apr 22, 2019
