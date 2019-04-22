@@ -22,6 +22,7 @@ Version 3 is a significant overhaul. Our focus for the last five or six months h
 
 To make that possible we first needed to rethink the concept at the heart of modern UI frameworks: reactivity.
 
+[.big]
 video::AdNJ3fydeao[youtube]
 
 === Moving reactivity into the language
