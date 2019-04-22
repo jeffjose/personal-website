@@ -84,7 +84,8 @@ $font-size: 1.35rem
 
 $text-color: white
 $accent-color: #FF0088
-$box-bg-color: #f6f9fc
+$inline-code-bg-color: #eff8ff
+$box-bg-color: lighten($inline-code-bg-color, 1%)
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 35%)
 $bg-color: black
@@ -100,7 +101,8 @@ $green: #34a853
 
 $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
-$box-bg-color: #f6f9fc
+$inline-code-bg-color: #eff8ff
+$box-bg-color: lighten($inline-code-bg-color, 1%)
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 35%)
 $bg-color: white
@@ -144,30 +146,32 @@ $green: #34a853
        font-size: 2.3rem
        font-weight: 500
        letter-spacing: -1px
+       margin: 2rem 0 0 0
 
      h3
        font-size: 2.0rem
        font-weight: 500
        letter-spacing: -1px
-       margin: 2rem 0 1rem 0
+       margin: 2rem 0 0 0
 
      h4
        font-size: 1.9rem
        font-weight: 500
        letter-spacing: -1px
-       margin: 2rem 0 1rem 0
+       margin: 2rem 0 0 0
 
      h5
        font-size: 1.5rem
        font-weight: 500
        letter-spacing: -1px
-       margin: 2rem 0 1rem 0
+       margin: 2rem 0 0 0
 
      img
        width: 100%
 
      p
        font-size: $font-size
+       margin-top: 0.8rem
 
        em
          font-size: 1.45rem
@@ -190,19 +194,19 @@ $green: #34a853
 
      // For inline code
      p  code
-       background-color: $box-bg-color
-       padding: 3px 4px
-       font-size: 1.2rem
-       color: $accent-color
+       background-color: $inline-code-bg-color
+       padding: 4px 10px
+       font-size: 0.9rem
+       //color: $accent-color
 
 
      .listingblock
        padding: 0 1rem
-       #border-radius: .2rem
        background-color: $box-bg-color
        margin-top: 1em
 
        .content
+         padding: 0.8rem
 
          code::selection
            background: darken($box-bg-color, 30%)
@@ -215,7 +219,11 @@ $green: #34a853
          pointer-events: none
 
      a
-       color: $text-color
+       color: $accent-color
+       text-decoration: none
+
+       &:hover
+        text-decoration: underline
 
      .checklist
         list-style-type: none
@@ -272,7 +280,6 @@ $green: #34a853
          height: 100%
 
      .subtitle
-       margin-top: -1.5rem
        color: $gray-color
 
        p
