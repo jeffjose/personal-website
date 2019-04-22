@@ -107,7 +107,9 @@ $green: #34a853
 
 .postitemblock
 
-   background-color: $bg-color
+   margin: 0.5rem 0
+   border-radius: 0.2rem
+   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
    a
      text-decoration: none
@@ -132,6 +134,8 @@ $green: #34a853
 
      img
        width: 100%
+       object-fit: cover
+       height: 7rem
 
      h1, .imageblock
        display: unset
@@ -150,8 +154,8 @@ $green: #34a853
 
      h1
         grid-row: bottom
-        margin: 0
+        margin: 1rem
 
         font-weight: 500
-        font-size: 1.2rem
+        font-size: 1.3rem
 </style>

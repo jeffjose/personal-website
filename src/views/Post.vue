@@ -3,7 +3,6 @@
     div.postitem
       PostItem(:adoc="postContent")
 
-
     h2 More posts
     div.postitemblock(v-for="post in getMorePosts()")
       PostItemBlock(:adoc="post[1]", :title="post[0]")
