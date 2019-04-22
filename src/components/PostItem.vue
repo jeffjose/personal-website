@@ -181,6 +181,7 @@ $green: #34a853
 
      .fullbleed
        grid-column: 1 / -1
+       border: none !important
 
      .imageblock
 
@@ -273,6 +274,7 @@ $green: #34a853
        padding-bottom: 56.25%
        border: .5rem solid darken($accent-color, 5%)
        margin: 1rem 0
+       box-sizing: border-box
 
        iframe
          position: absolute
