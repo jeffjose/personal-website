@@ -1,4 +1,4 @@
-== Svelte 3: Rethinking reactivity
+= Svelte 3: Rethinking reactivity
 
 [.subtitle]
 It's finally here
