@@ -117,10 +117,12 @@ $green: #34a853
    &::v-deep .wrapper
      display: grid
      grid-template-columns: [content-start] auto [content-end]
-     grid-template-rows: [top-start] auto [top-end bottom-start] auto [bottom-end]
+     grid-template-rows: [top-start] minmax(119px, auto) [top-end bottom-start] auto [bottom-end]
 
      color: $text-color
      cursor: pointer
+
+     background-color: lighten(blue, 40%)
 
      ::selection
        background: lighten($accent-color, 40%)
@@ -151,8 +153,10 @@ $green: #34a853
      // styles
      .imageblock.hero
         grid-row: top
+        grid-column: content
 
      h1
+        grid-column: content
         grid-row: bottom
         margin: 1rem
 
