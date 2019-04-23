@@ -112,7 +112,7 @@ $green: #34a853
    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
 
-   background-color: lighten(gray, 30%)
+   background-color: rgb(random(255),random(255),random(255))
 
    a
      text-decoration: none
