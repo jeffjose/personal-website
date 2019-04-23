@@ -104,6 +104,8 @@ $yellow: #fbbc04
 $red: #ea4335
 $green: #34a853
 
+$random-color-1: rgb(random(255),random(255),random(255))
+$random-color-2: rgb(random(255),random(255),random(255))
 
 .postitemblock
 
@@ -111,8 +113,7 @@ $green: #34a853
    border-radius: 0.2rem
    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
-
-   background-color: rgb(random(255),random(255),random(255))
+   background: linear-gradient($random-color-1, $random-color-2)
 
    a
      text-decoration: none
