@@ -2,6 +2,9 @@
 
 Yesterday we just celebrated the 5th Vueniversary — today we are excited to announce the release of Vue 2.6 “Macross”!
 
+[.date]
+Apr 23, 2019
+
 [.hero]
 image::https://cdn-images-1.medium.com/max/880/1*gNx3jSKwLvYhG12fznDyjQ.jpeg[]
 
