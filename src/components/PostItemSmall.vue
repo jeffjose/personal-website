@@ -12,8 +12,7 @@ const asciidoctor = require("asciidoctor")();
 class CustomConverter {
   constructor(adoc) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    this.readingTime = readingTime(adoc).text;
-    //this.readingTime = "xx mins";
+    this.adoc = adoc;
   }
   convert(node, transform) {
     let nodeName = node.getNodeName();
@@ -40,7 +39,7 @@ class CustomConverter {
       nodeName == "paragraph" &&
       node.attributes.$$smap.role == "date"
     ) {
-      node.lines = [`${node.lines[0]} · ${this.readingTime}`];
+      node.lines = [`${node.lines[0]} · ${readingTime(this.adoc).text}`];
       return this.baseConverter.convert(node, transform);
     } else {
       return this.baseConverter.convert(node, transform);
