@@ -111,6 +111,9 @@ $green: #34a853
    border-radius: 0.2rem
    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
+
+   background-color: lighten(gray, 30%)
+
    a
      text-decoration: none
 
@@ -121,8 +124,6 @@ $green: #34a853
 
      color: $text-color
      cursor: pointer
-
-     background-color: lighten(blue, 40%)
 
      ::selection
        background: lighten($accent-color, 40%)
@@ -140,6 +141,7 @@ $green: #34a853
        height: 7rem
 
      h1, .imageblock
+       background-color: white
        display: unset
        justify-self: center
        align-self: center
@@ -162,4 +164,8 @@ $green: #34a853
 
         font-weight: 500
         font-size: 1.3rem
+        padding: 1rem 0
+        margin: 0
+        width: 100%
+        text-align: center
 </style>
