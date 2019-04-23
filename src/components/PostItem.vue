@@ -14,8 +14,7 @@ const asciidoctor = require("asciidoctor")();
 class CustomConverter {
   constructor(adoc) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    //this.readingTime = readingTime(adoc).text;
-    this.readingTime = "xx mins";
+    this.readingTime = readingTime(adoc).text;
   }
   convert(node, transform) {
     if (node.getNodeName() === "preamble" || node.getNodeName() === "open") {

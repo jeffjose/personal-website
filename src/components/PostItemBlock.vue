@@ -109,6 +109,7 @@ $random-color-2: rgb(random(255),random(255),random(255))
 
 .postitemblock
 
+   cursor: pointer
    margin: 0.5rem 0
    border-radius: 0.2rem
    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
