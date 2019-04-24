@@ -14,7 +14,8 @@ const state = {
 
 const mutations = {
   [PUSH_POSTS](state, posts) {
-    Vue.set(state, "posts", posts);
+    console.log(posts);
+    Vue.set(state, "posts", _.reverse(posts));
   },
   [PUSH_CONTENT](state, payload) {
     Vue.set(state.contents, payload.title, payload.content);

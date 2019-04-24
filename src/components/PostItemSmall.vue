@@ -12,7 +12,7 @@ const asciidoctor = require("asciidoctor")();
 class CustomConverter {
   constructor(adoc) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    this.adoc = adoc;
+    this.readingTime = readingTime(adoc).text;
   }
   convert(node, transform) {
     let nodeName = node.getNodeName();
@@ -39,7 +39,7 @@ class CustomConverter {
       nodeName == "paragraph" &&
       node.attributes.$$smap.role == "date"
     ) {
-      node.lines = [`${node.lines[0]} · ${readingTime(this.adoc).text}`];
+      node.lines = [`${node.lines[0]} · ${this.readingTime}`];
       return this.baseConverter.convert(node, transform);
     } else {
       return this.baseConverter.convert(node, transform);
@@ -50,13 +50,30 @@ class CustomConverter {
 export default {
   name: "PostItemSmall",
   created() {
-    asciidoctor.ConverterFactory.register(new CustomConverter(this.adoc), [
-      "html5"
-    ]);
+    // This is very dirty
+    // this.adoc is undefined when the component is first created/mounted
+    // and watch() takes care of registering
+    // .. but on a navigation back, watch() doesnt get triggered
+    // so created() is in charge of registering
+    if (this.adoc) {
+      asciidoctor.ConverterFactory.register(new CustomConverter(this.adoc), [
+        "html5"
+      ]);
+    }
+  },
+  watch: {
+    adoc: function(val) {
+      asciidoctor.ConverterFactory.register(new CustomConverter(this.adoc), [
+        "html5"
+      ]);
+    }
   },
   computed: {
     goto() {
       return "/blog/" + this.title.replace(/\.adoc/, "");
+    },
+    aadoc() {
+      return "x - " + this.adoc + " - x";
     }
   },
   props: ["adoc", "index", "title"],
