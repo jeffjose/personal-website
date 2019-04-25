@@ -13,8 +13,10 @@
     "upgradeall": "yarn-recursive --cmd upgrade"
   },
   "dependencies": {
+    "@asciidoctor/core": "^2.0.2",
     "asciidoctor": "^2.0.0-rc.2",
     "asciidoctor-highlight.js": "^0.1.2",
+    "asciidoctor-prism-extension": "^2.0.6",
     "axios": "^0.18.0",
     "gsap": "^2.1.2",
     "lodash": "^4.17.11",

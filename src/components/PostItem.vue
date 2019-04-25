@@ -9,7 +9,7 @@ const readingTime = require("reading-time");
 const _ = require("lodash");
 
 const asciidoctor = require("asciidoctor")();
-//const highlightJsExt = require("asciidoctor-highlight.js");
+const prismExtension = require("asciidoctor-prism-extension");
 
 class CustomConverter {
   constructor(adoc) {
@@ -38,6 +38,12 @@ class CustomConverter {
         ${node.getContent()}
         `;
     } else if (
+      node.getNodeName() == "listing" &&
+      node.attributes.$$smap.style == "source"
+    ) {
+      console.log("code");
+      return this.baseConverter.convert(node, transform);
+    } else if (
       node.getNodeName() == "paragraph" &&
       node.attributes.$$smap.role == "date"
     ) {
@@ -51,8 +57,8 @@ class CustomConverter {
   }
 }
 
-//const registry = asciidoctor.Extensions.create()
-//highlightJsExt.register(registry)
+asciidoctor.SyntaxHighlighter.register("prism", prismExtension);
+//prismExtension.register(asciidoctor.Extensions);
 
 export default {
   name: "PostItem",
@@ -66,9 +72,8 @@ export default {
     convert: function(str) {
       return asciidoctor.convert(str, {
         doctype: "book",
-        //extension_registry: registry,
-        //attributes: { showtitle: true, "source-highlighter": "highlightjs-ext" }
-        attributes: { showtitle: true }
+        attributes: { showtitle: true, "source-highlighter": "prism" }
+        //attributes: ["showtitle=true", "source-highlighter=highlightjs"]
       });
     }
   }
