@@ -364,7 +364,8 @@ $green: #34a853
        display: inline-block
        color: #fff !important
        background: rgba(0, 0, 0, 0.8)
-       -webkit-border-radius: 100px
+       background: $accent-color
+       background: darken($box-bg-color, 40%)
        border-radius: 100px
        text-align: center
        font-size: .75em
