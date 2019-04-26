@@ -5,11 +5,11 @@
 
 <script>
 const readingTime = require("reading-time");
-
 const _ = require("lodash");
 
 const asciidoctor = require("asciidoctor")();
-const prismExtension = require("asciidoctor-prism-extension");
+const highlightJsExt = require("asciidoctor-highlight.js");
+highlightJsExt.register(asciidoctor.Extensions);
 
 class CustomConverter {
   constructor(adoc) {
@@ -38,12 +38,6 @@ class CustomConverter {
         ${node.getContent()}
         `;
     } else if (
-      node.getNodeName() == "listing" &&
-      node.attributes.$$smap.style == "source"
-    ) {
-      console.log("code");
-      return this.baseConverter.convert(node, transform);
-    } else if (
       node.getNodeName() == "paragraph" &&
       node.attributes.$$smap.role == "date"
     ) {
@@ -57,9 +51,6 @@ class CustomConverter {
   }
 }
 
-asciidoctor.SyntaxHighlighter.register("prism", prismExtension);
-//prismExtension.register(asciidoctor.Extensions);
-
 export default {
   name: "PostItem",
   created() {
@@ -72,8 +63,7 @@ export default {
     convert: function(str) {
       return asciidoctor.convert(str, {
         doctype: "book",
-        attributes: { showtitle: true, "source-highlighter": "prism" }
-        //attributes: ["showtitle=true", "source-highlighter=highlightjs"]
+        attributes: ["showtitle=true", "source-highlighter=highlightjs-ext"]
       });
     }
   }
@@ -81,6 +71,8 @@ export default {
 </script>
 
 <style scoped lang="sass">
+
+@import "~highlight.js/styles/tomorrow.css"
 
 $font-size: 1.35rem
 

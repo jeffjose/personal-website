@@ -15,10 +15,10 @@
   "dependencies": {
     "@asciidoctor/core": "^2.0.2",
     "asciidoctor": "^2.0.0-rc.2",
-    "asciidoctor-highlight.js": "^0.1.2",
-    "asciidoctor-prism-extension": "^2.0.6",
+    "asciidoctor-highlight.js": "^0.2.0",
     "axios": "^0.18.0",
     "gsap": "^2.1.2",
+    "highlight.js": "^9.15.6",
     "lodash": "^4.17.11",
     "reading-time": "^1.1.3",
     "vue": "^2.6.6",
@@ -51,10 +51,7 @@
     "env": {
       "node": true
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
+    "extends": ["plugin:vue/essential", "eslint:recommended"],
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
@@ -65,9 +62,5 @@
       "autoprefixer": {}
     }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
