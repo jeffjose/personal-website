@@ -45,7 +45,6 @@ class CustomConverter {
 
       return this.baseConverter.convert(node, transform);
     } else {
-      //console.log(node.getNodeName());
       return this.baseConverter.convert(node, transform);
     }
   }
@@ -63,7 +62,11 @@ export default {
     convert: function(str) {
       return asciidoctor.convert(str, {
         doctype: "book",
-        attributes: ["showtitle=true", "source-highlighter=highlightjs-ext"]
+        attributes: [
+          "icons=font",
+          "showtitle=true",
+          "source-highlighter=highlightjs-ext"
+        ]
       });
     }
   }
@@ -72,7 +75,10 @@ export default {
 
 <style scoped lang="sass">
 
+//@import "~@asciidoctor/core/dist/css/asciidoctor.css"
 @import "~highlight.js/styles/tomorrow.css"
+
+
 
 $font-size: 1.35rem
 
@@ -130,6 +136,7 @@ $green: #34a853
 
 
      // Post styles go here
+
      ::selection
        background: lighten($accent-color, 40%)
      h1
@@ -350,4 +357,37 @@ $green: #34a853
          td.icon
            div
              color: $red
+
+
+     // Copied from asciidoctor.css
+     .conum[data-value]
+       display: inline-block
+       color: #fff !important
+       background: rgba(0, 0, 0, 0.8)
+       -webkit-border-radius: 100px
+       border-radius: 100px
+       text-align: center
+       font-size: .75em
+       width: 1.67em
+       height: 1.67em
+       line-height: 1.67em
+       font-family: "Open Sans","DejaVu Sans",sans-serif
+       font-style: normal
+       font-weight: bold
+       *
+         color: #fff !important
+       + b
+         display: none
+       &::after
+         content: attr(data-value)
+
+     pre .conum[data-value]
+       position: relative
+       top: -.125em
+
+     b.conum *
+       color: inherit !important
+
+     .conum:not([data-value]):empty
+       display: none
 </style>
