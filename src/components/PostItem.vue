@@ -204,10 +204,7 @@ $green: #34a853
 
        .content
          padding: 0.8rem
-
-         code::selection
-           background: darken($box-bg-color, 30%)
-           color: white
+         line-height: 1.6rem
 
        .title
          color: darken($box-bg-color, 30%)
