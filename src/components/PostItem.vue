@@ -463,4 +463,95 @@ $green: #34a853
 
      .conum:not([data-value]):empty
        display: none
+
+
+     ol > li p
+       margin-bottom: .625em
+
+     ul
+       > li p, dd
+         margin-bottom: .625em
+
+     ol dd, .olist .olist
+       margin-bottom: .625em
+
+     .ulist
+       .ulist, .olist
+         margin-bottom: .625em
+
+     .olist .ulist
+       margin-bottom: .625em
+
+     ul
+       &.checklist, &.none
+         list-style-type: none
+
+     ol.none, ul.no-bullet
+       list-style-type: none
+
+     ol
+       &.no-bullet, &.unnumbered
+         list-style-type: none
+
+     ul.unstyled, ol.unstyled
+       list-style-type: none
+
+     ul.no-bullet
+       margin-left: .625em
+
+     ol
+       &.no-bullet, &.unnumbered
+         margin-left: .625em
+
+     ul.unstyled, ol.unstyled
+       margin-left: 0
+
+     ul
+       &.checklist
+         margin-left: .625em
+         li > p:first-child >
+           .fa-square-o:first-child, .fa-check-square-o:first-child
+             width: 1.25em
+             font-size: .8em
+             position: relative
+             bottom: .125em
+           input[type="checkbox"]:first-child
+             margin-right: .25em
+       &.inline
+         display: -ms-flexbox
+         display: -webkit-box
+         display: flex
+         -ms-flex-flow: row wrap
+         -webkit-flex-flow: row wrap
+         flex-flow: row wrap
+         list-style: none
+         margin: 0 0 .625em -1.25em
+         > li
+           margin-left: 1.25em
+
+     .unstyled dl dt
+       font-weight: 400
+       font-style: normal
+
+     ol
+       &.arabic
+         list-style-type: decimal
+       &.decimal
+         list-style-type: decimal-leading-zero
+       &.loweralpha
+         list-style-type: lower-alpha
+       &.upperalpha
+         list-style-type: upper-alpha
+       &.lowerroman
+         list-style-type: lower-roman
+       &.upperroman
+         list-style-type: upper-roman
+       &.lowergreek
+         list-style-type: lower-greek
+
+     .fa-square-o:before
+       content: "☐"
+
+     .fa-check-square-o:before
+       content: "☑"
 </style>
