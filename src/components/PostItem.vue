@@ -64,6 +64,7 @@ export default {
         doctype: "book",
         attributes: [
           "icons=font",
+          "experimental=true",
           "showtitle=true",
           "source-highlighter=highlightjs-ext"
         ]
@@ -181,6 +182,7 @@ $green: #34a853
 
          code
            font-style: normal
+           font-family: "Fira Mono", monospace
 
      .fullbleed
        grid-column: 1 / -1
@@ -202,6 +204,7 @@ $green: #34a853
        padding: 4px 10px
        font-size: 0.9rem
        //color: $accent-color
+       font-family: "Fira Mono", monospace
 
 
      .listingblock
@@ -298,6 +301,32 @@ $green: #34a853
        p
          margin-top: 0rem
          font-size: 1rem
+
+     // Copied from asciidoctor.css
+     kbd
+       font-family: "Fira Mono", monospace
+       display: inline-block
+       color: $text-color
+       font-size: .65em
+       line-height: 1.45
+       background: #f7f7f7
+       border: 1px solid #ccc
+       -webkit-border-radius: 3px
+       border-radius: 3px
+       -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 0.1em white inset
+       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 0.1em #fff inset
+       margin: 0 .15em
+       padding: .2em .5em
+       vertical-align: middle
+       position: relative
+       top: -.1em
+       white-space: nowrap
+
+     .keyseq kbd
+       &:first-child
+         margin-left: 0
+       &:last-child
+         margin-right: 0
 
      .admonitionblock
        font-size: $font-size

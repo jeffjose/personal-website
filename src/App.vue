@@ -21,7 +21,4 @@ html
 body
   font-family: Spectral, serif
   margin: 0
-
-code
-  font-family: "Fira Mono", monospace
 </style>
