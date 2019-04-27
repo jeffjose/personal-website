@@ -139,7 +139,7 @@ $green: #34a853
      // Post styles go here
 
      ::selection
-       background: lighten($accent-color, 40%)
+       //background: lighten($accent-color, 40%)
      h1
        font-size: 2.7rem
        font-weight: 500
@@ -217,7 +217,7 @@ $green: #34a853
        margin: 0.5em 0
 
        .content
-         padding: 0.8rem
+         padding: 0.5rem 0.8rem
          line-height: 1.6rem
 
        .title
@@ -367,9 +367,19 @@ $green: #34a853
      .fa-angle-right:before
        content: "›"
 
+     mark
+       background-color: lighten($accent-color, 35%)
+       transition: all 80ms ease-in-out
+       padding: 0px 5px
+
+       &:hover
+        background-color: lighten($accent-color, 10%)
+        color: white
+
      sup
        color: $accent-color
        margin-left: 5px
+       font-size: 1rem
 
      .admonitionblock
        font-size: $font-size
@@ -435,9 +445,8 @@ $green: #34a853
      .conum[data-value]
        display: inline-block
        color: #fff !important
-       background: rgba(0, 0, 0, 0.8)
-       background: $accent-color
        background: darken($box-bg-color, 40%)
+       background: $accent-color
        border-radius: 100px
        text-align: center
        font-size: .75em
@@ -457,6 +466,10 @@ $green: #34a853
      pre .conum[data-value]
        position: relative
        top: -.125em
+
+     hr
+       border: none
+       border-top: 1px solid lighten($accent-color, 20%)
 
      b.conum *
        color: inherit !important
@@ -551,7 +564,13 @@ $green: #34a853
 
      .fa-square-o:before
        content: "☐"
+       font-size: $font-size
+       position: absolute
+       margin-top: -13px
 
      .fa-check-square-o:before
        content: "☑"
+       font-size: $font-size
+       position: absolute
+       margin-top: -13px
 </style>
