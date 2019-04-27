@@ -328,6 +328,45 @@ $green: #34a853
        &:last-child
          margin-right: 0
 
+     .menuseq, .menuref
+       color: #000
+
+     .menuseq b:not(.caret), .menuref, .button
+       font-weight: normal
+       background-color: lighten($gray-color, 50%)
+       border: 1px solid lighten($gray-color, 40%)
+       padding: 3px 5px
+       border-radius: 3px
+       font-family: "Fira Mono", monospace
+       font-size: 0.65em
+
+     .menuseq
+       word-spacing: -.02em
+       color: $text-color
+
+       b.caret
+         font-size: 2rem
+         line-height: .8
+
+       i.caret
+         font-size: 1.5rem
+         color: $text-color
+         font-weight: bold
+         text-align: center
+         width: .45em
+
+     .fa
+         display: inline-block
+         font: normal normal normal 14px/1 "Fira Sans"
+         font-size: inherit
+
+     .fa-angle-right:before
+       content: "›"
+
+     sup
+       color: $accent-color
+       margin-left: 5px
+
      .admonitionblock
        font-size: $font-size
 
