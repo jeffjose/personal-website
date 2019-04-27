@@ -175,7 +175,8 @@ $green: #34a853
 
      p
        font-size: $font-size
-       margin-top: 0.8rem
+       margin-top: 0.9rem
+       margin-bottom: 0.9rem
 
        em
          font-size: 1.45rem
@@ -197,6 +198,9 @@ $green: #34a853
 
      .big
        grid-column: content
+
+     li
+       font-size: $font-size
 
      // For inline code
      p  code
