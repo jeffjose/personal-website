@@ -385,7 +385,7 @@ $green: #34a853
        font-size: $font-size
 
        &.note, &.tip, &.important, &.warning, &.caution
-         padding: 1rem 0
+         padding: 1rem
 
          td.icon
            div
