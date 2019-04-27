@@ -248,7 +248,7 @@ $green: #34a853
            margin-top: 0.5rem
 
      .quoteblock
-       font-size: 1.7rem
+       font-size: 1.5rem
        color: $blockquote-color
        //border-left: .5rem solid $accent-color
 
