@@ -12,8 +12,7 @@ const asciidoctor = require("asciidoctor")();
 class CustomConverter {
   constructor(adoc) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    //this.readingTime = readingTime(adoc).text;
-    this.readingTime = "xx mins";
+    this.readingTime = readingTime(adoc).text;
   }
   convert(node, transform) {
     let nodeName = node.getNodeName();
@@ -24,9 +23,16 @@ class CustomConverter {
       nodeName == "section" ||
       nodeName == "inline_quoted" ||
       nodeName == "dlist" ||
-      nodeName == "paragraph" ||
+      nodeName == "listing" ||
+      nodeName == "table" ||
+      nodeName == "colist" ||
       nodeName == "inline_anchor"
     ) {
+      return "";
+    }
+
+    // Only `date` needs to be rendered
+    if (nodeName == "paragraph" && node.attributes.$$smap.role != "date") {
       return "";
     }
 
@@ -37,7 +43,6 @@ class CustomConverter {
       node.attributes.$$smap.role == "date"
     ) {
       node.lines = [`${node.lines[0]} · ${this.readingTime}`];
-
       return this.baseConverter.convert(node, transform);
     } else {
       return this.baseConverter.convert(node, transform);
@@ -127,14 +132,10 @@ $random-color-2: rgb(random(255),random(255),random(255))
      color: $text-color
      cursor: pointer
 
-     ::selection
-       background: lighten($accent-color, 40%)
-
      &:hover
        color: $accent-color
 
      *
-       grid-column: word
        display: none
 
      img
@@ -142,22 +143,21 @@ $random-color-2: rgb(random(255),random(255),random(255))
        object-fit: cover
        height: 7rem
 
-     h1, .imageblock
-       background-color: white
+     h1, .imageblock, .date
        display: unset
-       justify-self: center
-       align-self: center
-
        *
-         display: unset
-         justify-self: center
-         align-self: center
+        display: unset
 
 
      // styles
      .imageblock.hero
         grid-row: top
         grid-column: content
+
+     h1, .imageblock
+       background-color: white
+       justify-self: center
+       align-self: center
 
      h1
         grid-column: content
@@ -166,8 +166,18 @@ $random-color-2: rgb(random(255),random(255),random(255))
 
         font-weight: 500
         font-size: 1.3rem
-        padding: 1rem 0
+        padding: 2.2rem 0 0.5rem 0
         margin: 0
         width: 100%
         text-align: center
+
+     .date
+        grid-column: content
+        grid-row: bottom
+        color: $gray-color
+        margin: 0
+        padding: 0.7rem 0
+        width: 100%
+        text-align: center
+        font-size: 0.9rem
 </style>

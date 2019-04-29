@@ -23,6 +23,9 @@ class CustomConverter {
       nodeName == "section" ||
       nodeName == "inline_quoted" ||
       nodeName == "dlist" ||
+      nodeName == "listing" ||
+      nodeName == "table" ||
+      nodeName == "colist" ||
       nodeName == "inline_anchor"
     ) {
       return "";
@@ -148,9 +151,6 @@ $green: #34a853
      @media (max-width: 800px)
        grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
 
-     ::selection
-       background: lighten($accent-color, 40%)
-
      &:hover
        color: $accent-color
 
@@ -175,7 +175,6 @@ $green: #34a853
      .date
         grid-row: middle
         color: $gray-color
-
 
      h1
         grid-row: bottom
