@@ -11,7 +11,8 @@
     "lint": "vue-cli-service lint",
     "deploy": "yarn buildall && firebase deploy",
     "dev": "yarn buildall; firebase serve",
-    "upgradeall": "yarn-recursive --cmd upgrade"
+    "upgradeall": "yarn-recursive --cmd upgrade",
+    "server": "sudo docker build --tag=personal-website server/; sudo docker run -e 'PORT=8080' -p 80:8080 personal-website"
   },
   "dependencies": {
     "@asciidoctor/core": "^2.0.2",
