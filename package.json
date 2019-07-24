@@ -10,6 +10,7 @@
     "installall": "yarn-recursive --cmd install",
     "lint": "vue-cli-service lint",
     "deploy": "yarn buildall && firebase deploy",
+    "dev": "yarn buildall; firebase serve",
     "upgradeall": "yarn-recursive --cmd upgrade"
   },
   "dependencies": {
