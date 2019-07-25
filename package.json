@@ -12,8 +12,9 @@
     "deploy": "yarn buildall && firebase deploy",
     "dev": "yarn buildall; firebase serve",
     "upgradeall": "yarn-recursive --cmd upgrade",
-    "docker": "sudo docker build --tag=personal-website .; sudo docker run -e 'PORT=8080' -p 80:8080 personal-website",
-    "dockerinspect": "sudo docker build --tag=personal-website .; sudo docker run -e 'PORT=8080' -p 80:8080 -t -i personal-website /bin/bash"
+    "docker": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 personal-website",
+    "dockerinspect": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 -t -i personal-website /bin/bash",
+    "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website"
   },
   "dependencies": {
     "@asciidoctor/core": "^2.0.2",

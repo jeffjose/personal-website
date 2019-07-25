@@ -13,7 +13,7 @@ def hello_world():
 
     ago = timeago.format(start, now)
 
-    return 'Started {}\n. Hello World!\n'.format(ago)
+    return 'Started {}.\n Hello World!\n'.format(ago)
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
