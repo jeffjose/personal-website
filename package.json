@@ -13,6 +13,7 @@
     "dev": "yarn buildall; firebase serve",
     "upgradeall": "yarn-recursive --cmd upgrade",
     "docker": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 personal-website",
+    "dockerrun": "docker run -e 'PORT=8080' -p 80:8080 personal-website",
     "dockerinspect": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 -t -i personal-website /bin/bash",
     "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website"
   },
