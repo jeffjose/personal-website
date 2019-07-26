@@ -9,7 +9,7 @@ COPY server/ .
 COPY dist/ dist/
 
 # Install production dependencies.
-RUN pip install Flask gunicorn timeago
+RUN pip install gunicorn sanic
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.

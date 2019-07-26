@@ -1,25 +1,25 @@
-import os
-import datetime, timeago
+from pathlib import Path
 
-from flask import Flask, render_template
+from sanic import Sanic, response
 
-start = datetime.datetime.now()
+app = Sanic()
 
-app = Flask(__name__, static_url_path="/static/")
+def setup_project(app, project):
+    app.static(project.name, './dist/{}/index.html'.format(project.name))
+    app.static(project.name, './dist/{}'.format(project.name))
 
-@app.route('/hello')
-def hello_world():
-    now = datetime.datetime.now()
+projects = [x for x in Path('dist/').iterdir() if x.name != 'homepage']
 
-    ago = timeago.format(start, now)
+for project in projects:
+    setup_project(app, project)
 
-    return 'Started {}.\n Hello World!\n'.format(ago)
-
-@app.route("/", defaults={'path': ''})
+@app.route('/')
 @app.route('/<path:path>')
-def catchall(path):
-    return "{}\n".format(app.open_resource("./dist/homepage/index.html"))
-    #return app.send_static_file('./dist/homepage/index.html')
+async def catch_all(request, path=''):
+    try:
+        return await response.file('./dist/homepage/{}'.format(path))
+    except:
+        return await response.file('./dist/homepage/index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port = 8080, debug = True, access_log = True)
