@@ -25,13 +25,16 @@
     .content
       p
         | Made by
+        |
         a(href='http://jeffreyjose.com') Jeffrey Jose
         | .
       p
         | Questions, bugs, feature requests? Ping here
+        |
         a(href='http://twitter.com/jeffjose') @jeffjose
       p
         | Statistical Distributions come from the excellent
+        |
         a(href='http://jstat.github.io/') jStat
 
 </template>
