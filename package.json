@@ -15,7 +15,8 @@
     "docker": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 personal-website",
     "dockerrun": "docker run -e 'PORT=8080' -p 80:8080 personal-website",
     "dockerinspect": "docker build --tag=personal-website .; docker run -e 'PORT=8080' -p 80:8080 -t -i personal-website /bin/bash",
-    "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website"
+    "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website",
+    "cloudprod": "docker build --tag=gcr.io/personal-c913b/personal-website-prod .; docker push gcr.io/personal-c913b/personal-website-prod"
   },
   "dependencies": {
     "@asciidoctor/core": "^2.0.2",
