@@ -1,3 +1,6 @@
+#
+# Author: Jeffrey Jose | jeffjosejeff@gmail.com
+#
 from pathlib import Path
 
 from sanic import Sanic, response
