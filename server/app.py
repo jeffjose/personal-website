@@ -1,8 +1,10 @@
 from pathlib import Path
 
 from sanic import Sanic, response
+from sanic_sslify import SSLify
 
-app = Sanic()
+app = Sanic(__name__)
+sslify = SSLify(app, subdomains=True)
 
 def setup_project(app, project):
     app.static(project.name, './dist/{}/index.html'.format(project.name))
@@ -22,4 +24,4 @@ async def catch_all(request, path=''):
         return await response.file('./dist/homepage/index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port = 8080, debug = True, access_log = True)
+    app.run(host='0.0.0.0', port = 8080, debug = False, access_log = True)
