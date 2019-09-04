@@ -3,14 +3,17 @@
 FROM python:3.7
 
 # Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
+#ENV APP_HOME /app
+#WORKDIR $APP_HOME
+WORKDIR /app
 COPY server/ .
 COPY dist/ dist/
 
 # Install production dependencies.
 RUN pip install -r requirements.txt
 
+# Setup environment variables
+ENV DEBUG False
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
