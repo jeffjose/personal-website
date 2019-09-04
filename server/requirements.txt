@@ -2,4 +2,5 @@ gunicorn
 requests
 sanic
 Sanic-SSLify
+sanic-scheduler
 environs

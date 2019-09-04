@@ -5,19 +5,24 @@ import requests
 import environs
 import time
 import pathlib
+from datetime import timedelta
 
+import sanic
 from sanic import Sanic, response
 from sanic.views import CompositionView
 from sanic_sslify import SSLify
+from sanic_scheduler import SanicScheduler, task
 
 app = Sanic(__name__)
 sslify = SSLify(app, subdomains=True)
+scheduler = SanicScheduler(app)
 
 env = environs.Env()
 
 CACHE = {}
 CACHE_TIMEOUT = 100
 BLOGPOSTS_URL = "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
+REDIRECTS_URL = "https://raw.githubusercontent.com/jeffjose/personal-website/master/server/redirects.txt"
 
 def get_cache(key):
 
@@ -50,18 +55,11 @@ for project in projects:
 
 # Setup static redirects
 #
-def setup_redirects(redirects):
+@task(timedelta(seconds = 60))
+def setup_redirects(_):
 
-    view = CompositionView()
-    view.add(['GET'], lambda request: response.redirect(redirects.get(request.path.strip('/'), '/')))
-
-    for (src, dst) in redirects.items():
-        print(f'/{src}')
-        app.add_route(view, f'/{src}')
-
-redirects = dict([map(lambda r: r.strip(), x.split('=')) for x in pathlib.Path('server/redirects.txt').read_text().splitlines()])
-
-setup_redirects(redirects)
+    print('Refreshing redirects')
+    CACHE['redirects'] = dict([map(lambda r: r.strip(), x.split('=')) for x in requests.get(REDIRECTS_URL).text.splitlines()])
 
 # API
 #
@@ -86,6 +84,11 @@ async def catch_all(request, path=''):
     try:
         return await response.file('./dist/homepage/{}'.format(path))
     except:
+
+        if CACHE['redirects'].get(path):
+            redirect = CACHE['redirects'].get(path)
+            return response.redirect(redirect)
+
         return await response.file('./dist/homepage/index.html')
 
 if __name__ == '__main__':

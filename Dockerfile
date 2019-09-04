@@ -4,13 +4,12 @@ FROM python:3.7
 
 # Copy local code to the container image.
 WORKDIR /app
-COPY server/app.py .
+COPY server/ .
 COPY dist/ dist/
-COPY server/ server/
 
 # Install production dependencies.
 RUN pip install --upgrade pip
-RUN pip install -r server/requirements.txt
+RUN pip install -r requirements.txt
 
 # Setup environment variables
 ENV DEBUG False
