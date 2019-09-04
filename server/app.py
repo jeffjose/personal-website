@@ -15,24 +15,24 @@ sslify = SSLify(app, subdomains=True)
 env = environs.Env()
 
 CACHE = {}
+CACHE_TIMEOUT = 30
+BLOGPOSTS_URL = "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
 
-def memoize(func):
+def get_cache(key):
 
-    def wrapped(*args, **kwargs):
+    now = time.time()
 
-        now = time.time()
-
-        if now - CACHE.get('posts', {}).get('expires', now - 100) < 10:
-            results = CACHE['posts']['data']
-        else:
-            results = func(*args, **kwargs)
-
-            # Cache it
-            CACHE['posts'] = {'data': results, 'expires': time.time()}
-
+    if now - CACHE.get(key, {}).get('expires', now - 100) < CACHE_TIMEOUT:
+        results = CACHE[key]
         return results
+    else:
+        return False
 
-    return wrapped
+def set_cache(key, data):
+
+    CACHE['posts'] = {'data': data, 'expires': time.time()}
+
+    return data
 
 
 # Scan through dist/ and figure out what projects are in there
@@ -52,12 +52,13 @@ for project in projects:
 # API
 #
 @app.route('/_api/posts')
-@memoize
 async def catch_all(request, path=''):
-    return response.json(requests.get("https://api.github.com/repos/jeffjose/personal-website/contents/src/posts").json())
+    if get_cache(key = 'posts'):
+        posts = get_cache(key = 'posts')
+    else:
+        posts = set_cache('posts', requests.get(BLOGPOSTS_URL).json())
 
-
-
+    return response.json(posts)
 
 
 # Catch-all route to serve index.html or project's index.html
