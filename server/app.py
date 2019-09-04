@@ -22,7 +22,7 @@ env = environs.Env()
 CACHE = {}
 CACHE_TIMEOUT = 100
 BLOGPOSTS_URL = "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
-REDIRECTS_URL = "https://raw.githubusercontent.com/jeffjose/personal-website/master/server/redirects.txt"
+REDIRECTS_URL = "https://raw.githubusercontent.com/jeffjose/personal-website/master/server/redirects"
 
 def get_cache(key):
 
@@ -55,7 +55,7 @@ for project in projects:
 
 # Setup static redirects
 #
-@task(timedelta(seconds = 60))
+@task(timedelta(seconds = CACHE_TIMEOUT))
 def setup_redirects(_):
 
     print('Refreshing redirects')
