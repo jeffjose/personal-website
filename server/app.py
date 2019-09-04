@@ -28,6 +28,16 @@ for project in projects:
 
 
 
+# API
+#
+@app.route('/_api/posts')
+async def catch_all(request, path=''):
+    return response.json(requests.get("https://api.github.com/repos/jeffjose/personal-website/contents/src/posts").json())
+
+
+
+
+
 # Catch-all route to serve index.html or project's index.html
 #
 @app.route('/')
