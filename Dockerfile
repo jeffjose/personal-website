@@ -10,6 +10,7 @@ COPY server/ .
 COPY dist/ dist/
 
 # Install production dependencies.
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Setup environment variables

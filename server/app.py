@@ -1,10 +1,10 @@
 #
 # Author: Jeffrey Jose | jeffjosejeff@gmail.com
 #
-from pathlib import Path
 import requests
 import environs
 import time
+import pathlib
 
 from sanic import Sanic, response
 from sanic_sslify import SSLify
@@ -15,7 +15,7 @@ sslify = SSLify(app, subdomains=True)
 env = environs.Env()
 
 CACHE = {}
-CACHE_TIMEOUT = 30
+CACHE_TIMEOUT = 10
 BLOGPOSTS_URL = "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
 
 def get_cache(key):
@@ -28,8 +28,9 @@ def get_cache(key):
     else:
         return False
 
-def set_cache(key, data):
+async def set_cache(key, data):
 
+    print(f'setting cache for {key}')
     CACHE['posts'] = {'data': data, 'expires': time.time()}
 
     return data
@@ -41,10 +42,11 @@ def setup_project(app, project):
     app.static(project.name, './dist/{}/index.html'.format(project.name))
     app.static(project.name, './dist/{}'.format(project.name))
 
-projects = [x for x in Path('dist/').iterdir() if x.name != 'homepage']
+projects = [x for x in pathlib.Path('dist/').iterdir() if x.name != 'homepage']
 
 for project in projects:
     setup_project(app, project)
+
 
 
 
@@ -56,7 +58,10 @@ async def catch_all(request, path=''):
     if get_cache(key = 'posts'):
         posts = get_cache(key = 'posts')
     else:
-        posts = set_cache('posts', requests.get(BLOGPOSTS_URL).json())
+        posts = requests.get(BLOGPOSTS_URL).json()
+
+        app.add_task(set_cache('posts', posts))
+
 
     return response.json(posts)
 
