@@ -30,7 +30,7 @@ export default new Router({
       component: BlogWrapper,
       beforeEnter: (to, from, next) => {
         console.log("[/]: beforeEnter");
-        store.dispatch("posts/getPosts").then(function(response) {
+        store.dispatch("posts/getPosts2").then(function(response) {
           next();
         });
       },

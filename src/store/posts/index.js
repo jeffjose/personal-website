@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 import axios from "axios";
 
-import { PUSH_POSTS, PUSH_CONTENT } from "./mutations";
+import { PUSH_POSTS, PUSH_POSTS2, PUSH_CONTENT } from "./mutations";
 
 Vue.use(Vuex);
 
@@ -16,6 +16,10 @@ const mutations = {
   [PUSH_POSTS](state, posts) {
     console.log(posts);
     Vue.set(state, "posts", _.reverse(posts));
+  },
+  [PUSH_POSTS2](state, posts2) {
+    console.log(posts2);
+    Vue.set(state, "posts2", _.reverse(posts2));
   },
   [PUSH_CONTENT](state, payload) {
     Vue.set(state.contents, payload.title, payload.content);
@@ -49,6 +53,14 @@ const actions = {
       _.map(response.data, function(x) {
         dispatch("getPostContents", { title: x.name, url: x.download_url });
       });
+    });
+  },
+  getPosts2({ commit, dispatch }) {
+    return axios({
+      // TODO
+      url: "http://localhost:8080/_api/posts"
+    }).then(function(response) {
+      commit(PUSH_POSTS, response.data);
     });
   },
   getPostContents({ commit, getters }, payload) {
