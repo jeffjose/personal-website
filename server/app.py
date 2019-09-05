@@ -29,12 +29,14 @@ REDIRECTS_URL = "https://raw.githubusercontent.com/jeffjose/personal-website/mas
 STATIC_URL = "https://api.github.com/repos/jeffjose/personal-website/contents/static"
 
 
+# CACHING
+#
 def get_cache(key):
 
     now = time.time()
 
     if now - CACHE.get(key, {}).get("expires", now - 100) < CACHE_TIMEOUT:
-        results = CACHE[key]
+        results = CACHE[key]['data']
         return results
     else:
         return False
@@ -64,7 +66,7 @@ for project in projects:
 # Setup static redirects
 #
 @task(timedelta(seconds=CACHE_TIMEOUT))
-def setup_redirects(_):
+def setup(_):
 
     CACHE["redirects"] = dict([
         map(lambda r: r.strip(), x.split("="))
@@ -83,6 +85,9 @@ async def catch_all(request, path=""):
         posts = get_cache(key="posts")
     else:
         posts = requests.get(BLOGPOSTS_URL).json()
+
+        for post in posts:
+            post['contents'] = requests.get(post['download_url']).text
 
         app.add_task(set_cache("posts", posts))
 
