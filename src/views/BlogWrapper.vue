@@ -32,7 +32,7 @@ export default {
     // The other one is called when user goes directly to /post-title
     //
     console.log("[BlogWrapper]: beforeRouteUpdate", to, from);
-    let posts = store.getters["posts/posts"];
+    let posts = store.getters["posts/posts2"];
     var index = _.findIndex(posts, {
       name: `${to.params.title}.adoc`
     });

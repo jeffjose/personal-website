@@ -241,7 +241,7 @@ export default {
   },
   methods: {
     ...mapActions("posts", {
-      getPosts: "getPosts",
+      getPosts2: "getPosts2",
       getPostContents: "getPostContents",
       getMorePosts: function() {
         return this.relatedContents(this.$route.params.title);

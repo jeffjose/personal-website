@@ -3,20 +3,16 @@ import Vuex from "vuex";
 
 import axios from "axios";
 
-import { PUSH_POSTS, PUSH_POSTS2, PUSH_CONTENT } from "./mutations";
+import { PUSH_POSTS2, PUSH_CONTENT } from "./mutations";
 
 Vue.use(Vuex);
 
 const state = {
-  posts: [],
+  posts2: [],
   contents: {}
 };
 
 const mutations = {
-  [PUSH_POSTS](state, posts) {
-    console.log(posts);
-    Vue.set(state, "posts", _.reverse(posts));
-  },
   [PUSH_POSTS2](state, posts2) {
     console.log(posts2);
     Vue.set(state, "posts2", _.reverse(posts2));
@@ -27,7 +23,7 @@ const mutations = {
 };
 
 const getters = {
-  posts: ({ posts }) => posts,
+  posts2: ({ posts2 }) => posts2,
   contents: ({ contents }) => contents,
 
   content: (state, getters) => title => {
@@ -43,24 +39,11 @@ const getters = {
 };
 
 const actions = {
-  getPosts({ commit, dispatch }) {
-    return axios({
-      url:
-        "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
-    }).then(function(response) {
-      commit(PUSH_POSTS, response.data);
-
-      _.map(response.data, function(x) {
-        dispatch("getPostContents", { title: x.name, url: x.download_url });
-      });
-    });
-  },
   getPosts2({ commit, dispatch }) {
     return axios({
-      // TODO
       url: "http://localhost:8080/_api/posts"
     }).then(function(response) {
-      commit(PUSH_POSTS, response.data);
+      commit(PUSH_POSTS2, response.data);
     });
   },
   getPostContents({ commit, getters }, payload) {
