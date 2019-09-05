@@ -6,9 +6,9 @@
         p.dot ·
         router-link(:to="{path: '/blog'}") Blog
         p.dot ·
-        a.link(href="https://twitter.com/jeffjose") Twitter
+        a.link(href="/twitter") Twitter
         p.dot ·
-        a.link(href="https://www.linkedin.com/in/jeffreyjose/") Linkedin
+        a.link(href="/linkedin") Linkedin
       p.name Jeffrey Jose
 </template>
 

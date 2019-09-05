@@ -9,8 +9,8 @@
           span.desc Product Manager at Google
           div.links
             //router-link.link(:to="{path: '/blog'}") Blog
-            a.link(href="https://twitter.com/jeffjose") Twitter
-            a.link(href="https://www.linkedin.com/in/jeffreyjose/") Linkedin
+            a.link(href="/twitter") Twitter
+            a.link(href="/linkedin") Linkedin
 </template>
 
 <script>
