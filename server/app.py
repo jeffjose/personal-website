@@ -27,7 +27,8 @@ env = environs.Env()
 
 CACHE = {}
 CACHE_TIMEOUT = 100
-BLOGPOSTS_URL = (
+BLOGPOST_URL = 'https://api.github.com/repos/jeffjose/personal-website/contents/src/posts'
+ALL_BLOGPOSTS_URL = (
     "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts"
 )
 REDIRECTS_URL = "https://raw.githubusercontent.com/jeffjose/personal-website/master/server/redirects"
@@ -50,7 +51,7 @@ def get_cache(key):
 async def set_cache(key, data):
 
     print(f"setting cache for {key}")
-    CACHE["posts"] = {"data": data, "expires": time.time()}
+    CACHE[key] = {"data": data, "expires": time.time()}
 
     return data
 
@@ -84,19 +85,45 @@ def setup(_):
 
 # API
 #
-@app.route("/_api/posts", methods=["GET", "POST"])
-async def catch_all(request, path=""):
-    if get_cache(key="posts"):
-        posts = get_cache(key="posts")
+
+
+@app.route("/_api/post/<title>", methods=["GET", "POST"])
+async def catch_all(request, title):
+    if get_cache(key=title):
+        post = get_cache(key=title)
     else:
-        posts = requests.get(BLOGPOSTS_URL).json()
+        post = requests.get(f'{BLOGPOST_URL}/{title}.adoc').json()
+        try:
+            post['contents'] = requests.get(post['download_url']).text
+
+            # We dont need the encoded content, since we've fetched ascii
+            # ourselves into `contents`. Remove `content`
+            post.pop('content')
+        except:
+            print('setting empty')
+            pass
+        finally:
+            app.add_task(set_cache(title, post))
+
+    return response.json(post)
+
+
+@app.route("/_api/posts", methods=["GET", "POST"])
+async def catch_all(request):
+    if get_cache(key="latest"):
+        posts = get_cache(key="latest")
+    else:
+        posts = requests.get(ALL_BLOGPOSTS_URL).json()
 
         for post in posts:
             post['contents'] = requests.get(post['download_url']).text
 
-        posts = {x['name']: x for x in reversed(posts)}
+        posts = {
+            x['name']: x
+            for x in reversed(posts) if x['name'] in ['vue.adoc']
+        }
 
-        app.add_task(set_cache("posts", posts))
+        app.add_task(set_cache("latest", posts))
 
     return response.json(posts)
 
