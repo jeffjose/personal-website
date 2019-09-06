@@ -19,3 +19,4 @@ ENV DEBUG False
 # For environments with multiple CPU cores, increase the number of workers
 # to be equal to the cores available.
 CMD exec gunicorn --bind :$PORT --worker-class sanic.worker.GunicornWorker --workers 1 --threads 8 --access-logfile - --error-logfile - --log-level debug app:app
+#CMD exec uvicorn --host 0.0.0.0 --port $PORT --workers 1 --log-level debug app:app
