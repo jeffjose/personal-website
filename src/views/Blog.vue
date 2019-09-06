@@ -1,6 +1,6 @@
 <template lang="pug">
   div.blog
-    PostItemSmall(v-for="(post, key, index) in posts2" :adoc = "post.contents", :index="index", :title='post.name')
+    PostItemSmall(v-for="(post, key, index) in posts" :adoc = "post.contents", :index="index", :title='post.name')
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   components: { PostItem, PostItemSmall },
   computed: {
     ...mapGetters("posts", {
-      posts2: "posts2"
+      posts: "posts"
     })
   }
 };

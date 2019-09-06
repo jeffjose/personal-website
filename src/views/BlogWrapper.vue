@@ -32,24 +32,14 @@ export default {
     // The other one is called when user goes directly to /post-title
     //
     console.log("[BlogWrapper]: beforeRouteUpdate", to, from);
-    let posts = store.getters["posts/posts2"];
-    var index = _.findIndex(posts, {
-      name: `${to.params.title}.adoc`
-    });
+    let posts = store.getters["posts/posts"];
 
-    if (index < 0) {
-      console.log("404");
+    if (!(`${to.params.title}.adoc` in posts)) {
+      console.log("[BlogWrapper]: 404");
       next({ path: "404" });
       return;
     }
-    store
-      .dispatch("posts/getPostContents", {
-        url: posts[index].download_url,
-        title: to.params.title
-      })
-      .then(function(response) {
-        next();
-      });
+    next();
   }
 };
 </script>

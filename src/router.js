@@ -30,7 +30,7 @@ export default new Router({
       component: BlogWrapper,
       beforeEnter: (to, from, next) => {
         console.log("[/]: beforeEnter");
-        store.dispatch("posts/getPosts2").then(function(response) {
+        store.dispatch("posts/getPosts").then(function(response) {
           next();
         });
       },
@@ -51,23 +51,12 @@ export default new Router({
             //
             console.log("[/:title]: beforeEnter");
             let posts = store.getters["posts/posts"];
-            var index = _.findIndex(posts, {
-              name: `${to.params.title}.adoc`
-            });
-
-            if (index < 0) {
-              console.log("404");
+            if (!(`${to.params.title}.adoc` in posts)) {
+              console.log("[router]: 404");
               next({ name: "fourofour" });
               return;
             }
-            store
-              .dispatch("posts/getPostContents", {
-                url: posts[index].download_url,
-                title: posts[index].name
-              })
-              .then(function(response) {
-                next();
-              });
+            next();
           }
         }
       ]

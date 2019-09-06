@@ -1,11 +1,11 @@
 <template lang="pug">
   div.post
     div.postitem
-      PostItem(:adoc="postContent")
+      PostItem(:adoc="contents")
 
     h2 More posts
-    div.postitemblock(v-for="post in getMorePosts()")
-      PostItemBlock(:adoc="post[1]", :title="post[0]")
+    div.postitemblock(v-for="(post, key, index) in getMore()")
+      PostItemBlock(:adoc="post.contents", :title="key")
 
 </template>
 
@@ -221,30 +221,19 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "post",
   components: { PostItem, PostItemBlock, Footer },
-  created() {
-    // TODO: This wont work since there's no payload.url
-    this.getPostContents({
-      title: this.$route.params.title
-    });
-  },
   computed: {
     ...mapGetters("posts", {
       posts: "posts",
-      contents: "contents",
-      content: "content",
-      relatedContents: "relatedContents"
+      relatedPosts: "relatedPosts"
     }),
-    postContent() {
-      //return x;
-      return this.content(this.$route.params.title);
+    contents() {
+      return this.posts[this.$route.params.title + ".adoc"].contents;
     }
   },
   methods: {
     ...mapActions("posts", {
-      getPosts2: "getPosts2",
-      getPostContents: "getPostContents",
-      getMorePosts: function() {
-        return this.relatedContents(this.$route.params.title);
+      getMore: function() {
+        return this.relatedPosts(this.$route.params.title);
       }
     })
   }
