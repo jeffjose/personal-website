@@ -3,5 +3,6 @@ requests
 sanic
 Sanic-SSLify
 sanic-scheduler
+sanic-cors
 environs
 uvicorn

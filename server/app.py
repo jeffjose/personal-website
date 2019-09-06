@@ -13,10 +13,15 @@ from sanic import Sanic, response
 from sanic.views import CompositionView
 from sanic_sslify import SSLify
 from sanic_scheduler import SanicScheduler, task
+from sanic_cors import CORS
 
 app = Sanic(__name__)
-sslify = SSLify(app, subdomains=True)
-scheduler = SanicScheduler(app)
+
+# Bootstrap plugins
+#
+SSLify(app, subdomains=True)
+SanicScheduler(app)
+CORS(app)
 
 env = environs.Env()
 
@@ -88,6 +93,8 @@ async def catch_all(request, path=""):
 
         for post in posts:
             post['contents'] = requests.get(post['download_url']).text
+
+        posts = {x['name']: x for x in reversed(posts)}
 
         app.add_task(set_cache("posts", posts))
 

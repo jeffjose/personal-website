@@ -1,6 +1,6 @@
 <template lang="pug">
   div.blog
-    PostItemSmall(v-for="post, key in posts2" :adoc = "post.contents", :index="key", :title='post.name')
+    PostItemSmall(v-for="(post, key, index) in posts2" :adoc = "post.contents", :index="index", :title='post.name')
 </template>
 
 <script>
