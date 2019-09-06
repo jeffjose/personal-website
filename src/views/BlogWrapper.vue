@@ -8,10 +8,11 @@
 <script>
 import store from "@/store";
 
-const Toolbar = () => import("@/components/Toolbar.vue");
-const Footer = () => import("@/components/Footer.vue");
+const Toolbar = () =>
+  import(/*webpackChunkName: "toolbar"*/ "@/components/Toolbar.vue");
+const Footer = () =>
+  import(/*webpackChunkName: "footer"*/ "@/components/Footer.vue");
 
-var _ = require("lodash");
 export default {
   name: "blogwrapper",
   components: { Toolbar, Footer },

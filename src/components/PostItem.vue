@@ -5,7 +5,7 @@
 
 <script>
 const readingTime = require("reading-time");
-const _ = require("lodash");
+//const _ = require("lodash");
 
 const asciidoctor = require("asciidoctor")();
 const highlightJsExt = require("asciidoctor-highlight.js");
@@ -76,10 +76,7 @@ export default {
 
 <style scoped lang="sass">
 
-//@import "~@asciidoctor/core/dist/css/asciidoctor.css"
 @import "~highlight.js/styles/tomorrow.css"
-
-
 
 $font-size: 1.35rem
 

@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import Background from "@/components/Background.vue";
+const Background = () =>
+  import(/*webpackChunkName: "background"*/ "@/components/Background.vue");
 
 export default {
   name: "home",

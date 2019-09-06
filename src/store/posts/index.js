@@ -7,6 +7,8 @@ import { PUSH_POST, PUSH_POSTS } from "./mutations";
 
 Vue.use(Vuex);
 
+var _ = require("lodash");
+
 const state = {
   posts: []
 };

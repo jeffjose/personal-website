@@ -11,7 +11,8 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
-import Toolbar from "@/components/Toolbar.vue";
+const Toolbar = () =>
+  import(/*webpackChunkName: "toolbar"*/ "@/components/Toolbar.vue");
 
 export default {
   name: "FourOFour",

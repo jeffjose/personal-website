@@ -10,9 +10,14 @@
 </template>
 
 <script>
-import PostItem from "@/components/PostItem.vue";
-import PostItemBlock from "@/components/PostItemBlock.vue";
-import Footer from "@/components/Footer.vue";
+const PostItem = () =>
+  import(/*webpackChunkName: "post-item"*/ "@/components/PostItem.vue");
+const PostItemBlock = () =>
+  import(
+    /*webpackChunkName: "post-item-block"*/ "@/components/PostItemBlock.vue"
+  );
+const Footer = () =>
+  import(/*webpackChunkName: "footer"*/ "@/components/Footer.vue");
 
 import { mapGetters, mapActions } from "vuex";
 

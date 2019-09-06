@@ -3,13 +3,13 @@ import Router from "vue-router";
 
 import store from "./store";
 
-var _ = require("lodash");
-
-const Home = () => import("./views/Home.vue");
-const BlogWrapper = () => import("./views/BlogWrapper.vue");
-const Blog = () => import("./views/Blog.vue");
-const Post = () => import("./views/Post.vue");
-const FourOFour = () => import("./views/FourOFour.vue");
+const Home = () => import(/* webpackChunkName: "home"*/ "./views/Home.vue");
+const BlogWrapper = () =>
+  import(/*webpackChunkName: "blog-wrapper"*/ "./views/BlogWrapper.vue");
+const Blog = () => import(/*webpackChunkName: "blog"*/ "./views/Blog.vue");
+const Post = () => import(/*webpackChunkName: "post"*/ "./views/Post.vue");
+const FourOFour = () =>
+  import(/*webpackChunkName: "fourofour"*/ "./views/FourOFour.vue");
 
 Vue.use(Router);
 

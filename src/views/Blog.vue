@@ -6,8 +6,12 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
-const PostItem = () => import("@/components/PostItem.vue");
-const PostItemSmall = () => import("@/components/PostItemSmall.vue");
+const PostItem = () =>
+  import(/*webpackChunkName: "post-item"*/ "@/components/PostItem.vue");
+const PostItemSmall = () =>
+  import(
+    /*webpackChunkName: "post-item-small"*/ "@/components/PostItemSmall.vue"
+  );
 
 export default {
   name: "blog",

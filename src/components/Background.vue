@@ -14,7 +14,6 @@
 
 <script lang="coffee">
 
-_ = require 'lodash'
 {TweenLite, TweenMax} = require 'gsap'
 
 export default {
