@@ -5,8 +5,9 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import PostItem from "@/components/PostItem.vue";
-import PostItemSmall from "@/components/PostItemSmall.vue";
+
+const PostItem = () => import("@/components/PostItem.vue");
+const PostItemSmall = () => import("@/components/PostItemSmall.vue");
 
 export default {
   name: "blog",

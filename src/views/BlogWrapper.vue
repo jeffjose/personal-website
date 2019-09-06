@@ -8,8 +8,8 @@
 <script>
 import store from "@/store";
 
-import Toolbar from "@/components/Toolbar.vue";
-import Footer from "@/components/Footer.vue";
+const Toolbar = () => import("@/components/Toolbar.vue");
+const Footer = () => import("@/components/Footer.vue");
 
 var _ = require("lodash");
 export default {

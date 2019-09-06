@@ -5,11 +5,11 @@ import store from "./store";
 
 var _ = require("lodash");
 
-import Home from "./views/Home.vue";
-import BlogWrapper from "./views/BlogWrapper.vue";
-import Blog from "./views/Blog.vue";
-import Post from "./views/Post.vue";
-import FourOFour from "./views/FourOFour.vue";
+const Home = () => import("./views/Home.vue");
+const BlogWrapper = () => import("./views/BlogWrapper.vue");
+const Blog = () => import("./views/Blog.vue");
+const Post = () => import("./views/Post.vue");
+const FourOFour = () => import("./views/FourOFour.vue");
 
 Vue.use(Router);
 
