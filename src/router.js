@@ -51,6 +51,14 @@ export default new Router({
             //
             console.log("[/:title]: beforeEnter");
             let posts = store.getters["posts/posts"];
+
+            store
+              .dispatch("posts/getPost", to.params.title)
+              .then(function(response) {
+                // TODO
+                next();
+              });
+
             if (!(`${to.params.title}.adoc` in posts)) {
               console.log("[router]: 404");
               next({ name: "fourofour" });

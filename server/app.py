@@ -87,12 +87,13 @@ def setup(_):
 #
 
 
-@app.route("/_api/post/<title>", methods=["GET", "POST"])
-async def catch_all(request, title):
-    if get_cache(key=title):
-        post = get_cache(key=title)
+@app.route("/_api/post/<name>", methods=["GET", "POST"])
+async def catch_all(request, name):
+    if get_cache(key=name):
+        post = get_cache(key=name)
     else:
-        post = requests.get(f'{BLOGPOST_URL}/{title}.adoc').json()
+        name = name.replace('.adoc', '')
+        post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
         try:
             post['contents'] = requests.get(post['download_url']).text
 
@@ -103,7 +104,7 @@ async def catch_all(request, title):
             print('setting empty')
             pass
         finally:
-            app.add_task(set_cache(title, post))
+            app.add_task(set_cache(name, post))
 
     return response.json(post)
 
