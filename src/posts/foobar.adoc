@@ -6,6 +6,9 @@ It's finally here and I'm ready
 [.date]
 Sept 7, 2019
 
+[.hero]
+image::https://miro.medium.com/max/11198/1*EVRimPPrh8S645FINaE8Hw.jpeg
+
 After several months of being just days away, we are over the moon to announce the stable release of Svelte 3. This is a huge release representing hundreds of hours of work by many people in the Svelte community, including invaluable feedback from beta testers who have helped shape the design every step of the way.
 
 We think you're going to love it.
