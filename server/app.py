@@ -97,6 +97,7 @@ async def catch_all(request, name):
         post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
         try:
             post['contents'] = requests.get(post['download_url']).text
+            post['hash'] = hash(post['contents'])
 
             # We dont need the encoded content, since we've fetched ascii
             # ourselves into `contents`. Remove `content`
@@ -119,6 +120,7 @@ async def catch_all(request):
 
         for post in posts:
             post['contents'] = requests.get(post['download_url']).text
+            post['hash'] = hash(post['contents'])
 
         posts = {x['name']: x for x in reversed(posts)}
         #for x in reversed(posts) if x['name'] in ['vue.adoc']
