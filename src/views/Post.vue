@@ -36,7 +36,7 @@ export default {
   methods: {
     ...mapActions("posts", {
       getMore: function() {
-        return this.relatedPosts(this.$route.params.title);
+        return this.relatedPosts(this.$route.params.title).slice(0, 4);
       }
     })
   }
