@@ -7,7 +7,7 @@ import { PUSH_POST, PUSH_POSTS } from "./mutations";
 
 Vue.use(Vuex);
 
-var _ = require("lodash");
+import { omit } from "lodash";
 
 const state = {
   posts: []
@@ -30,7 +30,7 @@ const getters = {
   relatedPosts: (state, getters) => name => {
     name = `${name.replace(/\.adoc/, "")}.adoc`;
 
-    return _.omit(state.posts, name);
+    return omit(state.posts, name);
   }
 };
 

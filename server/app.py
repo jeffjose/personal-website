@@ -121,10 +121,8 @@ async def catch_all(request):
         for post in posts:
             post['contents'] = requests.get(post['download_url']).text
 
-        posts = {
-            x['name']: x
-            for x in reversed(posts) if x['name'] in ['vue.adoc']
-        }
+        posts = {x['name']: x for x in reversed(posts)}
+        #for x in reversed(posts) if x['name'] in ['vue.adoc']
 
         app.add_task(set_cache("latest", posts))
 
