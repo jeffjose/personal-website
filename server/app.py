@@ -10,11 +10,12 @@ import mimetypes
 from datetime import timedelta
 
 import sanic
+from spf import SanicPluginsFramework
 from sanic import Sanic, response
 from sanic.views import CompositionView
 from sanic_sslify import SSLify
 from sanic_scheduler import SanicScheduler, task
-from sanic_cors import CORS
+from sanic_cors.extension import cors
 
 app = Sanic(__name__)
 
@@ -22,7 +23,9 @@ app = Sanic(__name__)
 #
 SSLify(app, subdomains=True)
 SanicScheduler(app)
-CORS(app)
+
+spf = SanicPluginsFramework(app)
+spf.register_plugin(cors, automatic_options=True)
 
 env = environs.Env()
 
@@ -72,7 +75,7 @@ for project in projects:
 
 # Setup static redirects
 #
-@task(timedelta(seconds=CACHE_TIMEOUT))
+#@task(timedelta(seconds=CACHE_TIMEOUT))
 def setup(_):
 
     CACHE["redirects"] = dict([
@@ -88,27 +91,33 @@ def setup(_):
 #
 
 
-@app.route("/_api/post/<name>", methods=["GET", "POST"])
+@app.route("/_api/post/<name>", methods=["GET", "POST", "OPTIONS"])
 async def catch_all(request, name):
     if get_cache(key=name):
         post = get_cache(key=name)
     else:
         name = name.replace('.adoc', '')
-        post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
+        #post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
         try:
-            post['contents'] = requests.get(post['download_url']).text
-            post['hash'] = hash(post['contents'])
+            #post['contents'] = requests.get(post['download_url']).text
 
-            # We dont need the encoded content, since we've fetched ascii
-            # ourselves into `contents`. Remove `content`
-            post.pop('content')
+            ## We dont need the encoded content, since we've fetched ascii
+            ## ourselves into `contents`. Remove `content`
+            #post.pop('content')
+
+            import json
+            post = json.loads(pathlib.Path(f'server/{name}.json').read_text())
         except:
             print('setting empty')
             pass
         finally:
             app.add_task(set_cache(name, post))
 
-    return response.json(post)
+    if request.headers['ETag'] == post['sha']:
+        return response.json(None, status=304)
+        #return response.json(post)
+    else:
+        return response.json(post)
 
 
 @app.route("/_api/posts", methods=["GET", "POST"])
@@ -116,14 +125,17 @@ async def catch_all(request):
     if get_cache(key="latest"):
         posts = get_cache(key="latest")
     else:
-        posts = requests.get(ALL_BLOGPOSTS_URL).json()
 
-        for post in posts:
-            post['contents'] = requests.get(post['download_url']).text
-            post['hash'] = hash(post['contents'])
+        # Testing
+        #
+        import json
+        posts = json.loads(pathlib.Path('server/posts.json').read_text())
+        #
+        #posts = requests.get(ALL_BLOGPOSTS_URL).json()
+        #for post in posts:
+        #    post['contents'] = requests.get(post['download_url']).text
 
-        posts = {x['name']: x for x in reversed(posts)}
-        #for x in reversed(posts) if x['name'] in ['vue.adoc']
+        #posts = {x['name']: x for x in reversed(posts)}
 
         app.add_task(set_cache("latest", posts))
 

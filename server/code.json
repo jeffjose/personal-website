@@ -1,0 +1,19 @@
+{
+  "name": "code.adoc",
+  "path": "src/posts/code.adoc",
+  "sha": "9037cafb67b90x838deb776329378de47dddccac",
+  "size": 851,
+  "url": "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts/code.adoc?ref=master",
+  "html_url": "https://github.com/jeffjose/personal-website/blob/master/src/posts/code.adoc",
+  "git_url": "https://api.github.com/repos/jeffjose/personal-website/git/blobs/9037cafb67b903838deb776329378de47dddccac",
+  "download_url": "https://raw.githubusercontent.com/jeffjose/personal-website/master/src/posts/code.adoc",
+  "type": "file",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/jeffjose/personal-website/contents/src/posts/code.adoc?ref=master",
+    "git": "https://api.github.com/repos/jeffjose/personal-website/git/blobs/9037cafb67b903838deb776329378de47dddccac",
+    "html": "https://github.com/jeffjose/personal-website/blob/master/src/posts/code.adoc"
+  },
+  "contents": "= Code examples\n\n[.subtitle]\nLets see if it highlights\n\n[.date]\nApr 24, 2019\n\nThis is an optional introduction to the article. As you'll see in this article, we'll discuss these things.\n\n[source, javascript]\n----\nconst { count } = this.get();\nthis.set({\n  count: count + 1\n});\n----\n\n[source, python]\n----\ndef foo(a, b):\n  return a + b\n\nif __main__ == \"__main__\":\n  add(1, 2)\n----\n\n.ruby\n[source,ruby]\n----\nrequire 'sinatra' // <1>\n\nget '/hi' do // <2>\n  \"Hello World!\" // <3>\nend\n----\n<1> Library import\n<2> URL mapping\n<3> HTTP response body\n\n[source,xml]\n----\n<section>\n  <title>Section Title</title> <!--1-->\n</section>\n----\n<1> The section title is required.\n\n.bash\n[source, bash]\n----\n$ mkdir -p /tmp/foobar\n\n$ curl https://google.com | grep script\n----\n\n.bash\n[source, bash]\n----\nmkdir -p /tmp/foobar\n\ncurl https://google.com | grep script\n----\n",
+  "hash": 49041957273619373
+}

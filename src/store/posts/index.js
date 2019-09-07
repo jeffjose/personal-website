@@ -35,18 +35,33 @@ const getters = {
 };
 
 const actions = {
-  getPosts({ commit, dispatch }) {
+  getPosts({ commit, state, dispatch }) {
     return axios({
-      url: process.env.VUE_APP_ROOT_API + "_api/posts"
+      url: process.env.VUE_APP_ROOT_API + "_api/posts",
+      method: "get",
+      headers: { "x-my-custom-headers": "value" }
     }).then(function(response) {
       commit(PUSH_POSTS, response.data);
     });
   },
-  getPost({ commit, dispatch }, name) {
+  getPost({ commit, state, dispatch }, name) {
+    let headers = {};
+    if (`${name}.adoc` in state.posts) {
+      let sha = state.posts[`${name}.adoc`].sha;
+      headers = { ETag: sha };
+    }
+
     return axios({
-      url: process.env.VUE_APP_ROOT_API + `_api/post/${name}`
+      url: process.env.VUE_APP_ROOT_API + `_api/post/${name}`,
+      method: "get",
+      headers: headers,
+      validateStatus: function(status) {
+        return status >= 200 && status <= 304;
+      }
     }).then(function(response) {
-      commit(PUSH_POST, response.data);
+      if (response.status == 200) {
+        commit(PUSH_POST, response.data);
+      }
       return response;
     });
   }
