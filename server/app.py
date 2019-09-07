@@ -1,6 +1,7 @@
 #
 # Author: Jeffrey Jose | jeffjosejeff@gmail.com
 #
+import asyncio
 import requests
 import environs
 import time

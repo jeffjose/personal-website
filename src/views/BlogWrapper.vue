@@ -35,12 +35,19 @@ export default {
     console.log("[BlogWrapper]: beforeRouteUpdate", to, from);
     let posts = store.getters["posts/posts"];
 
-    if (!(`${to.params.title}.adoc` in posts)) {
-      console.log("[BlogWrapper]: 404");
-      next({ path: "404" });
-      return;
+    if (`${to.params.title}.adoc` in posts) {
+      // If the post is already in the veux store, proceed
+      next();
     }
-    next();
+
+    store.dispatch("posts/getPost", to.params.title).then(function(response) {
+      if (response.data.message == "Not Found") {
+        console.log("[router]: 404");
+        next({ name: "fourofour" });
+      } else {
+        next();
+      }
+    });
   }
 };
 </script>

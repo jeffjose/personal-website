@@ -38,8 +38,8 @@ const actions = {
   getPosts({ commit, dispatch }) {
     return axios({
       // TODO
-      //url: "http://localhost:8080/_api/posts"
-      url: "/_api/posts"
+      url: "http://localhost:8080/_api/posts"
+      //url: "/_api/posts"
     }).then(function(response) {
       commit(PUSH_POSTS, response.data);
     });
@@ -47,8 +47,8 @@ const actions = {
   getPost({ commit, dispatch }, name) {
     return axios({
       // TODO
-      //url: `http://localhost:8080/_api/post/${name}`
-      url: `/_api/post/${name}`
+      url: `http://localhost:8080/_api/post/${name}`
+      //url: `/_api/post/${name}`
     }).then(function(response) {
       commit(PUSH_POST, response.data);
       return response;

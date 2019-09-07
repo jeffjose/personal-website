@@ -55,16 +55,13 @@ export default new Router({
             store
               .dispatch("posts/getPost", to.params.title)
               .then(function(response) {
-                // TODO
-                next();
+                if (response.data.message == "Not Found") {
+                  console.log("[router]: 404");
+                  next({ name: "fourofour" });
+                } else {
+                  next();
+                }
               });
-
-            if (!(`${to.params.title}.adoc` in posts)) {
-              console.log("[router]: 404");
-              next({ name: "fourofour" });
-              return;
-            }
-            next();
           }
         }
       ]
