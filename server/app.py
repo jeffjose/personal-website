@@ -7,6 +7,7 @@ import environs
 import time
 import pathlib
 import mimetypes
+import randomcolor
 from datetime import timedelta
 
 import sanic
@@ -28,6 +29,7 @@ spf = SanicPluginsFramework(app)
 spf.register_plugin(cors, automatic_options=True)
 
 env = environs.Env()
+color = randomcolor.RandomColor()
 
 CACHE = {}
 CACHE_TIMEOUT = 100
@@ -101,21 +103,22 @@ async def catch_all(request, name):
         post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
         try:
             post['contents'] = requests.get(post['download_url']).text
+            post['colors'] = color.generate(count=2)
 
             # We dont need the encoded content, since we've fetched ascii
             # ourselves into `contents`. Remove `content`
             post.pop('content')
 
             # TODO
-            import json
-            post = json.loads(pathlib.Path(f'server/{name}.json').read_text())
+            #import json
+            #post = json.loads(pathlib.Path(f'server/{name}.json').read_text())
         except:
             print('setting empty')
             pass
         finally:
             app.add_task(set_cache(name, post))
 
-    if request.headers['ETag'] == post['sha']:
+    if request.headers.get('ETag') == post['sha']:
         return response.json(None, status=304)
         #return response.json(post)
     else:

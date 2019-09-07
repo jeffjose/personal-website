@@ -119,7 +119,7 @@ $random-color-2: rgb(random(255),random(255),random(255))
    border-radius: 0.2rem
    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
-   background: linear-gradient($random-color-1, $random-color-2)
+   background: linear-gradient(45deg, $random-color-1, $random-color-2)
 
    a
      text-decoration: none

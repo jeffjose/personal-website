@@ -6,3 +6,4 @@ sanic-scheduler
 sanic-cors
 environs
 uvicorn
+randomcolor
