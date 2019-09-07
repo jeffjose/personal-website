@@ -75,7 +75,7 @@ for project in projects:
 
 # Setup static redirects
 #
-#@task(timedelta(seconds=CACHE_TIMEOUT))
+@task(timedelta(seconds=CACHE_TIMEOUT))
 def setup(_):
 
     CACHE["redirects"] = dict([
@@ -97,14 +97,16 @@ async def catch_all(request, name):
         post = get_cache(key=name)
     else:
         name = name.replace('.adoc', '')
-        #post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
+
+        post = requests.get(f'{BLOGPOST_URL}/{name}.adoc').json()
         try:
-            #post['contents'] = requests.get(post['download_url']).text
+            post['contents'] = requests.get(post['download_url']).text
 
-            ## We dont need the encoded content, since we've fetched ascii
-            ## ourselves into `contents`. Remove `content`
-            #post.pop('content')
+            # We dont need the encoded content, since we've fetched ascii
+            # ourselves into `contents`. Remove `content`
+            post.pop('content')
 
+            # TODO
             import json
             post = json.loads(pathlib.Path(f'server/{name}.json').read_text())
         except:
@@ -128,14 +130,15 @@ async def catch_all(request):
 
         # Testing
         #
-        import json
-        posts = json.loads(pathlib.Path('server/posts.json').read_text())
-        #
-        #posts = requests.get(ALL_BLOGPOSTS_URL).json()
-        #for post in posts:
-        #    post['contents'] = requests.get(post['download_url']).text
+        # TODO
+        #import json
+        #posts = json.loads(pathlib.Path('server/posts.json').read_text())
 
-        #posts = {x['name']: x for x in reversed(posts)}
+        posts = requests.get(ALL_BLOGPOSTS_URL).json()
+        for post in posts:
+            post['contents'] = requests.get(post['download_url']).text
+
+        posts = {x['name']: x for x in reversed(posts)}
 
         app.add_task(set_cache("latest", posts))
 
