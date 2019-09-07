@@ -142,6 +142,7 @@ $green: #34a853
        font-weight: 500
        letter-spacing: -2px
        line-height: 3.5rem
+       margin-bottom: 0.5rem
 
      h2
        font-size: 2.3rem
