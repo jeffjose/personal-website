@@ -3,5 +3,5 @@
 
 
 ### Backlog
-- [ ] [server] ETag
+- [x] [server] ETag
 - [ ] [server] static file serving
