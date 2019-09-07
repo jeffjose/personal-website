@@ -37,18 +37,14 @@ const getters = {
 const actions = {
   getPosts({ commit, dispatch }) {
     return axios({
-      // TODO
-      url: "http://localhost:8080/_api/posts"
-      //url: "/_api/posts"
+      url: process.env.VUE_APP_ROOT_API + "/_api/posts"
     }).then(function(response) {
       commit(PUSH_POSTS, response.data);
     });
   },
   getPost({ commit, dispatch }, name) {
     return axios({
-      // TODO
-      url: `http://localhost:8080/_api/post/${name}`
-      //url: `/_api/post/${name}`
+      url: process.env.VUE_APP_ROOT_API + `/_api/post/${name}`
     }).then(function(response) {
       commit(PUSH_POST, response.data);
       return response;

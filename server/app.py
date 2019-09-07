@@ -14,7 +14,7 @@ from sanic import Sanic, response
 from sanic.views import CompositionView
 from sanic_sslify import SSLify
 from sanic_scheduler import SanicScheduler, task
-from sanic_cors import cross_origin
+from sanic_cors import CORS
 
 app = Sanic(__name__)
 
@@ -22,6 +22,7 @@ app = Sanic(__name__)
 #
 SSLify(app, subdomains=True)
 SanicScheduler(app)
+CORS(app)
 
 env = environs.Env()
 
@@ -88,7 +89,6 @@ def setup(_):
 
 
 @app.route("/_api/post/<name>", methods=["GET", "POST"])
-@cross_origin(app)
 async def catch_all(request, name):
     if get_cache(key=name):
         post = get_cache(key=name)
@@ -111,7 +111,6 @@ async def catch_all(request, name):
 
 
 @app.route("/_api/posts", methods=["GET", "POST"])
-@cross_origin(app)
 async def catch_all(request):
     if get_cache(key="latest"):
         posts = get_cache(key="latest")
