@@ -19,11 +19,8 @@ module.exports = {
       }
     },
     plugins: [
-      new BundleAnalyzerPlugin(),
-      new webpack.ContextReplacementPlugin(
-        /highlight\.js\/lib\/languages$/,
-        new RegExp(`^./(${["javascript", "python", "bash"].join("|")})$`)
-      )
+      new BundleAnalyzerPlugin()
+      //new webpack.ContextReplacementPlugin(/languages/, /gml/)
     ]
   }
 };
