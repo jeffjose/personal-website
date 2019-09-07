@@ -7,7 +7,7 @@ import { PUSH_POST, PUSH_POSTS } from "./mutations";
 
 Vue.use(Vuex);
 
-import { omit } from "lodash";
+import { omit } from "lodash-es";
 
 const state = {
   posts: []
