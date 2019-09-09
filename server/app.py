@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 # Author: Jeffrey Jose | jeffjosejeff@gmail.com
 #
