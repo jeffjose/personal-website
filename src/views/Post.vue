@@ -4,8 +4,9 @@
       PostItem(:adoc="contents")
 
     h2 More posts
-    div.postitemblock(v-for="(post, key, index) in getMore()")
-      PostItemBlock(:adoc="post.contents", :title="key")
+    div.postitemblock(v-for="(post, key, index) in related")
+      //PostItemBlock(:adoc="post.contents", :title="key")
+      p {{post}} {{key}} {{index}}
 
 </template>
 
@@ -26,19 +27,14 @@ export default {
   components: { PostItem, PostItemBlock, Footer },
   computed: {
     ...mapGetters("posts", {
-      posts: "posts",
-      relatedPosts: "relatedPosts"
+      posts: "posts"
     }),
     contents() {
       return this.posts[this.$route.params.title + ".adoc"].contents;
+    },
+    related() {
+      return this.posts[this.$route.params.title + ".adoc"].related;
     }
-  },
-  methods: {
-    ...mapActions("posts", {
-      getMore: function() {
-        return this.relatedPosts(this.$route.params.title).slice(0, 4);
-      }
-    })
   }
 };
 </script>

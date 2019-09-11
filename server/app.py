@@ -80,6 +80,11 @@ for project in projects:
 #
 @task(timedelta(seconds=CACHE_TIMEOUT))
 def setup(_):
+    print("XXXXXXXXXXXXXXXXXX")
+    print("")
+    print("SETUP: Start")
+    print("")
+    print("XXXXXXXXXXXXXXXXXX")
 
     CACHE["redirects"] = dict([
         map(lambda r: r.strip(), x.split("="))
@@ -88,6 +93,12 @@ def setup(_):
 
     CACHE['static'] = dict([(x['name'], x['download_url'])
                             for x in requests.get(STATIC_URL).json()])
+
+    print("XXXXXXXXXXXXXXXXXX")
+    print("")
+    print("SETUP: Done")
+    print("")
+    print("XXXXXXXXXXXXXXXXXX")
 
 
 # API
@@ -139,8 +150,9 @@ async def catch_all(request):
         #posts = json.loads(pathlib.Path('server/posts.json').read_text())
 
         posts = requests.get(ALL_BLOGPOSTS_URL).json()
-        for post in posts:
+        for i, post in enumerate(posts):
             post['contents'] = requests.get(post['download_url']).text
+            post['related'] = [x['name'] for _i, x in enumerate(posts) if i != _i][:4]
 
         posts = {x['name']: x for x in reversed(posts)}
 

@@ -25,13 +25,7 @@ const mutations = {
 };
 
 const getters = {
-  posts: ({ posts }) => posts,
-
-  relatedPosts: (state, getters) => name => {
-    name = `${name.replace(/\.adoc/, "")}.adoc`;
-
-    return omit(state.posts, name);
-  }
+  posts: ({ posts }) => posts
 };
 
 const actions = {
