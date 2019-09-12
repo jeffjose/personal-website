@@ -53,8 +53,6 @@ infile = io.StringIO(string)
 outfile = io.StringIO()
 
 a = api.AsciiDoc3API()
-import pdb
-pdb.set_trace()
-a.options('--no-header-footer')
-a.execute(infile, outfile, backend='html4')
+a.options('-e', 'asciidoc3.conf')
+a.execute(infile, outfile, backend='html5')
 print(outfile.getvalue())

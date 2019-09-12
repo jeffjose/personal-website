@@ -181,8 +181,7 @@ class AsciiDoc3API(object):
             # The import statement can only handle .py or .pyc files, have to
             # use imp.load_source() for scripts with other names.
             try:
-                self.asciidoc3 = importlib.import_module('asciidoc3')
-                print(self.asciidoc3)
+                self.asciidoc3 = importlib.import_module('.asciidoc3', 'asciidoc3')
             except ImportError:
                 raise AsciiDoc3Error('failed to import ' + self.cmd)
 
@@ -219,6 +218,7 @@ class AsciiDoc3API(object):
         self.__import_asciidoc3(reload=True)
         try:
             try:
+                print(self.cmd, opts.values, args)
                 self.asciidoc3.execute(self.cmd, opts.values, args)
             finally:
                 self.messages = self.asciidoc3.messages[:]

@@ -152,7 +152,10 @@ async def catch_all(request):
         posts = requests.get(ALL_BLOGPOSTS_URL).json()
         for i, post in enumerate(posts):
             post['contents'] = requests.get(post['download_url']).text
-            post['related'] = [x['name'] for _i, x in enumerate(posts) if i != _i][:4]
+
+
+        for i, post in enumerate(posts):
+            post['related'] = [{"name": x['name'], "contents": x['contents']} for _i, x in enumerate(posts) if i != _i][:4]
 
         posts = {x['name']: x for x in reversed(posts)}
 
