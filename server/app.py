@@ -123,7 +123,7 @@ async def catch_all(request, name):
 
             # TODO
             #import json
-            #post = json.loads(pathlib.Path(f'server/{name}.json').read_text())
+            #post = json.loads(pathlib.Path(f'server/posts/{name}.json').read_text())
         except:
             print('setting empty')
             pass
