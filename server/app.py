@@ -19,6 +19,8 @@ from sanic_sslify import SSLify
 from sanic_scheduler import SanicScheduler, task
 from sanic_cors.extension import cors
 
+import blogparser
+
 app = Sanic(__name__)
 
 # Bootstrap plugins
@@ -132,7 +134,6 @@ async def catch_all(request, name):
 
     if request.headers.get('ETag') == post['sha']:
         return response.json(None, status=304)
-        #return response.json(post)
     else:
         return response.json(post)
 
@@ -155,6 +156,7 @@ async def catch_all(request):
 
 
         for i, post in enumerate(posts):
+            import pdb; pdb.set_trace()
             post['related'] = [{"name": x['name'], "contents": x['contents']} for _i, x in enumerate(posts) if i != _i][:4]
 
         posts = {x['name']: x for x in reversed(posts)}
