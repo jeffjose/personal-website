@@ -154,10 +154,13 @@ async def catch_all(request):
         for i, post in enumerate(posts):
             post['contents'] = requests.get(post['download_url']).text
 
-
         for i, post in enumerate(posts):
-            import pdb; pdb.set_trace()
-            post['related'] = [{"name": x['name'], "contents": x['contents']} for _i, x in enumerate(posts) if i != _i][:4]
+            import pdb
+            pdb.set_trace()
+            post['related'] = [{
+                "name": x['name'],
+                "contents": x['contents']
+            } for _i, x in enumerate(posts) if i != _i][:4]
 
         posts = {x['name']: x for x in reversed(posts)}
 

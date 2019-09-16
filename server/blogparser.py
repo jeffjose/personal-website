@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup as Soup
 
 adoc = api.AsciiDoc3API()
 
+
 def parse(string):
     input = io.StringIO(string)
     output = io.StringIO()
@@ -15,11 +16,13 @@ def parse(string):
 
     soup = Soup(output.getvalue())
 
-    [subtitle, date] = map(lambda x: x.text, soup.select('#preamble .sectionbody .paragraph'))
+    [subtitle, date] = map(lambda x: x.text,
+                           soup.select('#preamble .sectionbody .paragraph'))
 
     dt = parser.parse(date)
 
     return {'subtitle': subtitle, 'date': dt}
+
 
 if __name__ == '__main__':
     string = '''
@@ -87,6 +90,6 @@ To learn all about design patterns, refer to the book by the "`Gang of Four`" <<
 - [[[gof,2]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides. Design Patterns:
   Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
   '''
-
+    import pdb
+    pdb.set_trace()
     print(parse(string))
-
