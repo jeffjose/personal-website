@@ -7,3 +7,4 @@ sanic-cors
 environs
 uvicorn
 randomcolor
+python-dateutil
