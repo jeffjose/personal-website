@@ -12,11 +12,12 @@ def parse(string):
     input = io.StringIO(string)
     output = io.StringIO()
 
+    import pdb; pdb.set_trace()
     adoc.execute(input, output)
 
     soup = Soup(output.getvalue())
 
-    [subtitle, date] = map(lambda x: x.text,
+    [subtitle, date, *_] = map(lambda x: x.text,
                            soup.select('#preamble .sectionbody .paragraph'))
 
     dt = parser.parse(date)
@@ -90,6 +91,10 @@ To learn all about design patterns, refer to the book by the "`Gang of Four`" <<
 - [[[gof,2]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides. Design Patterns:
   Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
   '''
-    import pdb
-    pdb.set_trace()
-    print(parse(string))
+    import pathlib as path
+    for post in path.Path('../src/posts/').glob('*adoc'):
+        string = post.read_text()
+        print('\n\n\n')
+        print('--------------------', post)
+        print(parse(string))
+        print('\n\n\n')

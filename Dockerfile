@@ -7,6 +7,8 @@ WORKDIR /app
 COPY server/ .
 COPY dist/ dist/
 
+RUN apt install highlight
+
 # Install production dependencies.
 RUN pip install --upgrade pip
 RUN pip install -r requirements

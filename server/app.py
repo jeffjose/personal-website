@@ -155,8 +155,7 @@ async def catch_all(request):
             post['contents'] = requests.get(post['download_url']).text
 
         for i, post in enumerate(posts):
-            import pdb
-            pdb.set_trace()
+            x = blogparser.parse(post['contents'])
             post['related'] = [{
                 "name": x['name'],
                 "contents": x['contents']
