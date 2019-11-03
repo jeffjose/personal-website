@@ -1,6 +1,6 @@
 # Use the official Python image.
 # https://hub.docker.com/_/python
-FROM python:3.7
+FROM python:3.8-slim
 
 # Copy local code to the container image.
 WORKDIR /app
