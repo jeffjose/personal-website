@@ -21,3 +21,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+frontend/public/bundle*
