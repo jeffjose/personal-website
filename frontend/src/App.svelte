@@ -4,8 +4,11 @@
 
 <style>
 	h1 {
-		color: purple;
+		color: blue;
 	}
 </style>
 
-<h1>Hello {name}!</h1>
+<template lang="pug">
+  div.wrapper
+    img.logo(src="/android-chrome-192x192.png")
+</template>
