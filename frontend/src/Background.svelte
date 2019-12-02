@@ -1,16 +1,11 @@
 <script>
+import {writable} from "svelte/store"
 
+let coords = writable({x: 10, y:10})
 </script>
 
-<template lang="pug">
-div
-  svg
-    g#wrapper
-      circle(r="10", cx="10", cy="10", fill="red")
-</template>
 
 <style lang="sass">
-
 svg
   height: 100%
   width: 100%
@@ -18,4 +13,11 @@ svg
 
 circle
   opacity: 0.5
+
 </style>
+
+<svg on:mousemove="{e => coords.set({x:e.clientX, y:e.clientY})}">
+  <g id="wrapper">
+    <circle r="10" cx="{$coords.x}"  cy="{$coords.y}"  fill="red">
+  </g>
+</svg>

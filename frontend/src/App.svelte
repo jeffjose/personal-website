@@ -103,8 +103,8 @@ $green: #34a853
 </style>
 
 <template lang="pug">
+  Background
   div.wrapper
-    Background
     img.logo(src="/android-chrome-192x192.png")
     div.header
       div.title
