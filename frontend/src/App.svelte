@@ -18,9 +18,6 @@ $yellow: #fbbc04
 $red: #ea4335
 $green: #34a853
 
-
-// ----------- light mode ----------------
-
 $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
@@ -114,7 +111,6 @@ $green: #34a853
         span.name Jeffrey Jose
         span.desc Product Manager at Google
         div.links
-          //router-link.link(:to="{path: '/blog'}") Blog
           a.link(href="/twitter") Twitter
           a.link(href="/linkedin") Linkedin
 </template>
