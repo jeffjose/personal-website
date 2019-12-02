@@ -1,9 +1,8 @@
 <script>
-	export let name;
+import Background from './Background.svelte'
 </script>
 
 <style lang="sass">
-
 
 $text-color: white
 $accent-color: #FF0088
@@ -105,6 +104,7 @@ $green: #34a853
 
 <template lang="pug">
   div.wrapper
+    Background
     img.logo(src="/android-chrome-192x192.png")
     div.header
       div.title
