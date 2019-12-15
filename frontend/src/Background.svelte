@@ -2,8 +2,40 @@
 import { writable } from "svelte/store"
 import { spring } from "svelte/motion"
 
-let coords = writable({x: 10, y:10})
-let size = spring(0)
+let circles = []
+let clickstart
+let duration
+function random(min, max) {
+  return Math.floor(Math.random()*(parseInt(max)-parseInt(min)+1)+parseInt(min))
+}
+
+function addCircle(event) {
+
+  clickstart = true
+  duration = 0
+
+  let newCircle = {x: event.clientX, y: event.clientY, r: random(10, 30), tx: random(-300, 300), maxr: random(10, 30)}
+  circles = [...circles, newCircle]
+}
+
+function clickStopped(event) {
+  clickstart = false
+  console.log(duration, circles)
+}
+
+const animate = timestamp => {
+
+
+  if (clickstart == true) {
+    duration = duration + 1
+    circles[circles.length - 1].r = duration
+  }
+
+  circles = circles
+  requestAnimationFrame(animate)
+}
+requestAnimationFrame(animate)
+
 </script>
 
 
@@ -19,10 +51,17 @@ circle
 </style>
 
 <svg
-  on:mousemove="{e => coords.set({x:e.clientX, y:e.clientY})}"
-  on:mousedown="{() => size.set(60)}"
+  on:mousedown="{addCircle}"
+  on:mouseup="{clickStopped}"
   >
   <g id="wrapper">
-    <circle cx="{$coords.x}" cy="{$coords.y}" r="{$size}" fill="red">
+    {#each circles as circle, i}
+      <circle cx="{circle.x}" cy="{circle.y}" r="{circle.r}" fill="red">
+      <!--
+        <animate attributeName = "r" values = "{circle.r};{circle.maxr};{circle.r}" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName = "cx" values = "{circle.x};{circle.x + circle.tx};{circle.x}" dur="10s" repeatCount="indefinite"/>
+        -->
+      </circle>
+    {/each}
   </g>
 </svg>
