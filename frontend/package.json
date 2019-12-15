@@ -9,11 +9,13 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
     "svelte": "^3.0.0",
-    "svelte-preprocess": "^3.2.6"
-  },
-  "dependencies": {
+    "svelte-preprocess": "^3.2.6",
+    "node-sass": "^4.13.0",
+    "pug": "^2.0.4",
+    "sass": "^1.23.7",
     "sirv-cli": "^0.4.4"
   },
+  "dependencies": {},
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
