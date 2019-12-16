@@ -14,7 +14,7 @@ function addCircle(event) {
   clickstart = true
   duration = 0
 
-  let newCircle = {x: event.clientX, y: event.clientY, r: random(10, 30), tx: random(-300, 300), maxr: random(10, 30)}
+  let newCircle = {x: event.clientX, y: event.clientY, r: 1, tx: random(-300, 300), maxr: random(10, 30)}
   circles = [...circles, newCircle]
 }
 
@@ -30,6 +30,10 @@ const animate = timestamp => {
     duration = duration + 1
     circles[circles.length - 1].r = duration
   }
+
+  circles.forEach(function (circle) {
+    circle.r = circle.r - 1
+  })
 
   circles = circles
   requestAnimationFrame(animate)
@@ -65,3 +69,4 @@ circle
     {/each}
   </g>
 </svg>
+
