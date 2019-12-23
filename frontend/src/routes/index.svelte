@@ -117,4 +117,6 @@ $green: #34a853
         div.links
           a.link(href="/twitter") Twitter
           a.link(href="/linkedin") Linkedin
+          a.link(href="/blog") Blog
+          a.link(href="/posts") Posts
 </template>
