@@ -109,7 +109,7 @@ $green: #34a853
 <template lang="pug">
   Background
   div.wrapper
-    img.logo(src="/logo-192.png")
+    img.logo(src="/logo-192.png", alt="logo")
     div.header
       div.title
         span.name Jeffrey Jose
