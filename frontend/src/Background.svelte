@@ -25,14 +25,13 @@ function clickStopped(event) {
 
 const animate = timestamp => {
 
-
   if (clickstart == true) {
     duration = duration + 1
     circles[circles.length - 1].r = duration
   }
 
   circles.forEach(function (circle) {
-    circle.r = circle.r - 1
+    circle.r = Math.max(circle.r - 1, 0)
   })
 
   circles = circles
