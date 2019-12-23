@@ -1,0 +1,175 @@
+<script>
+  import readingTime from 'reading-time'
+  const asciidoctor = require('asciidoctor')();
+
+  export let contents
+  export let index
+
+class CustomConverter {
+  constructor(adoc) {
+    this.baseConverter = asciidoctor.Html5Converter.$new();
+    this.readingTime = readingTime(adoc).text;
+  }
+  convert(node, transform) {
+    let nodeName = node.getNodeName();
+
+    // For PostItemSmall we dont need to render the whole post
+    if (
+      nodeName == "admonition" ||
+      nodeName == "section" ||
+      nodeName == "inline_quoted" ||
+      nodeName == "dlist" ||
+      nodeName == "listing" ||
+      nodeName == "table" ||
+      nodeName == "colist" ||
+      nodeName == "inline_anchor"
+    ) {
+      return "";
+    }
+
+    // Only `date` needs to be rendered
+    if (nodeName == "paragraph" && node.attributes.$$smap.role != "date") {
+      return "";
+    }
+
+    if (nodeName === "preamble" || nodeName === "open") {
+      return node.getContent();
+    } else if (
+      nodeName == "paragraph" &&
+      node.attributes.$$smap.role == "date"
+    ) {
+      node.lines = [`${node.lines[0]} · ${this.readingTime}`];
+      return this.baseConverter.convert(node, transform);
+    } else {
+      return this.baseConverter.convert(node, transform);
+    }
+  }
+}
+
+  //asciidoctor.ConverterFactory.register(new CustomConverter(contents), [ "html5" ]);
+
+  function convert(str) {
+
+    return asciidoctor.convert(str, { doctype: "book", attributes: { showtitle: true } });
+
+  }
+
+
+
+</script>
+
+<style lang="sass">
+
+$font-size: 1.35rem
+
+// ----------- night mode ----------------
+
+$text-color: white
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 35%)
+$bg-color: black
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
+
+// ----------- light mode ----------------
+
+$text-color: rgba(0, 0, 0, .84)
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 35%)
+$bg-color: white
+
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
+
+.postlink
+
+   background-color: $bg-color
+   margin: 2rem 0
+
+   a
+     text-decoration: none
+
+   &::v-deep .wrapper
+     display: grid
+     grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+     grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end]
+
+     color: $text-color
+     cursor: pointer
+
+
+     @media (max-width: 800px)
+       grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
+
+     &:hover
+       color: $accent-color
+
+     *
+       grid-column: word
+       display: none
+
+     img
+       width: 100%
+
+     h1, .date
+       display: unset
+       *
+        display: unset
+
+
+     // styles
+     .imageblock.hero
+        grid-row: top
+        grid-column: word
+
+     .date
+        grid-row: middle
+        color: $gray-color
+
+     h1
+        grid-row: bottom
+        margin: 0
+
+        font-weight: 500
+        letter-spacing: -1px
+        line-height: 3.5rem
+
+
+     &.item-0
+       .imageblock.hero
+
+          display: unset
+
+          grid-row: top
+          grid-column: word
+
+          *
+            display: unset
+
+       .date
+          grid-row: middle
+          color: $gray-color
+
+
+       h1
+          grid-row: bottom
+          margin: 0
+</style>
+
+
+<div class="postlink">
+  {@html convert(contents)}
+</div>
