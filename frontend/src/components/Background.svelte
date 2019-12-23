@@ -37,7 +37,7 @@ const animate = timestamp => {
   circles = circles
   requestAnimationFrame(animate)
 }
-requestAnimationFrame(animate)
+//requestAnimationFrame(animate)
 
 </script>
 
