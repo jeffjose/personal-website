@@ -1,62 +1,7 @@
 <script>
 
-  //import readingTime from 'reading-time';
-  const asciidoctor = require('asciidoctor')();
-
   export let contents
   export let index
-
-class CustomConverter {
-  constructor(adoc) {
-    this.baseConverter = asciidoctor.Html5Converter.$new();
-    //this.readingTime = readingTime(adoc).text;
-    this.readingTime = '10mins'
-  }
-  convert(node, transform) {
-    let nodeName = node.getNodeName();
-
-    // For PostItemSmall we dont need to render the whole post
-    if (
-      nodeName == "admonition" ||
-      nodeName == "section" ||
-      nodeName == "inline_quoted" ||
-      nodeName == "dlist" ||
-      nodeName == "listing" ||
-      nodeName == "table" ||
-      nodeName == "colist" ||
-      nodeName == "inline_anchor"
-    ) {
-      return "";
-    }
-
-    // Only `date` needs to be rendered
-    if (nodeName == "paragraph" && node.attributes.$$smap.role != "date") {
-      return "";
-    }
-
-    if (nodeName === "preamble" || nodeName === "open") {
-      return node.getContent();
-    } else if (
-      nodeName == "paragraph" &&
-      node.attributes.$$smap.role == "date"
-    ) {
-      node.lines = [`${node.lines[0]} · ${this.readingTime}`];
-      return this.baseConverter.convert(node, transform);
-    } else {
-      return this.baseConverter.convert(node, transform);
-    }
-  }
-}
-
-  asciidoctor.ConverterFactory.register(new CustomConverter(contents), [ "html5" ]);
-
-  function convert(str) {
-
-    return asciidoctor.convert(str, { doctype: "book", attributes: { showtitle: true } });
-
-  }
-
-
 
 </script>
 
@@ -173,5 +118,5 @@ $green: #34a853
 
 
 <div class="postlink">
-  {@html convert(contents)}
+  {@html contents}
 </div>

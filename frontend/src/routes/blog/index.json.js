@@ -1,12 +1,11 @@
 import posts from "./_posts.js";
 
+import { convert } from "./_utils.js";
+
 const contents = JSON.stringify(
   posts.map(post => {
-    return {
-      title: post.title,
-      slug: post.slug,
-      contents: post.contents
-    };
+    convert(post);
+    return post;
   })
 );
 

@@ -6,7 +6,6 @@
 // This file is called `_posts.js` rather than `posts.js`, because
 // we don't want to create an `/blog/posts` route — the leading
 // underscore tells Sapper not to do that.
-
 const posts = [
   {
     title: "Svelte 3: Rethinking reactivity",
@@ -101,6 +100,75 @@ As grueling as this release has been, we're nowhere near finished. We have a ton
 
 But in the meantime we think Svelte 3 is the best way to build web apps yet. Take an hour to go through the  and we hope to convince you of the same. Either way, we'd love to see you in our  and on  — everyone is welcome, especially you.
 		`
+  },
+  {
+    title: "Keyboard examples",
+    slug: "keyboard-examples",
+    contents: `
+= Keyboard examples
+
+[.subtitle]
+Keyboard highlights
+
+[.date]
+Apr 26, 2019
+
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+
+|kbd:[Ctrl+Shift+N]
+|New incognito window
+
+|kbd:[\ ]
+|Used to escape characters
+
+|kbd:[Ctrl+\]]
+|Jump to keyword
+
+|kbd:[Ctrl + +]
+|Increase zoom
+|===
+
+
+== Menu stuff
+
+To save the file, select menu:File[Save].
+
+Select menu:View[Zoom > Reset] to reset the zoom level to the default setting.
+
+== Button stuff
+
+Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].
+
+== Footnotes
+A statement.footnote:[Clarification about this statement.]
+
+A bold statement!footnote:disclaimer[Opinions are my own.]
+
+Another bold statement.footnote:disclaimer[]
+
+
+== Bibliography
+
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "\`Gang of Four\`" <<gof>>.
+
+[bibliography]
+== References
+
+- [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+  From Journeyman to Master. Addison-Wesley. 1999.
+- [[[gof,2]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides. Design Patterns:
+  Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
+    `
   }
 ];
 
