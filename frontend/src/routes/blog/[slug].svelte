@@ -22,7 +22,7 @@
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
 		In this page, Svelte can't know which elements are
-		going to appear inside the {{{post.html}}} block,
+		going to appear inside the {{{post.contents}}} block,
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
@@ -60,5 +60,5 @@
 <h1>{post.title}</h1>
 
 <div class='content'>
-	{@html post.html}
+	{@html post.contents}
 </div>

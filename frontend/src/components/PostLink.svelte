@@ -1,5 +1,6 @@
 <script>
-  import readingTime from 'reading-time'
+
+  //import readingTime from 'reading-time';
   const asciidoctor = require('asciidoctor')();
 
   export let contents
@@ -8,7 +9,8 @@
 class CustomConverter {
   constructor(adoc) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    this.readingTime = readingTime(adoc).text;
+    //this.readingTime = readingTime(adoc).text;
+    this.readingTime = '10mins'
   }
   convert(node, transform) {
     let nodeName = node.getNodeName();
@@ -46,7 +48,7 @@ class CustomConverter {
   }
 }
 
-  //asciidoctor.ConverterFactory.register(new CustomConverter(contents), [ "html5" ]);
+  asciidoctor.ConverterFactory.register(new CustomConverter(contents), [ "html5" ]);
 
   function convert(str) {
 
