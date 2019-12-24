@@ -2,7 +2,7 @@
 	import Background from '../components/Background.svelte';
 </script>
 
-<style lang="sass">
+<style type="text/sass">
 
 $text-color: white
 $accent-color: #FF0088

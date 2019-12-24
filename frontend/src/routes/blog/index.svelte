@@ -25,6 +25,5 @@
 div.blog
   +each('posts as post, index')
     div
-      a(rel="prefetch" href="blog/{post.slug}") {post.title}
       PostLink(contents='{post.contents}', index='{index}')
 </template>

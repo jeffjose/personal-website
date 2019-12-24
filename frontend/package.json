@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "build": "sapper build",
+    "export": "sapper export",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
@@ -38,6 +38,8 @@
     "sapper": "^0.27.0",
     "sass": "^1.24.0",
     "svelte": "^3.0.0",
-    "svelte-preprocess": "^3.3.0"
+    "svelte-loader": "^2.9.0",
+    "svelte-preprocess": "^3.3.0",
+    "webpack": "^4.7.0"
   }
 }
