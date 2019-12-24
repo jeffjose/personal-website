@@ -24,7 +24,5 @@
 <template lang="pug">
 div.blog
   +each('posts as post, index')
-    div
-      a(rel="prefetch" href="blog/{post.slug}") {post.title}
-      PostLink(contents='{post.teaserhtml}', index='{index}')
+    PostLink(contents='{post.teaserhtml}', slug='{post.slug}', index='{index}')
 </template>

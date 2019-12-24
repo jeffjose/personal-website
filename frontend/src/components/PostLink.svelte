@@ -1,6 +1,7 @@
 <script>
 
   export let contents
+  export let slug
   export let index
 
 </script>
@@ -118,5 +119,9 @@ $green: #34a853
 
 
 <div class="postlink">
-  {@html contents}
+  <a href="/blog/{slug}">
+    <div class="wrapper">
+      {@html contents}
+    </div>
+  </a>
 </div>

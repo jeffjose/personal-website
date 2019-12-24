@@ -59,5 +59,4 @@
 
 <div class='content'>
 	{@html post.fullhtml}
-  {post.fullhtml}
 </div>

@@ -98,7 +98,4 @@ export function convert(post) {
     doctype: "book",
     attributes: { showtitle: true }
   });
-
-  console.log("FULL", post.fullhtml.length);
-  console.log("TEASER", post.teaserhtml.length);
 }
