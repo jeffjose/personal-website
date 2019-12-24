@@ -41,85 +41,84 @@ $yellow: #fbbc04
 $red: #ea4335
 $green: #34a853
 
-
 .postlink
 
-   background-color: $bg-color
-   margin: 2rem 0
+  background-color: $bg-color
+  margin: 2rem 0
 
-   a
-     text-decoration: none
+  a
+    text-decoration: none
 
-   &::v-deep .wrapper
-     display: grid
-     grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
-     grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end]
+:global(.wrapper)
+  display: grid
+  grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+  grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end]
 
-     color: $text-color
-     cursor: pointer
+  color: $text-color
+  cursor: pointer
 
 
-     @media (max-width: 800px)
-       grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
+  @media (max-width: 800px)
+    grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
 
-     &:hover
-       color: $accent-color
+  &:hover
+    color: $accent-color
 
-     *
-       grid-column: word
-       display: none
+  :global(*)
+    grid-column: word
+    display: none
 
-     img
-       width: 100%
+  img
+    width: 100%
 
-     h1, .date
+  h1, .date
+    display: unset
+    *
+     display: unset
+
+
+  // styles
+  .imageblock.hero
+     grid-row: top
+     grid-column: word
+
+  .date
+     grid-row: middle
+     color: $gray-color
+
+  h1
+     grid-row: bottom
+     margin: 0
+
+     font-weight: 500
+     letter-spacing: -1px
+     line-height: 3.5rem
+
+
+  &.item-0
+    .imageblock.hero
+
        display: unset
+
+       grid-row: top
+       grid-column: word
+
        *
-        display: unset
+         display: unset
+
+    .date
+       grid-row: middle
+       color: $gray-color
 
 
-     // styles
-     .imageblock.hero
-        grid-row: top
-        grid-column: word
-
-     .date
-        grid-row: middle
-        color: $gray-color
-
-     h1
-        grid-row: bottom
-        margin: 0
-
-        font-weight: 500
-        letter-spacing: -1px
-        line-height: 3.5rem
-
-
-     &.item-0
-       .imageblock.hero
-
-          display: unset
-
-          grid-row: top
-          grid-column: word
-
-          *
-            display: unset
-
-       .date
-          grid-row: middle
-          color: $gray-color
-
-
-       h1
-          grid-row: bottom
-          margin: 0
+    h1
+       grid-row: bottom
+       margin: 0
 </style>
 
 
 <div class="postlink">
-  <a href="/blog/{slug}">
+  <a class="clickable" href="/blog/{slug}">
     <div class="wrapper">
       {@html contents}
     </div>
