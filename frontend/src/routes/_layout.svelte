@@ -1,6 +1,7 @@
 <script>
 </script>
-<style> </style>
+<style>
+</style>
 
 <template lang="pug">
 slot

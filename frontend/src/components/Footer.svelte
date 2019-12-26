@@ -6,7 +6,7 @@ $gray-color: lighten($blockquote-color, 35%)
 $accent-color: #FF0088
 
 .footer
-  height: 12rem
+  min-height: 12rem
   background-color: lighten($accent-color, 45%)
   margin-top: 3rem
   border-top: 1px solid $accent-color
@@ -48,23 +48,29 @@ $accent-color: #FF0088
       color: $gray-color
 
     .name
-      font-size: 1.2rem
-      text-transform: uppercase
-      letter-spacing: 1px
       margin: 0.5rem
+
+      a
+        font-size: 1.2rem
+        text-transform: uppercase
+        letter-spacing: 1px
+        margin: 0.5rem
 </style>
 
 <template lang="pug">
   div.footer
     .contents
       .links
-        a(href='/') Home
+        a(href='/about') about
         p.dot ·
-        a(href='/blog') Blog
+        a(href='/blog') blog
         p.dot ·
-        a(href='/twitter') Twitter
+        a(href='/books') books
         p.dot ·
-        a(href='/linkedin') Linkedin
-      p.name Jeffrey Jose
+        a(href='/twitter') twitter
+        p.dot ·
+        a(href='/linkedin') linkedin
+      p.name
+        a(href='/') Jeffrey Jose
 </template>
 

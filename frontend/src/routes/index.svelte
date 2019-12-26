@@ -115,7 +115,9 @@ $green: #34a853
         span.name Jeffrey Jose
         span.desc Product Manager at Google
         div.links
-          a.link(rel="prefetch" href="/twitter") Twitter
-          a.link(rel="prefetch" href="/linkedin") Linkedin
-          a.link(rel="prefetch" href="/blog") Blog
+          a.link(rel="prefetch" href="/about") about
+          a.link(rel="prefetch" href="/blog") blog
+          a.link(rel="prefetch" href="/books") books
+          a.link(rel="prefetch" href="/twitter") twitter
+          a.link(rel="prefetch" href="/linkedin") linkedin
 </template>
