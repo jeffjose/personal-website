@@ -83,6 +83,10 @@
 //     &:hover
 //       text-decoration: none;
 //
+//   .endofpost
+//     margin-top: 4rem
+//     text-align: center
+//
 //   *
 //     grid-column: word
 //
@@ -566,6 +570,11 @@
 
   .wrapper .goback:hover {
     text-decoration: none;
+  }
+
+  .wrapper .endofpost {
+    margin-top: 4rem;
+    text-align: center;
   }
 
 .wrapper :global(*) {
@@ -1105,6 +1114,9 @@
       <div class='wrapper'>
         <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
 	      {@html post.fullhtml}
+        <div class="endofpost">
+          <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
+        </div>
       </div>
   </div>
 </div>
