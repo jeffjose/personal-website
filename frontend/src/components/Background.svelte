@@ -2,6 +2,24 @@
 import { writable } from "svelte/store"
 import { spring } from "svelte/motion"
 
+let colors = [
+        '#f44336',
+        '#E91E63',
+        '#9C27B0',
+        '#673AB7',
+        '#3F51B5',
+        '#2196F3',
+        '#03A9F4',
+        '#00BCD4',
+        '#009688',
+        '#4CAF50',
+        '#8BC34A',
+        '#CDDC39',
+        '#FFEB3B',
+        '#FFC107',
+        '#FF9800',
+        '#FF5722',
+      ]
 let circles = []
 let clickstart
 let duration
@@ -16,7 +34,7 @@ function addCircle(event) {
 
   let newCircle = {x: event.clientX, y: event.clientY, r: 1, tx: random(-300, 300), maxr: random(10, 30)}
   circles = [...circles, newCircle]
-  requestAnimationFrame(animate)
+  //requestAnimationFrame(animate)
 }
 
 function clickStopped(event) {
@@ -60,7 +78,7 @@ circle
   >
   <g id="wrapper">
     {#each circles as circle, i}
-      <circle cx="{circle.x}" cy="{circle.y}" r="{circle.r}" fill="red">
+      <circle cx="{circle.x}" cy="{circle.y}" r="{circle.r}" fill="{colors[i % colors.length]}">
       <!--
         <animate attributeName = "r" values = "{circle.r};{circle.maxr};{circle.r}" dur="10s" repeatCount="indefinite"/>
         <animate attributeName = "cx" values = "{circle.x};{circle.x + circle.tx};{circle.x}" dur="10s" repeatCount="indefinite"/>
