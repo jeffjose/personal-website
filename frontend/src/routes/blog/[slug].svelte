@@ -69,6 +69,10 @@
 //   @media (max-width: 800px)
 //     grid-template-columns: 20px [content-start] 2fr [word-start] auto [word-end] 2fr [content-end] 20px
 //
+//     .quoteblock
+//        blockquote
+//          margin-left: 0 !important
+//          margin-right: 0 !important
 //
 //   .goback
 //     text-transform: uppercase;
@@ -172,6 +176,7 @@
 //     padding: 0 1rem
 //     background-color: $box-bg-color
 //     margin: 0.5em 0
+//     overflow-y: scroll
 //
 //     .content
 //       padding: 0.5rem 0.8rem
@@ -555,6 +560,11 @@
   .wrapper {
     grid-template-columns: 20px [content-start] 2fr [word-start] auto [word-end] 2fr [content-end] 20px;
   }
+
+  .wrapper :global(.quoteblock blockquote) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
 }
 
   .wrapper .goback {
@@ -667,6 +677,7 @@
   padding: 0 1rem;
   background-color: #f4faff;
   margin: 0.5em 0;
+  overflow-y: scroll
 }
 
 .wrapper :global(.listingblock .content) {

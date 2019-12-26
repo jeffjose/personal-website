@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <template lang="pug">
   div.header
     div.middle

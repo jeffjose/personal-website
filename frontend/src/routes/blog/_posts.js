@@ -80,6 +80,35 @@ curl https://google.com | grep script
     `
   },
   {
+    title: "Testing article",
+    slug: "testing-article",
+    contents: `
+= Testing article
+
+[.subtitle]
+And why you thought this was going to be a fruitless excercise for no good reason
+
+[.date]
+Apr 1, 2019
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+[.hero]
+image::https://picsum.photos/1920/1080?random=1434545[]
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+
+.bash
+[source, bash]
+----
+mkdir -p /tmp/foobar
+
+curl https://google.com | grep script
+----
+
+    `
+  },
+  {
     title: "This is a long article",
     slug: "this-is-a-long-article",
     contents: `

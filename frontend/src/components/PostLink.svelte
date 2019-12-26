@@ -99,26 +99,26 @@
 //      line-height: 3.5rem
 //
 //
-//   &.item-0
-//     .imageblock.hero
+//     // &.item-0
+//     //   .imageblock.hero
+//     //
+//     //      display: unset
+//     //
+//     //      grid-row: top
+//     //      grid-column: word
+//     //
+//     //      *
+//     //        display: unset
+//     //
+//     //   .date
+//     //      grid-row: middle
+//     //      color: $gray-color
+//     //      font-size: 1.2rem
 //
-//        display: unset
 //
-//        grid-row: top
-//        grid-column: word
-//
-//        *
-//          display: unset
-//
-//     .date
-//        grid-row: middle
-//        color: $gray-color
-//        font-size: 1.2rem
-//
-//
-//     h1
-//        grid-row: bottom
-//        margin: 0
+//     //   h1
+//     //      grid-row: bottom
+//     //      margin: 0
 //
 
 
@@ -189,26 +189,26 @@
   line-height: 3.5rem;
 }
 
-.wrapper.item-0 :global(.imageblock.hero) {
-  display: unset;
-  grid-row: top;
-  grid-column: word;
-}
-
-.wrapper.item-0 :global(.imageblock.hero *) {
-  display: unset;
-}
-
-.wrapper.item-0 :global(.date) {
-  grid-row: middle;
-  color: rgba(59, 59, 59, 0.84);
-  font-size: 1.2rem
-}
-
-.wrapper.item-0 :global(h1) {
-  grid-row: bottom;
-  margin: 0;
-}
+//.wrapper.item-0 :global(.imageblock.hero) {
+//  display: unset;
+//  grid-row: top;
+//  grid-column: word;
+//}
+//
+//.wrapper.item-0 :global(.imageblock.hero *) {
+//  display: unset;
+//}
+//
+//.wrapper.item-0 :global(.date) {
+//  grid-row: middle;
+//  color: rgba(59, 59, 59, 0.84);
+//  font-size: 1.2rem
+//}
+//
+//.wrapper.item-0 :global(h1) {
+//  grid-row: bottom;
+//  margin: 0;
+//}
 
 
 </style>
