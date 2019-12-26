@@ -214,7 +214,7 @@
 
 
 <div class="postlink">
-  <a class="clickable" href="/blog/{slug}">
+  <a rel="prefetch" class="clickable" href="/blog/{slug}">
     <div class="wrapper">
       {@html contents}
     </div>
