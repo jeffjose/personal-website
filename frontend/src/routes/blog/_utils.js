@@ -1,10 +1,13 @@
+const readingTime = require("reading-time");
 const asciidoctor = require("asciidoctor")();
+const highlightJsExt = require("asciidoctor-highlight.js");
+highlightJsExt.register(asciidoctor.Extensions);
 
 class FullConverter {
-  constructor() {
+  constructor(contents) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    //this.readingTime = readingTime(adoc).text;
-    this.readingTime = "10mins";
+    this.readingTime = readingTime(contents).text;
+    //this.readingTime = "10mins";
   }
 
   convert(node, transform) {
@@ -85,14 +88,21 @@ class TeaserConverter {
 }
 
 export function convert(post) {
-  asciidoctor.ConverterFactory.register(new FullConverter(), ["html5"]);
+  asciidoctor.ConverterFactory.register(new FullConverter(post.contents), [
+    "html5"
+  ]);
 
   post.fullhtml = asciidoctor.convert(post.contents, {
     doctype: "book",
-    attributes: { showtitle: true }
+    attributes: [
+      "icons=font",
+      "experimental=true",
+      "showtitle=true",
+      "source-highlighter=highlightjs-ext"
+    ]
   });
 
-  asciidoctor.ConverterFactory.register(new TeaserConverter(), ["html5"]);
+  asciidoctor.ConverterFactory.register(new TeaserConverter(post), ["html5"]);
 
   post.teaserhtml = asciidoctor.convert(post.contents, {
     doctype: "book",

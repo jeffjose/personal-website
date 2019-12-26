@@ -125,10 +125,10 @@ Apr 26, 2019
 |kbd:[Ctrl+Shift+N]
 |New incognito window
 
-|kbd:[\ ]
+|kbd:[\\ ]
 |Used to escape characters
 
-|kbd:[Ctrl+\]]
+|kbd:[Ctrl+\\]]
 |Jump to keyword
 
 |kbd:[Ctrl + +]
