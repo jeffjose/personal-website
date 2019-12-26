@@ -4,10 +4,11 @@
   export let slug
   export let index
 
+  $: className = `item-${index}`
+
 </script>
 
 <style lang="scss">
-
 
 // $font-size: 1.35rem
 //
@@ -215,7 +216,7 @@
 
 <div class="postlink">
   <a rel="prefetch" class="clickable" href="/blog/{slug}">
-    <div class="wrapper">
+    <div class="wrapper {className}">
       {@html contents}
     </div>
   </a>
