@@ -70,6 +70,19 @@
 //     grid-template-columns: 20px [content-start] 2fr [word-start] auto [word-end] 2fr [content-end] 20px
 //
 //
+//   .goback
+//     text-transform: uppercase;
+//     margin: 0px;
+//     margin-left: 3px;
+//     font-size: 1rem;
+//     letter-spacing: 1px;
+//     color: $accent-color
+//     text-decoration: none;
+//     font-family: Lato;
+//
+//     &:hover
+//       text-decoration: none;
+//
 //   *
 //     grid-column: word
 //
@@ -84,6 +97,7 @@
 //     letter-spacing: -2px
 //     line-height: 3.5rem
 //     margin-bottom: 0.5rem
+//     margin-top: 0.5rem
 //
 //   h2
 //     font-size: 2.3rem
@@ -396,7 +410,6 @@
 //     line-height: 1.67em
 //     font-family: "Open Sans","DejaVu Sans",sans-serif
 //     font-style: normal
-//     font-weight: bold
 //     margin-right: 0.5rem
 //     *
 //       color: #fff !important
@@ -540,6 +553,21 @@
   }
 }
 
+  .wrapper .goback {
+    text-transform: uppercase;
+    margin: 0px;
+    margin-left: 3px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #FF0088;
+    text-decoration: none;
+    font-family: Lato;
+  }
+
+  .wrapper .goback:hover {
+    text-decoration: none;
+  }
+
 .wrapper :global(*) {
   grid-column: word;
 }
@@ -550,6 +578,7 @@
   letter-spacing: -2px;
   line-height: 3.5rem;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .wrapper :global(h2) {
@@ -906,7 +935,6 @@
   line-height: 1.67em;
   font-family: "Open Sans","DejaVu Sans",sans-serif;
   font-style: normal;
-  font-weight: bold;
   margin-right: 0.5rem;
 }
 
@@ -1075,6 +1103,7 @@
 <div class='post'>
   <div class='postitem'>
       <div class='wrapper'>
+        <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
 	      {@html post.fullhtml}
       </div>
   </div>
