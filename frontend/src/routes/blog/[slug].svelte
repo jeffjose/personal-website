@@ -78,7 +78,7 @@
 //     letter-spacing: 1px;
 //     color: $accent-color
 //     text-decoration: none;
-//     font-family: Lato;
+//     font-family: Lato, sans-serif;
 //
 //     &:hover
 //       text-decoration: none;
@@ -565,7 +565,7 @@
     letter-spacing: 1px;
     color: #FF0088;
     text-decoration: none;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
   }
 
   .wrapper .goback:hover {

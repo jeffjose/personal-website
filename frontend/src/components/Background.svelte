@@ -16,6 +16,7 @@ function addCircle(event) {
 
   let newCircle = {x: event.clientX, y: event.clientY, r: 1, tx: random(-300, 300), maxr: random(10, 30)}
   circles = [...circles, newCircle]
+  requestAnimationFrame(animate)
 }
 
 function clickStopped(event) {
