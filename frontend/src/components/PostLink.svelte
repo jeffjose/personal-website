@@ -33,7 +33,7 @@
 // $accent-color: #FF0088
 // $box-bg-color: #f6f9fc
 // $blockquote-color: lighten($text-color, 10%)
-// $gray-color: lighten($blockquote-color, 35%)
+// $gray-color: lighten($blockquote-color, 13%)
 // $bg-color: white
 //
 //
@@ -87,6 +87,7 @@
 //   .date
 //      grid-row: middle
 //      color: $gray-color
+//      font-size: 1.2rem
 //
 //   h1
 //      grid-row: bottom
@@ -111,6 +112,7 @@
 //     .date
 //        grid-row: middle
 //        color: $gray-color
+//        font-size: 1.2rem
 //
 //
 //     h1
@@ -174,7 +176,8 @@
 
 .wrapper :global(.date) {
   grid-row: middle;
-  color: rgba(115, 115, 115, 0.84);
+  color: rgba(59, 59, 59, 0.84);
+  font-size: 1.2rem
 }
 
 .wrapper :global(h1) {
@@ -197,7 +200,8 @@
 
 .wrapper.item-0 :global(.date) {
   grid-row: middle;
-  color: rgba(115, 115, 115, 0.84);
+  color: rgba(59, 59, 59, 0.84);
+  font-size: 1.2rem
 }
 
 .wrapper.item-0 :global(h1) {

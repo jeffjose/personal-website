@@ -7,7 +7,6 @@ class FullConverter {
   constructor(contents) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
     this.readingTime = readingTime(contents).text;
-    //this.readingTime = "10mins";
   }
 
   convert(node, transform) {
@@ -45,10 +44,9 @@ class FullConverter {
 }
 
 class TeaserConverter {
-  constructor() {
+  constructor(contents) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
-    //this.readingTime = readingTime(adoc).text;
-    this.readingTime = "10mins";
+    this.readingTime = readingTime(contents).text;
   }
 
   convert(node, transform) {
@@ -102,7 +100,9 @@ export function convert(post) {
     ]
   });
 
-  asciidoctor.ConverterFactory.register(new TeaserConverter(post), ["html5"]);
+  asciidoctor.ConverterFactory.register(new TeaserConverter(post.contents), [
+    "html5"
+  ]);
 
   post.teaserhtml = asciidoctor.convert(post.contents, {
     doctype: "book",

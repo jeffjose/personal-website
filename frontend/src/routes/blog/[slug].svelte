@@ -79,10 +79,11 @@
 //   ::selection
 //     //background: lighten($accent-color, 40%)
 //   h1
-//     font-size: 2.7rem
+//     font-size: 2.9rem
 //     font-weight: 500
 //     letter-spacing: -2px
 //     line-height: 3.5rem
+//     margin-bottom: 0.5rem
 //
 //   h2
 //     font-size: 2.3rem
@@ -144,7 +145,7 @@
 //   p  code
 //     background-color: $inline-code-bg-color
 //     padding: 4px 10px
-//     font-size: 0.9rem
+//     font-size: 1rem
 //     //color: $accent-color
 //     font-family: "Fira Mono", monospace
 //
@@ -542,10 +543,11 @@
 }
 
 .wrapper :global(h1) {
-  font-size: 2.7rem;
+  font-size: 2.9rem;
   font-weight: 500;
   letter-spacing: -2px;
   line-height: 3.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .wrapper :global(h2) {
@@ -617,7 +619,7 @@
 .wrapper :global(p code) {
   background-color: #eff8ff;
   padding: 4px 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: "Fira Mono", monospace;
 }
 
