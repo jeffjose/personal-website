@@ -19,6 +19,9 @@ Lets see if it highlights
 [.date]
 Apr 24, 2019
 
+[.hero]
+image::https://picsum.photos/1920/1080?random=1434545[]
+
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
 [source, javascript]
