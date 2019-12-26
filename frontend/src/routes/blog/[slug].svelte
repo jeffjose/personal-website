@@ -384,9 +384,10 @@
 //   // Copied from asciidoctor.css
 //   .conum[data-value]
 //     display: inline-block
-//     color: #fff !important
+//     color: $accent-color !important;
 //     background: darken($box-bg-color, 40%)
 //     background: $accent-color
+//     background: lighten($accent-color, 40%)
 //     border-radius: 100px
 //     text-align: center
 //     font-size: .75em
@@ -396,6 +397,7 @@
 //     font-family: "Open Sans","DejaVu Sans",sans-serif
 //     font-style: normal
 //     font-weight: bold
+//     margin-right: 0.5rem
 //     *
 //       color: #fff !important
 //     + b
@@ -893,9 +895,9 @@
 
 .wrapper :global(.conum[data-value]) {
   display: inline-block;
-  color: #fff !important;
+  color: #FF0088 !important;
   background: #28a1ff;
-  background: #FF0088;
+  background: #ffcce7;
   border-radius: 100px;
   text-align: center;
   font-size: .75em;
@@ -905,6 +907,7 @@
   font-family: "Open Sans","DejaVu Sans",sans-serif;
   font-style: normal;
   font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 .wrapper :global(.conum[data-value] *) {

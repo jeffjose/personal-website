@@ -118,5 +118,4 @@ $green: #34a853
           a.link(rel="prefetch" href="/twitter") Twitter
           a.link(rel="prefetch" href="/linkedin") Linkedin
           a.link(rel="prefetch" href="/blog") Blog
-          a.link(rel="prefetch" href="/posts") Posts
 </template>
