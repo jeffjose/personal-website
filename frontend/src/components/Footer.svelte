@@ -1,15 +1,21 @@
 <style lang="sass">
 
-$text-color: rgba(0, 0, 0, .84)
+$text-color: white
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 35%)
 $accent-color: #FF0088
 
+$background-dark-color: #262626
+
+// Temp
+$background-dark-color: lighten(gray, 30%)
+$text-color: darken(gray, 30%)
+
 .footer
   min-height: 12rem
-  background-color: lighten($accent-color, 45%)
+  background-color: $background-dark-color
   margin-top: 3rem
-  border-top: 1px solid $accent-color
+  border-top: 3px solid gray
 
   display: grid
   grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
@@ -45,7 +51,7 @@ $accent-color: #FF0088
         color: $accent-color
 
     .dot
-      color: $gray-color
+      color: $text-color
 
     .name
       margin: 0.5rem
