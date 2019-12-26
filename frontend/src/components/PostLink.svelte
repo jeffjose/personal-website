@@ -66,6 +66,8 @@
 //
 //   &:hover
 //     color: $accent-color
+//     h1
+//       border-bottom: 3px solid $accent-color
 //
 //   *
 //     grid-column: word
@@ -97,6 +99,7 @@
 //      font-weight: 500
 //      letter-spacing: -1px
 //      line-height: 3.5rem
+//      border-bottom: 3px solid rgba(0, 0, 0, 0)
 //
 //
 //     // &.item-0
@@ -153,6 +156,10 @@
   color: #FF0088;
 }
 
+.wrapper:hover :global(h1) {
+  border-bottom: 3px solid #FF0088;
+}
+
 .wrapper :global(*) {
   grid-column: word;
   display: none;
@@ -187,6 +194,7 @@
   font-weight: 500;
   letter-spacing: -1px;
   line-height: 3.5rem;
+  border-bottom: 3px solid rgba(0, 0, 0, 0)
 }
 
 //.wrapper.item-0 :global(.imageblock.hero) {

@@ -73,6 +73,23 @@
 //        blockquote
 //          margin-left: 0 !important
 //          margin-right: 0 !important
+//   .toolbar
+//     height: 3rem
+//
+//     @media (max-width: 800px)
+//
+//     .link
+//       font-size: 0.9rem
+//       a
+//         background-color: white
+//         padding: 4px 8px
+//         border-radius: 5px
+//         border: 1px solid $accent-color
+//
+//         &:hover
+//           background-color: $accent-color
+//           text-decoration: none
+//           color: white
 //
 //   .goback
 //     text-transform: uppercase;
@@ -587,6 +604,24 @@
     text-align: center;
   }
 
+  .wrapper .toolbar {
+    height: 3rem;
+  }
+  .toolbar .link {
+    font-size: 0.9rem;
+  }
+  .link a {
+      background-color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+      border: 1px solid #FF0088;
+  }
+  .link a:hover {
+        background-color: #FF0088;
+        text-decoration: none;
+        color: white;
+  }
+
 .wrapper :global(*) {
   grid-column: word;
 }
@@ -698,7 +733,7 @@
   text-decoration: none;
 }
 
-.wrapper :global(a:hover) {
+.wrapper :global(.contents a:hover) {
   text-decoration: underline;
 }
 
@@ -1120,14 +1155,20 @@
 	<title>{post.title}</title>
 </svelte:head>
 
-<div class='post'>
-  <div class='postitem'>
-      <div class='wrapper'>
-        <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
-	      {@html post.fullhtml}
-        <div class="endofpost">
-          <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
+<template>
+  <div class='post'>
+    <div class='postitem'>
+        <div class='wrapper'>
+          <div class="toolbar">
+            <p class="link"><a rel="prefetch" href="/blog">Back to posts</a></p>
+          </div>
+          <div class="contents">
+            {@html post.fullhtml}
+          </div>
+          <div class="endofpost">
+            <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
+          </div>
         </div>
-      </div>
+    </div>
   </div>
-</div>
+</template>
