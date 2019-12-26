@@ -3,8 +3,8 @@
   import Footer from '../../components/Footer.svelte';
 </script>
 
-<style lang="sass" global>
-@import './_tomorrow.css'
+<style lang="sass">
+//@import './_tomorrow.css'
 </style>
 
 <template lang="pug">

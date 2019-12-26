@@ -21,8 +21,7 @@ const dedupe = importee =>
 
 const preprocess = sveltePreprocess({
   pug: true,
-  sass: true,
-  postcss: true
+  sass: true
 });
 
 export default {
