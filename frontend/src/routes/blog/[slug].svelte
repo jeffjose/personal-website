@@ -79,7 +79,7 @@
 //     @media (max-width: 800px)
 //
 //     .link
-//       font-size: 0.9rem
+//       font-size: 1rem
 //       a
 //         background-color: white
 //         padding: 4px 8px
@@ -608,7 +608,7 @@
     height: 3rem;
   }
   .toolbar .link {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .link a {
       background-color: white;
