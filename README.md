@@ -1,3 +1,2 @@
 # Personal Website
 **jeffreyjose.com**
-

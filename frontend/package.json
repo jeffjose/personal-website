@@ -10,7 +10,14 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "py": "cd __sapper__/export; python3 -m http.server"
+    "py": "cd __sapper__/export; python3 -m http.server",
+    "docker": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker run -e 'PORT=3000' -p 80:3000 gcr.io/personal-c913b/personal-website",
+    "dockerrun": "docker run -e 'PORT=3000' -p 80:3000 gcr.io/personal-c913b/personal-website",
+    "dockerinspect": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker run -e 'PORT=3000' -p 80:3000 -t -i gcr.io/personal-c913b/personal-website /bin/bash",
+    "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website",
+    "deployclouddev": "gcloud beta run deploy personal-website --platform managed --image gcr.io/personal-c913b/personal-website --region us-central1",
+    "cloudprod": "docker build --tag=gcr.io/personal-c913b/personal-website-prod .; docker push gcr.io/personal-c913b/personal-website-prod",
+    "deploycloudprod": "gcloud beta run deploy personal-website-prod --platform managed --image gcr.io/personal-c913b/personal-website-prod --region us-central1"
   },
   "dependencies": {
     "compression": "^1.7.1",
