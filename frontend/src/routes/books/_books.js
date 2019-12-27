@@ -85,17 +85,17 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 `
   },
   {
-    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
-    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    title: "Capitalism in America: A History",
+    slug: "capitalism-in-america-a-history",
     contents: `
 
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= Capitalism in America: A History
 
 [.date]
 Dec 26, 2019
 
 [.hero]
-image::/books/catch-and-kill.jpg[]
+image::/books/capitalism-in-america.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
@@ -103,17 +103,17 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 `
   },
   {
-    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
-    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    title: "The Body: A Guide for Occupants",
+    slug: "the-body-a-guide-for-occupants",
     contents: `
 
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= The Body: A Guide for Occupants
 
 [.date]
 Dec 26, 2019
 
 [.hero]
-image::/books/catch-and-kill.jpg[]
+image::/books/the-body.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
@@ -121,17 +121,18 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 `
   },
   {
-    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
-    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    title:
+      "The Undercover Economist Strikes Back: How to Run-or Ruin-an Economy",
+    slug: "the-undercover-economist-strikes-back-how-to-run-or-ruin-an-economy",
     contents: `
 
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= The Undercover Economist Strikes Back: How to Run-or Ruin-an Economy
 
 [.date]
 Dec 26, 2019
 
 [.hero]
-image::/books/catch-and-kill.jpg[]
+image::/books/undercover-economist.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
