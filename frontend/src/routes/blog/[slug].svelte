@@ -738,6 +738,9 @@
   text-decoration: none;
 }
 
+.wrapper :global(.contents) {
+  display: contents;
+}
 .wrapper :global(.contents a:hover) {
   text-decoration: underline;
 }
