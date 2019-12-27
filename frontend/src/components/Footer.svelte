@@ -18,9 +18,9 @@ $text-color: darken(gray, 30%)
   border-top: 3px solid gray
 
   display: grid
-  grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
+  grid-template-columns: 7fr [word-start] 540px [word-end] 7fr
 
-  @media (max-width: 800px)
+  @media (max-width: 540px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
       a, p
