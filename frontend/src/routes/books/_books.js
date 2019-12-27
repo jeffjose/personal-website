@@ -17,7 +17,7 @@ const books = [
 Dec 26, 2019
 
 [.hero]
-image::https://picsum.photos/1920/1080?random=1434545[]
+image::/books/mossad.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
@@ -36,7 +36,97 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 Dec 26, 2019
 
 [.hero]
-image::https://picsum.photos/1920/1080?random=1434545[]
+image::/books/catch-and-kill.jpg[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+`
+  },
+  {
+    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
+    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    contents: `
+
+= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+
+[.date]
+Dec 26, 2019
+
+[.hero]
+image::/books/catch-and-kill.jpg[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+`
+  },
+  {
+    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
+    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    contents: `
+
+= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+
+[.date]
+Dec 26, 2019
+
+[.hero]
+image::/books/catch-and-kill.jpg[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+`
+  },
+  {
+    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
+    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    contents: `
+
+= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+
+[.date]
+Dec 26, 2019
+
+[.hero]
+image::/books/catch-and-kill.jpg[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+`
+  },
+  {
+    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
+    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    contents: `
+
+= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+
+[.date]
+Dec 26, 2019
+
+[.hero]
+image::/books/catch-and-kill.jpg[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
+
+Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-over cloud bread selvage enamel pin flannel asymmetrical street art lyft heirloom kombucha prism wolf umami snackwave iceland. Edison bulb flexitarian organic chicharrones. Franzen vexillologist ethical crucifix normcore artisan deep v +austin.cc+ four loko vaporware skateboard cray brunch.
+`
+  },
+  {
+    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
+    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    contents: `
+
+= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+
+[.date]
+Dec 26, 2019
+
+[.hero]
+image::/books/catch-and-kill.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 

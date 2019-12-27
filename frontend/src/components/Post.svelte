@@ -44,7 +44,7 @@
 // $green: #34a853
 //
 //
-// .postlink
+// .post
 //
 //    background-color: $bg-color
 //    margin: 2rem 0
@@ -129,12 +129,12 @@
 // .. and added :global()
 //
 
-.postlink {
+.post {
   background-color: white;
   margin: 2rem 0;
 }
 
-.postlink a {
+.post a {
   text-decoration: none;
 }
 
@@ -222,7 +222,7 @@
 </style>
 
 
-<div class="postlink">
+<div class="post">
   <a rel="prefetch" class="clickable" href="/blog/{slug}">
     <div class="wrapper {className}">
       {@html contents}

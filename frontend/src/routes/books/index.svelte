@@ -9,10 +9,20 @@
 </script>
 
 <script>
+  import Book from "../../components/Book.svelte";
   export let books;
 </script>
 
-<style>
+<style lang="sass">
+
+.blog
+  display: grid
+  grid-column: word
+  grid-template-columns: repeat(5, 1fr)
+  grid-column-gap: 15px
+
+  @media (max-width: 800px)
+    grid-template-columns: repeat(3, minmax(130px, 1fr))
 
 </style>
 
@@ -23,5 +33,5 @@
 <template lang="pug">
 div.blog
   +each('books as book, index')
-    | book
+    Book(contents='{book.teaserhtml}', slug='{book.slug}', index='{index}')
 </template>

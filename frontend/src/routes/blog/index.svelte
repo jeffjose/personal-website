@@ -9,7 +9,7 @@
 </script>
 
 <script>
-  import PostLink from "../../components/PostLink.svelte";
+  import Post from "../../components/Post.svelte";
   export let posts;
 </script>
 
@@ -24,5 +24,5 @@
 <template lang="pug">
 div.blog
   +each('posts as post, index')
-    PostLink(contents='{post.teaserhtml}', slug='{post.slug}', index='{index}')
+    Post(contents='{post.teaserhtml}', slug='{post.slug}', index='{index}')
 </template>
