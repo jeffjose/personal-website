@@ -30,7 +30,10 @@ $accent-color: #FF0088
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
   display: grid
-  grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
+  grid-template-columns: 7fr [word-start] 1080px [word-end] 7fr
+
+  @media (max-width: 1080px)
+    grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
 
   @media (max-width: 800px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
