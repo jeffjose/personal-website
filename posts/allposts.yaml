@@ -1,0 +1,6 @@
+- file: https://raw.githubusercontent.com/jeffjose/personal-website/rollup/posts/testing-article.adoc
+  slug: testing-article
+  title: Testing article's thing
+- file: https://raw.githubusercontent.com/jeffjose/personal-website/rollup/posts/code-examples.adoc
+  slug: code-examples
+  title: Code examples
