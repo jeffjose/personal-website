@@ -13,10 +13,13 @@ const books = [
     contents: `
 = Mossad: The Greatest Missions of the Israeli Secret Service
 
+[.subtitle]
+Michael Bar-Zohar & Nissim Mishal
+
 [.date]
 Dec 26, 2019
 
-[.hero]
+[.hero.blur]
 image::/books/mossad.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.

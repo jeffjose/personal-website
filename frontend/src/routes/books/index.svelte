@@ -15,14 +15,25 @@
 
 <style lang="sass">
 
-.blog
-  display: grid
-  grid-column: word
-  grid-template-columns: repeat(5, 1fr)
-  grid-column-gap: 15px
+  .contents
+    display: grid
+    grid-template-columns: 5fr [content-start] 2fr [word-start] 1080px [word-end] 2fr [content-end] 5fr
+    flex: 1
 
-  @media (max-width: 800px)
-    grid-template-columns: repeat(3, minmax(130px, 1fr))
+    @media (max-width: 1080px)
+      grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+
+    @media (max-width: 800px)
+      grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
+
+    .blog
+      display: grid
+      grid-column: word
+      grid-template-columns: repeat(5, 1fr)
+      grid-column-gap: 15px
+
+      @media (max-width: 800px)
+        grid-template-columns: repeat(3, minmax(130px, 1fr))
 
 </style>
 
@@ -31,7 +42,8 @@
 </svelte:head>
 
 <template lang="pug">
-div.blog
-  +each('books as book, index')
-    Book(contents='{book.teaserhtml}', slug='{book.slug}', index='{index}')
+div.contents
+  div.blog
+    +each('books as book, index')
+      Book(contents='{book.teaserhtml}', slug='{book.slug}', index='{index}')
 </template>
