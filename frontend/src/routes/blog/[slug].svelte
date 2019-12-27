@@ -193,7 +193,6 @@
 //     padding: 0 1rem
 //     background-color: $box-bg-color
 //     margin: 0.5em 0
-//     overflow-y: scroll
 //
 //     .content
 //       padding: 0.5rem 0.8rem
@@ -205,6 +204,9 @@
 //       float: right
 //       margin-top: .5rem
 //       pointer-events: none
+//
+//     code
+//       white-space: pre-wrap
 //
 //   a
 //     color: $accent-color
@@ -712,7 +714,6 @@
   padding: 0 1rem;
   background-color: #f4faff;
   margin: 0.5em 0;
-  overflow-y: scroll
 }
 
 .wrapper :global(.listingblock .content) {
@@ -726,6 +727,10 @@
   float: right;
   margin-top: .5rem;
   pointer-events: none;
+}
+
+.wrapper :global(.listingblock code) {
+  white-space: pre-wrap;
 }
 
 .wrapper :global(a) {
