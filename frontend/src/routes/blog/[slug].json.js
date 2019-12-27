@@ -1,6 +1,6 @@
 import posts from "./_posts.js";
 
-import {convert} from './_utils.js';
+import { convert } from "../_utils.js";
 
 const lookup = new Map();
 posts.forEach(post => {

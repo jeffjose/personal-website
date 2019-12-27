@@ -1,9 +1,9 @@
-import posts from "./_posts.js";
+import books from "./_books.js";
 
 import { convert } from "../_utils.js";
 
 const contents = JSON.stringify(
-  posts.map(post => {
+  books.map(post => {
     convert(post);
     return post;
   })
