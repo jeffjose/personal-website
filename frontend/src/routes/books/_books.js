@@ -44,17 +44,17 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 `
   },
   {
-    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
-    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    title: "Economics: The User's Guide",
+    slug: "economics-the-users-guide",
     contents: `
 
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= Economics: The User's Guide
 
 [.date]
 Dec 26, 2019
 
 [.hero]
-image::/books/catch-and-kill.jpg[]
+image::/books/economics-users-guide.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 
@@ -62,17 +62,19 @@ Lorem ipsum dolor amet skateboard pok pok hexagon poke keffiyeh man bun. Pour-ov
 `
   },
   {
-    title: "Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators",
-    slug: "catch-and-kill-lies-spies-and-a-conspiracy-to-protect-predators",
+    title:
+      "Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics",
+    slug:
+      "prisoners-of-geography-ten-maps-that-tell-you-everything-you-need-to-know-about-global-politics",
     contents: `
 
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics
 
 [.date]
 Dec 26, 2019
 
 [.hero]
-image::/books/catch-and-kill.jpg[]
+image::/books/prisoners-of-geography.jpg[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things.
 

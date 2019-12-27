@@ -54,6 +54,7 @@
 .wrapper :global(h1) {
   font-weight: 400;
   font-size: 1rem;
+  margin: 0;
 }
 
 .wrapper :global(.imageblock.hero) {

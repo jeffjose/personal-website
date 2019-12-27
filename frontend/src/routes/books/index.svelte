@@ -18,7 +18,7 @@
 .blog
   display: grid
   grid-column: word
-  grid-template-columns: repeat(5, 1fr)
+  grid-template-columns: repeat(4, 1fr)
   grid-column-gap: 15px
 
   @media (max-width: 800px)
