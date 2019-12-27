@@ -1,4 +1,5 @@
 <script context="module">
+
 	export async function preload({ params, query }) {
 		// the `slug` parameter is available because
 		// this file is called [slug].svelte
@@ -12,6 +13,7 @@
 		}
 	}
 </script>
+
 
 <script>
 	export let post;
