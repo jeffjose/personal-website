@@ -1,20 +1,48 @@
-import posts from "./_posts.js";
+const fetch = require("node-fetch");
+const yaml = require("js-yaml");
 
-import { convert } from "../_utils.js";
+import { parse } from "../_utils.js";
 
 const lookup = new Map();
-posts.forEach(post => {
 
-  // modifies in place
-  convert(post)
+const get_posts = async url => {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    const posts = yaml.safeLoad(data);
 
-  lookup.set(post.slug, JSON.stringify(post));
-});
+    let contents = await Promise.all(
+      posts.map(async (post, index) => {
+        return fetch(post.file).then(response => response.text());
+      })
+    );
 
-export function get(req, res, next) {
+    posts.forEach((post, index) => {
+      post.contents = contents[index];
+
+      // modifies in place
+      parse(post);
+
+      lookup.set(post.slug, JSON.stringify(post));
+
+      return posts;
+    });
+
+    return posts
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export async function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
   const { slug } = req.params;
+
+  const posts = await get_posts(
+    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/posts/allposts.yaml"
+  );
 
   if (lookup.has(slug)) {
     res.writeHead(200, {

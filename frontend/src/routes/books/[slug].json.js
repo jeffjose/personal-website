@@ -1,12 +1,12 @@
 import books from "./_books.js";
 
-import { convert } from "../_utils.js";
+import { parse } from "../_utils.js";
 
 const lookup = new Map();
 books.forEach(post => {
 
   // modifies in place
-  convert(post)
+  parse(post)
 
   lookup.set(post.slug, JSON.stringify(post));
 });

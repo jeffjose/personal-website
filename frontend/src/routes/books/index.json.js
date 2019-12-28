@@ -1,10 +1,10 @@
 import books from "./_books.js";
 
-import { convert } from "../_utils.js";
+import { parse } from "../_utils.js";
 
 const contents = JSON.stringify(
   books.map(post => {
-    convert(post);
+    parse(post);
     return post;
   })
 );

@@ -1,11 +1,9 @@
-//import posts from "./_posts.js";
-
 const fetch = require("node-fetch");
 const yaml = require("js-yaml");
 
-import { parse } from "../_utils.js";
+import { convert } from "./_utils.js";
 
-const get_posts = async url => {
+export const get_posts = async function(url) {
   try {
     const response = await fetch(url);
     const data = await response.text();
@@ -21,25 +19,9 @@ const get_posts = async url => {
       post.contents = contents[index];
 
       // modifies in place
-      parse(post);
-
-      return posts;
+      convert(post);
     });
-
-    return posts;
   } catch (error) {
     console.log(error);
   }
 };
-
-export async function get(req, res) {
-  const posts = await get_posts(
-    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/posts/allposts.yaml"
-  );
-
-  res.writeHead(200, {
-    "Content-Type": "application/json"
-  });
-
-  res.end(JSON.stringify(posts));
-}

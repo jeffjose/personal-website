@@ -1,6 +1,7 @@
 const readingTime = require("reading-time");
 const asciidoctor = require("asciidoctor")();
 const highlightJsExt = require("asciidoctor-highlight.js");
+const slugify = require("slugify");
 highlightJsExt.register(asciidoctor.Extensions);
 
 class FullConverter {
@@ -85,7 +86,7 @@ class TeaserConverter {
   }
 }
 
-export function convert(post) {
+function convert(post) {
   asciidoctor.ConverterFactory.register(new FullConverter(post.contents), [
     "html5"
   ]);
@@ -108,4 +109,17 @@ export function convert(post) {
     doctype: "book",
     attributes: { showtitle: true }
   });
+}
+
+export function parse(post) {
+  convert(post);
+  post.title = get_doc_title(post.contents);
+  post.slug = slugify(post.title);
+}
+
+function get_doc_title(contents) {
+  asciidoctor.ConverterFactory.register(new FullConverter(contents), ["html5"]);
+
+  let doc = asciidoctor.load(contents);
+  return doc.getDocumentTitle();
 }
