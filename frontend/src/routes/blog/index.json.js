@@ -1,5 +1,3 @@
-//import posts from "./_posts.js";
-
 const fetch = require("node-fetch");
 const yaml = require("js-yaml");
 

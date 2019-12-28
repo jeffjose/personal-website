@@ -1,20 +1,48 @@
-import books from "./_books.js";
+const fetch = require("node-fetch");
+const yaml = require("js-yaml");
 
 import { parse } from "../_utils.js";
 
 const lookup = new Map();
-books.forEach(post => {
 
-  // modifies in place
-  parse(post)
+const get_books = async url => {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    const books = yaml.safeLoad(data);
 
-  lookup.set(post.slug, JSON.stringify(post));
-});
+    let contents = await Promise.all(
+      books.map(async (post, index) => {
+        return fetch(post.file).then(response => response.text());
+      })
+    );
 
-export function get(req, res, next) {
+    books.forEach((post, index) => {
+      post.contents = contents[index];
+
+      // modifies in place
+      parse(post);
+
+      lookup.set(post.slug, JSON.stringify(post));
+
+      return books;
+    });
+
+    return books
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export async function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
   const { slug } = req.params;
+
+  const books = await get_books(
+    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/books/index.yaml"
+  );
 
   if (lookup.has(slug)) {
     res.writeHead(200, {
