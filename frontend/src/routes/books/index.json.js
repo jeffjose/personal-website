@@ -10,16 +10,18 @@ const get_books = async url => {
     const books = yaml.safeLoad(data);
 
     let contents = await Promise.all(
-      books.map(async (post, index) => {
-        return fetch(post.file).then(response => response.text());
+      books.map(async (book, index) => {
+        return fetch(book.file).then(response => response.text());
       })
     );
 
-    books.forEach((post, index) => {
-      post.contents = contents[index];
+    console.log("books", books);
+    console.log("contents", contents);
+    books.forEach((book, index) => {
+      book.contents = contents[index];
 
       // modifies in place
-      parse(post);
+      parse(book);
 
       return books;
     });
