@@ -10,7 +10,7 @@
 
 <style lang="scss">
 
-// $font-size: 1.35rem
+// $font-size: 1.25rem
 //
 // // ----------- night mode ----------------
 //

@@ -14,6 +14,9 @@
 </script>
 
 <script>
+
+  import { fade } from 'svelte/transition';
+
 	export let book;
 </script>
 
@@ -41,6 +44,15 @@
       margin-left: 0 !important;
       margin-right: 0 !important;
     }
+
+  // Setting this back to 1.5rem (and shouldnt be affected by above)
+  .wrapper :global(.subtitle p) {
+    font-size: 1.5rem !important;
+  }
+
+  .wrapper :global(p), .wrapper :global(li), .wrapper :global(.listingblock .content), .wrapper :global(dl dt),  .wrapper :global(.admonitionblock) , .wrapper :global(.fa-square-o:before), .wrapper :global(.fa-check-square-o:before) {
+     font-size: 1.1rem !important;
+  }
 }
 
   .wrapper .goback {
@@ -127,13 +139,13 @@
 }
 
 .wrapper :global(p) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   margin-top: 0.9rem;
   margin-bottom: 0.9rem;
 }
 
 .wrapper :global(p em) {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
 }
 
 .wrapper :global(p em code) {
@@ -166,7 +178,7 @@
   }
 
 .wrapper :global(li) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
 }
 
 .wrapper :global(p code) {
@@ -185,7 +197,7 @@
 .wrapper :global(.listingblock .content) {
   padding: 0.5rem 0.8rem;
   line-height: 1.9rem;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
 }
 
 .wrapper :global(.listingblock .title) {
@@ -217,7 +229,7 @@
 }
 
 .wrapper :global(dl dt) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -383,7 +395,7 @@
 }
 
 .wrapper :global(.admonitionblock) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
 }
 
 .wrapper :global(.admonitionblock.note), .wrapper :global(.admonitionblock.tip), .wrapper :global(.admonitionblock.important), .wrapper :global(.admonitionblock.warning), .wrapper :global(.admonitionblock.caution) {
@@ -607,14 +619,14 @@
 
 .wrapper :global(.fa-square-o:before) {
   content: "☐";
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   position: absolute;
   margin-top: -13px;
 }
 
 .wrapper :global(.fa-check-square-o:before) {
   content: "☑";
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   position: absolute;
   margin-top: -13px;
 }
@@ -627,7 +639,7 @@
 </svelte:head>
 
 <template>
-  <div class='book'>
+  <div class='book' in:fade='{{duration: 300}}' out:fade='{{ duration: 0}}'>
     <div class='bookitem'>
         <div class='wrapper'>
           <div class="toolbar">
