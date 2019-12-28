@@ -114,7 +114,6 @@ function convert(post) {
 export function parse(post) {
   convert(post);
   post.title = get_doc_title(post.contents);
-  console.log(post.title);
   post.slug = slugify(post.title, { lower: true });
 }
 
