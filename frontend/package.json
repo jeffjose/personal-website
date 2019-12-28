@@ -17,7 +17,8 @@
     "cloud": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker push gcr.io/personal-c913b/personal-website",
     "deployclouddev": "gcloud beta run deploy personal-website --platform managed --image gcr.io/personal-c913b/personal-website --region us-central1",
     "cloudprod": "docker build --tag=gcr.io/personal-c913b/personal-website-prod .; docker push gcr.io/personal-c913b/personal-website-prod",
-    "deploycloudprod": "gcloud beta run deploy personal-website-prod --platform managed --image gcr.io/personal-c913b/personal-website-prod --region us-central1"
+    "deploycloudprod": "gcloud beta run deploy personal-website-prod --platform managed --image gcr.io/personal-c913b/personal-website-prod --region us-central1",
+    "firebase": "firebase deploy"
   },
   "dependencies": {
     "compression": "^1.7.1",
