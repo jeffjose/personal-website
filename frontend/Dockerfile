@@ -10,8 +10,6 @@ WORKDIR /usr/src/app
 # Copying this separately prevents re-running npm install on every code change.
 COPY package*.json ./
 
-RUN npm install yarn
-
 # Install dev + production dependencies.
 RUN yarn
 
