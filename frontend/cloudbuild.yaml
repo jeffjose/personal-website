@@ -19,19 +19,17 @@ steps:
   #  from https://dev.to/leomercier/deploying-a-gatsby-site-to-firebase-with-google-cloud-build-ci-cd-511c
   #  token from https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/firebase
   #
-  # 1. add firebase-tools
+  # 1. add firebase-tools (already in package.json)
 - name: 'node:12-slim'
   entrypoint: yarn
   args: ['install']
   dir: 'frontend'
-- name: 'node:12-slim'
-  entrypoint: yarn
-  args: ['add', 'firebase-tools']
-  dir: 'frontend'
+  # 2. export static files from sapper
 - name: 'node:12-slim'
   entrypoint: yarn
   args: ['export']
   dir: 'frontend'
+  # 3. deploy files to firebase
 - name: 'node:12-slim'
   entrypoint: './node_modules/.bin/firebase'
   args: ['deploy', '--project', 'personal-c913b', '--token', '$_FIREBASE_TOKEN']
