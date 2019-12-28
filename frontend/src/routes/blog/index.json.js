@@ -34,7 +34,7 @@ const get_posts = async url => {
 
 export async function get(req, res) {
   const posts = await get_posts(
-    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/posts/allposts.yaml"
+    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/blog/index.yaml"
   );
 
   res.writeHead(200, {
