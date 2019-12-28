@@ -41,7 +41,7 @@ export async function get(req, res, next) {
   const { slug } = req.params;
 
   const posts = await get_posts(
-    "https://raw.githubusercontent.com/jeffjose/personal-website/rollup/blog/index.yaml"
+    "https://raw.githubusercontent.com/jeffjose/personal-website/master/blog/index.yaml"
   );
 
   if (lookup.has(slug)) {
