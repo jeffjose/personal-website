@@ -15,8 +15,6 @@ const get_books = async url => {
       })
     );
 
-    console.log("books", books);
-    console.log("contents", contents);
     books.forEach((book, index) => {
       book.contents = contents[index];
 
