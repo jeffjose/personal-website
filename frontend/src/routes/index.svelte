@@ -8,7 +8,7 @@ $text-color: white
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 35%)
+$gray-color: lighten($blockquote-color, 13%)
 $bg-color: black
 
 
@@ -21,7 +21,7 @@ $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
 $blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 35%)
+$gray-color: lighten($blockquote-color, 13%)
 $bg-color: white
 
 
