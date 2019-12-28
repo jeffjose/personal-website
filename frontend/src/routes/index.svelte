@@ -54,6 +54,10 @@ $green: #34a853
       .title
         justify-items: center
         align-items: center
+        text-align: center
+
+        .links
+          grid-auto-flow: row
 
 .header
   grid-column: main
@@ -91,6 +95,11 @@ $green: #34a853
 
 .links
   margin-top: .3rem
+
+  display: grid
+  grid-auto-flow: column
+  grid-auto-columns: max-content
+
   a
     display: inline-block
     pointer-events: all
