@@ -2,11 +2,14 @@ steps:
   # build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/personal-c913b/personal-website', '.']
+  dir: 'frontend'
   # push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/personal-c913b/personal-website']
+  dir: 'frontend'
   # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['beta', 'run', 'deploy', 'personal-website', '--image', 'gcr.io/personal-c913b/personal-website', '--region', 'us-central1','--platform', 'managed', '--quiet']
+  dir: 'frontend'
 images:
 - gcr.io/personal-c913b/personal-website
