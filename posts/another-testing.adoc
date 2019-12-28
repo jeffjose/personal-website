@@ -1,4 +1,4 @@
-= Testing article
+= Another testing
 
 [.subtitle]
 And why you thought this was going to be a fruitless excercise for no good reason
