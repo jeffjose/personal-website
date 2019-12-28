@@ -96,7 +96,7 @@ $green: #34a853
     pointer-events: all
     text-decoration: none
     color: $text-color
-    margin-right: .4rem
+    margin-right: .6rem
 
     &:hover
       color: $accent-color
