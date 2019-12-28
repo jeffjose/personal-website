@@ -10,15 +10,17 @@ WORKDIR /usr/src/app
 # Copying this separately prevents re-running npm install on every code change.
 COPY package*.json ./
 
-# Install production dependencies.
-RUN npm install --only=production
+RUN npm install yarn
+
+# Install dev + production dependencies.
+RUN yarn
 
 # Copy local code to the container image.
 COPY . ./
 
 # Build sapper
-RUN npm run build
+RUN yarn build
 
 # Run the web service on container startup.
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
 
