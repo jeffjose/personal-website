@@ -120,4 +120,5 @@ $green: #34a853
           a.link(rel="prefetch" href="/books") books
           a.link(rel="prefetch" href="/twitter") twitter
           a.link(rel="prefetch" href="/linkedin") linkedin
+          a.link(rel="prefetch" href="/meta.json") commit
 </template>
