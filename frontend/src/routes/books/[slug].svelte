@@ -55,21 +55,6 @@
   }
 }
 
-  .wrapper .goback {
-    text-transform: uppercase;
-    margin: 0px;
-    margin-left: 3px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: #FF0088;
-    text-decoration: none;
-    font-family: Lato, sans-serif;
-  }
-
-  .wrapper .goback:hover {
-    text-decoration: none;
-  }
-
   .wrapper .endofbook {
     margin-top: 4rem;
     text-align: center;
@@ -210,6 +195,18 @@
 .wrapper :global(.listingblock code) {
   white-space: pre-wrap;
 }
+
+  .tweet {
+    margin: 3rem 0 !important;
+  }
+
+  .tweet a {
+    color: rgba(0, 0, 0, 0.84) !important;
+  }
+
+  .tweet a:hover {
+    color: #FF0088 !important;
+  }
 
 .wrapper :global(a) {
   color: #FF0088;
@@ -649,7 +646,8 @@
             {@html book.fullhtml}
           </div>
           <div class="endofbook">
-            <a rel="prefetch" href="/books" class="goback"> Back to all books</a>
+            <p class="tweet"><a href="https://twitter.com/intent/tweet?text=Check+out+%40jeffjose%27s+TITLE+https%3A%2F%2Fjeff.to%2Fblog%2Ffoo-bar">Enjoying so far? Tweet about this</a></p>
+            <p class="link"><a rel="prefetch" href="/books">Back to books</a></p>
           </div>
         </div>
     </div>
