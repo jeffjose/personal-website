@@ -9,6 +9,9 @@
 </script>
 
 <script>
+
+  import { fade } from 'svelte/transition';
+
   import Post from "../../components/Post.svelte";
   export let posts;
 </script>
@@ -22,7 +25,7 @@
 </svelte:head>
 
 <template lang="pug">
-div.blog
+div.blog(in:fade='{{duration: 300}}', out:fade='{{duration:0}}')
   +each('posts as post')
     Post(contents='{post.teaserhtml}', slug='{post.slug}')
 </template>

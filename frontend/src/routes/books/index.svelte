@@ -9,6 +9,9 @@
 </script>
 
 <script>
+
+  import { fade } from 'svelte/transition';
+
   import Book from "../../components/Book.svelte";
   export let books;
 
@@ -70,17 +73,19 @@ $green: #34a853
 </svelte:head>
 
 <template lang="pug">
-div.contents
+div.contents(in:fade='{{duration: 300}}', out:fade='{{duration:0}}')
   div.books
-    p.tag Currently reading
-    +each('readingBooks as book')
-      .reading
-        Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
+    +if('readingBooks && readingBooks.length > 1')
+      p.tag Currently reading
+      +each('readingBooks as book')
+        .reading
+          Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 
-    p.tag Reviewed
-    +each('reviewedBooks as book')
-      .read
-        Book(contents='{book.teaserhtml}', slug='{book.slug}')
+    +if('reviewedBooks && reviewedBooks.length > 1')
+      p.tag Reviewed
+      +each('reviewedBooks as book')
+        .read
+          Book(contents='{book.teaserhtml}', slug='{book.slug}')
 
     p.tag All books
     +each('books as book')
