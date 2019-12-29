@@ -94,11 +94,12 @@ $green: #34a853
   justify-self: end
 
 .links
-  margin-top: .3rem
+  height: 1.5rem
 
   display: grid
   grid-auto-flow: column
   grid-auto-columns: max-content
+  align-items: center
 
   a
     display: inline-block
