@@ -3,6 +3,7 @@
   "description": "personal-website",
   "version": "0.0.1",
   "scripts": {
+    "prebuild": "../scripts/prebuild.sh",
     "dev": "sapper dev",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
