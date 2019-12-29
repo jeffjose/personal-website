@@ -1,3 +1,6 @@
+const fetch = require("node-fetch");
+const yaml = require("js-yaml");
+
 const readingTime = require("reading-time");
 const asciidoctor = require("asciidoctor")();
 const highlightJsExt = require("asciidoctor-highlight.js");
@@ -5,6 +8,9 @@ const slugify = require("slugify");
 highlightJsExt.register(asciidoctor.Extensions);
 
 const he = require("he");
+
+const fs = require("fs");
+const glob = require("glob");
 
 class FullConverter {
   constructor(contents) {
@@ -125,3 +131,52 @@ function get_doc_title(contents) {
   let doc = asciidoctor.load(contents);
   return doc.getDocumentTitle();
 }
+
+function add_dev_posts(posts, contents) {
+  if (process.env.NODE_ENV == "development") {
+    console.log("[DEV]: Adding dev posts");
+
+    let files = glob.sync("../blog/_*.adoc");
+    console.log(files);
+
+    files.forEach(file => {
+      posts.push({ file: file });
+      let content = fs.readFileSync(file);
+      contents.push(content);
+    });
+
+    console.log(posts);
+    console.log(posts.length);
+    console.log(contents.length);
+  }
+}
+export const get_posts = async url => {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    const posts = yaml.safeLoad(data);
+
+    let contents = await Promise.all(
+      posts.map(async (post, index) => {
+        return fetch(post.file).then(response => response.text());
+      })
+    );
+
+    // Adds posts for development
+    add_dev_posts(posts, contents);
+
+    console.log("Length of posts", posts.length);
+    posts.forEach((post, index) => {
+      post.contents = contents[index];
+
+      // modifies in place
+      parse(post);
+
+      return posts;
+    });
+
+    return posts;
+  } catch (error) {
+    console.log(error);
+  }
+};
