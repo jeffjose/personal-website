@@ -1,4 +1,4 @@
-= [test] Code examples
+= [test] Code examples with a new title
 
 [.subtitle]
 Lets see if it highlights
