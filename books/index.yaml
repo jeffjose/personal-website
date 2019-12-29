@@ -9,9 +9,11 @@
   recommended: true
 - file: https://raw.githubusercontent.com/jeffjose/personal-website/master/books/economics-users-guide.adoc
   goodreads: https://www.goodreads.com/book/show/20613671-economics
+  reviewed: true
 - file: https://raw.githubusercontent.com/jeffjose/personal-website/master/books/mossad.adoc
   goodreads: https://www.goodreads.com/book/show/13623874-mossad
   recommended: true
+  reviewed: true
 - file: https://raw.githubusercontent.com/jeffjose/personal-website/master/books/prisoners-of-geography.adoc
   goodreads: https://www.goodreads.com/book/show/25135194-prisoners-of-geography
   recommended: true

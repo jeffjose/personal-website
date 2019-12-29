@@ -6,6 +6,8 @@
 
   $: className = `item-${index}`
 
+  let url = /^https?:\/\//.test(slug) ? slug : `/books/${slug}`
+
 </script>
 
 <style lang="scss">
@@ -82,7 +84,7 @@
 
 
 <div class="book">
-  <a rel="prefetch" class="clickable" href="/books/{slug}">
+  <a rel="prefetch" class="clickable" href="{url}">
     <div class="wrapper {className}">
       {@html contents}
     </div>

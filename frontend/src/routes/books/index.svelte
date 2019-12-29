@@ -13,7 +13,7 @@
   export let books;
 
   let readingBooks = books.filter(book => book.reading == true)
-  let recommendedBooks = books.filter(book => book.recommended == true)
+  let reviewedBooks = books.filter(book => book.reviewed == true)
 </script>
 
 <style lang="sass">
@@ -75,15 +75,15 @@ div.contents
     p.tag Currently reading
     +each('readingBooks as book')
       .reading
-        Book(contents='{book.teaserhtml}', slug='{book.slug}')
+        Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 
-    p.tag Recommended
-    +each('recommendedBooks as book')
+    p.tag Reviewed
+    +each('reviewedBooks as book')
       .read
         Book(contents='{book.teaserhtml}', slug='{book.slug}')
 
     p.tag All books
     +each('books as book')
       .read
-        Book(contents='{book.teaserhtml}', slug='{book.slug}')
+        Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 </template>
