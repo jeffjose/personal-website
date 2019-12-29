@@ -23,6 +23,6 @@
 
 <template lang="pug">
 div.blog
-  +each('posts as post, index')
-    Post(contents='{post.teaserhtml}', slug='{post.slug}', index='{index}')
+  +each('posts as post')
+    Post(contents='{post.teaserhtml}', slug='{post.slug}')
 </template>

@@ -44,6 +44,6 @@
 <template lang="pug">
 div.contents
   div.books
-    +each('books as book, index')
-      Book(contents='{book.teaserhtml}', slug='{book.slug}', index='{index}')
+    +each('books as book')
+      Book(contents='{book.teaserhtml}', slug='{book.slug}')
 </template>
