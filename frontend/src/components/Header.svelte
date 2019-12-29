@@ -13,9 +13,11 @@
       p.link
         a(rel="prefetch", href="/books") books
       p.link
-        a(rel="prefetch", href="/twitter") twitter
+        a(rel="prefetch", href="https://twitter.com/jeffjose") twitter
       p.link
-        a(rel="prefetch", href="/linkedin") linkedin
+        a(rel="prefetch", href="https://linkedin.com/in/jeffreyjose") linkedin
+      p.link
+        a(rel="prefetch", href="https://github.com/jeffjose") github
 </template>
 
 <style lang="sass">
