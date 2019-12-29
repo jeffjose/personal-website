@@ -4,6 +4,8 @@ const highlightJsExt = require("asciidoctor-highlight.js");
 const slugify = require("slugify");
 highlightJsExt.register(asciidoctor.Extensions);
 
+const he = require("he");
+
 class FullConverter {
   constructor(contents) {
     this.baseConverter = asciidoctor.Html5Converter.$new();
@@ -113,8 +115,8 @@ function convert(post) {
 
 export function parse(post) {
   convert(post);
-  post.title = get_doc_title(post.contents);
-  post.slug = slugify(post.title, { lower: true });
+  post.title = he.decode(get_doc_title(post.contents));
+  post.slug = slugify(post.title, { remove: /[*+~.,()'"!:@]/g, lower: true });
 }
 
 function get_doc_title(contents) {
