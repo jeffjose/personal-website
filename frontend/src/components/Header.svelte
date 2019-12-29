@@ -34,7 +34,7 @@ $accent-color: #FF0088
   display: grid
   grid-template-columns: 7fr [word-start] 1080px [word-end] 7fr
 
-  @media (max-width: 1080px)
+  @media (max-width: 1100px)
     grid-template-columns: 7fr [word-start] 720px [word-end] 7fr
 
   @media (max-width: 800px)
