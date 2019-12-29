@@ -86,36 +86,30 @@
 //   .toolbar
 //     height: 3rem
 //
-//     @media (max-width: 800px)
+//   .tweet
 //
-//     .link
-//       font-size: 1rem
-//       a
-//         background-color: white
-//         padding: 4px 8px
-//         border-radius: 5px
-//         border: 1px solid $accent-color
+//     a
+//       color: rgba(0, 0, 0, 0.84) !important
 //
-//         &:hover
-//           background-color: $accent-color
-//           text-decoration: none
-//           color: white
+//       &:hover
+//         color: #FF0088 !important;
 //
-//   .goback
-//     text-transform: uppercase;
-//     margin: 0px;
-//     margin-left: 3px;
-//     font-size: 1rem;
-//     letter-spacing: 1px;
-//     color: $accent-color
-//     text-decoration: none;
-//     font-family: Lato, sans-serif;
+//   .link
+//     font-size: 1rem
 //
-//     &:hover
-//       text-decoration: none;
+//     a
+//       background-color: white
+//       padding: 4px 8px
+//       border-radius: 5px
+//       border: 1px solid $accent-color
+//
+//       &:hover
+//         background-color: $accent-color
+//         text-decoration: none
+//         color: white
+//
 //
 //   .endofpost
-//     margin-top: 4rem
 //     text-align: center
 //
 //   *
@@ -605,42 +599,42 @@
   }
 }
 
-  .wrapper .goback {
-    text-transform: uppercase;
-    margin: 0px;
-    margin-left: 3px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: #FF0088;
-    text-decoration: none;
-    font-family: Lato, sans-serif;
-  }
-
-  .wrapper .goback:hover {
-    text-decoration: none;
-  }
 
   .wrapper .endofpost {
-    margin-top: 4rem;
     text-align: center;
   }
 
   .wrapper .toolbar {
     height: 3rem;
   }
+
   .toolbar .link {
     font-size: 1rem;
   }
+
   .link a {
       background-color: white;
       padding: 4px 8px;
       border-radius: 5px;
       border: 1px solid #FF0088;
   }
+
   .link a:hover {
         background-color: #FF0088;
         text-decoration: none;
         color: white;
+  }
+
+  .tweet {
+    margin: 3rem 0 !important;
+  }
+
+  .tweet a {
+    color: rgba(0, 0, 0, 0.84) !important;
+  }
+
+  .tweet a:hover {
+    color: #FF0088 !important;
   }
 
 .wrapper :global(*) {
@@ -1193,7 +1187,8 @@
             {@html post.fullhtml}
           </div>
           <div class="endofpost">
-            <a rel="prefetch" href="/blog" class="goback"> Back to all posts </a>
+            <p class="tweet"><a href="https://twitter.com/intent/tweet?text=Check+out+%40jeffjose%27s+TITLE+https%3A%2F%2Fjeff.to%2Fblog%2Ffoo-bar">Enjoying so far? Tweet about this</a></p>
+            <p class="link"><a rel="prefetch" href="/blog">Back to posts</a></p>
           </div>
         </div>
     </div>
