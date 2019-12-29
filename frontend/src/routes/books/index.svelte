@@ -11,6 +11,9 @@
 <script>
   import Book from "../../components/Book.svelte";
   export let books;
+
+  let readingBooks = books.filter(book => book.reading == true)
+  let recommendedBooks = books.filter(book => book.recommended == true)
 </script>
 
 <style lang="sass">
@@ -70,10 +73,16 @@ $green: #34a853
 div.contents
   div.books
     p.tag Currently reading
-    .reading
-      Book(contents='{books[0].teaserhtml}', slug='{books[0].slug}')
+    +each('readingBooks as book')
+      .reading
+        Book(contents='{book.teaserhtml}', slug='{book.slug}')
 
-    p.tag Read
+    p.tag Recommended
+    +each('recommendedBooks as book')
+      .read
+        Book(contents='{book.teaserhtml}', slug='{book.slug}')
+
+    p.tag All books
     +each('books as book')
       .read
         Book(contents='{book.teaserhtml}', slug='{book.slug}')
