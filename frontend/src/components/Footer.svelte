@@ -76,6 +76,8 @@ $text-color: darken(gray, 30%)
         a(href='/twitter') twitter
         p.dot ·
         a(href='/linkedin') linkedin
+        p.dot ·
+        a(href='/github') github
       p.name
         a(href='/') Jeffrey Jose
 </template>
