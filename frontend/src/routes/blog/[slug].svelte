@@ -27,7 +27,7 @@
 
   $: path = encodeURI(page.path)
 
-  let tweetURL = encodeURI(`https://twitter.com/intent/tweet?url=https://jeff.to${$page.path}&text=Check out @jeffjose's post on ${post.title}`)
+  let tweetURL = encodeURI(`https://twitter.com/intent/tweet?url=https://jeff.to${$page.path}&text=Check out @jeffjose's post - ${post.title}`)
 
 </script>
 
