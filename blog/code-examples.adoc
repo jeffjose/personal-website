@@ -52,7 +52,7 @@ end
 <1> The section title is required.
 
 .bash
-[source, bash]
+[source, sh]
 ----
 $ mkdir -p /tmp/foobar
 
@@ -60,9 +60,11 @@ $ curl https://google.com | grep script
 ----
 
 .bash
-[source, bash]
+[source, sh]
 ----
 mkdir -p /tmp/foobar
 
 curl https://google.com | grep script
+
+cat foo.txt
 ----
