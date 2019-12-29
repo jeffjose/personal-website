@@ -2,9 +2,6 @@
 
   export let contents
   export let slug
-  export let index
-
-  $: className = `item-${index}`
 
 </script>
 
@@ -189,34 +186,12 @@
   line-height: 3.5rem;
 }
 
-//.wrapper.item-0 :global(.imageblock.hero) {
-//  display: unset;
-//  grid-row: top;
-//  grid-column: word;
-//}
-//
-//.wrapper.item-0 :global(.imageblock.hero *) {
-//  display: unset;
-//}
-//
-//.wrapper.item-0 :global(.date) {
-//  grid-row: middle;
-//  color: rgba(59, 59, 59, 0.84);
-//  font-size: 1.2rem
-//}
-//
-//.wrapper.item-0 :global(h1) {
-//  grid-row: bottom;
-//  margin: 0;
-//}
-
-
 </style>
 
 
 <div class="post">
   <a rel="prefetch" class="clickable" href="/blog/{slug}">
-    <div class="wrapper {className}">
+    <div class="wrapper">
       {@html contents}
     </div>
   </a>

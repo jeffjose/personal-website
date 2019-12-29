@@ -2,9 +2,6 @@
 
   export let contents
   export let slug
-  export let index
-
-  $: className = `item-${index}`
 
   let url = /^https?:\/\//.test(slug) ? slug : `/books/${slug}`
 
@@ -68,16 +65,6 @@
   display: unset;
 }
 
-//.wrapper.item-0 :global(.date) {
-//  grid-row: middle;
-//  color: rgba(59, 59, 59, 0.84);
-//  font-size: 1.2rem
-//}
-//
-//.wrapper.item-0 :global(h1) {
-//  grid-row: bottom;
-//  margin: 0;
-//}
 
 
 </style>
@@ -85,7 +72,7 @@
 
 <div class="book">
   <a rel="prefetch" class="clickable" href="{url}">
-    <div class="wrapper {className}">
+    <div class="wrapper">
       {@html contents}
     </div>
   </a>
