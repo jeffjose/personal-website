@@ -144,10 +144,6 @@ function add_dev_posts(posts, contents) {
       let content = fs.readFileSync(file);
       contents.push(content);
     });
-
-    console.log(posts);
-    console.log(posts.length);
-    console.log(contents.length);
   }
 }
 export const get_posts = async url => {
@@ -165,7 +161,6 @@ export const get_posts = async url => {
     // Adds posts for development
     add_dev_posts(posts, contents);
 
-    console.log("Length of posts", posts.length);
     posts.forEach((post, index) => {
       post.contents = contents[index];
 
