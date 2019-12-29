@@ -1,0 +1,70 @@
+= [test] Code examples
+
+[.subtitle]
+Lets see if it highlights
+
+[.date]
+Apr 24, 2019
+
+[.hero]
+image::https://picsum.photos/1920/1080?random=1434545[]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+
+The `node_modules` directory should be created at this point and you're all set.
+
+[source, javascript]
+----
+const { count } = this.get();
+this.set({
+  count: count + 1
+});
+----
+
+[source, python]
+----
+def foo(a, b):
+  return a + b
+
+if __main__ == "__main__":
+  add(1, 2)
+----
+
+.ruby
+[source,ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do // <2>
+  "Hello World!" // <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> HTTP response body
+
+[source,xml]
+----
+<section>
+  <title>Section Title</title> <!--1-->
+</section>
+----
+<1> The section title is required.
+
+.bash
+[source, sh]
+----
+$ mkdir -p /tmp/foobar
+
+$ curl https://google.com | grep script
+----
+
+.bash
+[source, sh]
+----
+mkdir -p /tmp/foobar
+
+curl https://google.com | grep script
+
+cat foo.txt
+----
