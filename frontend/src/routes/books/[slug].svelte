@@ -15,9 +15,17 @@
 
 <script>
 
+  import {stores} from '@sapper/app';
+
   import { fade } from 'svelte/transition';
 
+  const {page} = stores();
+
 	export let book;
+
+  $: path = encodeURI(page.path)
+
+  let tweetURL = encodeURI(`https://twitter.com/intent/tweet?url=https://jeff.to${$page.path}&text=Check out @jeffjose's review of ${book.title}`)
 </script>
 
 <style lang="scss">
@@ -56,7 +64,6 @@
 }
 
   .wrapper .endofbook {
-    margin-top: 4rem;
     text-align: center;
   }
 
@@ -632,7 +639,7 @@
 </style>
 
 <svelte:head>
-	<title>{book.title}</title>
+	<title>{book.title} - Jeffrey Jose</title>
 </svelte:head>
 
 <template>
@@ -646,7 +653,7 @@
             {@html book.fullhtml}
           </div>
           <div class="endofbook">
-            <p class="tweet"><a href="https://twitter.com/intent/tweet?text=Check+out+%40jeffjose%27s+TITLE+https%3A%2F%2Fjeff.to%2Fblog%2Ffoo-bar">Enjoying so far? Tweet about this</a></p>
+            <p class="tweet"><a href="{tweetURL}">Enjoying so far? Tweet about this</a></p>
             <p class="link"><a rel="prefetch" href="/books">Back to books</a></p>
           </div>
         </div>

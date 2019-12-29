@@ -17,9 +17,18 @@
 
 <script>
 
+  import {stores} from '@sapper/app';
+
   import { fade } from 'svelte/transition';
 
+  const {page} = stores();
+
 	export let post;
+
+  $: path = encodeURI(page.path)
+
+  let tweetURL = encodeURI(`https://twitter.com/intent/tweet?url=https://jeff.to${$page.path}&text=Check out @jeffjose's post on ${post.title}`)
+
 </script>
 
 <style lang="scss">
@@ -1173,7 +1182,7 @@
 </style>
 
 <svelte:head>
-	<title>{post.title}</title>
+	<title>{post.title} - Jeffrey Jose</title>
 </svelte:head>
 
 <template>
@@ -1187,7 +1196,7 @@
             {@html post.fullhtml}
           </div>
           <div class="endofpost">
-            <p class="tweet"><a href="https://twitter.com/intent/tweet?text=Check+out+%40jeffjose%27s+TITLE+https%3A%2F%2Fjeff.to%2Fblog%2Ffoo-bar">Enjoying so far? Tweet about this</a></p>
+            <p class="tweet"><a href="{tweetURL}">Enjoying so far? Tweet about this</a></p>
             <p class="link"><a rel="prefetch" href="/blog">Back to posts</a></p>
           </div>
         </div>
