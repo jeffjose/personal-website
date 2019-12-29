@@ -75,13 +75,13 @@ $green: #34a853
 <template lang="pug">
 div.contents(in:fade='{{duration: 300}}', out:fade='{{duration:0}}')
   div.books
-    +if('readingBooks && readingBooks.length > 1')
+    +if('readingBooks && readingBooks.length > 0')
       p.tag Currently reading
       +each('readingBooks as book')
         .reading
           Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 
-    +if('reviewedBooks && reviewedBooks.length > 1')
+    +if('reviewedBooks && reviewedBooks.length > 0')
       p.tag Reviewed
       +each('reviewedBooks as book')
         .read
