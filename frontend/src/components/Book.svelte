@@ -12,7 +12,6 @@
 
 .book {
   background-color: white;
-  margin: 2rem 0;
 }
 
 .book a {

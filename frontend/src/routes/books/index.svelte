@@ -15,25 +15,50 @@
 
 <style lang="sass">
 
-  .contents
-    display: grid
-    grid-template-columns: 5fr [content-start] 2fr [word-start] 1080px [word-end] 2fr [content-end] 5fr
-    flex: 1
+$text-color: rgba(0, 0, 0, .84)
+$accent-color: #FF0088
+$inline-code-bg-color: #eff8ff
+$box-bg-color: lighten($inline-code-bg-color, 1%)
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 13%)
+$bg-color: white
 
-    @media (max-width: 1100px)
-      grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
+.contents
+  display: grid
+  grid-template-columns: 5fr [content-start] 2fr [word-start] 1080px [word-end] 2fr [content-end] 5fr
+  flex: 1
+
+  @media (max-width: 1100px)
+    grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr
+
+  @media (max-width: 800px)
+    grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
+
+  .books
+    display: grid
+    grid-column: word
+    grid-template-columns: repeat(5, 1fr)
+    grid-gap: 15px
 
     @media (max-width: 800px)
-      grid-template-columns: 20px [content-start] 2fr [word-start] minmax(auto, 720px) [word-end] 2fr [content-end] 20px
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
 
-    .books
-      display: grid
-      grid-column: word
-      grid-template-columns: repeat(5, 1fr)
-      grid-column-gap: 15px
 
-      @media (max-width: 800px)
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
+    p.tag
+      grid-column-start: 1
+      color: $text-color
+      font-size: 1.5rem
+      margin: 3rem 0 0 0
+
+    .tag + .read, .tag + .reading
+      grid-column-start: 1
+
 
 </style>
 
@@ -44,6 +69,12 @@
 <template lang="pug">
 div.contents
   div.books
+    p.tag Currently reading
+    .reading
+      Book(contents='{books[0].teaserhtml}', slug='{books[0].slug}')
+
+    p.tag Read
     +each('books as book')
-      Book(contents='{book.teaserhtml}', slug='{book.slug}')
+      .read
+        Book(contents='{book.teaserhtml}', slug='{book.slug}')
 </template>
