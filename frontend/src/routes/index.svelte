@@ -41,12 +41,16 @@ $green: #34a853
 
   @media (max-width: 500px)
     grid-template-columns: 1fr [logo-start main-start] 9fr [logo-end main-end] 1fr
-    grid-template-rows: 20px [logo-start] 1fr [logo-end main-start] 1fr [main-end] 6fr
+    grid-template-rows: 60px [logo-start] 2fr [logo-end main-start] 2fr [main-end] 6fr
+    grid-gap: 20px
+
 
     .logo
       justify-self: center
+      align-self: end
 
     .header
+      align-self: start
       justify-self: center
       padding: 0
       margin: 0
@@ -55,9 +59,19 @@ $green: #34a853
         justify-items: center
         align-items: center
         text-align: center
+        grid-gap: 11px
+        grid-template-rows: 1fr 1.2fr 7fr
+
+        .desc
+          align-self: start
 
         .links
           grid-auto-flow: row
+          align-self: start
+          grid-row-gap: 15px
+
+          .link
+            margin: 0
 
 .header
   grid-column: main
@@ -72,7 +86,7 @@ $green: #34a853
   font-weight: 400
   display: grid
   grid-template-columns: 1fr
-  grid-template-rows: 1fr 1fr
+  grid-template-rows: 1fr 1fr 1fr
   align-items: center
   position: relative
 
@@ -117,7 +131,6 @@ $green: #34a853
 </svelte:head>
 
 <template lang="pug">
-  Background
   div.wrapper
     img.logo(src="/logo-192.png", alt="logo")
     div.header
