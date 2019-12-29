@@ -1,5 +1,7 @@
 <script context="module">
-  export async function preload(page, session) {
-    return this.redirect(301, "https://www.linkedin.com/in/jeffreyjose/", true);
+  if (process.browser) {
+    async function preload(page, session) {
+    return this.redirect(302, "https://www.linkedin.com/in/jeffreyjose/", true);
+    }
   }
 </script>
