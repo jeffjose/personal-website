@@ -128,7 +128,7 @@ $green: #34a853
           a.link(rel="prefetch" href="/about") about
           a.link(rel="prefetch" href="/blog") blog
           a.link(rel="prefetch" href="/books") books
-          a.link(href="https://twitter/jeffjose") twitter
+          a.link(href="https://twitter.com/jeffjose") twitter
           a.link(href="https://linkedin.com/in/jeffreyjose") linkedin
           a.link(href="https://github.com/jeffjose") github
           //a.link(href="/twitter") twitter
