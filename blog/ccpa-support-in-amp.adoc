@@ -1,30 +1,36 @@
-= CCPA support in AMP
+= xCCPA support in AMP
 
 [.date]
 Dec 20, 2019
 
-This post originally appeared on AMP Project's website. See it https://blog.amp.dev/2019/12/20/ccpa-support-in-amp/[here]
+[.hero]
+image::/blog/ca.flag.svg[Flag of California]
+
+_This post originally appeared on AMP Project's website. See it https://blog.amp.dev/2019/12/20/ccpa-support-in-amp/[here]_
 
 The https://oag.ca.gov/privacy/ccpa[California Consumer Privacy Act (CCPA)] is a new data privacy law that establishes various rights for California state residents. The law applies to companies that do business in California and meet one of several criteria related to revenue, data processing, and other factors.
 
-Updates to the AMP consent framework
-===================================
 
+Updates to the AMP consent framework
+------------------------------------
 Based on the feedback we heard from publishers, we’ve updated the AMP consent framework to obtain the consent publishers might deem necessary for CCPA compliance. With these new updates, publishers can include multiple consent prompts and trigger the right prompt based on the location of the user.
 
-Consent across multiple surfaces
-================================
 
-Publishers who wish to keep user consent in sync between multiple surfaces can store the user’s consent on the server-side and expose the information to https://amp.dev/documentation/components/amp-consent/[`<amp-consent>] via the https://amp.dev/documentation/components/amp-consent/#checkconsenthref[`checkConsentHref`] attribute. You can configure AMP to check your endpoint first and the response determines whether a user-consent prompt is displayed or not. Additionally, the previously obtained user consent can be passed from the server to the ads and analytics vendors configured on the page.
+Consent across multiple surfaces
+--------------------------------
+
+Publishers who wish to keep user consent in sync between multiple surfaces can store the user’s consent on the server-side and expose the information to https://amp.dev/documentation/components/amp-consent/[``<amp-consent>``] via the https://amp.dev/documentation/components/amp-consent/#checkconsenthref[``checkConsentHref``] attribute. You can configure AMP to check your endpoint first and the response determines whether a user-consent prompt is displayed or not. Additionally, the previously obtained user consent can be passed from the server to the ads and analytics vendors configured on the page.
+
 
 Support in AMP Stories
-======================
+----------------------
 
 For AMP Stories, publishers can create links to their CCPA opt-out page within a story to collect user consent.
 
 We’ve also updated our https://amp.dev/documentation/components/amp-consent/[reference docs] and amp.dev with https://amp.dev/documentation/examples/user-consent/geolocation-based_consent_flow/?format=websites[sample codes] to illustrate sample scenarios.
 
+
 Looking ahead
-=============
+-------------
 
 To make development easier, we plan to extend https://amp.dev/documentation/components/amp-geo/[`<amp-geo>`] in the future by providing US state level detections of users. As always, we invite you to submit new ideas by filing an https://github.com/ampproject/amphtml/issues/new[issue]. If you’re a vendor who wants to customize how your AMP extensions behave based on user controls, please get started by following our https://amp.dev/documentation/guides-and-tutorials/contribute/[contribution guidelines].
