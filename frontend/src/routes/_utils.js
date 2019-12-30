@@ -182,6 +182,11 @@ export const get_posts = async url => {
 };
 
 export function get_commit() {
-  let commit = JSON.parse(fs.readFileSync("../meta", "utf8"));
-  return commit;
+  // TODO
+  if (process.env.NODE_ENV == "development") {
+    return { dirty: true, revision: "abcdef123456", display: "abc123" };
+  } else {
+    let commit = JSON.parse(fs.readFileSync("../meta", "utf8"));
+    return commit;
+  }
 }
