@@ -21,7 +21,7 @@ def format(revision):
 
     [tag, noncommitted, sha, dirty] = revision.split('-')
 
-    return {"revision": revision, "revdisplay": f"{sha}-{dirty}"}
+    return {"revision": revision, "display": f"{sha}-{dirty}"}
 
 
 revision = run(CMD)
