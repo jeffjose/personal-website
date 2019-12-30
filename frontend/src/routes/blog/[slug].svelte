@@ -208,13 +208,12 @@
 //     margin: 0.5em 0
 //
 //     .content
-//       padding: 0.5rem 0.8rem
+//       padding: 0rem 0.8rem 0.5rem 0
 //       line-height: 1.9rem
 //       font-size: 1.25rem
 //
 //     .title
 //       color: darken($box-bg-color, 30%)
-//       float: right
 //       margin-top: .5rem
 //       pointer-events: none
 //
@@ -739,14 +738,13 @@
 }
 
 .wrapper :global(.listingblock .content) {
-  padding: 0.5rem 0.8rem;
+  padding: 0rem 0.8rem 0.5rem 0;
   line-height: 1.9rem;
   font-size: 1.25rem;
 }
 
 .wrapper :global(.listingblock .title) {
   color: #5bb7ff;
-  float: right;
   margin-top: .5rem;
   pointer-events: none;
 }
