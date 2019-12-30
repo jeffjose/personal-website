@@ -243,14 +243,11 @@
 //         margin-top: 0.5rem
 //
 //   .quoteblock
-//     font-size: 1.5rem
-//     color: $blockquote-color
+//     font-size: 1.7rem
+//     color: $accent-color
 //     //border-left: .5rem solid $accent-color
-//
-//     blockquote
-//       margin-left: 3rem
-//       font-style: italic
-//       margin-right: 0
+//     border-top: 2px solid $accent-color
+//     border-bottom: 2px solid $accent-color
 //
 //     .attribution
 //       text-align: right
@@ -784,24 +781,25 @@
 }
 
 .wrapper :global(.quoteblock) {
-  font-size: 1.5rem;
-  color: rgba(26, 26, 26, 0.84);
+  font-size: 1.7rem;
+  border-top: 2px solid #FF0088;
+  border-bottom: 2px solid #FF0088;
+  color: #FF0088;
 }
 
 .wrapper :global(.quoteblock blockquote) {
-  margin-left: 3rem;
-  font-style: italic;
-  margin-right: 0;
+  text-align: center;
 }
 
 .wrapper :global(.quoteblock .attribution) {
   text-align: right;
   margin-top: -1rem;
   margin-bottom: 1rem;
+  color: #FF0088;
 }
 
 .wrapper :global(.quoteblock .attribution a) {
-  color: rgba(26, 26, 26, 0.84);
+  color: #FF0088;
 }
 
 .wrapper :global(.quoteblock .attribution br) {

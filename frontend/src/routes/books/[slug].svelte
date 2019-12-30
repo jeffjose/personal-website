@@ -245,14 +245,12 @@
 }
 
 .wrapper :global(.quoteblock) {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: rgba(26, 26, 26, 0.84);
 }
 
 .wrapper :global(.quoteblock blockquote) {
-  margin-left: 3rem;
-  font-style: italic;
-  margin-right: 0;
+  text-align: center;
 }
 
 .wrapper :global(.quoteblock .attribution) {
