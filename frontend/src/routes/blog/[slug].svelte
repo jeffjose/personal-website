@@ -597,16 +597,15 @@
       margin-right: 0 !important;
     }
 
-  .wrapper :global(p), .wrapper :global(li), .wrapper :global(.listingblock .content), .wrapper :global(dl dt),  .wrapper :global(.admonitionblock) , .wrapper :global(.fa-square-o:before), .wrapper :global(.fa-check-square-o:before) {
-     font-size: 1.1rem !important;
-  }
-
   // Setting this back to 1.5rem (and shouldnt be affected by above)
   .wrapper :global(.subtitle p) {
     font-size: 1.5rem !important;
   }
-}
 
+  .wrapper :global(p), .wrapper :global(li), .wrapper :global(.listingblock .content), .wrapper :global(dl dt),  .wrapper :global(.admonitionblock) , .wrapper :global(.fa-square-o:before), .wrapper :global(.fa-check-square-o:before) {
+     font-size: 1.1rem !important;
+  }
+}
 
   .wrapper .endofpost {
     text-align: center;
@@ -631,18 +630,6 @@
         background-color: #FF0088;
         text-decoration: none;
         color: white;
-  }
-
-  .tweet {
-    margin: 3rem 0 !important;
-  }
-
-  .tweet a {
-    color: rgba(0, 0, 0, 0.84) !important;
-  }
-
-  .tweet a:hover {
-    color: #FF0088 !important;
   }
 
 .wrapper :global(*) {
@@ -752,6 +739,18 @@
 .wrapper :global(.listingblock code) {
   white-space: pre-wrap;
 }
+
+  .tweet {
+    margin: 3rem 0 !important;
+  }
+
+  .tweet a {
+    color: rgba(0, 0, 0, 0.84) !important;
+  }
+
+  .tweet a:hover {
+    color: #FF0088 !important;
+  }
 
 .wrapper :global(a) {
   color: #FF0088;
@@ -891,7 +890,7 @@
   padding: 3px 5px;
   border-radius: 3px;
   font-family: "Fira Mono", monospace;
-  font-size: 0.65em;
+  font-size: 1rem;
 }
 
 .wrapper :global(.menuseq) {
@@ -1174,6 +1173,26 @@
   font-size: 1.25rem;
   position: absolute;
   margin-top: -13px;
+}
+
+/* Glyph, by Harry Roberts */
+
+.wrapper :global(hr) {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+.wrapper :global(hr:after) {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 

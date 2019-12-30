@@ -70,15 +70,18 @@
   .wrapper .toolbar {
     height: 3rem;
   }
+
   .toolbar .link {
     font-size: 1rem;
   }
+
   .link a {
       background-color: white;
       padding: 4px 8px;
       border-radius: 5px;
       border: 1px solid #FF0088;
   }
+
   .link a:hover {
         background-color: #FF0088;
         text-decoration: none;
@@ -175,7 +178,7 @@
 
 .wrapper :global(p code) {
   background-color: #eff8ff;
-  padding: 4px 10px;
+  padding: 3px 4px;
   font-size: 1rem;
   font-family: "Fira Mono", monospace;
 }
@@ -187,7 +190,7 @@
 }
 
 .wrapper :global(.listingblock .content) {
-  padding: 0.5rem 0.8rem;
+  padding: 0rem 0.8rem 0.5rem 0;
   line-height: 1.9rem;
   font-size: 1.25rem;
 }
@@ -350,7 +353,7 @@
   padding: 3px 5px;
   border-radius: 3px;
   font-family: "Fira Mono", monospace;
-  font-size: 0.65em;
+  font-size: 1rem;
 }
 
 .wrapper :global(.menuseq) {
@@ -633,6 +636,26 @@
   font-size: 1.25rem;
   position: absolute;
   margin-top: -13px;
+}
+
+/* Glyph, by Harry Roberts */
+
+.wrapper :global(hr.style-eight) {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+.wrapper :global(hr.style-eight:after) {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 
