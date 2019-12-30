@@ -4,8 +4,12 @@ const yaml = require("js-yaml");
 const readingTime = require("reading-time");
 const asciidoctor = require("asciidoctor")();
 const highlightJsExt = require("asciidoctor-highlight.js");
+
 const slugify = require("slugify");
 highlightJsExt.register(asciidoctor.Extensions);
+
+//const katexExt = require("asciidoctor-katex");
+//katexExt.register(asciidoctor.Extensions);
 
 const he = require("he");
 
@@ -102,9 +106,10 @@ function convert(post) {
   post.fullhtml = asciidoctor.convert(post.contents, {
     doctype: "book",
     attributes: [
-      "icons=font",
+      "icons=font", // fontawesome
       "experimental=true",
       "showtitle=true",
+      //"stem=true", // include katex at the top and add global css https://katex.org/docs/browser.html
       "source-highlighter=highlightjs-ext"
     ]
   });
