@@ -180,3 +180,8 @@ export const get_posts = async url => {
     console.log(error);
   }
 };
+
+export function get_commit() {
+  let commit = JSON.parse(fs.readFileSync("../meta", "utf8"));
+  return commit;
+}

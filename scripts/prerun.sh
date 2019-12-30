@@ -9,6 +9,6 @@ pip install -r requirements
 ./build_index.py
 
 # Create a version from git commit
-git describe --long --dirty --abbrev=6 --tags > ../meta
+./get_git_revision.py
 
 echo "----- end of prerun -------"

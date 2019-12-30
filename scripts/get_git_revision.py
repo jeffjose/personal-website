@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 
 import subprocess
+import path
+import json
+
+print('-------------------')
+print('Running get_git_revision.py')
+print('-------------------')
 
 CMD = 'git describe --long --dirty --abbrev=6 --tags'
+OUTPUT = '../meta'
 
 
 def run(cmd):
@@ -19,5 +26,8 @@ def format(revision):
 
 revision = run(CMD)
 formatted = format(revision)
-print(revision)
+
+print("Git revision")
 print(formatted)
+
+json.dump(formatted, open(OUTPUT, 'w'))
