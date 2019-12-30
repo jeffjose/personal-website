@@ -10,6 +10,8 @@ Apr 24, 2019
 image::https://picsum.photos/1920/1080?random=1434545[]
 
 This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
 
 The `node_modules` directory should be created at this point and you're all set.
 
@@ -68,3 +70,201 @@ curl https://google.com | grep script
 
 cat foo.txt
 ----
+
+.bash
+[source, console]
+----
+$ mkdir -p /tmp/foobar
+
+$ curl https://google.com | grep script
+
+$ cat foo.txt
+----
+
+.console
+[source, shell]
+----
+$ mkdir -p /tmp/foobar
+
+$ curl https://google.com | grep script
+
+$ cat foo.txt
+----
+
+.python
+[source,python]
+----
+def foo(a, b):
+  return a + b
+
+if __main__ == "__main__":
+  add(1, 2)
+----
+
+.python
+[source,python,linenums]
+----
+def foo(a, b):
+  return a + b
+
+if __main__ == "__main__":
+  add(1, 2)
+----
+
+.python
+[source,python,linenums,highlight=2]
+----
+def foo(a, b):
+  return a + b
+
+if __main__ == "__main__":
+  add(1, 2)
+----
+
+.app.py
+[source,python,linenums,highlight=6..9]
+----
+def foo(a, b):
+  return a + b
+
+if __main__ == "__main__":
+  add(1, 2)
+  add(3, 2)
+  add(5, 2)
+  add(9, 2)
+  add(8, 2)
+  add(3, 2)
+  add(2, 2)
+----
+
+.config.sh
+[source,bash]
+----
+#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS="/root/.hag_accepted.conf"
+BE_VERBOSE=false
+
+if [ "$UID" -ne 0 ]
+then
+ echo "Superuser rights required"
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e "# Host ${HOME_DIR}$1/$2 :"
+}
+
+cat /tmp/foobar.txt
+echo '"quoted"' | tr -d \" > text.txt
+----
+
+Sidebar
+-------
+
+[source,asciidoc]
+----
+[sidebar]
+.Related information
+--
+This is aside text
+
+It is used to present information related to the main content
+--
+----
+
+*Result*
+
+[sidebar]
+.Related information
+--
+This is aside text
+
+It is used to present information related to the main content
+--
+
+[source,asciidoc]
+--
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax for producing
+professional documents like DocBook and LaTeX
+****
+--
+
+*Result*
+
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax for producing
+professional documents like DocBook and LaTeX
+****
+
+Inline Stem Content
+-------------------
+
+[source,asciidoc]
+----
+stem:[sqrt(4) = 2]
+
+Water (stem:[H_2O]) is a critical component.
+
+A matrix can be written as stem:[[[a,b\],[c,d\]\]((n),(k))].
+----
+
+*Result*
+
+stem:[sqrt(4) = 2]
+
+Water (stem:[H_2O]) is a critical component.
+
+A matrix can be written as stem:[[[a,b\],[c,d\]\]((n),(k))].
+
+Block Stem Content
+-------------------
+
+[source,asciidoc]
+----
+[stem]
+++++
+sqrt(4) = 2
+++++
+----
+
+*Result*
+
+[stem]
+++++
+sqrt(4) = 2
+++++
+
+UI
+--
+
+[source,asciidoc]
+----
+Press the btn:[OK] button when you are finished
+
+Select a file in the navigator and click btn:[Open]
+----
+
+*Results*
+
+Press the btn:[OK] button when you are finished
+
+Select a file in the navigator and click btn:[Open]
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+
+---
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
+
+<<<
+
+This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.  This is an optional introduction to the article. As you'll see in this article, we'll discuss these things. Remember to `cd` into the directory and run `yarn install` to get things started.
