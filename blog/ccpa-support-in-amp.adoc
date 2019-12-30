@@ -1,4 +1,4 @@
-= xCCPA support in AMP
+= CCPA support in AMP
 
 [.date]
 Dec 20, 2019
