@@ -4,9 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "prerun": "cd ../scripts; ./prerun.sh",
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "prerun:dev": "cd ../scripts; ./prerun-dev.sh",
+    "dev": "yarn prerun:dev; sapper dev",
+    "build": "yarn prerun; sapper build --legacy",
+    "export": "yarn prerun; sapper export --legacy",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
