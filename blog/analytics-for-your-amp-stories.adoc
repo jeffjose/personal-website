@@ -20,6 +20,7 @@ Understanding user-behavior
 
 A typical user-journey for a website is very different from stories. On a website a user might read the headline, scroll to the bottom of the page, interact with a form before clicking on a link to the next page. Stories occupy the full viewport and users do not scroll but tap to move forward.
 
+.Analytics setup for web pages
 image::https://blog.amp.dev/wp-content/uploads/2019/08/analytics_pages.png[Analytics seup for web pages]
 
 
@@ -31,7 +32,8 @@ Many in the web analytics community would consider each new page in the story as
 A better default configuration
 ------------------------------
 
-image::https://blog.amp.dev/wp-content/uploads/2019/08/analytics_setup_stories-1024x521.png[Analytics setup for stories]
+.Analytics setup for AMP stories
+image::https://blog.amp.dev/wp-content/uploads/2019/08/analytics_setup_stories-1024x521.png[Analytics setup for AMP Stories]
 
 AMP Analytics makes it easy to implement the above using any analytics vendor. For instance, with Google Analytics’ https://developers.google.com/gtagjs/[Global Site Tag] it looks like so –
 
@@ -80,7 +82,7 @@ If you’re interested in going beyond what the default config can give you, rea
 Advanced setups
 ---------------
 
-=== Insight #1: What’s my most visited page/slide for a given story?
+==== What’s my most visited page/slide for a given story?
 
 Create a dashboard in Google Analytics’ web interface by going to menu:Customization[Dashboard]
 
@@ -88,31 +90,37 @@ Assuming you assign unique names to your AMP stories in `event_category: “Titl
 
 Make sure to add a filter so that you are filtering btn:[Event Action] to exactly match `story_progress`:
 
+.Create a new dashboard
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard1-1024x504.png[Customization > Dashboard]
 
+.Most visited pages of a story
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard3-1024x702.png[Most visited pages of a story]
 
-=== Insight #2 What’s my most visited story across the site?
+==== What’s my most visited story across the site?
 
 Create a dashboard in Google Analytics’ web interface by going to menu:Customization[Dashboard].
 
 Assuming you assign unique names to your AMP stories inside your `<title></title>` tag pair, , we can see most commonly visited pages by creating a bar graph in your custom dashboard picking a grouped by dimension btn:[Page Title], and choosing the metrics btn:[Pageviews].
 
+.Create a new dashboard
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard4-1024x676.png[Customization > Dashboard]
+
+.Most visited stories
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard5-1024x745.png[Most visited stories]
 
 
 Get started quickly by using https://analytics.google.com/analytics/web/template?uid=vaCEjJ0iS_eb9dnkZ_XhoQ[this premade Google Analytics template.]
 
-=== Insight #3 : For a given story, how far into the story users typically go
+==== For a given story, how far into the story users typically go
 
 Since the story progresses from slide 1 to slide N,  it is natural that slide 1 is seen by almost everyone, slide 2 a little less and the number progressively goes down. If there are any problematic slides, you will see a dramatic drop in slide viewership from the previous one. The following dashboard will help you visually capture any problematic pages.
 
-You can use the dashboard that you created before (Insight #1: Most visited pages by story) to visually capture this
+You can use the dashboard that you created before (Most visited pages by story) to visually capture this
 
+.Most visited pages of a story
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard6-1024x715.png[Most visited pages of a story]
 
-=== Insight #4: What’s the average number of pages my users see per story?
+==== What’s the average number of pages my users see per story?
 
 It is also possible to track events on an average. For instance, story progress can be used to track average story depth.
 
@@ -122,29 +130,34 @@ It is also possible to track events on an average. For instance, story progress 
 . Click on btn:[Advanced]. Select btn:[Event Action] and select btn:[Story Progress] in the filter and apply.
 . Select btn:[Avg. Value] from the drop down.
 
+.Average number of pages per story
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard7-1024x419.png[Average number of pages per story]
 
-=== Insight #5: How long on average do users spend on my stories
+==== How long on average do users spend on my stories
 
 https://support.google.com/analytics/answer/1006253?hl=en[Average session duration] is the total duration of all sessions (in seconds) / number of sessions.
 
 Create a new dashboard or add a widget to an existing one with the following setup
 
+.Create a new dashboard
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard8-1024x673.png[Customization > Dashboard]
 
+.Average sessions durations by page title
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard9.png[Average sessions duration by page title]
 
-Insight #6: Measure how many times ads were shown on my story
--------------------------------------------------------------
+==== Measure how many times ads were shown on my story
 
 AMP stories can insert ads on your stories via the `<amp-story-auto-ads>` component. The following setup helps you visualize the number of times ads were shown on the story.
 
 Create a new dashboard or add a widget to an existing one with the following setup:
 
+.Create a new dashboard
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard10-1024x677.png[Customization > Dashboard]
 
+.Create a new filter
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard11.png[Create a filter]
 
+.Ad impressions for each story
 image::https://blog.amp.dev/wp-content/uploads/2019/08/dashboard12-1024x744.png[Ad impressions for each story]
 
 Conclusion
