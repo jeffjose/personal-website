@@ -1,14 +1,3 @@
-<script context="module">
-  export async function preload() {
-
-    const res = await fetch('/meta.json')
-    const r = await res.json
-
-    return {r}
-  }
-
-</script>
-
 <script>
   import {onMount} from 'svelte';
 
@@ -90,8 +79,7 @@ $text-color: darken(gray, 30%)
     align-self: end
     margin: 1rem
 
-
-    &.dirty
+    &.dirty .pi
       color: $accent-color
 
     &:hover .pi
@@ -101,7 +89,9 @@ $text-color: darken(gray, 30%)
       display: block
 
     .pi
+      text-decoration: none
       margin: 0
+      color: $text-color
 
     .revision
       text-decoration: none
@@ -128,7 +118,7 @@ $text-color: darken(gray, 30%)
       p.name
         a(href='/') Jeffrey Jose
     .meta(class:dirty="{revision.dirty === true}", title="foobar")
-      p.pi π
+      a.pi(rel="prefetch", href="/meta.json") π
       a.revision(title="{revision.revision}", href="https://github.com/jeffjose/personal-website") {revision.display}
 </template>
 
