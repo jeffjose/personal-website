@@ -197,9 +197,9 @@
 
 .wrapper :global(.listingblock .title) {
   color: #5bb7ff;
-  float: right;
   margin-top: .5rem;
   pointer-events: none;
+  user-select: none
 }
 
 .wrapper :global(.listingblock code) {

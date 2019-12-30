@@ -215,6 +215,7 @@
 //     .title
 //       color: darken($box-bg-color, 30%)
 //       margin-top: .5rem
+//       user-select: none
 //       pointer-events: none
 //
 //     code
@@ -734,6 +735,7 @@
   color: #5bb7ff;
   margin-top: .5rem;
   pointer-events: none;
+  user-select: none
 }
 
 .wrapper :global(.listingblock code) {
