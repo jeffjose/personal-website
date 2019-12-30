@@ -16,7 +16,9 @@
   export let posts;
 </script>
 
-<style>
+<style lang="sass">
+.blog
+  flex: 1
 
 </style>
 

@@ -98,7 +98,7 @@
   letter-spacing: -2px;
   line-height: 3.5rem;
   margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .wrapper :global(h2) {
