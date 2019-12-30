@@ -90,6 +90,10 @@ $text-color: darken(gray, 30%)
     align-self: end
     margin: 1rem
 
+
+    &.dirty
+      color: $accent-color
+
     &:hover .pi
       display: none
 
@@ -103,8 +107,6 @@ $text-color: darken(gray, 30%)
       text-decoration: none
       display: none
       color: $text-color
-
-
 
 </style>
 
@@ -125,7 +127,7 @@ $text-color: darken(gray, 30%)
         a(href='/github') github
       p.name
         a(href='/') Jeffrey Jose
-    .meta(title="foobar")
+    .meta(class:dirty="{revision.dirty === true}", title="foobar")
       p.pi π
       a.revision(title="{revision.revision}", href="https://github.com/jeffjose/personal-website") {revision.display}
 </template>
