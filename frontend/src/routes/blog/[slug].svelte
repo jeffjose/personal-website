@@ -21,7 +21,7 @@
 
   import { fade } from 'svelte/transition';
 
-  const {page} = stores();
+  const { page } = stores();
 
 	export let post;
 

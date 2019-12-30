@@ -1,3 +1,26 @@
+<script context="module">
+  export async function preload() {
+
+    const res = await fetch('/meta.json')
+    const r = await res.json
+
+    return {r}
+  }
+
+</script>
+
+<script>
+  import {onMount} from 'svelte';
+
+  let revision = {'display': ''}
+
+  onMount(async () => {
+
+    const res = await fetch('/meta.json')
+    revision = await res.json()
+  })
+</script>
+
 <style lang="sass">
 
 $text-color: white
@@ -34,7 +57,7 @@ $text-color: darken(gray, 30%)
   align-items: center
 
   .contents
-    grid-column: 1/-1
+    grid-column: word
     text-align: center
     font-family: "Lato", sans-serif
 
@@ -61,6 +84,28 @@ $text-color: darken(gray, 30%)
         text-transform: uppercase
         letter-spacing: 1px
         margin: 0.5rem
+
+  .meta
+    justify-self: end
+    align-self: end
+    margin: 1rem
+
+    &:hover .pi
+      display: none
+
+    &:hover .revision
+      display: block
+
+    .pi
+      margin: 0
+
+    .revision
+      text-decoration: none
+      display: none
+      color: $text-color
+
+
+
 </style>
 
 <template lang="pug">
@@ -80,5 +125,8 @@ $text-color: darken(gray, 30%)
         a(href='/github') github
       p.name
         a(href='/') Jeffrey Jose
+    .meta(title="foobar")
+      p.pi π
+      a.revision(title="{revision.revision}", href="https://github.com/jeffjose/personal-website") {revision.display}
 </template>
 
