@@ -140,7 +140,7 @@
 }
 
 .wrapper :global(p em) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
 }
 
 .wrapper :global(p em code) {
@@ -642,9 +642,9 @@
     overflow: visible; /* For IE */
     padding: 0;
     border: none;
-    border-top: medium double #333;
     color: #333;
     text-align: center;
+    margin-top: 2rem;
 }
 .wrapper :global(hr.style-eight:after) {
     content: "§";

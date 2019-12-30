@@ -3,10 +3,11 @@
 [.date]
 Dec 20, 2019
 
+_This post originally appeared on AMP Project's website. See it https://blog.amp.dev/2019/12/20/ccpa-support-in-amp/[here]_
+
 [.hero]
 image::/blog/ca.flag.svg[Flag of California]
 
-_This post originally appeared on AMP Project's website. See it https://blog.amp.dev/2019/12/20/ccpa-support-in-amp/[here]_
 
 The https://oag.ca.gov/privacy/ccpa[California Consumer Privacy Act (CCPA)] is a new data privacy law that establishes various rights for California state residents. The law applies to companies that do business in California and meet one of several criteria related to revenue, data processing, and other factors.
 
