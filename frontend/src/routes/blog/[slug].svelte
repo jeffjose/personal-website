@@ -196,7 +196,7 @@
 //   // For inline code
 //   p  code
 //     background-color: $inline-code-bg-color
-//     padding: 4px 10px
+//     padding: 3px 4px
 //     font-size: 1rem
 //     //color: $accent-color
 //     font-family: "Fira Mono", monospace
@@ -727,7 +727,7 @@
 
 .wrapper :global(p code) {
   background-color: #eff8ff;
-  padding: 4px 10px;
+  padding: 3px 4px;
   font-size: 1rem;
   font-family: "Fira Mono", monospace;
 }
