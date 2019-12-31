@@ -7,6 +7,7 @@ steps:
     entrypoint: yarn
     args: ["install"]
     dir: "frontend"
+
     # 2. run prerun
   - name: "nikolaik/python-nodejs:latest"
     entrypoint: yarn
@@ -16,6 +17,7 @@ steps:
       - "TAG_NAME=$TAG_NAME"
       - "SHORT_SHA=$SHORT_SHA"
     dir: "frontend"
+
     #
     # Deploy to Firebase
     #
@@ -27,12 +29,14 @@ steps:
     entrypoint: yarn
     args: ["export:only"]
     dir: "frontend"
+
     # 2. deploy files to firebase
   - name: "nikolaik/python-nodejs:latest"
     entrypoint: "./node_modules/.bin/firebase"
     args:
       ["deploy", "--project", "personal-c913b", "--token", "$_FIREBASE_TOKEN"]
     dir: "frontend"
+
     #
     # Deploy to Cloud Run
     #
@@ -40,10 +44,12 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/personal-c913b/personal-website", "."]
     dir: "frontend"
+
     # 2. push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/personal-c913b/personal-website"]
     dir: "frontend"
+
     # 3. Deploy container image to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     args:
@@ -61,5 +67,6 @@ steps:
         "--quiet",
       ]
     dir: "frontend"
+
 images:
   - gcr.io/personal-c913b/personal-website
