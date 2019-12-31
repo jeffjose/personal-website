@@ -24,7 +24,7 @@ $background-dark-color: lighten(gray, 30%)
 $text-color: darken(gray, 30%)
 
 .footer
-  min-height: 12rem
+  min-height: 22rem
   background-color: $background-dark-color
   margin-top: 3rem
   border-top: 3px solid gray
@@ -50,8 +50,8 @@ $text-color: darken(gray, 30%)
         grid-column: word !important
         justify-self: center !important
         align-self: center !important
-        margin: 0
-        margin-bottom: 1rem
+        margin: 0 !important
+        margin-bottom: 1rem !important
 
         a.pi
           text-align: center !important
