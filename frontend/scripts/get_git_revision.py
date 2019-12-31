@@ -20,8 +20,8 @@ def run(cmd):
     # In cloud-build, we have the same directory structure but no .git.
     # That info is passed in via ENV variables
     if BUILD_CTX == 'cloud-build':
-        TAG_NAME = os.environ.get('TAG_NAME', 'tag')
-        SHORT_SHA = os.environ.get('SHORT_SHA', 'shortsha')
+        TAG_NAME = os.environ.get('TAG_NAME', 'defaulttag')
+        SHORT_SHA = os.environ.get('SHORT_SHA', 'defaultsha')
 
         return f'{TAG_NAME}-0-g{SHORT_SHA}'
     else:
