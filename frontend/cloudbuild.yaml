@@ -11,6 +11,10 @@ steps:
   - name: "nikolaik/python-nodejs:latest"
     entrypoint: yarn
     args: ["prerun"]
+    env:
+      - "BUILD_CTX=cloud-build"
+      - "TAG_NAME=$TAG_NAME"
+      - "SHORT_SHA=$SHORT_SHA"
     dir: "frontend"
     #
     # Deploy to Firebase
