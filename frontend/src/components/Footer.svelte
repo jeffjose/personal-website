@@ -24,7 +24,7 @@ $background-dark-color: lighten(gray, 30%)
 $text-color: darken(gray, 30%)
 
 .footer
-  min-height: 22rem
+  min-height: 12rem
   background-color: $background-dark-color
   margin-top: 3rem
   border-top: 3px solid gray
@@ -36,8 +36,9 @@ $text-color: darken(gray, 30%)
   justify-items: center
   align-items: center
 
-  @media (max-width: 540px)
+  @media (max-width: 580px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
+      min-height: 22rem
 
       a.link, p
         display: block !important
