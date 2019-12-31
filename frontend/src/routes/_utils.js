@@ -182,6 +182,6 @@ export const get_posts = async url => {
 };
 
 export function get_commit() {
-  let commit = JSON.parse(fs.readFileSync("../meta", "utf8"));
+  let commit = JSON.parse(fs.readFileSync("./meta", "utf8"));
   return commit;
 }

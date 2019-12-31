@@ -8,10 +8,10 @@ print('-------------------')
 print('Running build_index.py')
 print('-------------------')
 
-BOOKS_DIR = '../books'
+BOOKS_DIR = '../../books'
 BOOKS_INDEX = BOOKS_DIR + '/index.yaml'
 
-BLOG_DIR = '../blog'
+BLOG_DIR = '../../blog'
 BLOG_INDEX = BLOG_DIR + '/index.yaml'
 
 GITHUB_BASEURL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master'

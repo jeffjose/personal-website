@@ -9,7 +9,7 @@ print('Running get_git_revision.py')
 print('-------------------')
 
 CMD = 'git describe --long --dirty --abbrev=6 --tags'
-OUTPUT = '../meta'
+OUTPUT = './meta'
 
 
 def run(cmd):
