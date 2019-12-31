@@ -1,21 +1,30 @@
 steps:
   #
-  # Deploy to Firebase
-  #  from https://dev.to/leomercier/deploying-a-gatsby-site-to-firebase-with-google-cloud-build-ci-cd-511c
-  #  token from https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/firebase
+  # Run setup
   #
-  # 1. add firebase-tools (already in package.json)
-  - name: "node:12-slim"
+  # 1. setup things, including firebase-tools in package.json
+  - name: "nikolaik/python-nodejs:latest"
     entrypoint: yarn
     args: ["install"]
     dir: "frontend"
-    # 2. export static files from sapper (this also creates the ./meta file. ie: runs yarn prerun)
-  - name: "node:12-slim"
+    # 2. run prerun
+  - name: "nikolaik/python-nodejs:latest"
     entrypoint: yarn
-    args: ["export"]
+    args: ["prerun"]
     dir: "frontend"
-    # 3. deploy files to firebase
-  - name: "node:12-slim"
+    #
+    # Deploy to Firebase
+    #
+    #  from https://dev.to/leomercier/deploying-a-gatsby-site-to-firebase-with-google-cloud-build-ci-cd-511c
+    #  token from https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/firebase
+    #
+    # 1. export static files from sapper
+  - name: "nikolaik/python-nodejs:latest"
+    entrypoint: yarn
+    args: ["export:only"]
+    dir: "frontend"
+    # 2. deploy files to firebase
+  - name: "nikolaik/python-nodejs:latest"
     entrypoint: "./node_modules/.bin/firebase"
     args:
       ["deploy", "--project", "personal-c913b", "--token", "$_FIREBASE_TOKEN"]

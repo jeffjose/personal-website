@@ -10,3 +10,11 @@
 - [firebase] 404
 -- Firebase requires 404.html which can be 404.svelte
 -- But for `sapper export` to work, it needs to be linked somewhere
+
+### Notes
+- prerun= runs prerun
+- prerun:dev= runs just get_git_commit since we dont need index.yaml rebuild (for speed reasons)
+- dev= prerun:dev + sapper dev
+- build= prerun + sapper build --legacy
+- build:only = sapper build --legacy (to be used by docker)
+- docker = Run yarn prerun  before going into docker context
