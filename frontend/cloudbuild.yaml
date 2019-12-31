@@ -1,38 +1,52 @@
 steps:
   #
-  # Deploy to Cloud Run
-  #
-  # 1. build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/personal-c913b/personal-website', '.']
-  dir: 'frontend'
-  # 2. push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/personal-c913b/personal-website']
-  dir: 'frontend'
-  # 3. Deploy container image to Cloud Run
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', 'personal-website', '--image', 'gcr.io/personal-c913b/personal-website', '--region', 'us-central1','--platform', 'managed', '--quiet']
-  dir: 'frontend'
-  #
   # Deploy to Firebase
   #  from https://dev.to/leomercier/deploying-a-gatsby-site-to-firebase-with-google-cloud-build-ci-cd-511c
   #  token from https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/firebase
   #
   # 1. add firebase-tools (already in package.json)
-- name: 'node:12-slim'
-  entrypoint: yarn
-  args: ['install']
-  dir: 'frontend'
-  # 2. export static files from sapper
-- name: 'node:12-slim'
-  entrypoint: yarn
-  args: ['export']
-  dir: 'frontend'
-  # 3. deploy files to firebase
-- name: 'node:12-slim'
-  entrypoint: './node_modules/.bin/firebase'
-  args: ['deploy', '--project', 'personal-c913b', '--token', '$_FIREBASE_TOKEN']
-  dir: 'frontend'
+  - name: "node:12-slim"
+    entrypoint: yarn
+    args: ["install"]
+    dir: "frontend"
+    # 2. export static files from sapper (this also creates the ./meta file. ie: runs yarn prerun)
+  - name: "node:12-slim"
+    entrypoint: yarn
+    args: ["export"]
+    dir: "frontend"
+    # 3. deploy files to firebase
+  - name: "node:12-slim"
+    entrypoint: "./node_modules/.bin/firebase"
+    args:
+      ["deploy", "--project", "personal-c913b", "--token", "$_FIREBASE_TOKEN"]
+    dir: "frontend"
+    #
+    # Deploy to Cloud Run
+    #
+    # 1. build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/personal-c913b/personal-website", "."]
+    dir: "frontend"
+    # 2. push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/personal-c913b/personal-website"]
+    dir: "frontend"
+    # 3. Deploy container image to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "personal-website",
+        "--image",
+        "gcr.io/personal-c913b/personal-website",
+        "--region",
+        "us-central1",
+        "--platform",
+        "managed",
+        "--quiet",
+      ]
+    dir: "frontend"
 images:
-- gcr.io/personal-c913b/personal-website
+  - gcr.io/personal-c913b/personal-website

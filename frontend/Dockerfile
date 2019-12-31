@@ -17,7 +17,7 @@ RUN yarn
 COPY . ./
 
 # Build sapper
-RUN yarn build
+RUN yarn build:only
 
 # Run the web service on container startup.
 CMD [ "yarn", "start" ]
