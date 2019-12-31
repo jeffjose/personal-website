@@ -29,21 +29,33 @@ $text-color: darken(gray, 30%)
   margin-top: 3rem
   border-top: 3px solid gray
 
+
   display: grid
   grid-template-columns: 7fr [word-start] 540px [word-end] 7fr
+
+  justify-items: center
+  align-items: center
 
   @media (max-width: 540px)
       grid-template-columns: 20px [content-start] 0fr [word-start] auto [word-end] 0fr [content-end] 20px
 
-      a, p
+      a.link, p
         display: block !important
         margin: 1rem !important
 
       .dot
         display: none !important
 
-  justify-items: center
-  align-items: center
+      .meta
+        grid-column: word !important
+        justify-self: center !important
+        align-self: center !important
+        margin: 0
+        margin-bottom: 1rem
+
+        a.pi
+          text-align: center !important
+
 
   .contents
     grid-column: word
@@ -104,19 +116,19 @@ $text-color: darken(gray, 30%)
   div.footer
     .contents
       .links
-        a(href='/about') about
+        a.link(href='/about') about
         p.dot ·
-        a(href='/blog') blog
+        a.link(href='/blog') blog
         p.dot ·
-        a(href='/books') books
+        a.link(href='/books') books
         p.dot ·
-        a(href='/twitter') twitter
+        a.link(href='/twitter') twitter
         p.dot ·
-        a(href='/linkedin') linkedin
+        a.link(href='/linkedin') linkedin
         p.dot ·
-        a(href='/github') github
+        a.link(href='/github') github
       p.name
-        a(href='/') Jeffrey Jose
+        a.link(href='/') Jeffrey Jose
     .meta(class:dirty="{revision.dirty === true}", title="foobar")
       a.pi(rel="prefetch", href="/meta.json") π
       a.revision(title="{revision.revision}", href="https://github.com/jeffjose/personal-website") {revision.display}
