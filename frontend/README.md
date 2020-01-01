@@ -18,3 +18,4 @@
 - build= prerun + sapper build --legacy
 - build:only = sapper build --legacy (to be used by docker)
 - docker = Run yarn prerun  before going into docker context
+
