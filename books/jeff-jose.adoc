@@ -1,0 +1,11 @@
+= jeff-jose
+
+[.date]
+Dec 26, 2019
+
+[.subtitle]
+A subtitle
+
+[.hero]
+image::/books/jeff-jose.jpg[]
+
