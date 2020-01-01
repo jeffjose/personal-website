@@ -8,13 +8,10 @@ print('-------------------')
 print('Running build_blog_index.py')
 print('-------------------')
 
-BOOKS_DIR = '../books'
-BOOKS_INDEX = BOOKS_DIR + '/index.yaml'
-
 BLOG_DIR = '../blog'
 BLOG_INDEX = BLOG_DIR + '/index.yaml'
 
-GITHUB_BASEURL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master'
+GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books'
 
 
 def find_dt(post):
@@ -25,13 +22,11 @@ def find_dt(post):
     return parser.parse(dt)
 
 
-def create_index(items, parent_dir):
+def create_index(items):
 
     items = sorted(items, key=lambda x: find_dt(x), reverse=True)
 
-    return [{
-        "file": f"{GITHUB_BASEURL}/{parent_dir}/{x.basename()}"
-    } for x in items]
+    return [{"file": f"{GITHUB_URL}/{x.basename()}"} for x in items]
 
 
 def write_index(index, file):
@@ -46,12 +41,6 @@ posts = [
     if not x.basename().startswith('_')
 ]
 
-# Find all books
-books = [
-    x for x in path.Path(BOOKS_DIR).listdir("*.adoc")
-    if not x.basename().startswith('_')
-]
-
-blog_index = create_index(posts, 'blog')
+blog_index = create_index(posts)
 print('Blog index')
 write_index(blog_index, BLOG_INDEX)

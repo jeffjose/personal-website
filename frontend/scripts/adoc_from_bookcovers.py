@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import path
+from dateutil import parser
 import yaml
 
 print('-------------------')
@@ -42,6 +43,18 @@ def create_adoc(filename):
     adoc.write_text(ADOC_TEMPLATE.format(title=filename))
 
 
+def find_dt(item):
+    filename = item['file'].split('/')[-1]
+
+    adoc = path.Path(ADOC_DIR) / filename
+
+    lines = adoc.lines(retain=False)
+
+    dt = lines[lines.index('[.date]') + 1]
+
+    return parser.parse(dt)
+
+
 def create_index(index, newitems):
 
     for item in newitems:
@@ -52,8 +65,7 @@ def create_index(index, newitems):
 
         index.append(d)
 
-    # TODO: Sort the index
-    return index
+    return sorted(index, key=lambda x: find_dt(x), reverse=True)
 
 
 covers = [x.namebase for x in path.Path(COVERS_DIR).listdir()]
