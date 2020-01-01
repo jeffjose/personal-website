@@ -192,6 +192,8 @@
   padding: 0 1rem;
   background-color: #f4faff;
   margin: 0.5em 0;
+  border: 1px solid #c1e3ff;
+  border-radius: 3px;
 }
 
 .wrapper :global(.listingblock .content) {

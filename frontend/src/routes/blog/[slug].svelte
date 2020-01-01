@@ -211,6 +211,8 @@
 //     padding: 0 1rem
 //     background-color: $box-bg-color
 //     margin: 0.5em 0
+//     border: 1px solid darken($box-bg-color, 10%)
+//     border-radius: 3px;
 //
 //     .content
 //       padding: 0rem 0.8rem 0.5rem 0
@@ -725,6 +727,8 @@
   padding: 0 1rem;
   background-color: #f4faff;
   margin: 0.5em 0;
+  border: 1px solid #c1e3ff;
+  border-radius: 3px;
 }
 
 .wrapper :global(.listingblock .content) {
