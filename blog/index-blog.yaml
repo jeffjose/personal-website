@@ -1,4 +1,2 @@
-# On every build a new version of this file is created based on `adocs` present in this directory.
-# This file (on github) is used as a starting point
 - file: https://raw.githubusercontent.com/jeffjose/personal-website/master/blog/ccpa-support-in-amp.adoc
 - file: https://raw.githubusercontent.com/jeffjose/personal-website/master/blog/analytics-for-your-amp-stories.adoc

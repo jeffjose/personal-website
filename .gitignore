@@ -25,4 +25,4 @@ yarn-error.log*
 frontend/public/bundle*
 
 # meta info about the git repo. Created automatically on build
-meta
+meta.json

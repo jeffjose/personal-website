@@ -181,7 +181,10 @@ export const get_posts = async url => {
   }
 };
 
-export function get_commit() {
-  let commit = JSON.parse(fs.readFileSync("./meta", "utf8"));
+export async function get_commit() {
+  const response = await fetch(
+    "https://storage.googleapis.com/jeffjose-personal-website/meta.json"
+  );
+  const commit = await response.json();
   return commit;
 }
