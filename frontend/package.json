@@ -16,6 +16,7 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "py": "cd __sapper__/export; python3 -m http.server",
+    "cloudbuild": "cloud-build-local --config=cloudbuild.yaml --dryrun=false --substituions _FIREBASE_TOKEN= ../",
     "docker": "yarn prerun; docker build --tag=gcr.io/personal-c913b/personal-website .; docker run -e 'PORT=3000' -p 80:3000 gcr.io/personal-c913b/personal-website",
     "dockerrun": "docker run -e 'PORT=3000' -p 80:3000 gcr.io/personal-c913b/personal-website",
     "dockerinspect": "docker build --tag=gcr.io/personal-c913b/personal-website .; docker run -e 'PORT=3000' -p 80:3000 -t -i gcr.io/personal-c913b/personal-website /bin/bash",
