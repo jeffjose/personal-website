@@ -4,6 +4,7 @@ import os
 import subprocess
 import path
 import json
+import datetime
 
 print('-------------------')
 print('Running get_git_revision.py')
@@ -13,6 +14,8 @@ CMD = 'git describe --long --dirty --abbrev=6 --tags'
 OUTPUT = './meta.json'
 
 BUILD_CTX = os.environ.get('BUILD_CTX', "local")
+
+CURR_TIME = datetime.datetime.utcnow().isoformat()
 
 
 def run(cmd):
@@ -49,6 +52,7 @@ def format(revision):
 
     return {
         "revision": revision,
+        "build_time": CURR_TIME,
         "display": display,
         "tooltip": f'Built from source - {tooltip}',
         "dirty": dirty,
