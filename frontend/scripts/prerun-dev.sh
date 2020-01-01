@@ -6,6 +6,6 @@ echo "----- prerun (dev) -------"
 ./scripts/get_git_revision.py
 
 # Create adocs and build book index
-./scripts/adocs_from_covers.py
+./scripts/adoc_from_bookcovers.py
 
 echo "----- end prerun (dev) -------"
