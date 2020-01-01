@@ -1,7 +1,8 @@
-= Mossad: The Greatest Missions of the Israeli Secret Service
+= Mossad
 
 [.subtitle]
-Michael Bar-Zohar & Nissim Mishal
+The Greatest Missions of the Israeli Secret Service
+
 
 [.date]
 Dec 26, 2019

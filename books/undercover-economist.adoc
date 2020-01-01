@@ -1,7 +1,10 @@
-= The Undercover Economist Strikes Back: How to Run-or Ruin-an Economy
+= The Undercover Economist Strikes Back
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+How to Run-or Ruin-an Economy
 
 [.hero]
 image::/books/undercover-economist.jpg[]

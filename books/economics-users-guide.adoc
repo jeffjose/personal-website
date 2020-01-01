@@ -1,7 +1,10 @@
-= Economics: The User's Guide
+= Economics
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+The User's Guide
 
 [.hero]
 image::/books/economics-users-guide.jpg[]

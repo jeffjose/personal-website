@@ -1,7 +1,10 @@
-= Catch and Kill: Lies, Spies, and a Conspiracy to Protect Predators
+= Catch and Kill
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+Lies, Spies, and a Conspiracy to Protect Predators
 
 [.hero]
 image::/books/catch-and-kill.jpg[]

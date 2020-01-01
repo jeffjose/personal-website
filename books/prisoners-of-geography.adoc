@@ -1,7 +1,10 @@
-= Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics
+= Prisoners of Geography
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+Ten Maps That Tell You Everything You Need to Know About Global Politics
 
 [.hero]
 image::/books/prisoners-of-geography.jpg[]

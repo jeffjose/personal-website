@@ -1,6 +1,10 @@
-= Why We Sleep: Unlocking the Power of Sleep and Dreams
+= Why We Sleep
+
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+Unlocking the Power of Sleep and Dreams
 
 [.hero]
 image::/books/why-we-sleep.jpg[]

@@ -1,7 +1,10 @@
-= How To: Absurd Scientific Advice for Common Real-World Problems
+= How To
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+Absurd Scientific Advice for Common Real-World Problems
 
 [.hero]
 image::/books/how-to.jpg[]

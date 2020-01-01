@@ -1,7 +1,10 @@
-= Capitalism in America: A History
+= Capitalism in America
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+A History
 
 [.hero]
 image::/books/capitalism-in-america.jpg[]

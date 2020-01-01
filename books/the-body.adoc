@@ -1,7 +1,10 @@
-= The Body: A Guide for Occupants
+= The Body
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+A Guide for Occupants
 
 [.hero]
 image::/books/the-body.jpg[]

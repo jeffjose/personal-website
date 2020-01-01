@@ -1,7 +1,10 @@
-= The Cold War: A New History
+= The Cold War
 
 [.date]
 Dec 26, 2019
+
+[.subtitle]
+A New History
 
 [.hero]
 image::/books/cold-war.jpg[]
