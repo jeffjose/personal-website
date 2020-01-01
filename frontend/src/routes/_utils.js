@@ -151,11 +151,18 @@ function add_dev_posts(posts, contents) {
     });
   }
 }
-export const get_posts = async url => {
+export const get_posts = async (url, dev_url) => {
   try {
-    const response = await fetch(url);
-    const data = await response.text();
-    const posts = yaml.safeLoad(data);
+    let posts;
+    if (process.env.NODE_ENV == "development") {
+      const data = fs.readFileSync(dev_url, "utf8");
+      posts = yaml.safeLoad(data);
+      console.log(data);
+    } else {
+      const response = await fetch(url);
+      const data = await response.text();
+      posts = yaml.safeLoad(data);
+    }
 
     let contents = await Promise.all(
       posts.map(async (post, index) => {

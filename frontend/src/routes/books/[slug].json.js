@@ -41,7 +41,8 @@ export async function get(req, res, next) {
   const { slug } = req.params;
 
   const books = await get_books(
-    "https://storage.googleapis.com/jeffjose-personal-website/index-books.yaml"
+    "https://storage.googleapis.com/jeffjose-personal-website/index-books.yaml",
+    "index-books-dev.yaml"
   );
 
   if (lookup.has(slug)) {

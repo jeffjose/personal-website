@@ -9,7 +9,8 @@ print('Running build_blog_index.py')
 print('-------------------')
 
 BLOG_DIR = '../blog'
-BLOG_INDEX = BLOG_DIR + '/index-blog.yaml'
+INDEX = BLOG_DIR + '/index-blog.yaml'
+DEV_INDEX = './index-blog-dev.yaml'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/blog'
 
@@ -34,6 +35,9 @@ def write_index(index, file):
     print(yaml.dump(index))
     yaml.dump(index, open(file, 'w'))
 
+    print(f"2/2. Writing dev index: {DEV_INDEX}")
+    yaml.dump(index, open(DEV_INDEX, 'w'))
+
 
 # Find all blogposts
 posts = [
@@ -42,5 +46,5 @@ posts = [
 ]
 
 blog_index = create_index(posts)
-print('Blog index')
-write_index(blog_index, BLOG_INDEX)
+print('1/2. Blog index')
+write_index(blog_index, INDEX)

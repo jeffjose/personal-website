@@ -32,7 +32,8 @@ const get_books = async url => {
 
 export async function get(req, res) {
   const books = await get_books(
-    "https://storage.googleapis.com/jeffjose-personal-website/index-books.yaml"
+    "https://storage.googleapis.com/jeffjose-personal-website/index-books.yaml",
+    "index-books-dev.yaml"
   );
 
   res.writeHead(200, {

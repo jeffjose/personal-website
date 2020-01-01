@@ -26,3 +26,5 @@ frontend/public/bundle*
 
 # meta info about the git repo. Created automatically on build
 meta.json
+index-books-dev.yaml
+index-blog-dev.yaml

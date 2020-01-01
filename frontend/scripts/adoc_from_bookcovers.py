@@ -10,6 +10,7 @@ print('-------------------')
 
 COVERS_DIR = 'static/books/'
 INDEX = '../books/index-books.yaml'
+DEV_INDEX = './index-books-dev.yaml'
 ADOC_DIR = '../books/'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books/'
@@ -35,6 +36,9 @@ def read_index(file):
 
 def write_index(file, contents):
     yaml.dump(contents, open(file, 'w'))
+
+    print(f"  3/3. Writing dev index: {DEV_INDEX}")
+    yaml.dump(contents, open(DEV_INDEX, 'w'))
 
 
 def create_adoc(filename):
@@ -79,11 +83,11 @@ existing_adocs = {
 
 new_covers = set(covers).difference(existing_adocs)
 
-print(f'  1/2. Creating {len(new_covers)} adocs')
+print(f'  1/3. Creating {len(new_covers)} adocs')
 for new_cover in new_covers:
     create_adoc(new_cover)
 
 new_index = create_index(index, new_covers)
 
-print(f"  2/2. Updating index with {len(new_covers)} items")
+print(f"  2/3. Updating index with {len(new_covers)} items")
 write_index(INDEX, new_index)

@@ -2,7 +2,8 @@ import { parse, get_posts } from "../_utils.js";
 
 export async function get(req, res) {
   const posts = await get_posts(
-    "https://storage.googleapis.com/jeffjose-personal-website/index-blog.yaml"
+    "https://storage.googleapis.com/jeffjose-personal-website/index-blog.yaml",
+    "index-blog-dev.yaml"
   );
 
   res.writeHead(200, {
