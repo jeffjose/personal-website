@@ -49,19 +49,15 @@ $green: #34a853
   .books
     display: grid
     grid-column: word
-    grid-template-columns: repeat(5, 1fr)
+    grid-template-columns: repeat(3, 1fr)
     grid-row-gap: 30px
     grid-column-gap: 15px
 
     @media (max-width: 800px)
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr))
 
     .box
       padding: 0px 0px 3px 0px
-      border: 2px solid rgba(0, 0, 0, 0)
-
-      &:hover
-        border-color: $accent-color
 
 
     p.tag

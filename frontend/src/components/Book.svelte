@@ -36,6 +36,10 @@
   color: #FF0088;
 }
 
+.wrapper:hover :global(img){
+  transform: scale(1.05);
+}
+
 .wrapper :global(*) {
   grid-column: word;
   display: none;
@@ -70,7 +74,7 @@
   display: unset;
   grid-row: top;
   grid-column: word;
-  align-self: end;
+  overflow: hidden;
 }
 
 .wrapper :global(.imageblock.hero *) {

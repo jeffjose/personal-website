@@ -173,7 +173,6 @@
 }
 
 .wrapper :global(.imageblock.hero .content img) {
-  height: 25rem;
   width: auto;
   }
 
