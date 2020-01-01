@@ -5,7 +5,7 @@ from dateutil import parser
 import yaml
 
 print('-------------------')
-print('Running build_index.py')
+print('Running build_blog_index.py')
 print('-------------------')
 
 BOOKS_DIR = '../books'
