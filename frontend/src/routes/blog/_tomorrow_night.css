@@ -1,0 +1,75 @@
+/* Tomorrow Night Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Tomorrow Comment */
+:global(.hljs-comment),
+:global(.hljs-quote) {
+  color: #969896;
+}
+
+/* Tomorrow Red */
+:global(.hljs-variable),
+:global(.hljs-template-variable),
+:global(.hljs-tag),
+:global(.hljs-name),
+:global(.hljs-selector-id),
+:global(.hljs-selector-class),
+:global(.hljs-regexp),
+:global(.hljs-deletion) {
+  color: #cc6666;
+}
+
+/* Tomorrow Orange */
+:global(.hljs-number),
+:global(.hljs-built_in),
+:global(.hljs-builtin-name),
+:global(.hljs-literal),
+:global(.hljs-type),
+:global(.hljs-params),
+:global(.hljs-meta),
+:global(.hljs-link) {
+  color: #de935f;
+}
+
+/* Tomorrow Yellow */
+:global(.hljs-attribute) {
+  color: #f0c674;
+}
+
+/* Tomorrow Green */
+:global(.hljs-string),
+:global(.hljs-symbol),
+:global(.hljs-bullet),
+:global(.hljs-addition) {
+  color: #b5bd68;
+}
+
+/* Tomorrow Blue */
+:global(.hljs-title),
+:global(.hljs-section) {
+  color: #81a2be;
+}
+
+/* Tomorrow Purple */
+:global(.hljs-keyword),
+:global(.hljs-selector-tag) {
+  color: #b294bb;
+}
+
+:global(.hljs) {
+  display: block;
+  overflow-x: auto;
+  background: #1d1f21;
+  color: #c5c8c6;
+  padding: 0.5em;
+}
+
+:global(.hljs-emphasis) {
+  font-style: italic;
+}
+
+:global(.hljs-strong) {
+  font-weight: bold;
+}
