@@ -50,7 +50,7 @@ def format(revision):
     return {
         "revision": revision,
         "display": display,
-        "tooltip": tooltip,
+        "tooltip": f'Built from source - {tooltip}',
         "dirty": dirty,
         "tag": tag
     }
