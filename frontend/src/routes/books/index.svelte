@@ -50,10 +50,18 @@ $green: #34a853
     display: grid
     grid-column: word
     grid-template-columns: repeat(5, 1fr)
-    grid-gap: 15px
+    grid-row-gap: 30px
+    grid-column-gap: 15px
 
     @media (max-width: 800px)
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr))
+
+    .box
+      padding: 0px 0px 3px 0px
+      border: 2px solid rgba(0, 0, 0, 0)
+
+      &:hover
+        border-color: $accent-color
 
 
     p.tag
@@ -78,17 +86,17 @@ div.contents(in:fade='{{duration: 300}}', out:fade='{{duration:0}}')
     +if('readingBooks && readingBooks.length > 0')
       p.tag Currently reading
       +each('readingBooks as book')
-        .reading
+        .reading.box
           Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 
     +if('reviewedBooks && reviewedBooks.length > 0')
       p.tag Reviewed
       +each('reviewedBooks as book')
-        .read
+        .read.box
           Book(contents='{book.teaserhtml}', slug='{book.slug}')
 
     p.tag All books
     +each('books as book')
-      .read
+      .read.box
         Book(contents='{book.teaserhtml}', slug='{book.goodreads}')
 </template>

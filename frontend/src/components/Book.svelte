@@ -10,19 +10,23 @@
 <style lang="scss">
 
 .book {
+  height: 100%;
   background-color: white;
 }
 
 .book a {
+  height: 100%;
   text-decoration: none;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: [content-start] [word-start] 1fr [word-end] [content-end];
-  grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end];
+  grid-template-columns: [content-start word-start] 1fr [word-end content-end];
+  grid-template-rows: [top-start] 1fr [top-end bottom-start] auto [bottom-end];
   color: rgba(0, 0, 0, 0.84);
   cursor: pointer;
+
+  height: 100%;
 }
 
 @media (max-width: 800px) {
@@ -53,6 +57,7 @@
   font-weight: 400;
   font-size: 1rem;
   margin: 0;
+  padding: 0 5px;
 }
 
 .wrapper :global(.imageblock.hero) {
