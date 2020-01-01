@@ -32,7 +32,7 @@ const get_books = async url => {
 
 export async function get(req, res) {
   const books = await get_books(
-    "https://raw.githubusercontent.com/jeffjose/personal-website/master/books/index.yaml"
+    "https://storage.googleapis.com/jeffjose-personal-website/index-books.yaml"
   );
 
   res.writeHead(200, {

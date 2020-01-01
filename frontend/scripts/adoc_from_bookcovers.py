@@ -9,7 +9,7 @@ print('Running adoc_from_bookcovers.py')
 print('-------------------')
 
 COVERS_DIR = 'static/books/'
-INDEX = '../books/index.yaml'
+INDEX = '../books/index-books.yaml'
 ADOC_DIR = '../books/'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books/'

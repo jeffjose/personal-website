@@ -9,7 +9,7 @@ print('Running build_blog_index.py')
 print('-------------------')
 
 BLOG_DIR = '../blog'
-BLOG_INDEX = BLOG_DIR + '/index.yaml'
+BLOG_INDEX = BLOG_DIR + '/index-blog.yaml'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/blog'
 

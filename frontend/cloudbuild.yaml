@@ -70,3 +70,8 @@ steps:
 
 images:
   - gcr.io/personal-c913b/personal-website
+
+artifacts:
+  objects:
+    location: gs://jeffjose-personal-website/
+    paths: ["blog/index-blog.yaml", "books/index-books.yaml"]
