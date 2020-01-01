@@ -43,7 +43,7 @@ def format(revision):
         # repo is clean
         [tag, noncommitted, sha] = revision.split('-')
 
-        tooltip = revision.replace('-0-', '')
+        tooltip = revision.replace('-0-', '-')
         display = sha[1:]
         dirty = False
 
