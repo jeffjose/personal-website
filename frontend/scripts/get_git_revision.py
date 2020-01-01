@@ -36,7 +36,7 @@ def format(revision):
         [tag, noncommitted, sha, _] = revision.split('-')
 
         tooltip = revision
-        display = f"{sha}-{dirty}"
+        display = f"{sha}-dirty"
         dirty = True
 
     except:

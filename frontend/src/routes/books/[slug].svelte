@@ -15,6 +15,9 @@
 
 <script>
 
+  import Icon from 'fa-svelte';
+  import {faTwitter} from '@fortawesome/free-brands-svg-icons/faTwitter'
+
   import {stores} from '@sapper/app';
 
   import { fade } from 'svelte/transition';
@@ -22,6 +25,8 @@
   const {page} = stores();
 
 	export let book;
+
+  let icon = faTwitter;
 
   $: path = encodeURI(page.path)
 
@@ -216,6 +221,21 @@
 
   .tweet a:hover {
     color: #FF0088 !important;
+  }
+
+  .tweet :global(.icon) {
+    vertical-align: middle;
+    transition: none; // svg transitions are slow
+  }
+
+  .tweet :global(.icon svg) {
+    padding-top: 5px;
+    padding-right: 9px;
+    transition: none; // svg transitions are slow
+  }
+
+  .tweet :global(.icon svg *) {
+    transition: none; // svg transitions are slow
   }
 
 .wrapper :global(a) {
@@ -674,7 +694,7 @@
             {@html book.fullhtml}
           </div>
           <div class="endofbook">
-            <p class="tweet"><a href="{tweetURL}">Enjoying so far? Tweet about this</a></p>
+            <p class="tweet"><a href="{tweetURL}"><span class="icon"><Icon icon={faTwitter}></Icon></span>Enjoying so far? Tweet about this</a></p>
             <p class="link"><a rel="prefetch" href="/books">Back to books</a></p>
           </div>
         </div>
