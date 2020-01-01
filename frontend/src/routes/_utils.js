@@ -189,14 +189,21 @@ export const get_posts = async (url, dev_url) => {
 };
 
 export async function get_commit() {
-  if (process.env.NODE_ENV == "development") {
-    const commit = JSON.parse(fs.readFileSync("./meta.json", "utf8"));
-    return commit;
-  } else {
-    const response = await fetch(
-      "https://storage.googleapis.com/jeffjose-personal-website/meta.json"
-    );
-    const commit = await response.json();
-    return commit;
-  }
+  const commit = JSON.parse(fs.readFileSync("./meta.json", "utf8"));
+  return commit;
+
+  //
+  // meta.json should always be read locally, otherwise a stale build can still say
+  // it is new because it is picking up latest meta.json from gcp gs
+  //
+  //if (process.env.NODE_ENV == "development") {
+  //  const commit = JSON.parse(fs.readFileSync("./meta.json", "utf8"));
+  //  return commit;
+  //} else {
+  //  const response = await fetch(
+  //    "https://storage.googleapis.com/jeffjose-personal-website/meta.json"
+  //  );
+  //  const commit = await response.json();
+  //  return commit;
+  //}
 }
