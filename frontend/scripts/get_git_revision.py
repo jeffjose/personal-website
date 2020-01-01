@@ -32,18 +32,24 @@ def run(cmd):
 def format(revision):
 
     try:
-        [tag, noncommitted, sha, dirty] = revision.split('-')
+        [tag, noncommitted, sha, _] = revision.split('-')
 
-        return {
-            "revision": revision,
-            "display": f"{sha}-{dirty}",
-            "dirty": True
-        }
+        display = f"{sha}-{dirty}"
+        dirty = True
+
     except:
         # repo is clean
         [tag, noncommitted, sha] = revision.split('-')
 
-        return {"revision": revision, "display": f"{sha}", "dirty": False}
+        display = sha
+        dirty = False
+
+    return {
+        "revision": revision,
+        "display": display,
+        "dirty": dirty,
+        "tag": tag
+    }
 
 
 revision = run(CMD)
