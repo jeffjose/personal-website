@@ -19,3 +19,8 @@
 - build:only = sapper build --legacy (to be used by docker)
 - docker = Run yarn prerun  before going into docker context
 
+
+### TODO
+- cloud build runs build_index, but frontend still uses github version. So there's no point for doing that.
+-- This means the ideal workflow of pushign something to github and expecting that to show up on prod doesnt work
+- adoc_from_covers doesnt remove if a cover.jpg is removed
