@@ -41,6 +41,7 @@
   display: none;
 }
 
+
 .wrapper :global(img) {
   width: 100%;
 }
@@ -55,19 +56,29 @@
 
 .wrapper :global(h1) {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 0;
-  padding: 0 5px;
+
+  text-align: center;
+  font-family: Lato;
+  line-height: 2rem;
+
+  padding: 0.5rem 0
 }
 
 .wrapper :global(.imageblock.hero) {
   display: unset;
   grid-row: top;
   grid-column: word;
+  align-self: end;
 }
 
 .wrapper :global(.imageblock.hero *) {
   display: unset;
+}
+
+.wrapper :global(.content) {
+  display: block !important;
 }
 
 
