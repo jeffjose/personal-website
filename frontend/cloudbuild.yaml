@@ -74,4 +74,5 @@ images:
 artifacts:
   objects:
     location: gs://jeffjose-personal-website/
-    paths: ["blog/index-blog.yaml", "books/index-books.yaml", "meta.json"]
+    paths:
+      ["blog/index-blog.yaml", "books/index-books.yaml", "frontend/meta.json"]

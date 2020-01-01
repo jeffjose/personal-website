@@ -182,9 +182,14 @@ export const get_posts = async url => {
 };
 
 export async function get_commit() {
-  const response = await fetch(
-    "https://storage.googleapis.com/jeffjose-personal-website/meta.json"
-  );
-  const commit = await response.json();
-  return commit;
+  if (process.env.NODE_ENV == "development") {
+    const commit = JSON.parse(fs.readFileSync("./meta.json", "utf8"));
+    return commit;
+  } else {
+    const response = await fetch(
+      "https://storage.googleapis.com/jeffjose-personal-website/meta.json"
+    );
+    const commit = await response.json();
+    return commit;
+  }
 }
