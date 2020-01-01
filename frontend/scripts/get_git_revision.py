@@ -32,8 +32,10 @@ def run(cmd):
 def format(revision):
 
     try:
+        # This will always a local build and never on cloud build
         [tag, noncommitted, sha, _] = revision.split('-')
 
+        tooltip = revision
         display = f"{sha}-{dirty}"
         dirty = True
 
@@ -41,12 +43,14 @@ def format(revision):
         # repo is clean
         [tag, noncommitted, sha] = revision.split('-')
 
+        tooltip = revision
         display = sha
         dirty = False
 
     return {
         "revision": revision,
         "display": display,
+        "tooltip": tooltip,
         "dirty": dirty,
         "tag": tag
     }
