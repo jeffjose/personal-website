@@ -11,7 +11,7 @@ print('-------------------')
 BLOG_DIR = '../blog'
 BLOG_INDEX = BLOG_DIR + '/index.yaml'
 
-GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books'
+GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/blog'
 
 
 def find_dt(post):
