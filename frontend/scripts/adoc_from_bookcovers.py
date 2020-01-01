@@ -11,7 +11,7 @@ COVERS_DIR = 'static/books/'
 INDEX = '../books/index.yaml'
 ADOC_DIR = '../books/'
 
-GITHUB_URL = 'https://raw.githubusercontents.com/jeffjose/personal-website/master/books/'
+GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books/'
 
 ADOC_TEMPLATE = '''= {title}
 
