@@ -3,6 +3,7 @@
   "description": "personal-website",
   "version": "0.0.1",
   "scripts": {
+    "cover": "./scripts/adoc_from_bookcovers.py",
     "prerun": "./scripts/prerun.sh",
     "prerun:dev": "./scripts/prerun-dev.sh",
     "dev": "yarn prerun:dev; sapper dev",

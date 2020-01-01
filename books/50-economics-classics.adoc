@@ -1,0 +1,12 @@
+= 50-economics-classics
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/50-economics-classics.jpg[]
+
+This is a default description.

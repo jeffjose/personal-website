@@ -1,0 +1,12 @@
+= algorithms-to-live-by
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/algorithms-to-live-by.jpg[]
+
+This is a default description.

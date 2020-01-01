@@ -1,0 +1,12 @@
+= cracking-c-suite
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/cracking-c-suite.jpg[]
+
+This is a default description.

@@ -1,0 +1,12 @@
+= talking-to-my-daugther-about-economics
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/talking-to-my-daugther-about-economics.jpg[]
+
+This is a default description.

@@ -1,0 +1,12 @@
+= new-geography-jobs
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/new-geography-jobs.jpg[]
+
+This is a default description.

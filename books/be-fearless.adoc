@@ -1,0 +1,12 @@
+= be-fearless
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/be-fearless.jpg[]
+
+This is a default description.

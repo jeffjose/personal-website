@@ -1,0 +1,12 @@
+= nazi-hunters
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/nazi-hunters.jpg[]
+
+This is a default description.

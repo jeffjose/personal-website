@@ -1,0 +1,12 @@
+= curse-of-bigness
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/curse-of-bigness.jpg[]
+
+This is a default description.

@@ -1,0 +1,12 @@
+= industries-of-future
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/industries-of-future.jpg[]
+
+This is a default description.
