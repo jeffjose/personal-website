@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import path
+import pathlib as path
 from dateutil import parser
 import yaml
 
@@ -10,7 +10,7 @@ print('-------------------')
 
 COVERS_DIR = 'static/books/'
 INDEX = '../books/index-books.yaml'
-DEV_INDEX = './index-books-dev.yaml'
+DEV_INDEX = './artifacts/index-books-dev.yaml'
 ADOC_DIR = '../books/'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books/'
@@ -38,6 +38,7 @@ def write_index(file, contents):
     yaml.dump(contents, open(file, 'w'))
 
     print(f"  3/3. Writing dev index: {DEV_INDEX}")
+    path.Path(DEV_INDEX).parent.mkdir(parents=True, exist_ok=True)
     yaml.dump(contents, open(DEV_INDEX, 'w'))
 
 
@@ -52,7 +53,7 @@ def find_dt(item):
 
     adoc = path.Path(ADOC_DIR) / filename
 
-    lines = adoc.lines(retain=False)
+    lines = adoc.read_text().split()
 
     dt = lines[lines.index('[.date]') + 1]
 
@@ -72,7 +73,7 @@ def create_index(index, newitems):
     return sorted(index, key=lambda x: find_dt(x), reverse=True)
 
 
-covers = [x.namebase for x in path.Path(COVERS_DIR).listdir()]
+covers = [x.stem for x in path.Path(COVERS_DIR).glob('*')]
 index = read_index(INDEX)
 
 # Create a dict with structure file-name:[Object]

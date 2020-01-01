@@ -154,15 +154,17 @@ function add_dev_posts(posts, contents) {
 export const get_posts = async (url, dev_url) => {
   try {
     let posts;
-    if (process.env.NODE_ENV == "development") {
-      const data = fs.readFileSync(dev_url, "utf8");
-      posts = yaml.safeLoad(data);
-      console.log(data);
-    } else {
-      const response = await fetch(url);
-      const data = await response.text();
-      posts = yaml.safeLoad(data);
-    }
+    const data = fs.readFileSync(dev_url, "utf8");
+    posts = yaml.safeLoad(data);
+    //if (process.env.NODE_ENV == "development") {
+    //  const data = fs.readFileSync(dev_url, "utf8");
+    //  posts = yaml.safeLoad(data);
+    //  console.log(data);
+    //} else {
+    //  const response = await fetch(url);
+    //  const data = await response.text();
+    //  posts = yaml.safeLoad(data);
+    //}
 
     let contents = await Promise.all(
       posts.map(async (post, index) => {
@@ -189,7 +191,7 @@ export const get_posts = async (url, dev_url) => {
 };
 
 export async function get_commit() {
-  const commit = JSON.parse(fs.readFileSync("./meta.json", "utf8"));
+  const commit = JSON.parse(fs.readFileSync("./artifacts/meta.json", "utf8"));
   return commit;
 
   //

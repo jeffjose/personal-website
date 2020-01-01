@@ -11,7 +11,7 @@ print('Running get_git_revision.py')
 print('-------------------')
 
 CMD = 'git describe --long --dirty --abbrev=6 --tags'
-OUTPUT = './meta.json'
+OUTPUT = './artifacts/meta.json'
 
 BUILD_CTX = os.environ.get('BUILD_CTX', "local")
 
