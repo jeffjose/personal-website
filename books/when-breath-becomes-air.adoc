@@ -1,0 +1,12 @@
+= when-breath-becomes-air
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/when-breath-becomes-air.jpg[]
+
+This is a default description.

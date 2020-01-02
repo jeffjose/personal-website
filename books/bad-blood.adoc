@@ -1,0 +1,12 @@
+= bad-blood
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/bad-blood.jpg[]
+
+This is a default description.

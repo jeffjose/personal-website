@@ -1,0 +1,12 @@
+= outsider
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/outsider.jpg[]
+
+This is a default description.

@@ -1,0 +1,12 @@
+= essentialism
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/essentialism.jpg[]
+
+This is a default description.

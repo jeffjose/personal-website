@@ -1,0 +1,12 @@
+= 21-lessons-21-century
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/21-lessons-21-century.jpg[]
+
+This is a default description.

@@ -1,0 +1,12 @@
+= born-a-crime
+
+[.date]
+Jan 1, 2020
+
+[.subtitle]
+A default subtitle
+
+[.hero]
+image::/books/born-a-crime.jpg[]
+
+This is a default description.
