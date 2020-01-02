@@ -8,7 +8,6 @@ export async function get(req, res, next) {
   const { slug } = req.params;
 
   const posts = await get_posts(
-    "https://storage.googleapis.com/jeffjose-personal-website/index-blog.yaml",
     "./artifacts/index-blog-dev.yaml"
   );
 
