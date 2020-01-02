@@ -38,54 +38,54 @@ def eget(key):
 
 def format(revision):
 
-    try:
-        # This will always a local build and never on cloud build since dirty bit is set
-        [tag, noncommitted, sha, _] = revision.split('-')
+    if BUILDER in ['yarn-build', 'yarn-docker', 'yarn-dev']:
 
-        tooltip = revision
-        display = f"{sha[1:]}-dirty"
-        dirty = True
+        try:
+            # repo is dirty
+            [tag, noncommitted, sha, _] = revision.split('-')
+
+            tooltip = revision
+            display = f"{sha[1:]}-dirty"
+            dirty = True
+            state = 'dirty'
+
+        except:
+            # repo is clean
+            [tag, noncommitted, sha] = revision.split('-')
+
+            tooltip = revision.replace('-0-', '-')
+            display = sha[1:]
+            dirty = False
+            state = 'clean'
 
         build_details = {
             'type':
-            'prod' if BUILDER in ['yarn-build', 'yarn-docker', 'cloud-build']
-            else 'dev',
-            'state':
-            'dirty',
-            'builder':
-            BUILDER
+            'prod' if BUILDER in ['yarn-build', 'yarn-docker'] else 'dev',
+            'state': state,
+            'builder': BUILDER
         }
 
-    except:
+    else:
+
         # repo is clean
         [tag, noncommitted, sha] = revision.split('-')
 
         tooltip = revision.replace('-0-', '-')
         display = sha[1:]
         dirty = False
+        state = 'clean'
 
         build_details = {
-            'state':
-            'clean',
-            'type':
-            'prod' if BUILDER in ['yarn-build', 'yarn-docker', 'cloud-build']
-            else 'dev',
-            'builder':
-            BUILDER,
-            "BUILD_ID":
-            eget('BUILD_ID'),
-            'COMMIT_SHA':
-            eget('COMMIT_SHA'),
-            'REPO_NAME':
-            eget('REPO_NAME'),
-            'BRANCH_NAME':
-            eget('BRANCH_NAME'),
-            'REVISION_ID':
-            eget('REVISION_ID'),
-            'TAG_NAME':
-            eget('TAG_NAME'),
-            'SHORT_SHA':
-            eget('SHORT_SHA')
+            'state': 'clean',
+            'type': 'prod',
+            'builder': BUILDER,
+            "BUILD_ID": eget('BUILD_ID'),
+            'COMMIT_SHA': eget('COMMIT_SHA'),
+            'REPO_NAME': eget('REPO_NAME'),
+            'BRANCH_NAME': eget('BRANCH_NAME'),
+            'REVISION_ID': eget('REVISION_ID'),
+            'TAG_NAME': eget('TAG_NAME'),
+            'SHORT_SHA': eget('SHORT_SHA')
         }
 
     return {
