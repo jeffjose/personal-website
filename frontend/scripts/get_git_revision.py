@@ -67,16 +67,27 @@ def format(revision):
 
     else:
 
-        # repo is clean
-        [tag, noncommitted, sha] = revision.split('-')
+        try:
+            # repo is dirty
+            [tag, noncommitted, sha, _] = revision.split('-')
 
-        tooltip = revision.replace('-0-', '-')
-        display = sha[1:]
-        dirty = False
-        state = 'clean'
+            tooltip = revision
+            display = f"{sha[1:]}-dirty"
+            dirty = True
+            state = 'dirty'
+
+        except:
+
+            # repo is clean
+            [tag, noncommitted, sha] = revision.split('-')
+
+            tooltip = revision.replace('-0-', '-')
+            display = sha[1:]
+            dirty = False
+            state = 'clean'
 
         build_details = {
-            'state': 'clean',
+            'state': state,
             'type': 'prod',
             'builder': BUILDER,
             "BUILD_ID": eget('BUILD_ID'),
