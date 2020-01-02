@@ -10,7 +10,7 @@ print('-------------------')
 
 BLOG_DIR = '../blog'
 INDEX = BLOG_DIR + '/index-blog.yaml'
-DEV_INDEX = './artifacts/index-blog-dev.yaml'
+LOCAL_INDEX = './artifacts/index-blog-dev.yaml'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/blog'
 
@@ -35,9 +35,9 @@ def write_index(index, file):
     print(yaml.dump(index))
     yaml.dump(index, open(file, 'w'))
 
-    print(f"2/2. Writing dev index: {DEV_INDEX}")
-    path.Path(DEV_INDEX).parent.mkdir(parents=True, exist_ok=True)
-    yaml.dump(index, open(DEV_INDEX, 'w'))
+    print(f"2/2. Writing local index: {LOCAL_INDEX}")
+    path.Path(LOCAL_INDEX).parent.mkdir(parents=True, exist_ok=True)
+    yaml.dump(index, open(LOCAL_INDEX, 'w'))
 
 
 # Find all blogposts

@@ -10,7 +10,7 @@ print('-------------------')
 
 COVERS_DIR = 'static/books/'
 INDEX = '../books/index-books.yaml'
-DEV_INDEX = './artifacts/index-books-dev.yaml'
+LOCAL_INDEX = './artifacts/index-books-dev.yaml'
 ADOC_DIR = '../books/'
 
 GITHUB_URL = 'https://raw.githubusercontent.com/jeffjose/personal-website/master/books/'
@@ -37,9 +37,9 @@ def read_index(file):
 def write_index(file, contents):
     yaml.dump(contents, open(file, 'w'))
 
-    print(f"  3/3. Writing dev index: {DEV_INDEX}")
-    path.Path(DEV_INDEX).parent.mkdir(parents=True, exist_ok=True)
-    yaml.dump(contents, open(DEV_INDEX, 'w'))
+    print(f"  3/3. Writing local index ({len(contents)} books): {LOCAL_INDEX}")
+    path.Path(LOCAL_INDEX).parent.mkdir(parents=True, exist_ok=True)
+    yaml.dump(contents, open(LOCAL_INDEX, 'w'))
 
 
 def create_adoc(filename):
