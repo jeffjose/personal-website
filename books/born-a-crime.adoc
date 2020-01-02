@@ -1,10 +1,10 @@
-= born-a-crime
+= Born a Crime
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Stories From a South African Childhood
 
 [.hero]
 image::/books/born-a-crime.jpg[]

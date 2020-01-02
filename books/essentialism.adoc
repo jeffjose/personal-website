@@ -1,10 +1,10 @@
-= essentialism
+= Essentialism
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+The Disciplined Pursuit of Less
 
 [.hero]
 image::/books/essentialism.jpg[]

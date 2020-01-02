@@ -1,10 +1,10 @@
-= factfullness
+= Factfulness
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Ten Reasons We're Wrong About the World – and Why Things Are Better Than You Think
 
 [.hero]
 image::/books/factfullness.jpg[]

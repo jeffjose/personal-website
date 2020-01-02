@@ -1,10 +1,10 @@
-= never-split-difference
+= Never Split the Difference
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Negotiating As If Your Life Depended On It
 
 [.hero]
 image::/books/never-split-difference.jpg[]

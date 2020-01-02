@@ -1,10 +1,10 @@
-= bringing-up-bebe
+= Bringing Up Bébé
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+One American Mother Discovers the Wisdom of French Parenting
 
 [.hero]
 image::/books/bringing-up-bebe.jpg[]

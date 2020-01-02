@@ -1,10 +1,10 @@
-= bad-blood
+= Bad Blood
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Secrets and Lies in a Silicon Valley Startup
 
 [.hero]
 image::/books/bad-blood.jpg[]

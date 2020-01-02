@@ -1,10 +1,7 @@
-= 21-lessons-21-century
+= 21 Lessons for the 21st Century
 
 [.date]
 Jan 1, 2020
-
-[.subtitle]
-A default subtitle
 
 [.hero]
 image::/books/21-lessons-21-century.jpg[]
