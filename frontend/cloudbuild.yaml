@@ -13,7 +13,7 @@ steps:
     entrypoint: yarn
     args: ["prerun"]
     env:
-      - "BUILD_CTX=cloud-build"
+      - "BUILDER=cloud-build"
       - "TAG_NAME=$TAG_NAME"
       - "SHORT_SHA=$SHORT_SHA"
       - "BUILD_ID=$BUILD_ID"

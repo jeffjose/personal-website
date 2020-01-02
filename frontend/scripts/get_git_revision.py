@@ -13,7 +13,7 @@ print('-------------------')
 CMD = 'git describe --long --dirty --abbrev=6 --tags'
 OUTPUT = './artifacts/meta.json'
 
-BUILD_CTX = os.environ.get('BUILD_CTX', "local")
+BUILDER = os.environ.get('BUILDER', "local")
 
 CURR_TIME = datetime.datetime.utcnow().isoformat()
 
@@ -22,7 +22,7 @@ def run(cmd):
 
     # In cloud-build, we have the same directory structure but no .git.
     # That info is passed in via ENV variables
-    if BUILD_CTX == 'cloud-build':
+    if BUILDER == 'cloud-build':
         TAG_NAME = os.environ.get('TAG_NAME', 'defaulttag') if os.environ.get(
             'TAG_NAME', 'defaulttag') else "prod"
         SHORT_SHA = os.environ.get('SHORT_SHA', 'defaultsha')
@@ -46,7 +46,15 @@ def format(revision):
         display = f"{sha[1:]}-dirty"
         dirty = True
 
-        build_details = {'type': 'local dirty build', 'ctx': BUILD_CTX}
+        build_details = {
+            'type':
+            'prod' if BUILDER in ['yarn-build', 'yarn-docker', 'cloud-build']
+            else 'dev',
+            'state':
+            'dirty',
+            'builder':
+            BUILDER
+        }
 
     except:
         # repo is clean
@@ -57,15 +65,27 @@ def format(revision):
         dirty = False
 
         build_details = {
-            'type': 'clean build',
-            'ctx': BUILD_CTX,
-            "BUILD_ID": eget('BUILD_ID'),
-            'COMMIT_SHA': eget('COMMIT_SHA'),
-            'REPO_NAME': eget('REPO_NAME'),
-            'BRANCH_NAME': eget('BRANCH_NAME'),
-            'REVISION_ID': eget('REVISION_ID'),
-            'TAG_NAME': eget('TAG_NAME'),
-            'SHORT_SHA': eget('SHORT_SHA')
+            'state':
+            'clean',
+            'type':
+            'prod' if BUILDER in ['yarn-build', 'yarn-docker', 'cloud-build']
+            else 'dev',
+            'builder':
+            BUILDER,
+            "BUILD_ID":
+            eget('BUILD_ID'),
+            'COMMIT_SHA':
+            eget('COMMIT_SHA'),
+            'REPO_NAME':
+            eget('REPO_NAME'),
+            'BRANCH_NAME':
+            eget('BRANCH_NAME'),
+            'REVISION_ID':
+            eget('REVISION_ID'),
+            'TAG_NAME':
+            eget('TAG_NAME'),
+            'SHORT_SHA':
+            eget('SHORT_SHA')
         }
 
     return {
