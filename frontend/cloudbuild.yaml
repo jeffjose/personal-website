@@ -16,6 +16,11 @@ steps:
       - "BUILD_CTX=cloud-build"
       - "TAG_NAME=$TAG_NAME"
       - "SHORT_SHA=$SHORT_SHA"
+      - "BUILD_ID=$BUILD_ID"
+      - "COMMIT_SHA=$COMMIT_SHA"
+      - "REPO_NAME=$REPO_NAME"
+      - "BRANCH_NAME=$BRANCH_NAME"
+      - "REVISION_ID=$REVISION_ID"
     dir: "frontend"
 
     #
