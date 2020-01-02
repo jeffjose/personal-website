@@ -1,10 +1,10 @@
-= checklist-manifesto
+= The Checklist Manifesto
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+How to Get Things Right
 
 [.hero]
 image::/books/checklist-manifesto.jpg[]

@@ -1,10 +1,10 @@
-= knowledge-illusion
+= The Knowledge Illusion
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Why We Never Think Alone
 
 [.hero]
 image::/books/knowledge-illusion.jpg[]

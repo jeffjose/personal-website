@@ -1,10 +1,10 @@
-= cracking-c-suite
+= Crack the C-Suite Code
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+How Successful Leaders Make It to the Top
 
 [.hero]
 image::/books/cracking-c-suite.jpg[]

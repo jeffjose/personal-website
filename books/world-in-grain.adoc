@@ -1,10 +1,10 @@
-= world-in-grain
+= The World in a Grain
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+The Story of Sand and How It Transformed Civilization
 
 [.hero]
 image::/books/world-in-grain.jpg[]

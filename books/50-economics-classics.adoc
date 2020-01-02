@@ -1,10 +1,10 @@
-= 50-economics-classics
+= 50 Economics Classics
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+Your shortcut to the most important ideas on capitalism, finance, and the global economy
 
 [.hero]
 image::/books/50-economics-classics.jpg[]

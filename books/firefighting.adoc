@@ -1,10 +1,10 @@
-= firefighting
+= Firefighting
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+The Financial Crisis and Its Lessons
 
 [.hero]
 image::/books/firefighting.jpg[]

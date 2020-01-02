@@ -1,10 +1,10 @@
-= genome
+= Genome
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+The Autobiography of a Species in 23 Chapters
 
 [.hero]
 image::/books/genome.jpg[]

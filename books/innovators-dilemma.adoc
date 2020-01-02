@@ -1,10 +1,10 @@
-= innovators-dilemma
+= The Innovator's Dilemma
 
 [.date]
 Jan 1, 2020
 
 [.subtitle]
-A default subtitle
+The Revolutionary Book That Will Change the Way You Do Business
 
 [.hero]
 image::/books/innovators-dilemma.jpg[]
