@@ -9,7 +9,7 @@ export async function get(req, res, next) {
 
   const posts = await get_posts(
     "https://storage.googleapis.com/jeffjose-personal-website/index-blog.yaml",
-    "index-blog-dev.yaml"
+    "./artifacts/index-blog-dev.yaml"
   );
 
   posts.forEach( (post) => {
