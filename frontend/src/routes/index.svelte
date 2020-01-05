@@ -4,31 +4,7 @@
 
 <style lang="sass">
 
-$text-color: white
-$accent-color: #FF0088
-$box-bg-color: #f6f9fc
-$blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 13%)
-$bg-color: black
-
-
-$blue: #4285f4
-$yellow: #fbbc04
-$red: #ea4335
-$green: #34a853
-
-$text-color: rgba(0, 0, 0, .84)
-$accent-color: #FF0088
-$box-bg-color: #f6f9fc
-$blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 13%)
-$bg-color: white
-
-
-$blue: #4285f4
-$yellow: #fbbc04
-$red: #ea4335
-$green: #34a853
+@import 'base'
 
 .wrapper
   display: grid
@@ -92,13 +68,13 @@ $green: #34a853
 
   & .name
     font-size: 1.4rem
-    color: $text-color
+    color: theme("text-color")
     letter-spacing: 1px
     text-transform: uppercase
 
   & .desc
     font-size: 1rem
-    color: $gray-color
+    color: theme("gray-color")
 
 .logo
   height: 4rem
@@ -119,11 +95,11 @@ $green: #34a853
     display: inline-block
     pointer-events: all
     text-decoration: none
-    color: $text-color
+    color: theme("text-color")
     margin-right: .6rem
 
     &:hover
-      color: $accent-color
+      color: theme("accent-color")
 </style>
 
 <svelte:head>

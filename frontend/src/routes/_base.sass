@@ -1,0 +1,57 @@
+// Base
+
+//
+// Light colors
+//
+$text-color: rgba(0, 0, 0, .84)
+$accent-color: #FF0088
+$box-bg-color: #f6f9fc
+$blockquote-color: lighten($text-color, 10%)
+$gray-color: lighten($blockquote-color, 13%)
+$bg-color: white
+
+$blue: #4285f4
+$yellow: #fbbc04
+$red: #ea4335
+$green: #34a853
+
+//
+// Dark color
+//
+$text-color-dark: white
+$accent-color-dark: #FF0088
+$box-bg-color-dark: #f6f9fc
+$blockquote-color-dark: darken($text-color, 10%)
+$gray-color-dark: #8e8e8e
+$bg-color-dark: black
+
+$blue-dark: #4285f4
+$yellow-dark: #fbbc04
+$red-dark: #ea4335
+$green-dark: #34a853
+
+:global(#sapper)
+  background-color: white
+
+$colors: ( text-color: $text-color, accent-color: $accent-color, bg-color: $bg-color, gray-color: $gray-color)
+
+$colors-dark: (text-color: $text-color-dark, accent-color: $accent-color-dark, bg-color: $bg-color-dark, gray-color: $gray-color-dark)
+
+@function theme($color)
+  @return var(--color-#{$color})
+
+:root
+  @each $name, $color in $colors
+    --color-#{$name} : #{$color}
+
+:global(#sapper)
+  background-color: theme('bg-color')
+
+
+@media (prefers-color-scheme: dark)
+  :root
+    @each $name, $color in $colors-dark
+      --color-#{$name} : #{$color}
+
+  :global(#sapper)
+    background-color: theme('bg-color')

@@ -1,31 +1,11 @@
 <script>
 </script>
 
-<template lang="pug">
-  div.header
-    div.middle
-      p.name
-        a(href="/") Jeffrey Jose
-      p.link
-        a(rel="prefetch", href="/about") about
-      p.link
-        a(rel="prefetch", href="/blog") blog
-      p.link
-        a(rel="prefetch", href="/books") books
-      p.link
-        a(rel="prefetch", href="https://twitter.com/jeffjose") twitter
-      p.link
-        a(rel="prefetch", href="https://linkedin.com/in/jeffreyjose") linkedin
-      p.link
-        a(rel="prefetch", href="https://github.com/jeffjose") github
-</template>
 
 <style lang="sass">
 
-$text-color: rgba(0, 0, 0, .84)
-$blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 35%)
-$accent-color: #FF0088
+// TODO: This isnt a good location for base. Considering moving it outside of routes/
+@import "../routes/base"
 
 .header
   height: 4rem
@@ -62,21 +42,41 @@ $accent-color: #FF0088
 
       a
         text-decoration: none
-        color: $text-color
+        color: theme('text-color')
 
 
         &:hover
-          color: $accent-color
+          color: theme('accent-color')
 
     p.link
       margin: auto 0rem
 
       a
         font-family: "Lato", sans-serif
-        color: $text-color
+        color: theme('text-color')
         text-decoration: none
         margin: auto 0.5rem
 
         &:hover
-          color: $accent-color
+          color: theme('accent-color')
+
 </style>
+
+<template lang="pug">
+div.header
+  div.middle
+    p.name
+      a(href="/") Jeffrey Jose
+    p.link
+      a(rel="prefetch", href="/about") about
+    p.link
+      a(rel="prefetch", href="/blog") blog
+    p.link
+      a(rel="prefetch", href="/books") books
+    p.link
+      a(rel="prefetch", href="https://twitter.com/jeffjose") twitter
+    p.link
+      a(rel="prefetch", href="https://linkedin.com/in/jeffreyjose") linkedin
+    p.link
+      a(rel="prefetch", href="https://github.com/jeffjose") github
+</template>

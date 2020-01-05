@@ -7,6 +7,7 @@
     "prerun": "./scripts/prerun.sh",
     "prerun:dev": "./scripts/prerun-dev.sh",
     "dev": "BUILDER=yarn-dev yarn prerun:dev; sapper dev",
+    "dev:only": "sapper dev",
     "build": "BUILDER=yarn-build yarn prerun; yarn build:only",
     "build:only": "sapper build --legacy",
     "export": "yarn prerun; yarn export:only",
