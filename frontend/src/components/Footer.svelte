@@ -12,22 +12,14 @@
 
 <style lang="sass">
 
-$text-color: white
-$blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 35%)
-$accent-color: #FF0088
-
-$background-dark-color: #262626
-
-// Temp
-$background-dark-color: lighten(gray, 30%)
-$text-color: darken(gray, 30%)
+// TODO: This isnt a good location for base. Considering moving it outside of routes/
+@import "../routes/base"
 
 .footer
   min-height: 12rem
-  background-color: $background-dark-color
+  background-color: theme('footer-bg-color')
   margin-top: 3rem
-  border-top: 3px solid gray
+  border-top: 3px solid theme('footer-border-color')
 
 
   display: grid
@@ -70,13 +62,13 @@ $text-color: darken(gray, 30%)
       display: inline-block
       margin: 0.5rem 5px
       text-decoration: none
-      color: $text-color
+      color: theme('footer-text-color')
 
       &:hover
-        color: $accent-color
+        color: theme('accent-color')
 
     .dot
-      color: $text-color
+      color: theme('footer-text-color')
 
     .name
       margin: 0.5rem
@@ -93,7 +85,7 @@ $text-color: darken(gray, 30%)
     margin: 1rem
 
     &.dirty .pi
-      color: $accent-color
+      color: theme('accent-color')
 
     &:hover .pi
       display: none
@@ -104,12 +96,12 @@ $text-color: darken(gray, 30%)
     .pi
       text-decoration: none
       margin: 0
-      color: $text-color
+      color: theme('footer-text-color')
 
     .revision
       text-decoration: none
       display: none
-      color: $text-color
+      color: theme('footer-text-color')
 
 </style>
 

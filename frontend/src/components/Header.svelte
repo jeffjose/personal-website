@@ -11,6 +11,9 @@
   height: 4rem
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.07)
 
+  @media (prefers-color-scheme: dark)
+    box-shadow: none
+
   display: grid
   grid-template-columns: 7fr [word-start] 1080px [word-end] 7fr
 
