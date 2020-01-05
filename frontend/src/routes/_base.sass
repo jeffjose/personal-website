@@ -3,15 +3,31 @@
 //
 // Light colors
 //
+
+$green: #34a853
+
 $text-color: rgba(0, 0, 0, .84)
 $accent-color: #FF0088
 $box-bg-color: #f6f9fc
+$box-border-color: darken($box-bg-color, 30%)
 $blockquote-color: lighten($text-color, 10%)
 $gray-color: lighten($blockquote-color, 13%)
 $bg-color: white
 $footer-bg-color: lighten(gray, 30%)
 $footer-border-color: gray
 $footer-text-color: darken(gray, 30%)
+$code-bg-color: #eff8ff
+$code-title-color: lighten($code-bg-color, 1%)
+$code-border-color: darken($code-bg-color, 10%)
+$video-border-color: darken($accent-color, 5%)
+$kbd-bg-color: #f7f7f7
+$kbd-border-color: #ccc
+$mark-bg-color: lighten($accent-color, 35%)
+$mark-bg-hover-color: lighten($accent-color, 10%)
+$tip-bg-color: lighten($green, 45%)
+$tip-border-color: darken($tip-bg-color, 45%)
+$hr-border-color: lighten($accent-color, 20%)
+
 
 //
 // Dark color
@@ -25,13 +41,24 @@ $bg-color-dark: lighten(black, 10%)
 $footer-border-color-dark: rgba(0, 0, 0, 0)
 $footer-bg-color-dark: black
 $footer-text-color-dark: rgb(250, 250, 250)
+$code-bg-color-dark: #eff8ff
+$code-title-color-dark: lighten($code-bg-color, 1%)
+$code-border-color-dark: darken($code-bg-color, 10%)
+$video-border-color-dark: darken($accent-color, 5%)
+$kbd-bg-color-dark: #f7f7f7
+$kbd-border-color-dark: #ccc
+$mark-bg-color-dark: lighten($accent-color, 35%)
+$mark-bg-hover-color-dark: lighten($accent-color, 10%)
+$tip-bg-color-dark: lighten($green, 45%)
+$tip-border-color-dark: darken($tip-bg-color, 45%)
+$hr-border-color-dark: lighten($accent-color, 20%)
 
 :global(#sapper)
   background-color: white
 
-$colors: ( text-color: $text-color, accent-color: $accent-color, bg-color: $bg-color, gray-color: $gray-color, footer-bg-color: $footer-bg-color, footer-text-color: $footer-text-color, footer-border-color: $footer-border-color)
+$colors: ( text-color: $text-color, accent-color: $accent-color, bg-color: $bg-color, gray-color: $gray-color, footer-bg-color: $footer-bg-color, footer-text-color: $footer-text-color, footer-border-color: $footer-border-color, code-bg-color: $code-bg-color, code-border-color: $code-border-color, code-title-color: $code-title-color, video-border-color: $video-border-color, kbd-bg-color: $kbd-bg-color, kbd-border-color: $kbd-border-color, mark-bg-color: $mark-bg-color, mark-bg-hover-color: $mark-bg-hover-color, tip-bg-color: $tip-bg-color, tip-border-color: $tip-border-color, hr-border-color: $hr-border-color)
 
-$colors-dark: (text-color: $text-color-dark, accent-color: $accent-color-dark, bg-color: $bg-color-dark, gray-color: $gray-color-dark, footer-bg-color: $footer-bg-color-dark, footer-text-color: $footer-text-color-dark, footer-border-color: $footer-border-color-dark)
+$colors-dark: ( text-color: $text-color-dark, accent-color: $accent-color-dark, bg-color: $bg-color-dark, gray-color: $gray-color-dark, footer-bg-color: $footer-bg-color-dark, footer-text-color: $footer-text-color-dark, footer-border-color: $footer-border-color-dark, code-bg-color: $code-bg-color-dark, code-border-color: $code-border-color-dark, code-title-color: $code-title-color-dark, video-border-color: $video-border-color-dark, kbd-bg-color: $kbd-bg-color-dark, kbd-border-color: $kbd-border-color-dark, mark-bg-color: $mark-bg-color-dark, mark-bg-hover-color: $mark-bg-hover-color-dark, tip-bg-color: $tip-bg-color-dark, tip-border-color: $tip-border-color-dark, hr-border-color: $hr-border-color-dark)
 
 @function theme($color)
   @return var(--color-#{$color})

@@ -579,10 +579,18 @@
 // .. and added :global()
 //
 
+@import "../base";
+
+@mixin global($child) {
+  @at-root & :global(#{child}) {
+    @content
+  }
+}
+
 
 @charset "UTF-8";
 .postitem {
-  background-color: white;
+  background-color: theme('bg-color');
   margin-top: 1rem;
 }
 
@@ -625,16 +633,16 @@
   }
 
   .link a {
-      background-color: white;
+      background-color: theme('bg-color');
       padding: 4px 8px;
       border-radius: 5px;
-      border: 1px solid #FF0088;
+      border: 1px solid theme('accent-color');
   }
 
   .link a:hover {
-        background-color: #FF0088;
+        background-color: theme('accent-color');
         text-decoration: none;
-        color: white;
+        color: theme('bg-color')
   }
 
 .wrapper :global(*) {
@@ -717,7 +725,7 @@
 }
 
 .wrapper :global(p code) {
-  background-color: #eff8ff;
+  background-color: theme('code-bg-color');
   padding: 3px 4px;
   font-size: 1rem;
   font-family: "Fira Mono", monospace;
@@ -725,9 +733,9 @@
 
 .wrapper :global(.listingblock) {
   padding: 0 1rem;
-  background-color: #f4faff;
+  background-color: theme('code-bg-color');
   margin: 0.5em 0;
-  border: 1px solid #c1e3ff;
+  border: 1px solid theme('code-border-color');
   border-radius: 3px;
 }
 
@@ -738,7 +746,7 @@
 }
 
 .wrapper :global(.listingblock .title) {
-  color: #5bb7ff;
+  color: theme('code-title-color');
   margin-top: .5rem;
   pointer-events: none;
   user-select: none
@@ -753,12 +761,12 @@
   }
 
   .tweet a {
-    color: rgba(0, 0, 0, 0.84) !important;
+    color: theme('text-color') !important;
     transition: none; // svg transitions are slow
   }
 
   .tweet a:hover {
-    color: #FF0088 !important;
+    color: theme('accent-color') !important;
   }
 
   .tweet :global(.icon) {
@@ -778,7 +786,7 @@
 
 
 .wrapper :global(a) {
-  color: #FF0088;
+  color: theme('accent-color');
   text-decoration: none;
 }
 
@@ -808,9 +816,9 @@
 
 .wrapper :global(.quoteblock) {
   font-size: 1.7rem;
-  border-top: 2px solid #FF0088;
-  border-bottom: 2px solid #FF0088;
-  color: #FF0088;
+  border-top: 2px solid theme('accent-color');
+  border-bottom: 2px solid theme('accent-color');
+  color: theme('accent-color');
 }
 
 .wrapper :global(.quoteblock blockquote) {
@@ -821,11 +829,11 @@
   text-align: right;
   margin-top: -1rem;
   margin-bottom: 1rem;
-  color: #FF0088;
+  color: theme('accent-color');
 }
 
 .wrapper :global(.quoteblock .attribution a) {
-  color: #FF0088;
+  color: theme('accent-color');
 }
 
 .wrapper :global(.quoteblock .attribution br) {
@@ -844,7 +852,7 @@
   width: 100%;
   height: 0;
   padding-bottom: 56.25%;
-  border: 0.5rem solid #e6007a;
+  border: 0.5rem solid $video-border-color;
   margin: 1rem 0;
   box-sizing: border-box;
 }
@@ -858,7 +866,7 @@
 }
 
 .wrapper :global(.subtitle) {
-  color: rgba(59, 59, 59, 0.84);
+  color: theme('gray-color');
 }
 
 .wrapper :global(.subtitle p) {
@@ -868,7 +876,7 @@
 }
 
 .wrapper :global(.date) {
-  color: rgba(59, 59, 59, 0.84);
+  color: theme('gray-color');
   margin-top: 0rem;
 }
 
@@ -880,11 +888,12 @@
 .wrapper :global(kbd) {
   font-family: "Fira Mono", monospace;
   display: inline-block;
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('gray-color');
+  margin-top: 0rem;
   font-size: .65em;
   line-height: 1.45;
-  background: #f7f7f7;
-  border: 1px solid #ccc;
+  background: theme('kbd-bg-color');
+  border: 1px solid theme('kbd-border-color');
   -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 0.1em white inset;
@@ -931,7 +940,7 @@
 
 .wrapper :global(.menuseq i.caret) {
   font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('text-color');
   font-weight: bold;
   text-align: center;
   width: .45em;
@@ -948,18 +957,18 @@
 }
 
 .wrapper :global(mark) {
-  background-color: #ffb3db;
+  background-color: theme('mark-bg-color');
   transition: all 80ms ease-in-out;
   padding: 0px 5px;
 }
 
 .wrapper :global(mark:hover) {
-  background-color: #ff33a0;
+  background-color: theme('mark-bg-hover-color');
   color: white;
 }
 
 .wrapper :global(sup) {
-  color: #FF0088;
+  color: theme('accent-color');
   margin-left: 5px;
   font-size: 1rem;
 }
@@ -981,8 +990,8 @@
 }
 
 .wrapper :global(.admonitionblock.note) {
-  background-color: #f4faff;
-  border: 1px solid #c1e4ff;
+  background-color: theme('box-bg-color');
+  border: 1px solid theme('box-border-color');
   border-radius: 3px;
 }
 
@@ -991,8 +1000,8 @@
 }
 
 .wrapper :global(.admonitionblock.tip) {
-  background-color: #d1f1d9;
-  border: 1px solid #aae5ba;
+  background-color: theme('tip-bg-color');
+  border: 1px solid theme('tip-border-color');
   border-radius: 3px;
 }
 
@@ -1032,8 +1041,7 @@
 
 .wrapper :global(.conum[data-value]) {
   display: inline-block;
-  color: #FF0088 !important;
-  background: #28a1ff;
+  color: theme('accent-color') !important;
   background: #ffcce7;
   border-radius: 100px;
   text-align: center;
@@ -1065,7 +1073,7 @@
 
 .wrapper :global(hr) {
   border: none;
-  border-top: 1px solid #ff66b8;
+  border-top: 1px solid theme('hr-border-color');
 }
 
 .wrapper :global(b.conum *) {
