@@ -1005,8 +1005,8 @@
 }
 
 .wrapper :global(.admonitionblock.important) {
-  background-color: #ebf2fe;
-  border: 1px solid #bad3fb;
+  background-color: theme('important-bg-color');
+  border: 1px solid theme('important-border-color');
   border-radius: 3px;
 }
 
@@ -1015,8 +1015,8 @@
 }
 
 .wrapper :global(.admonitionblock.warning) {
-  background-color: #feebb4;
-  border: 1px solid #fdde82;
+  background-color: theme('warning-bg-color');
+  border: 1px solid theme('warning-border-color');
   border-radius: 3px;
 }
 
@@ -1025,8 +1025,8 @@
 }
 
 .wrapper :global(.admonitionblock.caution) {
-  background-color: #fbd9d7;
-  border: 1px solid #f6aea8;
+  background-color: theme('caution-bg-color');
+  border: 1px solid theme('caution-border-color');
   border-radius: 3px;
 }
 
@@ -1036,8 +1036,8 @@
 
 .wrapper :global(.conum[data-value]) {
   display: inline-block;
-  color: theme('accent-color') !important;
-  background: #ffcce7;
+  color: theme('conum-color') !important;
+  background: theme('conum-bg-color');
   border-radius: 100px;
   text-align: center;
   font-size: .75em;
