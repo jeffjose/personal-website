@@ -147,6 +147,7 @@
 //     font-weight: 500
 //     letter-spacing: -1px
 //     margin: 2rem 0 0 0
+//     line-spacing: 3rem
 //
 //   h3
 //     font-size: 2.0rem
@@ -597,7 +598,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr;
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('text-color');
 }
 
 @media (max-width: 800px) {
@@ -663,6 +664,7 @@
   font-weight: 500;
   letter-spacing: -1px;
   margin: 2rem 0 0 0;
+  line-height: 3rem;
 }
 
 .wrapper :global(h3) {
@@ -915,13 +917,13 @@
 }
 
 .wrapper :global(.menuseq), .wrapper :global(.menuref) {
-  color: #000;
+  color: theme('text-color')
 }
 
 .wrapper :global(.menuseq b:not(.caret)), .wrapper :global(.menuref), .wrapper :global(.button) {
   font-weight: normal;
-  background-color: rgba(242, 242, 242, 0.84);
-  border: 1px solid rgba(217, 217, 217, 0.84);
+  background-color: theme('code-bg-color');
+  border: 1px solid theme('code-border-color');
   padding: 3px 5px;
   border-radius: 3px;
   font-family: "Fira Mono", monospace;
@@ -930,7 +932,7 @@
 
 .wrapper :global(.menuseq) {
   word-spacing: -.02em;
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('text-color');
 }
 
 .wrapper :global(.menuseq b.caret) {

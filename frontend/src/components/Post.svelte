@@ -183,7 +183,6 @@
   margin: 0;
   font-weight: 500;
   letter-spacing: -1px;
-  line-height: 3.5rem;
 }
 
 </style>
