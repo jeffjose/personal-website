@@ -954,7 +954,7 @@
 .wrapper :global(mark) {
   background-color: theme('mark-bg-color');
   transition: all 80ms ease-in-out;
-  padding: 0px 5px;
+  padding: 2px 5px;
 }
 
 .wrapper :global(mark:hover) {
