@@ -14,6 +14,11 @@ export async function get(req, res, next) {
     "./artifacts/index-books-dev.yaml"
   );
 
+  books.forEach( (book) => {
+    lookup.set(book.slug, JSON.stringify(book));
+   }
+  )
+
   if (lookup.has(slug)) {
     res.writeHead(200, {
       "Content-Type": "application/json"
