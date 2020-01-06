@@ -582,13 +582,6 @@
 
 @import "../base";
 
-@mixin global($child) {
-  @at-root & :global(#{child}) {
-    @content
-  }
-}
-
-
 @charset "UTF-8";
 .postitem {
   background-color: theme('bg-color');

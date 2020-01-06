@@ -123,8 +123,10 @@
 // .. and added :global()
 //
 
+@import "../routes/base";
+
 .post {
-  background-color: white;
+  background-color: theme('bg-color');
   margin: 2rem 0;
 }
 
@@ -136,7 +138,7 @@
   display: grid;
   grid-template-columns: 5fr [content-start] 2fr [word-start] 720px [word-end] 2fr [content-end] 5fr;
   grid-template-rows: [top-start] auto [top-end middle-start] auto [middle-end bottom-start] auto [bottom-end];
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('text-color');
   cursor: pointer;
 }
 
@@ -147,7 +149,7 @@
 }
 
 .wrapper:hover {
-  color: #FF0088;
+  color: theme('accent-color');
 }
 
 .wrapper :global(*) {
@@ -174,7 +176,7 @@
 
 .wrapper :global(.date) {
   grid-row: middle;
-  color: rgba(59, 59, 59, 0.84);
+  color: theme('gray-color');
   font-size: 1.2rem
 }
 

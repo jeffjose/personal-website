@@ -9,9 +9,11 @@
 
 <style lang="scss">
 
+@import "../routes/base";
+
 .book {
   height: 100%;
-  background-color: white;
+  background-color: theme('bg-color');
 }
 
 .book a {
@@ -23,7 +25,7 @@
   display: grid;
   grid-template-columns: [content-start word-start] 1fr [word-end content-end];
   grid-template-rows: [top-start] 1fr [top-end bottom-start] auto [bottom-end];
-  color: rgba(0, 0, 0, 0.84);
+  color: theme('text-color');
   cursor: pointer;
 
   height: 100%;
@@ -33,7 +35,7 @@
 }
 
 .wrapper:hover {
-  color: #FF0088;
+  color: theme('accent-color');
 }
 
 .wrapper:hover :global(img){
@@ -84,8 +86,6 @@
 .wrapper :global(.content) {
   display: block !important;
 }
-
-
 
 </style>
 

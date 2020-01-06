@@ -21,14 +21,7 @@
 
 <style lang="sass">
 
-$text-color: rgba(0, 0, 0, .84)
-$accent-color: #FF0088
-$inline-code-bg-color: #eff8ff
-$box-bg-color: lighten($inline-code-bg-color, 1%)
-$blockquote-color: lighten($text-color, 10%)
-$gray-color: lighten($blockquote-color, 13%)
-$bg-color: white
-
+@import "../base"
 
 $blue: #4285f4
 $yellow: #fbbc04
@@ -62,7 +55,7 @@ $green: #34a853
 
     p.tag
       grid-column-start: 1
-      color: $text-color
+      color: theme('text-color')
       font-size: 1.5rem
       margin: 3rem 0 0 0
 
