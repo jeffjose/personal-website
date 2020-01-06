@@ -1210,7 +1210,7 @@
     overflow: visible; /* For IE */
     padding: 0;
     border: none;
-    color: #333;
+    color: theme('text-color');
     text-align: center;
     margin-top: 2rem;
 }
@@ -1221,7 +1221,7 @@
     top: -0.7em;
     font-size: 1.5em;
     padding: 0 0.25em;
-    background: white;
+    background: theme('bg-color');
 }
 
 
