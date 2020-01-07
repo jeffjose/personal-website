@@ -40,7 +40,6 @@
     "@babel/runtime": "^7.0.0",
     "@beyonk/sapper-httpclient": "^3.5.1",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "asciidoctor": "^2.0.3",
     "asciidoctor-highlight.js": "^0.2.0",
     "fa-svelte": "^3.1.0",
