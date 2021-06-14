@@ -1,9 +1,0 @@
-= When Breath Becomes Air
-
-[.date]
-Jan 1, 2020
-
-[.hero]
-image::/books/when-breath-becomes-air.jpg[]
-
-This is a default description.

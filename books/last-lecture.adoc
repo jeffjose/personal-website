@@ -1,9 +1,0 @@
-= The Last Lecture
-
-[.date]
-Jan 1, 2020
-
-[.hero]
-image::/books/last-lecture.jpg[]
-
-This is a default description.
