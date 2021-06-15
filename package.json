@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "astro": "^0.13.0"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.1.4"
   }
 }
