@@ -1,5 +1,6 @@
 ---
-import Nav from '../components/Nav.svelte';
+import Header from '../components/Header.svelte';
+import Footer from '../components/Footer.svelte';
 ---
 
 <!doctype html>
@@ -15,7 +16,9 @@ import Nav from '../components/Nav.svelte';
 
     <link rel="stylesheet" href="/style/global.css">
 </head>
-<body class="h-screen">
-    <Nav/>
+<body class="flex flex-col h-screen min-h-screen">
+    <Header/>
+    <div class="flex-grow"></div>
+    <Footer/>
 </body>
 </html>
