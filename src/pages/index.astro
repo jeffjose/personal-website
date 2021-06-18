@@ -15,10 +15,26 @@ import Footer from '../components/Footer.svelte';
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Lato&display=block" rel="stylesheet">
 
     <link rel="stylesheet" href="/style/global.css">
+
+<style>
+.block {
+    height: 1em;
+    width: 1em;
+}
+</style>
 </head>
 <body class="flex flex-col h-screen min-h-screen">
     <Header/>
-    <div class="flex-grow"></div>
+    <div class="flex flex-wrap flex-grow px-40">
+        <div class="w-1/2 h-40 bg-green-200"></div>
+        <div class="w-1/2 h-40 bg-blue-200"></div>
+        <div class="w-1/2 h-40 bg-green-200"></div>
+        <div class="w-1/2 h-40 bg-blue-200"></div>
+        <div class="w-1/2 h-40 bg-green-200"></div>
+        <div class="w-1/2 h-40 bg-blue-200"></div>
+        <div class="w-1/2 h-40 bg-green-200"></div>
+        <div class="w-1/2 h-40 bg-blue-200"></div>
+    </div>
     <Footer/>
 </body>
 </html>
