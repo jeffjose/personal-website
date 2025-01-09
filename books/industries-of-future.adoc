@@ -1,9 +1,0 @@
-= The Industries of Future
-
-[.date]
-Jan 1, 2020
-
-[.hero]
-image::/books/industries-of-future.jpg[]
-
-This is a default description.
