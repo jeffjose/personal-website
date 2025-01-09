@@ -1,18 +1,23 @@
 {
 	"name": "personal-website",
-	"private": true,
 	"version": "0.0.1",
+	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
-		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run"
+		"preview": "vite preview",
+		"test": "npm run test:unit -- --run",
+		"test:unit": "vitest"
+	},
+	"dependencies": {
+		"@tailwindcss/container-queries": "^0.1.1",
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.15"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -29,9 +34,7 @@
 		"vite": "^5.4.11",
 		"vitest": "^2.0.4"
 	},
-	"dependencies": {
-		"@tailwindcss/container-queries": "^0.1.1",
-		"@tailwindcss/forms": "^0.5.9",
-		"@tailwindcss/typography": "^0.5.15"
+	"engines": {
+		"node": "^18.0.0 || ^20.0.0"
 	}
 }
