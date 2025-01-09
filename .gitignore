@@ -1,28 +1,23 @@
-.DS_Store
-.firebase
-firebase-debug.log
 node_modules
-/dist
 
-# local env files
-.env.local
-.env.*.local
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
 
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# OS
+.DS_Store
+Thumbs.db
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
 
-frontend/public/bundle*
-
-# dont track artifacts/
-artifacts
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
