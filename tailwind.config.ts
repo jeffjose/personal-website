@@ -7,8 +7,12 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif']
+			}
+		}
 	},
 
-	plugins: [typography, forms, containerQueries]
+	plugins: []
 } satisfies Config;
