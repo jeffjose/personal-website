@@ -14,5 +14,5 @@ export default {
 		}
 	},
 
-	plugins: []
+	plugins: [typography, forms, containerQueries]
 } satisfies Config;
