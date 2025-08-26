@@ -6,12 +6,12 @@
 			</p>
 			<p class="text-base leading-relaxed text-muted-foreground">
 				I'm a Product Manager on Android Graphics, working on building the world's most advanced
-				mobile graphics stack — making the rendering pipeline faster, more efficient, and more
+				mobile graphics stack. I focus on making the rendering pipeline faster, more efficient, and more
 				capable for the next generation of mobile experiences.
 			</p>
 			<p class="text-base leading-relaxed text-muted-foreground">
-				Previously at Google Search, I led the launch of Core Web Vitals — metrics that became the
-				industry standard for measuring web performance — alongside Page Experience Ranking. At
+				Previously at Google Search, I led the launch of Core Web Vitals, metrics that became the
+				industry standard for measuring web performance, alongside Page Experience Ranking. At
 				Chrome, I led anti-fingerprinting initiatives to strengthen user privacy across the web.
 			</p>
 			<p class="text-base leading-relaxed text-muted-foreground">
