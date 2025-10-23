@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { projects } from '$lib/data/projects';
+</script>
+
 <main class="min-h-screen">
 	<div class="mx-auto max-w-2xl px-6 py-32">
 		<div class="space-y-6">
@@ -76,63 +80,30 @@
 			<div class="mt-16 space-y-8">
 				<h2 class="text-lg font-medium text-foreground">Projects</h2>
 
-				<!-- Project 1 -->
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div class="space-y-1">
-						<h3 class="text-base font-medium text-foreground">FastAPI Performance Monitor</h3>
-						<p class="text-sm text-muted-foreground">2020-present</p>
+				{#each projects as project}
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+						<div class="space-y-1">
+							{#if project.url}
+								<a
+									href={project.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-base font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
+								>
+									{project.name}
+								</a>
+							{:else}
+								<h3 class="text-base font-medium text-foreground">{project.name}</h3>
+							{/if}
+							<p class="text-sm text-muted-foreground">{project.dateRange}</p>
+						</div>
+						<div>
+							<p class="text-base leading-relaxed text-muted-foreground">
+								{project.description}
+							</p>
+						</div>
 					</div>
-					<div>
-						<p class="text-base leading-relaxed text-muted-foreground">
-							Real-time performance monitoring and analytics dashboard for FastAPI applications,
-							helping developers identify bottlenecks and optimize API response times.
-						</p>
-					</div>
-				</div>
-
-				<!-- Project 2 -->
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div class="space-y-1">
-						<h3 class="text-base font-medium text-foreground">React Visualization Toolkit</h3>
-						<p class="text-sm text-muted-foreground">2021-present</p>
-					</div>
-					<div>
-						<p class="text-base leading-relaxed text-muted-foreground">
-							A comprehensive library of customizable, accessible chart components built on D3.js and
-							React, designed for building data-rich dashboards and analytics interfaces.
-						</p>
-					</div>
-				</div>
-
-				<!-- Project 3 -->
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div class="space-y-1">
-						<h3 class="text-base font-medium text-foreground">DevOps Automation Suite</h3>
-						<p class="text-sm text-muted-foreground">2019-2023</p>
-					</div>
-					<div>
-						<p class="text-base leading-relaxed text-muted-foreground">
-							Collection of Python scripts and GitHub Actions workflows that automate common DevOps
-							tasks including deployment pipelines, environment provisioning, and infrastructure
-							monitoring.
-						</p>
-					</div>
-				</div>
-
-				<!-- Project 4 -->
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div class="space-y-1">
-						<h3 class="text-base font-medium text-foreground">Open Source Dependency Scanner</h3>
-						<p class="text-sm text-muted-foreground">2022-present</p>
-					</div>
-					<div>
-						<p class="text-base leading-relaxed text-muted-foreground">
-							CLI tool that analyzes project dependencies for security vulnerabilities, license
-							compatibility issues, and outdated packages across multiple languages and package
-							managers.
-						</p>
-					</div>
-				</div>
+				{/each}
 			</div>
 		</div>
 	</div>
