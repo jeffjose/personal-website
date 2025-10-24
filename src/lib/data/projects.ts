@@ -29,7 +29,7 @@ export const projectConfigs: ProjectConfig[] = [
 		description: 'Tag audiobooks on commandline.'
 	},
 	{
-		repo: 'jeffjose/avataone',
+		repo: 'jeffjose/avatone',
 		description: 'Generate unique avatars for your next project.'
 	},
 	{
