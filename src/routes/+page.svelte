@@ -77,42 +77,32 @@
 			</div>
 
 			<!-- Projects Section -->
-			<div class="mt-16 space-y-8">
+			<div class="mt-16 space-y-6">
 				<h2 class="text-lg font-medium text-foreground">Projects</h2>
 
 				{#each projects as project}
-					<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-						<div class="space-y-2">
-							{#if project.url}
-								<a
-									href={project.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-base font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
-								>
-									{project.name}
-								</a>
-							{:else}
-								<h3 class="text-base font-medium text-foreground">{project.name}</h3>
-							{/if}
-							<p class="text-sm text-muted-foreground">{project.dateRange}</p>
-							{#if project.languages.length > 0}
-								<div class="flex flex-wrap gap-2">
-									{#each project.languages as language}
-										<span
-											class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground"
-										>
-											{language}
-										</span>
-									{/each}
-								</div>
-							{/if}
+					<div class="space-y-2">
+						<div class="flex flex-wrap items-center gap-2">
+							<a
+								href={project.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-base font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
+							>
+								{project.name}
+							</a>
+							<span class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+								{project.dateRange}
+							</span>
+							{#each project.languages as language}
+								<span class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+									{language}
+								</span>
+							{/each}
 						</div>
-						<div>
-							<p class="text-base leading-relaxed text-muted-foreground">
-								{project.description}
-							</p>
-						</div>
+						<p class="text-base leading-relaxed text-muted-foreground">
+							{project.description}
+						</p>
 					</div>
 				{/each}
 			</div>
