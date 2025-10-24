@@ -1,8 +1,3 @@
-export interface ProjectConfig {
-	repo: string;
-	description?: string; // Optional override for GitHub description
-}
-
 export interface Project {
 	name: string;
 	dateRange: string;
@@ -11,30 +6,47 @@ export interface Project {
 	languages: string[];
 }
 
-// Configuration: just list your repos and optionally override descriptions
-export const projectConfigs: ProjectConfig[] = [
+export const projects: Project[] = [
 	{
-		repo: 'jeffjose/twig',
-		description: 'A modern, fast and customizable prompt.'
+		name: 'twig',
+		dateRange: '2025-present',
+		description: 'A modern, fast and customizable prompt.',
+		url: 'https://github.com/jeffjose/twig',
+		languages: ['Rust']
 	},
 	{
-		repo: 'jeffjose/utter',
-		description: 'Speech-to-text for Linux, using your mobile phone.'
+		name: 'utter',
+		dateRange: '2025-present',
+		description: 'Speech-to-text for Linux, using your mobile phone.',
+		url: 'https://github.com/jeffjose/utter',
+		languages: ['TypeScript', 'Kotlin', 'Rust']
 	},
 	{
-		repo: 'jeffjose/plexman',
-		description: 'A simple Plex library manager.'
+		name: 'plexman',
+		dateRange: '2025-present',
+		description: 'A simple Plex library manager.',
+		url: 'https://github.com/jeffjose/plexman',
+		languages: ['Svelte', 'TypeScript', 'JavaScript']
 	},
 	{
-		repo: 'jeffjose/audtag',
-		description: 'Tag audiobooks on commandline.'
+		name: 'audtag',
+		dateRange: '2025',
+		description: 'Tag audiobooks on commandline.',
+		url: 'https://github.com/jeffjose/audtag',
+		languages: ['Python', 'Shell']
 	},
 	{
-		repo: 'jeffjose/avatone',
-		description: 'Generate unique avatars for your next project.'
+		name: 'avatone',
+		dateRange: '2025',
+		description: 'Generate unique avatars for your next project.',
+		url: 'https://github.com/jeffjose/avatone',
+		languages: ['TypeScript', 'Svelte', 'JavaScript']
 	},
 	{
-		repo: 'jeffjose/seal',
-		description: 'A simple, secure file encryption tool that makes it easy to protect your sensitive files.'
+		name: 'seal',
+		dateRange: '2025',
+		description: 'A simple, secure file encryption tool that makes it easy to protect your sensitive files.',
+		url: 'https://github.com/jeffjose/seal',
+		languages: ['Rust']
 	}
 ];

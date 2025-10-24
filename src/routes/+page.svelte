@@ -1,9 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
-	export let data: PageData;
-
-	const { projects } = data;
+	import { projects } from '$lib/data/projects';
 </script>
 
 <main class="min-h-screen">
