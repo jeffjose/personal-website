@@ -1,4 +1,5 @@
 import { projectConfigs, type Project } from '$lib/data/projects';
+import { GITHUB_TOKEN } from '$env/static/private';
 
 interface GitHubCommit {
 	commit: {
@@ -16,23 +17,20 @@ interface GitHubRepo {
 
 async function fetchRepoData(repo: string, descriptionOverride?: string): Promise<Project | null> {
 	try {
+		const headers: HeadersInit = {
+			Accept: 'application/vnd.github.v3+json'
+		};
+
+		// Add authentication if token is available
+		if (GITHUB_TOKEN) {
+			headers.Authorization = `Bearer ${GITHUB_TOKEN}`;
+		}
+
 		// Fetch repo info, commits, and languages in parallel
 		const [repoResponse, commitsResponse, languagesResponse] = await Promise.all([
-			fetch(`https://api.github.com/repos/${repo}`, {
-				headers: {
-					Accept: 'application/vnd.github.v3+json'
-				}
-			}),
-			fetch(`https://api.github.com/repos/${repo}/commits`, {
-				headers: {
-					Accept: 'application/vnd.github.v3+json'
-				}
-			}),
-			fetch(`https://api.github.com/repos/${repo}/languages`, {
-				headers: {
-					Accept: 'application/vnd.github.v3+json'
-				}
-			})
+			fetch(`https://api.github.com/repos/${repo}`, { headers }),
+			fetch(`https://api.github.com/repos/${repo}/commits`, { headers }),
+			fetch(`https://api.github.com/repos/${repo}/languages`, { headers })
 		]);
 
 		if (!repoResponse.ok) {
