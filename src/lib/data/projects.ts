@@ -8,6 +8,7 @@ export interface Project {
 	dateRange: string;
 	description: string;
 	url: string;
+	languages: string[];
 }
 
 // Configuration: just list your repos and optionally override descriptions

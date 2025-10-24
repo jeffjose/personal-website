@@ -86,7 +86,7 @@
 
 				{#each projects as project}
 					<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-						<div class="space-y-1">
+						<div class="space-y-2">
 							{#if project.url}
 								<a
 									href={project.url}
@@ -100,6 +100,17 @@
 								<h3 class="text-base font-medium text-foreground">{project.name}</h3>
 							{/if}
 							<p class="text-sm text-muted-foreground">{project.dateRange}</p>
+							{#if project.languages.length > 0}
+								<div class="flex flex-wrap gap-2">
+									{#each project.languages as language}
+										<span
+											class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+										>
+											{language}
+										</span>
+									{/each}
+								</div>
+							{/if}
 						</div>
 						<div>
 							<p class="text-base leading-relaxed text-muted-foreground">

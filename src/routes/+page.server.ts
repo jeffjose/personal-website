@@ -16,33 +16,44 @@ interface GitHubRepo {
 
 async function fetchRepoData(repo: string, descriptionOverride?: string): Promise<Project | null> {
 	try {
-		// Fetch repo info
-		const repoResponse = await fetch(`https://api.github.com/repos/${repo}`, {
-			headers: {
-				Accept: 'application/vnd.github.v3+json'
-			}
-		});
+		// Fetch repo info, commits, and languages in parallel
+		const [repoResponse, commitsResponse, languagesResponse] = await Promise.all([
+			fetch(`https://api.github.com/repos/${repo}`, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json'
+				}
+			}),
+			fetch(`https://api.github.com/repos/${repo}/commits`, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json'
+				}
+			}),
+			fetch(`https://api.github.com/repos/${repo}/languages`, {
+				headers: {
+					Accept: 'application/vnd.github.v3+json'
+				}
+			})
+		]);
 
 		if (!repoResponse.ok) {
 			console.error(`Failed to fetch repo ${repo}: ${repoResponse.status}`);
 			return null;
 		}
 
-		const repoData: GitHubRepo = await repoResponse.json();
-
-		// Fetch commits to get date range
-		const commitsResponse = await fetch(`https://api.github.com/repos/${repo}/commits`, {
-			headers: {
-				Accept: 'application/vnd.github.v3+json'
-			}
-		});
-
 		if (!commitsResponse.ok) {
 			console.error(`Failed to fetch commits for ${repo}: ${commitsResponse.status}`);
 			return null;
 		}
 
+		if (!languagesResponse.ok) {
+			console.error(`Failed to fetch languages for ${repo}: ${languagesResponse.status}`);
+		}
+
+		const repoData: GitHubRepo = await repoResponse.json();
 		const commits: GitHubCommit[] = await commitsResponse.json();
+		const languagesData: Record<string, number> = languagesResponse.ok
+			? await languagesResponse.json()
+			: {};
 
 		if (commits.length === 0) {
 			return null;
@@ -72,11 +83,18 @@ async function fetchRepoData(repo: string, descriptionOverride?: string): Promis
 				startYear === mostRecentYear ? `${startYear}` : `${startYear}-${mostRecentYear}`;
 		}
 
+		// Sort languages by bytes and get top languages
+		const languages = Object.entries(languagesData)
+			.sort(([, a], [, b]) => b - a)
+			.slice(0, 3) // Get top 3 languages
+			.map(([lang]) => lang);
+
 		return {
 			name: repoData.name,
 			dateRange,
 			description: descriptionOverride || repoData.description || 'No description available',
-			url: repoData.html_url
+			url: repoData.html_url,
+			languages
 		};
 	} catch (error) {
 		console.error(`Error fetching data for ${repo}:`, error);
