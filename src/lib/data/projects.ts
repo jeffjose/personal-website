@@ -1,37 +1,39 @@
+export interface ProjectConfig {
+	repo: string;
+	description?: string; // Optional override for GitHub description
+}
+
 export interface Project {
 	name: string;
 	dateRange: string;
 	description: string;
-	url?: string;
+	url: string;
 }
 
-export const projects: Project[] = [
+// Configuration: just list your repos and optionally override descriptions
+export const projectConfigs: ProjectConfig[] = [
 	{
-		name: 'FastAPI Performance Monitor',
-		dateRange: '2020-present',
-		description:
-			'Real-time performance monitoring and analytics dashboard for FastAPI applications, helping developers identify bottlenecks and optimize API response times.',
-		url: 'https://github.com/jeffjose/fastapi-monitor'
+		repo: 'jeffjose/twig',
+		description: 'A modern, fast and customizable prompt.'
 	},
 	{
-		name: 'React Visualization Toolkit',
-		dateRange: '2021-present',
-		description:
-			'A comprehensive library of customizable, accessible chart components built on D3.js and React, designed for building data-rich dashboards and analytics interfaces.',
-		url: 'https://github.com/jeffjose/react-viz-toolkit'
+		repo: 'jeffjose/utter',
+		description: 'Speech-to-text for Linux, using your mobile phone.'
 	},
 	{
-		name: 'DevOps Automation Suite',
-		dateRange: '2019-2023',
-		description:
-			'Collection of Python scripts and GitHub Actions workflows that automate common DevOps tasks including deployment pipelines, environment provisioning, and infrastructure monitoring.',
-		url: 'https://github.com/jeffjose/devops-automation'
+		repo: 'jeffjose/plexman',
+		description: 'A simple Plex library manager.'
 	},
 	{
-		name: 'Open Source Dependency Scanner',
-		dateRange: '2022-present',
-		description:
-			'CLI tool that analyzes project dependencies for security vulnerabilities, license compatibility issues, and outdated packages across multiple languages and package managers.',
-		url: 'https://github.com/jeffjose/dependency-scanner'
+		repo: 'jeffjose/audtag',
+		description: 'Tag audiobooks on commandline.'
+	},
+	{
+		repo: 'jeffjose/avataone',
+		description: 'Generate unique avatars for your next project.'
+	},
+	{
+		repo: 'jeffjose/seal',
+		description: 'A simple, secure file encryption tool that makes it easy to protect your sensitive files.'
 	}
 ];
