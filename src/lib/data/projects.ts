@@ -8,6 +8,14 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		name: 'wat',
+		dateRange: '2026-present',
+		description:
+			'A terminal tool to watch what LLM agents are doing to your files in real-time.',
+		url: 'https://github.com/jeffjose/wat',
+		languages: ['Rust']
+	},
+	{
 		name: 'loc',
 		dateRange: '2026-present',
 		description:
