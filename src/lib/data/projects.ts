@@ -8,6 +8,38 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		name: 'loc',
+		dateRange: '2026-present',
+		description:
+			'A fast lines-of-code counter that supports language filtering and git history visualization.',
+		url: 'https://github.com/jeffjose/loc',
+		languages: ['Rust']
+	},
+	{
+		name: 'git-cal',
+		dateRange: '2026-present',
+		description:
+			'A GitHub-style contribution calendar for your terminal with repo stats and language detection.',
+		url: 'https://github.com/jeffjose/git-cal',
+		languages: ['Rust']
+	},
+	{
+		name: 'safeclean',
+		dateRange: '2026-present',
+		description:
+			'A CLI tool for safely cleaning up build artifacts and dependency caches to reclaim disk space.',
+		url: 'https://github.com/jeffjose/safeclean',
+		languages: ['Rust']
+	},
+	{
+		name: 'deb-downloader',
+		dateRange: '2025',
+		description:
+			'A tool for downloading .deb packages directly from APT repositories without modifying sources.list.',
+		url: 'https://github.com/jeffjose/deb-downloader',
+		languages: ['Shell', 'Python']
+	},
+	{
 		name: 'twig',
 		dateRange: '2025-present',
 		description:

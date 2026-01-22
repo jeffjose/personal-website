@@ -1,5 +1,23 @@
 <script lang="ts">
 	import { projects } from '$lib/data/projects';
+
+	const languageColors: Record<string, { bg: string; text: string }> = {
+		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(180, 100, 60)' },
+		TypeScript: { bg: 'rgba(49, 120, 198, 0.12)', text: 'rgb(40, 100, 170)' },
+		JavaScript: { bg: 'rgba(247, 223, 30, 0.15)', text: 'rgb(160, 130, 0)' },
+		Svelte: { bg: 'rgba(255, 62, 0, 0.10)', text: 'rgb(200, 60, 20)' },
+		Python: { bg: 'rgba(55, 118, 171, 0.12)', text: 'rgb(45, 100, 145)' },
+		Kotlin: { bg: 'rgba(169, 123, 255, 0.12)', text: 'rgb(120, 80, 180)' },
+		Shell: { bg: 'rgba(137, 224, 81, 0.12)', text: 'rgb(70, 130, 50)' }
+	};
+
+	function getLangStyle(lang: string): string {
+		const colors = languageColors[lang];
+		if (colors) {
+			return `background-color: ${colors.bg}; color: ${colors.text};`;
+		}
+		return '';
+	}
 </script>
 
 <main class="min-h-screen">
@@ -9,9 +27,9 @@
 				Hi, I'm Jeffrey
 			</p>
 			<p class="text-base leading-relaxed text-muted-foreground">
-				I'm a Product Manager on Android Graphics, working on building the world's most advanced
-				mobile graphics stack. I focus on making the rendering pipeline faster, more efficient, and more
-				capable for the next generation of mobile experiences.
+				I'm a Product Manager on Android Graphics, working on the world's most popular mobile
+				graphics stack. I focus on making the rendering pipeline faster, more efficient, and more
+				capable for nearly 4 billion devices.
 			</p>
 			<p class="text-base leading-relaxed text-muted-foreground">
 				Previously at Google Search, I led the launch of Core Web Vitals, metrics that became the
@@ -82,7 +100,7 @@
 
 				{#each projects as project}
 					<div class="space-y-2">
-						<div class="flex flex-wrap items-center gap-2">
+						<div class="flex flex-wrap items-baseline gap-x-2">
 							<a
 								href={project.url}
 								target="_blank"
@@ -91,13 +109,15 @@
 							>
 								{project.name}
 							</a>
-							<span class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+							<span class="text-sm text-muted-foreground">
 								{project.dateRange}
 							</span>
-							{#each project.languages as language}
-								<span class="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-									{language}
-								</span>
+							<span class="text-muted-foreground/40">·</span>
+							{#each project.languages as language, i}
+								<span
+									class="text-sm"
+									style={`color: ${languageColors[language]?.text || 'var(--muted-foreground)'}`}
+								>{language}</span>{#if i < project.languages.length - 1}<span class="text-muted-foreground/40">,</span>{/if}
 							{/each}
 						</div>
 						<p class="text-base leading-relaxed text-muted-foreground">
