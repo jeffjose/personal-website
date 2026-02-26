@@ -1,5 +1,19 @@
 <script lang="ts">
 	import { projects } from '$lib/data/projects';
+	import Camera from 'lucide-svelte/icons/camera';
+	import Rocket from 'lucide-svelte/icons/rocket';
+	import Activity from 'lucide-svelte/icons/activity';
+	import Eye from 'lucide-svelte/icons/eye';
+	import Hash from 'lucide-svelte/icons/hash';
+	import Calendar from 'lucide-svelte/icons/calendar';
+	import Eraser from 'lucide-svelte/icons/eraser';
+	import Download from 'lucide-svelte/icons/download';
+	import Terminal from 'lucide-svelte/icons/terminal';
+	import Mic from 'lucide-svelte/icons/mic';
+	import Film from 'lucide-svelte/icons/film';
+	import Headphones from 'lucide-svelte/icons/headphones';
+	import Palette from 'lucide-svelte/icons/palette';
+	import Lock from 'lucide-svelte/icons/lock';
 
 	const languageColors: Record<string, { bg: string; text: string }> = {
 		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(210, 105, 50)' },
@@ -9,6 +23,23 @@
 		Python: { bg: 'rgba(55, 118, 171, 0.12)', text: 'rgb(40, 115, 180)' },
 		Kotlin: { bg: 'rgba(169, 123, 255, 0.12)', text: 'rgb(140, 85, 210)' },
 		Shell: { bg: 'rgba(137, 224, 81, 0.12)', text: 'rgb(65, 155, 50)' }
+	};
+
+	const iconMap: Record<string, typeof Camera> = {
+		Camera,
+		Rocket,
+		Activity,
+		Eye,
+		Hash,
+		Calendar,
+		Eraser,
+		Download,
+		Terminal,
+		Mic,
+		Film,
+		Headphones,
+		Palette,
+		Lock
 	};
 
 	function getLangStyle(lang: string): string {
@@ -23,46 +54,98 @@
 <main class="min-h-screen">
 	<div class="mx-auto max-w-2xl px-6 py-32">
 		<div class="space-y-6">
-			<p class="text-lg font-medium leading-relaxed text-foreground">
-				Hi, I'm Jeffrey
-			</p>
-			<p class="text-base leading-relaxed text-muted-foreground">
+			<p class="text-foreground text-lg leading-relaxed font-medium">Hi, I'm Jeffrey</p>
+			<p class="text-muted-foreground text-base leading-relaxed">
 				I'm a Product Manager at
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="none">
-						<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-						<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-						<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-						<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+						<path
+							d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+							fill="#4285F4"
+						/>
+						<path
+							d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+							fill="#34A853"
+						/>
+						<path
+							d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+							fill="#FBBC05"
+						/>
+						<path
+							d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+							fill="#EA4335"
+						/>
 					</svg>
-					<span class="text-foreground/90">Google</span></span>, working on
+					<span class="text-foreground/90">Google</span></span
+				>, working on
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="#3DDC84">
-						<path d="M17.523 15.341c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm-11.046 0c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm11.4-6.7l1.93-3.35c.11-.19.05-.43-.14-.54-.19-.11-.43-.05-.54.14l-1.95 3.38C15.47 7.64 13.79 7.27 12 7.27s-3.47.37-5.17 1.01L4.88 4.9c-.11-.19-.35-.25-.54-.14-.19.11-.25.35-.14.54l1.93 3.35C2.92 10.41 1 13.27 1 16.5h22c0-3.23-1.92-6.09-5.12-7.86z"/>
+						<path d="M6.532 6.2h10.936v8.397a2 2 0 0 1-2 2H8.532a2 2 0 0 1-2-2V6.2z" />
+						<path d="M6.532 6.2h10.936" stroke="#3DDC84" stroke-width="0.5" fill="none" />
+						<circle cx="9.5" cy="9.8" r="1" fill="white" />
+						<circle cx="14.5" cy="9.8" r="1" fill="white" />
+						<line
+							x1="8"
+							y1="3"
+							x2="9.5"
+							y2="5.5"
+							stroke="#3DDC84"
+							stroke-width="1.2"
+							stroke-linecap="round"
+						/>
+						<line
+							x1="16"
+							y1="3"
+							x2="14.5"
+							y2="5.5"
+							stroke="#3DDC84"
+							stroke-width="1.2"
+							stroke-linecap="round"
+						/>
 					</svg>
-					<span class="text-foreground/90">Android Graphics</span></span>.
+					<span class="text-foreground/90">Android Graphics</span></span
+				>.
 			</p>
-			<p class="text-base leading-relaxed text-muted-foreground">
+			<p class="text-muted-foreground text-base leading-relaxed">
 				Previously at
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="none">
-						<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-						<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-						<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-						<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+						<path
+							d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+							fill="#4285F4"
+						/>
+						<path
+							d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+							fill="#34A853"
+						/>
+						<path
+							d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+							fill="#FBBC05"
+						/>
+						<path
+							d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+							fill="#EA4335"
+						/>
 					</svg>
-					<span class="text-foreground/90">Google Search</span></span>, I led the launch of Core Web Vitals, metrics that became the
-				industry standard for measuring web performance, alongside Page Experience Ranking. At
-				Chrome, I led anti-fingerprinting initiatives to strengthen user privacy across the web.
+					<span class="text-foreground/90">Google Search</span></span
+				>, I led the launch of Core Web Vitals, metrics that became the industry standard for
+				measuring web performance, alongside Page Experience Ranking. At Chrome, I led
+				anti-fingerprinting initiatives to strengthen user privacy across the web.
 			</p>
-			<p class="text-base leading-relaxed text-muted-foreground">
+			<p class="text-muted-foreground text-base leading-relaxed">
 				Prior to that, I was a Lead Technical Director at
 				<span class="inline-flex items-baseline gap-1">
-					<svg class="inline h-3.5 w-3.5 self-center text-muted-foreground" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+					<svg
+						class="text-muted-foreground inline h-3.5 w-3.5 self-center"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+					>
+						<path
+							d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
+						/>
 					</svg>
-					<span class="text-foreground/90">DreamWorks Animation</span></span>, working on films like
-				How To Train Your Dragon 2, Madagascar 3, Puss In Boots, and{' '}
+					<span class="text-foreground/90">DreamWorks Animation</span></span
+				>. I worked on movies like How To Train Your Dragon 2, Madagascar 3, Puss In Boots, and{' '}
 				<a
 					href="https://www.imdb.com/name/nm4162617/"
 					target="_blank"
@@ -72,7 +155,7 @@
 					several others</a
 				>.
 			</p>
-			<p class="text-base leading-relaxed text-muted-foreground">
+			<p class="text-muted-foreground text-base leading-relaxed">
 				I studied Electrical & Electronics Engineering at BITS Pilani and earned my MBA from The
 				Wharton School.
 			</p>
@@ -81,7 +164,7 @@
 					href="https://twitter.com/jeffjose"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+					class="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
 				>
 					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
 						<path
@@ -94,7 +177,7 @@
 					href="https://github.com/jeffjose"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+					class="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
 				>
 					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
 						<path
@@ -107,7 +190,7 @@
 					href="https://linkedin.com/in/jeffreyjose"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+					class="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
 				>
 					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
 						<path
@@ -119,26 +202,33 @@
 			</div>
 
 			<!-- Projects Section -->
-			<div class="mt-16 space-y-3">
-				<h2 class="text-lg font-medium text-foreground">Projects</h2>
+			<div class="mt-16 space-y-4">
+				<h2 class="text-foreground text-lg font-medium">Projects</h2>
 
 				{#each projects as project}
-					<div>
-						<p class="text-base leading-relaxed">
-							<a
-								href={project.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
-							>{project.name}</a>
-							{#each project.languages as language}
-								<span
-									class="ml-0.5 inline-block rounded px-1.5 py-0 text-xs leading-5"
-									style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
-								>{language}</span>
-							{/each}
-							<span class="text-muted-foreground"> — {project.description}</span>
-						</p>
+					<div class="flex gap-3">
+						<div class="text-muted-foreground mt-0.5 flex-shrink-0">
+							<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
+						</div>
+						<div>
+							<div class="flex items-center gap-1.5">
+								<a
+									href={project.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-foreground font-medium underline underline-offset-4 transition-opacity hover:opacity-70"
+									>{project.name}</a
+								>
+								{#each project.languages as language}
+									<span
+										class="inline-block rounded px-1.5 py-0 text-xs leading-5"
+										style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
+										>{language}</span
+									>
+								{/each}
+							</div>
+							<p class="text-muted-foreground text-sm">{project.description}</p>
+						</div>
 					</div>
 				{/each}
 			</div>
