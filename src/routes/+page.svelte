@@ -182,7 +182,7 @@
 			<div class="mt-16 space-y-4">
 				<h2 class="text-foreground text-lg font-medium">Projects</h2>
 
-				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+				<div class="grid grid-cols-1 gap-3">
 					{#each projects as project}
 						<a
 							href={project.url}
