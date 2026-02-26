@@ -19,7 +19,7 @@ export const projects: Project[] = [
 		name: 'duomo',
 		dateRange: '2026-present',
 		description:
-			'A keyboard-driven app launcher for Linux built with Tauri, Svelte 5, and Rust.',
+			'A keyboard-driven app launcher for Linux.',
 		url: 'https://github.com/jeffjose/duomo',
 		languages: ['Rust', 'Svelte', 'TypeScript']
 	},
