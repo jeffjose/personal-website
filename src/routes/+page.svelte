@@ -14,16 +14,15 @@
 	import Headphones from 'lucide-svelte/icons/headphones';
 	import Palette from 'lucide-svelte/icons/palette';
 	import Lock from 'lucide-svelte/icons/lock';
-	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 
 	const languageColors: Record<string, { bg: string; text: string }> = {
-		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(210, 105, 50)' },
-		TypeScript: { bg: 'rgba(49, 120, 198, 0.12)', text: 'rgb(30, 110, 210)' },
-		JavaScript: { bg: 'rgba(247, 223, 30, 0.15)', text: 'rgb(190, 150, 0)' },
-		Svelte: { bg: 'rgba(255, 62, 0, 0.10)', text: 'rgb(235, 65, 10)' },
-		Python: { bg: 'rgba(55, 118, 171, 0.12)', text: 'rgb(40, 115, 180)' },
-		Kotlin: { bg: 'rgba(169, 123, 255, 0.12)', text: 'rgb(140, 85, 210)' },
-		Shell: { bg: 'rgba(137, 224, 81, 0.12)', text: 'rgb(65, 155, 50)' }
+		Rust: { bg: 'rgba(222, 165, 132, 0.28)', text: 'rgb(210, 105, 50)' },
+		TypeScript: { bg: 'rgba(49, 120, 198, 0.25)', text: 'rgb(30, 110, 210)' },
+		JavaScript: { bg: 'rgba(247, 223, 30, 0.28)', text: 'rgb(190, 150, 0)' },
+		Svelte: { bg: 'rgba(255, 62, 0, 0.25)', text: 'rgb(235, 65, 10)' },
+		Python: { bg: 'rgba(55, 118, 171, 0.25)', text: 'rgb(40, 115, 180)' },
+		Kotlin: { bg: 'rgba(169, 123, 255, 0.25)', text: 'rgb(140, 85, 210)' },
+		Shell: { bg: 'rgba(137, 224, 81, 0.25)', text: 'rgb(65, 155, 50)' }
 	};
 
 	const iconMap: Record<string, typeof Camera> = {
@@ -199,25 +198,20 @@
 								<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
 							</div>
 							<div class="min-w-0 flex-1">
-								<div class="flex items-center gap-2">
-									<span class="text-foreground text-sm font-medium">{project.name}</span>
-									<div class="ml-auto flex gap-1">
-										{#each project.languages as language}
-											<span
-												class="inline-block rounded px-1.5 py-0 text-[11px] leading-5"
-												style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
-												>{language}</span
-											>
-										{/each}
-									</div>
-								</div>
+								<span class="text-foreground text-sm font-medium">{project.name}</span>
 								<p class="text-muted-foreground mt-0.5 text-sm leading-relaxed">
 									{project.description}
 								</p>
+								<div class="mt-1.5 flex gap-1">
+									{#each project.languages as language}
+										<span
+											class="inline-block rounded px-1.5 py-0 text-[11px] leading-5"
+											style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
+											>{language}</span
+										>
+									{/each}
+								</div>
 							</div>
-							<ArrowUpRight
-								class="text-muted-foreground h-3.5 w-3.5 flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-							/>
 						</a>
 					{/each}
 				</div>
