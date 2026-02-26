@@ -80,26 +80,8 @@
 				>, working on
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="#3DDC84">
-						<path d="M3 18 A9 9 0 0 1 21 18 Z" />
-						<circle cx="9" cy="14.5" r="1.4" fill="white" />
-						<circle cx="15" cy="14.5" r="1.4" fill="white" />
-						<line
-							x1="7.5"
-							y1="4"
-							x2="9.2"
-							y2="8.5"
-							stroke="#3DDC84"
-							stroke-width="1.5"
-							stroke-linecap="round"
-						/>
-						<line
-							x1="16.5"
-							y1="4"
-							x2="14.8"
-							y2="8.5"
-							stroke="#3DDC84"
-							stroke-width="1.5"
-							stroke-linecap="round"
+						<path
+							d="M17.523 15.341c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm-11.046 0c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm11.4-6.7l1.93-3.35c.11-.19.05-.43-.14-.54-.19-.11-.43-.05-.54.14l-1.95 3.38C15.47 7.64 13.79 7.27 12 7.27s-3.47.37-5.17 1.01L4.88 4.9c-.11-.19-.35-.25-.54-.14-.19.11-.25.35-.14.54l1.93 3.35C2.92 10.41 1 13.27 1 16.5h22c0-3.23-1.92-6.09-5.12-7.86z"
 						/>
 					</svg>
 					<span class="text-foreground/90">Android Graphics</span></span
@@ -204,32 +186,37 @@
 			<div class="mt-16 space-y-4">
 				<h2 class="text-foreground text-lg font-medium">Projects</h2>
 
-				{#each projects as project}
-					<div class="flex gap-3">
-						<div class="text-muted-foreground mt-0.5 flex-shrink-0">
-							<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
-						</div>
-						<div>
-							<div class="flex items-center gap-1.5">
-								<a
-									href={project.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-foreground font-medium underline underline-offset-4 transition-opacity hover:opacity-70"
-									>{project.name}</a
-								>
-								{#each project.languages as language}
-									<span
-										class="inline-block rounded px-1.5 py-0 text-xs leading-5"
-										style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
-										>{language}</span
-									>
-								{/each}
+				<div class="space-y-3">
+					{#each projects as project}
+						<a
+							href={project.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="border-border/60 hover:border-border group flex items-start gap-3.5 rounded-lg border px-4 py-3.5 transition-colors hover:bg-black/[0.02]"
+						>
+							<div class="text-muted-foreground mt-0.5 flex-shrink-0">
+								<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
 							</div>
-							<p class="text-muted-foreground text-sm">{project.description}</p>
-						</div>
-					</div>
-				{/each}
+							<div class="min-w-0 flex-1">
+								<div class="flex items-center gap-2">
+									<span class="text-foreground text-sm font-medium">{project.name}</span>
+									<div class="flex gap-1">
+										{#each project.languages as language}
+											<span
+												class="inline-block rounded px-1.5 py-0 text-[11px] leading-5"
+												style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
+												>{language}</span
+											>
+										{/each}
+									</div>
+								</div>
+								<p class="text-muted-foreground mt-0.5 text-sm leading-relaxed">
+									{project.description}
+								</p>
+							</div>
+						</a>
+					{/each}
+				</div>
 			</div>
 		</div>
 	</div>
