@@ -8,6 +8,30 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
+		name: 'hotshot',
+		dateRange: '2026-present',
+		description:
+			'A fast, zero-dependency screenshot tool for Linux with X11 and Wayland support.',
+		url: 'https://github.com/jeffjose/hotshot',
+		languages: ['Rust']
+	},
+	{
+		name: 'duomo',
+		dateRange: '2026-present',
+		description:
+			'A keyboard-driven app launcher for Linux built with Tauri, Svelte 5, and Rust.',
+		url: 'https://github.com/jeffjose/duomo',
+		languages: ['Rust', 'Svelte', 'TypeScript']
+	},
+	{
+		name: 'graphprix',
+		dateRange: '2026-present',
+		description:
+			'A trading-terminal-style analysis tool for Formula 1 telemetry and race data.',
+		url: 'https://github.com/jeffjose/graphprix',
+		languages: ['Svelte', 'TypeScript', 'Python']
+	},
+	{
 		name: 'wat',
 		dateRange: '2026-present',
 		description:
