@@ -182,33 +182,33 @@
 			<div class="mt-16 space-y-4">
 				<h2 class="text-foreground text-lg font-medium">Projects</h2>
 
-				<div class="space-y-3">
+				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{#each projects as project}
 						<a
 							href={project.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="border-border/60 hover:border-border group flex items-center gap-3.5 rounded-lg border px-4 py-3.5 transition-all duration-150 hover:bg-black/[0.02] hover:shadow-sm"
+							class="border-border/60 hover:border-border group flex flex-col gap-2 rounded-lg border px-4 py-3.5 transition-all duration-150 hover:bg-black/[0.02] hover:shadow-sm"
 						>
-							<div class="bg-muted/60 text-muted-foreground flex-shrink-0 rounded-md p-1.5">
-								<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
-							</div>
-							<div class="min-w-0 flex-1">
-								<span class="text-foreground text-sm font-medium">{project.name}</span>
-								<p class="text-muted-foreground mt-0.5 text-sm leading-relaxed">
-									{project.description}
-								</p>
-								<div class="mt-1.5 flex items-center gap-3">
-									{#each project.languages as language}
-										<span class="text-muted-foreground flex items-center gap-1.5 text-[11px]">
-											<span
-												class="inline-block h-2 w-2 rounded-full"
-												style={`background-color: ${getDotColor(language)};`}
-											></span>
-											{language}
-										</span>
-									{/each}
+							<div class="flex items-center gap-2">
+								<div class="bg-muted/60 text-muted-foreground rounded-md p-1">
+									<svelte:component this={iconMap[project.icon]} class="h-3.5 w-3.5" />
 								</div>
+								<span class="text-foreground text-sm font-medium">{project.name}</span>
+							</div>
+							<p class="text-muted-foreground text-sm leading-relaxed">
+								{project.description}
+							</p>
+							<div class="mt-auto flex items-center gap-3">
+								{#each project.languages as language}
+									<span class="text-muted-foreground flex items-center gap-1.5 text-[11px]">
+										<span
+											class="inline-block h-2 w-2 rounded-full"
+											style={`background-color: ${getDotColor(language)};`}
+										></span>
+										{language}
+									</span>
+								{/each}
 							</div>
 						</a>
 					{/each}
