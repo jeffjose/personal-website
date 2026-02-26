@@ -15,14 +15,14 @@
 	import Palette from 'lucide-svelte/icons/palette';
 	import Lock from 'lucide-svelte/icons/lock';
 
-	const languageColors: Record<string, { bg: string; text: string }> = {
-		Rust: { bg: 'rgba(222, 165, 132, 0.28)', text: 'rgb(210, 105, 50)' },
-		TypeScript: { bg: 'rgba(49, 120, 198, 0.25)', text: 'rgb(30, 110, 210)' },
-		JavaScript: { bg: 'rgba(247, 223, 30, 0.28)', text: 'rgb(190, 150, 0)' },
-		Svelte: { bg: 'rgba(255, 62, 0, 0.25)', text: 'rgb(235, 65, 10)' },
-		Python: { bg: 'rgba(55, 118, 171, 0.25)', text: 'rgb(40, 115, 180)' },
-		Kotlin: { bg: 'rgba(169, 123, 255, 0.25)', text: 'rgb(140, 85, 210)' },
-		Shell: { bg: 'rgba(137, 224, 81, 0.25)', text: 'rgb(65, 155, 50)' }
+	const languageColors: Record<string, string> = {
+		Rust: '#dea584',
+		TypeScript: '#3178c6',
+		JavaScript: '#f1e05a',
+		Svelte: '#ff3e00',
+		Python: '#3776ab',
+		Kotlin: '#a97bff',
+		Shell: '#89e051'
 	};
 
 	const iconMap: Record<string, typeof Camera> = {
@@ -42,12 +42,8 @@
 		Lock
 	};
 
-	function getLangStyle(lang: string): string {
-		const colors = languageColors[lang];
-		if (colors) {
-			return `background-color: ${colors.bg}; color: ${colors.text};`;
-		}
-		return '';
+	function getDotColor(lang: string): string {
+		return languageColors[lang] || '#6b7280';
 	}
 </script>
 
@@ -202,13 +198,15 @@
 								<p class="text-muted-foreground mt-0.5 text-sm leading-relaxed">
 									{project.description}
 								</p>
-								<div class="mt-1.5 flex gap-1">
+								<div class="mt-1.5 flex items-center gap-3">
 									{#each project.languages as language}
-										<span
-											class="inline-block rounded px-1.5 py-0 text-[11px] leading-5"
-											style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
-											>{language}</span
-										>
+										<span class="text-muted-foreground flex items-center gap-1.5 text-[11px]">
+											<span
+												class="inline-block h-2 w-2 rounded-full"
+												style={`background-color: ${getDotColor(language)};`}
+											></span>
+											{language}
+										</span>
 									{/each}
 								</div>
 							</div>
