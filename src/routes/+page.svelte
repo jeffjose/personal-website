@@ -2,13 +2,13 @@
 	import { projects } from '$lib/data/projects';
 
 	const languageColors: Record<string, { bg: string; text: string }> = {
-		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(180, 100, 60)' },
-		TypeScript: { bg: 'rgba(49, 120, 198, 0.12)', text: 'rgb(40, 100, 170)' },
-		JavaScript: { bg: 'rgba(247, 223, 30, 0.15)', text: 'rgb(160, 130, 0)' },
-		Svelte: { bg: 'rgba(255, 62, 0, 0.10)', text: 'rgb(200, 60, 20)' },
-		Python: { bg: 'rgba(55, 118, 171, 0.12)', text: 'rgb(45, 100, 145)' },
-		Kotlin: { bg: 'rgba(169, 123, 255, 0.12)', text: 'rgb(120, 80, 180)' },
-		Shell: { bg: 'rgba(137, 224, 81, 0.12)', text: 'rgb(70, 130, 50)' }
+		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(210, 105, 50)' },
+		TypeScript: { bg: 'rgba(49, 120, 198, 0.12)', text: 'rgb(30, 110, 210)' },
+		JavaScript: { bg: 'rgba(247, 223, 30, 0.15)', text: 'rgb(190, 150, 0)' },
+		Svelte: { bg: 'rgba(255, 62, 0, 0.10)', text: 'rgb(235, 65, 10)' },
+		Python: { bg: 'rgba(55, 118, 171, 0.12)', text: 'rgb(40, 115, 180)' },
+		Kotlin: { bg: 'rgba(169, 123, 255, 0.12)', text: 'rgb(140, 85, 210)' },
+		Shell: { bg: 'rgba(137, 224, 81, 0.12)', text: 'rgb(65, 155, 50)' }
 	};
 
 	function getLangStyle(lang: string): string {
@@ -119,33 +119,25 @@
 			</div>
 
 			<!-- Projects Section -->
-			<div class="mt-16 space-y-6">
+			<div class="mt-16 space-y-3">
 				<h2 class="text-lg font-medium text-foreground">Projects</h2>
 
 				{#each projects as project}
-					<div class="space-y-2">
-						<div class="flex flex-wrap items-baseline gap-x-2">
+					<div>
+						<p class="text-base leading-relaxed">
 							<a
 								href={project.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="text-base font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
-							>
-								{project.name}
-							</a>
-							<span class="text-sm text-muted-foreground">
-								{project.dateRange}
-							</span>
-							<span class="text-muted-foreground/40">·</span>
-							{#each project.languages as language, i}
+								class="font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
+							>{project.name}</a>
+							{#each project.languages as language}
 								<span
-									class="text-sm"
-									style={`color: ${languageColors[language]?.text || 'var(--muted-foreground)'}`}
-								>{language}</span>{#if i < project.languages.length - 1}<span class="text-muted-foreground/40">,</span>{/if}
+									class="ml-0.5 inline-block rounded px-1.5 py-0 text-xs leading-5"
+									style={`background-color: ${languageColors[language]?.bg || 'var(--muted)'}; color: ${languageColors[language]?.text || 'var(--muted-foreground)'};`}
+								>{language}</span>
 							{/each}
-						</div>
-						<p class="text-base leading-relaxed text-muted-foreground">
-							{project.description}
+							<span class="text-muted-foreground"> — {project.description}</span>
 						</p>
 					</div>
 				{/each}
