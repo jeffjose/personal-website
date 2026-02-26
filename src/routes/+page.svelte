@@ -14,6 +14,7 @@
 	import Headphones from 'lucide-svelte/icons/headphones';
 	import Palette from 'lucide-svelte/icons/palette';
 	import Lock from 'lucide-svelte/icons/lock';
+	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 
 	const languageColors: Record<string, { bg: string; text: string }> = {
 		Rust: { bg: 'rgba(222, 165, 132, 0.15)', text: 'rgb(210, 105, 50)' },
@@ -192,15 +193,15 @@
 							href={project.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="border-border/60 hover:border-border group flex items-start gap-3.5 rounded-lg border px-4 py-3.5 transition-colors hover:bg-black/[0.02]"
+							class="border-border/60 hover:border-border group flex items-center gap-3.5 rounded-lg border px-4 py-3.5 transition-all duration-150 hover:bg-black/[0.02] hover:shadow-sm"
 						>
-							<div class="text-muted-foreground mt-0.5 flex-shrink-0">
+							<div class="bg-muted/60 text-muted-foreground flex-shrink-0 rounded-md p-1.5">
 								<svelte:component this={iconMap[project.icon]} class="h-4 w-4" />
 							</div>
 							<div class="min-w-0 flex-1">
 								<div class="flex items-center gap-2">
 									<span class="text-foreground text-sm font-medium">{project.name}</span>
-									<div class="flex gap-1">
+									<div class="ml-auto flex gap-1">
 										{#each project.languages as language}
 											<span
 												class="inline-block rounded px-1.5 py-0 text-[11px] leading-5"
@@ -214,6 +215,9 @@
 									{project.description}
 								</p>
 							</div>
+							<ArrowUpRight
+								class="text-muted-foreground h-3.5 w-3.5 flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
+							/>
 						</a>
 					{/each}
 				</div>
