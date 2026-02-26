@@ -188,9 +188,9 @@
 							href={project.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="border-border/50 hover:border-border group flex items-start gap-4 rounded-xl border bg-black/[0.01] px-5 py-4 transition-all duration-200 hover:bg-black/[0.03] hover:shadow-md"
+							class="border-border/50 hover:border-border group flex items-center gap-4 rounded-xl border bg-black/[0.01] px-5 py-4 transition-all duration-200 hover:bg-black/[0.03] hover:shadow-md"
 						>
-							<div class="bg-muted/80 text-muted-foreground group-hover:bg-muted mt-0.5 flex-shrink-0 rounded-lg p-2 transition-colors">
+							<div class="bg-muted/80 text-muted-foreground group-hover:bg-muted flex-shrink-0 rounded-lg p-2 transition-colors">
 								<svelte:component this={iconMap[project.icon]} class="h-4.5 w-4.5" />
 							</div>
 							<div class="min-w-0 flex-1">
