@@ -11,7 +11,7 @@ export const projects: Project[] = [
 		name: 'hotshot',
 		dateRange: '2026-present',
 		description:
-			'A fast, zero-dependency screenshot tool for Linux with X11 and Wayland support.',
+			'A fast, zero-dependency screenshot tool for Linux.',
 		url: 'https://github.com/jeffjose/hotshot',
 		languages: ['Rust']
 	},
@@ -75,7 +75,7 @@ export const projects: Project[] = [
 		name: 'twig',
 		dateRange: '2025-present',
 		description:
-			'A fast shell prompt generator written in Rust with daemon caching and multi-shell support.',
+			'A fast shell prompt generator with daemon caching and multi-shell support.',
 		url: 'https://github.com/jeffjose/twig',
 		languages: ['Rust']
 	},
@@ -83,14 +83,14 @@ export const projects: Project[] = [
 		name: 'utter',
 		dateRange: '2025-present',
 		description:
-			'An Android-to-Linux dictation system that routes voice input from your phone to your computer as keyboard input.',
+			'A dictation system that routes voice input from your phone to your computer as keyboard input.',
 		url: 'https://github.com/jeffjose/utter',
 		languages: ['TypeScript', 'Kotlin', 'Rust']
 	},
 	{
 		name: 'plexman',
 		dateRange: '2025-present',
-		description: 'A modern SvelteKit 5 web application for managing and browsing Plex media libraries.',
+		description: 'A web application for managing and browsing Plex media libraries.',
 		url: 'https://github.com/jeffjose/plexman',
 		languages: ['Svelte', 'TypeScript', 'JavaScript']
 	},
@@ -106,14 +106,14 @@ export const projects: Project[] = [
 		name: 'avatone',
 		dateRange: '2025',
 		description:
-			'A unique avatar generator that creates consistent, deterministic avatars from input strings using duotone color palettes and abstract wave patterns.',
+			'A unique avatar generator that creates consistent, deterministic avatars from input strings.',
 		url: 'https://github.com/jeffjose/avatone',
 		languages: ['TypeScript', 'Svelte', 'JavaScript']
 	},
 	{
 		name: 'seal',
 		dateRange: '2025',
-		description: 'A simple, secure file encryption CLI tool using AES-256-GCM with Argon2 key derivation.',
+		description: 'A simple, secure file encryption tool.',
 		url: 'https://github.com/jeffjose/seal',
 		languages: ['Rust']
 	}
