@@ -80,26 +80,25 @@
 				>, working on
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="#3DDC84">
-						<path d="M6.532 6.2h10.936v8.397a2 2 0 0 1-2 2H8.532a2 2 0 0 1-2-2V6.2z" />
-						<path d="M6.532 6.2h10.936" stroke="#3DDC84" stroke-width="0.5" fill="none" />
-						<circle cx="9.5" cy="9.8" r="1" fill="white" />
-						<circle cx="14.5" cy="9.8" r="1" fill="white" />
+						<path d="M3 18 A9 9 0 0 1 21 18 Z" />
+						<circle cx="9" cy="14.5" r="1.4" fill="white" />
+						<circle cx="15" cy="14.5" r="1.4" fill="white" />
 						<line
-							x1="8"
-							y1="3"
-							x2="9.5"
-							y2="5.5"
+							x1="7.5"
+							y1="4"
+							x2="9.2"
+							y2="8.5"
 							stroke="#3DDC84"
-							stroke-width="1.2"
+							stroke-width="1.5"
 							stroke-linecap="round"
 						/>
 						<line
-							x1="16"
-							y1="3"
-							x2="14.5"
-							y2="5.5"
+							x1="16.5"
+							y1="4"
+							x2="14.8"
+							y2="8.5"
 							stroke="#3DDC84"
-							stroke-width="1.2"
+							stroke-width="1.5"
 							stroke-linecap="round"
 						/>
 					</svg>
