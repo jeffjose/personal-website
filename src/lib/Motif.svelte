@@ -48,7 +48,7 @@
 		<!-- computer talking to a phone -->
 		<rect x="2" y="6.5" width="9.5" height="7" rx="1" />
 		<path d="M1 16.5h11.5" />
-		<rect x="18" y="5" width="4.5" height="13" rx="1.25" />
+		<rect class="phone" x="18" y="5" width="4.5" height="13" rx="1.25" />
 		<circle class="packet" cx="13" cy="10.5" r="0.6" fill="currentColor" />
 		<circle
 			class="packet"
@@ -66,11 +66,11 @@
 	{:else if name === 'seal'}
 		<!-- a lock opening and snapping shut -->
 		<path class="shackle" d="M8 11V8a4 4 0 0 1 8 0v3" />
-		<rect x="5" y="11" width="14" height="10" rx="2" />
+		<rect class="lock-body" x="5" y="11" width="14" height="10" rx="2" />
 		<path d="M12 15v2" />
 	{:else if name === 'tget'}
 		<!-- pieces pulled down into a magnet -->
-		<path d="M5 11v3a7 7 0 0 0 14 0v-3h-4v3a3 3 0 0 1-6 0v-3Z" />
+		<path class="magnet" d="M5 11v3a7 7 0 0 0 14 0v-3h-4v3a3 3 0 0 1-6 0v-3Z" />
 		<circle class="piece" cx="12" cy="3" r="0.75" fill="currentColor" />
 		<circle
 			class="piece"
@@ -102,7 +102,7 @@
 		<path class="readout" d="M16 16h5.5" style="animation-delay: 400ms" />
 	{:else if name === 'twig'}
 		<!-- a prompt with a segment and a cursor -->
-		<path d="M4 7l5 5-5 5" />
+		<path class="chevron" d="M4 7l5 5-5 5" />
 		<rect class="segment" x="12" y="6" width="9" height="3" rx="1.5" />
 		<path class="cursor" d="M12.5 17h6" />
 	{:else if name === 'timeago-cli'}
@@ -114,13 +114,21 @@
 </svg>
 
 <style>
-	.motif :is(.pop, .coin, .twinkle, .segment) {
+	.motif {
+		--spring: cubic-bezier(0.34, 1.8, 0.64, 1);
+		overflow: visible;
+	}
+	.motif :is(.pop, .coin, .twinkle, .shot-a, .shot-b, .phone) {
 		transform-box: fill-box;
 		transform-origin: center;
 	}
 	.motif :is(.readout, .segment) {
 		transform-box: fill-box;
 		transform-origin: left;
+	}
+	.motif :is(.lock-body, .magnet) {
+		transform-box: fill-box;
+		transform-origin: bottom;
 	}
 	.motif :is(.hand-hour, .hand-minute) {
 		transform-origin: 12px 12px;
@@ -129,179 +137,295 @@
 		opacity: 0;
 	}
 
+	/* The whole glyph gives a little boing as the card is entered */
+	:global(.group:hover) .motif {
+		animation: boing 550ms var(--spring);
+	}
+
 	:global(.group:hover) .pop {
-		animation: pop 1.6s ease-in-out infinite;
+		animation: pop 1.5s ease-in-out infinite;
 	}
 	:global(.group:hover) .trace {
 		stroke-dasharray: 100;
-		animation: trace 1.8s ease-out infinite;
+		animation:
+			trace 1.8s ease-out infinite,
+			hop 1.8s ease-out infinite;
 	}
 	:global(.group:hover) .shot-a {
-		animation: shot-a 3s ease-in-out infinite;
+		animation: shot-a 2.6s var(--spring) infinite;
 	}
 	:global(.group:hover) .shot-b {
-		animation: shot-b 3s ease-in-out infinite;
+		animation: shot-b 2.6s var(--spring) infinite;
 	}
 	:global(.group:hover) .coin {
-		animation: coin 1.6s ease-out infinite both;
+		animation: coin 1.5s infinite both;
 	}
 	:global(.group:hover) .packet {
-		animation: packet 900ms linear infinite both;
+		animation: packet 800ms linear infinite both;
+	}
+	:global(.group:hover) .phone {
+		animation: catch 800ms ease-out infinite;
 	}
 	:global(.group:hover) .row-a {
-		animation: row-a 2.4s ease-in-out infinite;
+		animation: row-a 2.2s var(--spring) infinite;
 	}
 	:global(.group:hover) .row-b {
-		animation: row-b 2.4s ease-in-out infinite;
+		animation: row-b 2.2s var(--spring) infinite;
 	}
 	:global(.group:hover) .shackle {
-		animation: shackle 1.8s ease-in-out infinite;
+		animation: shackle 1.6s var(--spring) infinite;
+	}
+	:global(.group:hover) .lock-body {
+		animation: slam 1.6s ease-out infinite;
 	}
 	:global(.group:hover) .piece {
-		animation: piece 1s ease-in infinite both;
+		animation: piece 900ms ease-in infinite both;
+	}
+	:global(.group:hover) .magnet {
+		animation: gulp 900ms ease-out infinite;
 	}
 	:global(.group:hover) .twinkle {
-		animation: twinkle 1.4s ease-in-out infinite;
+		animation: twinkle 1.3s var(--spring) infinite;
 	}
 	:global(.group:hover) .readout {
-		animation: readout 1.8s ease-out infinite both;
+		animation: readout 1.7s var(--spring) infinite both;
 	}
 	:global(.group:hover) .segment {
-		animation: readout 2s ease-out infinite;
+		animation: readout 1.9s var(--spring) infinite;
+	}
+	:global(.group:hover) .chevron {
+		animation: nudge 950ms var(--spring) infinite;
 	}
 	:global(.group:hover) .cursor {
-		animation: cursor 1s steps(1) infinite;
+		animation: cursor 950ms steps(1) infinite;
 	}
 	:global(.group:hover) .hand-minute {
-		animation: turn 1.5s linear infinite;
+		animation: tick 2s var(--spring) infinite;
 	}
 	:global(.group:hover) .hand-hour {
-		animation: turn 18s linear infinite;
+		animation: turn 24s linear infinite;
 	}
 
-	@keyframes pop {
-		0%,
-		40%,
+	@keyframes boing {
+		0% {
+			transform: scale(1);
+		}
+		35% {
+			transform: scale(1.28, 0.82);
+		}
 		100% {
 			transform: scale(1);
 		}
-		20% {
-			transform: scale(1.22);
+	}
+	@keyframes pop {
+		0%,
+		55%,
+		100% {
+			transform: scale(1);
+		}
+		14% {
+			transform: scale(1.4);
+		}
+		28% {
+			transform: scale(0.86);
+		}
+		40% {
+			transform: scale(1.1);
 		}
 	}
 	@keyframes trace {
 		0% {
 			stroke-dashoffset: 100;
 		}
-		70%,
+		60%,
 		100% {
 			stroke-dashoffset: 0;
 		}
 	}
-	@keyframes shot-a {
-		0%,
-		40%,
-		100% {
-			opacity: 1;
-		}
-		50%,
-		90% {
-			opacity: 0;
-		}
-	}
-	@keyframes shot-b {
-		0%,
-		40%,
-		100% {
-			opacity: 0;
-		}
-		50%,
-		90% {
-			opacity: 1;
-		}
-	}
-	@keyframes coin {
-		0% {
-			transform: translateY(-7px);
-			opacity: 0;
-		}
-		25%,
-		100% {
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-	@keyframes packet {
-		0% {
-			transform: translateX(0);
-			opacity: 0;
-		}
-		20%,
-		80% {
-			opacity: 1;
-		}
-		100% {
-			transform: translateX(4.5px);
-			opacity: 0;
-		}
-	}
-	@keyframes row-a {
-		0%,
-		20%,
-		90%,
-		100% {
-			transform: translateY(0);
-		}
-		40%,
-		70% {
-			transform: translateY(11px);
-		}
-	}
-	@keyframes row-b {
-		0%,
-		20%,
-		90%,
-		100% {
-			transform: translateY(0);
-		}
-		40%,
-		70% {
-			transform: translateY(-11px);
-		}
-	}
-	@keyframes shackle {
+	@keyframes hop {
 		0%,
 		60%,
 		100% {
 			transform: translateY(0);
 		}
-		25%,
+		70% {
+			transform: translateY(-3px);
+		}
+		80% {
+			transform: translateY(0);
+		}
+		88% {
+			transform: translateY(-1.2px);
+		}
+	}
+	@keyframes shot-a {
+		0%,
+		38% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		46%,
+		92% {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@keyframes shot-b {
+		0%,
+		42% {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+		54%,
+		88% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		96%,
+		100% {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+	}
+	@keyframes coin {
+		0% {
+			transform: translateY(-9px);
+			opacity: 0;
+			animation-timing-function: ease-in;
+		}
+		18% {
+			transform: translateY(0) scale(1.14, 0.7);
+			opacity: 1;
+			animation-timing-function: ease-out;
+		}
+		30% {
+			transform: translateY(-3.5px) scale(0.96, 1.08);
+			animation-timing-function: ease-in;
+		}
+		42% {
+			transform: translateY(0) scale(1.07, 0.86);
+			animation-timing-function: ease-out;
+		}
+		50% {
+			transform: translateY(-1px) scale(1);
+		}
+		58%,
+		100% {
+			transform: translateY(0) scale(1);
+			opacity: 1;
+		}
+	}
+	@keyframes packet {
+		0% {
+			transform: translate(0, 0);
+			opacity: 0;
+		}
+		15% {
+			opacity: 1;
+		}
+		50% {
+			transform: translate(2.25px, -4px);
+		}
+		85% {
+			opacity: 1;
+		}
+		100% {
+			transform: translate(4.5px, 0);
+			opacity: 0;
+		}
+	}
+	@keyframes catch {
+		0%,
+		70%,
+		100% {
+			transform: scale(1);
+		}
+		85% {
+			transform: scale(1.18, 0.92);
+		}
+	}
+	@keyframes row-a {
+		0%,
+		15%,
+		85%,
+		100% {
+			transform: translateY(0);
+		}
+		40%,
+		65% {
+			transform: translateY(11px);
+		}
+	}
+	@keyframes row-b {
+		0%,
+		15%,
+		85%,
+		100% {
+			transform: translateY(0);
+		}
+		40%,
+		65% {
+			transform: translateY(-11px);
+		}
+	}
+	@keyframes shackle {
+		0%,
+		62%,
+		100% {
+			transform: translateY(0);
+		}
+		22%,
 		45% {
-			transform: translateY(-2.5px);
+			transform: translateY(-3.5px) rotate(-6deg);
+		}
+	}
+	@keyframes slam {
+		0%,
+		55%,
+		75%,
+		100% {
+			transform: scale(1);
+		}
+		63% {
+			transform: scale(1.1, 0.84);
 		}
 	}
 	@keyframes piece {
 		0% {
-			transform: translateY(-1px);
+			transform: translateY(-2px);
 			opacity: 0;
 		}
-		25% {
+		20% {
 			opacity: 1;
 		}
 		100% {
-			transform: translateY(8px);
+			transform: translateY(9px);
 			opacity: 0;
+		}
+	}
+	@keyframes gulp {
+		0%,
+		60%,
+		100% {
+			transform: scale(1);
+		}
+		80% {
+			transform: scale(1.12, 0.86);
 		}
 	}
 	@keyframes twinkle {
 		0%,
 		100% {
-			transform: scale(1);
+			transform: scale(1) rotate(0deg);
 			opacity: 1;
 		}
-		50% {
-			transform: scale(0.45);
-			opacity: 0.35;
+		45% {
+			transform: scale(0.3) rotate(-45deg);
+			opacity: 0.4;
 		}
 	}
 	@keyframes readout {
@@ -313,12 +437,39 @@
 			transform: scaleX(1);
 		}
 	}
+	@keyframes nudge {
+		0%,
+		55%,
+		100% {
+			transform: translateX(0);
+		}
+		25% {
+			transform: translateX(2.5px);
+		}
+	}
 	@keyframes cursor {
 		0% {
 			opacity: 1;
 		}
 		50% {
 			opacity: 0;
+		}
+	}
+	@keyframes tick {
+		0% {
+			transform: rotate(0deg);
+		}
+		25% {
+			transform: rotate(90deg);
+		}
+		50% {
+			transform: rotate(180deg);
+		}
+		75% {
+			transform: rotate(270deg);
+		}
+		100% {
+			transform: rotate(360deg);
 		}
 	}
 	@keyframes turn {
@@ -328,6 +479,7 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.motif,
 		.motif :global(*) {
 			animation: none !important;
 		}
