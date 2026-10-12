@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { projects, categories } from '$lib/data/projects';
+	import type { Category, Project } from '$lib/data/projects';
 	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 	import Star from 'lucide-svelte/icons/star';
 
@@ -21,10 +22,32 @@
 		return !!url && !url.includes('github.com');
 	}
 
-	const featured = projects.filter((p) => p.featured);
-	const groups = categories
-		.map((c) => ({ ...c, projects: projects.filter((p) => p.category === c.id && !p.featured) }))
-		.filter((g) => g.projects.length > 0);
+	// Interleave categories so no one kind of project ends up at the bottom
+	function mix(list: Project[]): Project[] {
+		const queues = categories.map((c) => list.filter((p) => p.category === c.id));
+		const out: Project[] = [];
+		while (queues.some((q) => q.length > 0)) {
+			for (const q of queues) {
+				const next = q.shift();
+				if (next) out.push(next);
+			}
+		}
+		return out;
+	}
+
+	const featured = mix(projects.filter((p) => p.featured));
+	const rest = projects.filter((p) => !p.featured);
+	const years = [...new Set(rest.map((p) => p.year))].sort((a, b) => b - a);
+	const mixed = years.flatMap((y) => mix(rest.filter((p) => p.year === y)));
+	const filters = categories
+		.map((c) => ({ ...c, count: rest.filter((p) => p.category === c.id).length }))
+		.filter((c) => c.count > 0);
+
+	let activeCategory = $state<Category | 'all'>('all');
+
+	const listed = $derived(
+		activeCategory === 'all' ? mixed : mixed.filter((p) => p.category === activeCategory)
+	);
 </script>
 
 <main class="min-h-screen">
@@ -225,14 +248,23 @@
 					{/each}
 				</div>
 
-				<!-- Everything else, by category -->
-				{#each groups as group}
-					<div>
-						<h3 class="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">
-							{group.label}
-						</h3>
+				<!-- Everything else -->
+				<div>
+					<div class="mb-4 flex flex-wrap gap-2">
+						{#each [{ id: 'all' as const, label: 'All', count: rest.length }, ...filters] as filter}
+							<button
+								class="rounded-full px-3 py-1 text-xs transition-colors {activeCategory === filter.id
+									? 'bg-foreground text-background'
+									: 'bg-muted text-muted-foreground hover:text-foreground'}"
+								onclick={() => (activeCategory = filter.id)}
+							>
+								{filter.label}
+								<span class="tabular-nums opacity-60">{filter.count}</span>
+							</button>
+						{/each}
+					</div>
 						<ul>
-							{#each group.projects as project}
+							{#each listed as project (project.name)}
 								<li>
 									<svelte:element
 										this={project.url ? 'a' : 'div'}
@@ -256,9 +288,7 @@
 										<span
 											class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs tabular-nums sm:w-28 sm:justify-end"
 										>
-											{#if !project.url}
-												<span>private</span>
-											{:else if isLive(project.url)}
+											{#if isLive(project.url)}
 												<span class="text-foreground/70">live</span>
 											{:else}
 												<span class="flex items-center gap-1.5">
@@ -276,7 +306,6 @@
 							{/each}
 						</ul>
 					</div>
-				{/each}
 			</div>
 		</div>
 	</div>

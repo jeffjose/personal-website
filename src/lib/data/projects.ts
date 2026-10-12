@@ -8,7 +8,7 @@ export interface Project {
 	url?: string;
 	languages: string[];
 	category: Category;
-	/** Shown as a card at the top instead of a row in its category */
+	/** Shown as a card at the top instead of a row in the list */
 	featured?: boolean;
 	/** One real invocation, shown on featured cards */
 	command?: string;
@@ -52,9 +52,7 @@ export const projects: Project[] = [
 			'Present a directory in whatever order you want, so that * expands to it. Sort, shuffle, filter.',
 		url: 'https://github.com/jeffjose/magicfs',
 		languages: ['Rust'],
-		category: 'cli',
-		featured: true,
-		command: 'magicfs -s random && feh *'
+		category: 'cli'
 	},
 	{
 		name: 'ccpace',
@@ -267,7 +265,8 @@ export const projects: Project[] = [
 			'A semantic diff viewer for prose: what an editor moved, reworded, split, merged, or cut.',
 		url: 'https://github.com/jeffjose/redline',
 		languages: ['TypeScript', 'Svelte'],
-		category: 'web'
+		category: 'web',
+		featured: true
 	},
 	{
 		name: 'graphprix',
