@@ -1,24 +1,7 @@
 <script lang="ts">
-	import { projects } from '$lib/data/projects';
-	import type { BannerStyle } from '$lib/data/projects';
-	import Camera from 'lucide-svelte/icons/camera';
-	import Rocket from 'lucide-svelte/icons/rocket';
-	import Activity from 'lucide-svelte/icons/activity';
-	import Eye from 'lucide-svelte/icons/eye';
-	import Hash from 'lucide-svelte/icons/hash';
-	import Calendar from 'lucide-svelte/icons/calendar';
-	import Eraser from 'lucide-svelte/icons/eraser';
-	import Download from 'lucide-svelte/icons/download';
-	import Terminal from 'lucide-svelte/icons/terminal';
-	import Mic from 'lucide-svelte/icons/mic';
-	import Film from 'lucide-svelte/icons/film';
-	import Headphones from 'lucide-svelte/icons/headphones';
-	import Palette from 'lucide-svelte/icons/palette';
-	import Lock from 'lucide-svelte/icons/lock';
-	import Search from 'lucide-svelte/icons/search';
-	import DollarSign from 'lucide-svelte/icons/dollar-sign';
-	import SquareTerminal from 'lucide-svelte/icons/square-terminal';
-	import Presentation from 'lucide-svelte/icons/presentation';
+	import { projects, categories } from '$lib/data/projects';
+	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
+	import Star from 'lucide-svelte/icons/star';
 
 	const languageColors: Record<string, string> = {
 		Rust: '#dea584',
@@ -30,86 +13,18 @@
 		Shell: '#89e051'
 	};
 
-	const iconMap: Record<string, typeof Camera> = {
-		Camera,
-		Rocket,
-		Activity,
-		Eye,
-		Hash,
-		Calendar,
-		Eraser,
-		Download,
-		Terminal,
-		Mic,
-		Film,
-		Headphones,
-		Palette,
-		Lock,
-		Search,
-		DollarSign,
-		SquareTerminal,
-		Presentation
-	};
-
-	// Each project gets a unique color palette for its banner
-	const bannerColors: Record<string, [string, string, string]> = {
-		icons: ['#6366f1', '#8b5cf6', '#a78bfa'],
-		hotshot: ['#ef4444', '#f97316', '#fbbf24'],
-		duomo: ['#06b6d4', '#3b82f6', '#6366f1'],
-		moneypile: ['#10b981', '#34d399', '#6ee7b7'],
-		graphprix: ['#f43f5e', '#e11d48', '#be123c'],
-		plexcli: ['#f59e0b', '#d97706', '#b45309'],
-		slides: ['#8b5cf6', '#a855f7', '#d946ef'],
-		wat: ['#14b8a6', '#0d9488', '#0f766e'],
-		loc: ['#f97316', '#fb923c', '#fdba74'],
-		'git-cal': ['#22c55e', '#16a34a', '#15803d'],
-		safeclean: ['#3b82f6', '#2563eb', '#1d4ed8'],
-		'deb-downloader': ['#64748b', '#475569', '#334155'],
-		twig: ['#84cc16', '#a3e635', '#d9f99d'],
-		utter: ['#ec4899', '#f472b6', '#f9a8d4'],
-		plexman: ['#eab308', '#facc15', '#fde047'],
-		audtag: ['#7c3aed', '#8b5cf6', '#a78bfa'],
-		avatone: ['#f43f5e', '#fb7185', '#fda4af'],
-		seal: ['#0ea5e9', '#38bdf8', '#7dd3fc']
-	};
-
-	function getBannerStyle(name: string, banner: BannerStyle): string {
-		const [c1, c2, c3] = bannerColors[name] || ['#6366f1', '#8b5cf6', '#a78bfa'];
-		switch (banner) {
-			case 'mesh':
-				return `background: ${c1}; background-image: radial-gradient(at 40% 20%, ${c2} 0px, transparent 50%), radial-gradient(at 80% 0%, ${c3} 0px, transparent 50%), radial-gradient(at 0% 50%, ${c1} 0px, transparent 50%), radial-gradient(at 80% 80%, ${c2} 0px, transparent 50%), radial-gradient(at 0% 100%, ${c3} 0px, transparent 50%);`;
-			case 'noise':
-				return `background: linear-gradient(135deg, ${c1} 0%, ${c2} 50%, ${c3} 100%); background-size: 100% 100%;`;
-			case 'geometric':
-				return `background-color: ${c1}; background-image: linear-gradient(30deg, ${c2}44 12%, transparent 12.5%, transparent 87%, ${c2}44 87.5%, ${c2}44), linear-gradient(150deg, ${c2}44 12%, transparent 12.5%, transparent 87%, ${c2}44 87.5%, ${c2}44), linear-gradient(30deg, ${c2}44 12%, transparent 12.5%, transparent 87%, ${c2}44 87.5%, ${c2}44), linear-gradient(150deg, ${c2}44 12%, transparent 12.5%, transparent 87%, ${c2}44 87.5%, ${c2}44), linear-gradient(60deg, ${c3}33 25%, transparent 25.5%, transparent 75%, ${c3}33 75%, ${c3}33), linear-gradient(60deg, ${c3}33 25%, transparent 25.5%, transparent 75%, ${c3}33 75%, ${c3}33); background-size: 40px 70px; background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;`;
-			case 'dots':
-				return `background-color: ${c1}; background-image: radial-gradient(${c3}66 1.5px, transparent 1.5px); background-size: 16px 16px;`;
-			case 'waves':
-				return `background: linear-gradient(135deg, ${c1} 25%, transparent 25%) -50px 0, linear-gradient(225deg, ${c1} 25%, transparent 25%) -50px 0, linear-gradient(315deg, ${c1} 25%, transparent 25%), linear-gradient(45deg, ${c1} 25%, transparent 25%); background-size: 100px 50px; background-color: ${c2};`;
-			default:
-				return `background: ${c1};`;
-		}
-	}
-
-	function needsDarkText(name: string): boolean {
-		const lightBanners = ['plexman', 'twig', 'moneypile', 'loc', 'utter'];
-		return lightBanners.includes(name);
-	}
-
 	function getDotColor(lang: string): string {
 		return languageColors[lang] || '#6b7280';
 	}
 
-	// Filter state
-	let activeFilter = $state('All');
+	function isLive(url?: string): boolean {
+		return !!url && !url.includes('github.com');
+	}
 
-	const allLanguages = [...new Set(projects.flatMap((p) => p.languages))].sort();
-
-	const filteredProjects = $derived(
-		activeFilter === 'All'
-			? projects
-			: projects.filter((p) => p.languages.includes(activeFilter))
-	);
+	const featured = projects.filter((p) => p.featured);
+	const groups = categories
+		.map((c) => ({ ...c, projects: projects.filter((p) => p.category === c.id && !p.featured) }))
+		.filter((g) => g.projects.length > 0);
 </script>
 
 <main class="min-h-screen">
@@ -243,97 +158,125 @@
 			<div class="border-border/30 mt-16 border-t"></div>
 
 			<!-- Projects Section -->
-			<div class="mt-10 space-y-6">
-				<h2 class="text-foreground text-xl font-semibold">
-					Projects <span class="text-muted-foreground text-base font-normal">{filteredProjects.length}</span>
-				</h2>
-
-				<div class="flex flex-wrap gap-2">
-					<button
-						class="rounded-full px-3 py-1 text-xs transition-colors {activeFilter === 'All' ? 'bg-foreground text-background' : 'bg-muted text-muted-foreground hover:text-foreground'}"
-						onclick={() => activeFilter = 'All'}
-					>All</button>
-					{#each allLanguages as lang}
-						<button
-							class="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs transition-colors {activeFilter === lang ? 'bg-foreground text-background' : 'bg-muted text-muted-foreground hover:text-foreground'}"
-							onclick={() => activeFilter = lang}
+			<div class="mt-10 space-y-10">
+				<div class="flex items-baseline justify-between">
+					<h2 class="text-foreground text-xl font-semibold">
+						Projects <span class="text-muted-foreground text-base font-normal"
+							>{projects.length}</span
 						>
-							<span
-								class="inline-block h-2 w-2 rounded-full"
-								style={`background-color: ${getDotColor(lang)};`}
-							></span>
-							{lang}
-						</button>
+					</h2>
+					<a
+						href="https://github.com/jeffjose?tab=repositories"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+					>
+						More on GitHub
+					</a>
+				</div>
+
+				<!-- Featured -->
+				<div class="grid gap-3 sm:grid-cols-2">
+					{#each featured as project}
+						<a
+							href={project.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group border-border hover:border-foreground/30 hover:bg-muted/40 flex flex-col rounded-xl border p-4 transition-colors"
+						>
+							<div class="flex items-center justify-between gap-3">
+								<h3 class="text-foreground font-medium tracking-tight">{project.name}</h3>
+								{#if project.stars}
+									<span class="text-muted-foreground flex items-center gap-1 text-xs tabular-nums">
+										<Star class="h-3 w-3" />
+										{project.stars}
+									</span>
+								{:else}
+									<ArrowUpRight
+										class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors"
+									/>
+								{/if}
+							</div>
+							<p class="text-muted-foreground mt-1.5 flex-1 text-sm leading-relaxed">
+								{project.description}
+							</p>
+							<div
+								class="bg-muted text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 font-mono text-xs"
+							>
+								{#if project.command}
+									<span class="text-muted-foreground mr-1.5 select-none">$</span>{project.command}
+								{:else if project.url}
+									{project.url.replace(/^https?:\/\//, '')}
+								{/if}
+							</div>
+							<div class="text-muted-foreground mt-3 flex items-center gap-3 text-xs">
+								{#each project.languages as language}
+									<span class="flex items-center gap-1.5">
+										<span
+											class="inline-block h-2 w-2 rounded-full"
+											style={`background-color: ${getDotColor(language)};`}
+										></span>
+										{language}
+									</span>
+								{/each}
+								<span class="ml-auto tabular-nums">{project.year}</span>
+							</div>
+						</a>
 					{/each}
 				</div>
 
-				<div class="flex flex-col gap-10">
-					{#each filteredProjects as project, i}
-						{@const Tag = project.url ? 'a' : 'div'}
-						<div>
-							<svelte:element
-								this={Tag}
-								href={project.url || undefined}
-								target={project.url ? '_blank' : undefined}
-								rel={project.url ? 'noopener noreferrer' : undefined}
-								class="border-border hover:border-foreground/30 group block overflow-hidden rounded-2xl border transition-all duration-200 hover:shadow-lg {project.url ? 'cursor-pointer' : 'cursor-default'}"
-							>
-								<!-- Banner -->
-								<div
-									class="relative h-40 overflow-hidden"
-									style={getBannerStyle(project.name, project.banner)}
-								>
-									{#if project.banner === 'noise'}
-										<svg class="absolute inset-0 h-full w-full opacity-40" xmlns="http://www.w3.org/2000/svg">
-											<filter id="noise-{project.name}">
-												<feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-											</filter>
-											<rect width="100%" height="100%" filter="url(#noise-{project.name})" />
-										</svg>
-									{/if}
-									<div class="absolute inset-0 flex items-center justify-center">
-										<svelte:component this={iconMap[project.icon]} class="h-10 w-10 text-white/80" strokeWidth={1.5} />
-									</div>
-								</div>
-								<!-- Content -->
-								<div class="px-6 py-5">
-									<div class="flex items-baseline justify-between">
-										<h3 class="text-foreground/70 text-lg font-medium tracking-tight">{project.name}</h3>
-										<span class="text-muted-foreground text-xs">{project.dateRange}</span>
-									</div>
-									<p class="text-muted-foreground mt-2 text-sm leading-relaxed">
-										{project.description}
-									</p>
-								</div>
-								<!-- Footer -->
-								<div class="bg-muted/60 px-6 py-3">
-									<div class="flex items-center justify-between">
-										<div class="flex items-center gap-3">
-											{#each project.languages as language}
-												<span class="text-muted-foreground flex items-center gap-1.5 text-xs">
+				<!-- Everything else, by category -->
+				{#each groups as group}
+					<div>
+						<h3 class="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">
+							{group.label}
+						</h3>
+						<ul>
+							{#each group.projects as project}
+								<li>
+									<svelte:element
+										this={project.url ? 'a' : 'div'}
+										href={project.url}
+										target={project.url ? '_blank' : undefined}
+										rel={project.url ? 'noopener noreferrer' : undefined}
+										class="group -mx-3 flex flex-col gap-x-4 gap-y-0.5 rounded-lg px-3 py-2 transition-colors sm:flex-row sm:items-baseline {project.url
+											? 'hover:bg-muted/60'
+											: ''}"
+									>
+										<span
+											class="text-foreground/90 shrink-0 text-sm font-medium sm:w-36 {project.url
+												? 'group-hover:text-foreground'
+												: ''}"
+										>
+											{project.name}
+										</span>
+										<span class="text-muted-foreground min-w-0 flex-1 text-sm leading-relaxed">
+											{project.description}
+										</span>
+										<span
+											class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs tabular-nums sm:w-28 sm:justify-end"
+										>
+											{#if !project.url}
+												<span>private</span>
+											{:else if isLive(project.url)}
+												<span class="text-foreground/70">live</span>
+											{:else}
+												<span class="flex items-center gap-1.5">
 													<span
 														class="inline-block h-2 w-2 rounded-full"
-														style={`background-color: ${getDotColor(language)};`}
+														style={`background-color: ${getDotColor(project.languages[0])};`}
 													></span>
-													{language}
+													{project.languages[0]}
 												</span>
-											{/each}
-										</div>
-										{#if project.url}
-											<span class="text-muted-foreground text-xs underline underline-offset-2 transition-colors group-hover:text-foreground">
-												{project.url.replace(/^https?:\/\//, '')}
-											</span>
-										{/if}
-									</div>
-								</div>
-							</svelte:element>
-
-							{#if i < filteredProjects.length - 1}
-								<div class="border-border/30 mt-10 border-t"></div>
-							{/if}
-						</div>
-					{/each}
-				</div>
+											{/if}
+											<span>{project.year}</span>
+										</span>
+									</svelte:element>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
 			</div>
 		</div>
 	</div>
