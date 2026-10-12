@@ -61,7 +61,7 @@
 									style="animation-delay: {i * 120}ms"
 								/>
 							</svg>
-							<span class="text-muted-foreground font-mono text-[10px]">{metric}</span>
+							<span class="text-muted-foreground text-[10px]">{metric}</span>
 						</span>
 					{/each}
 				</span>

@@ -191,7 +191,7 @@
 							</p>
 							{#if project.command || isLive(project.url)}
 								<div
-									class="bg-background/60 text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 font-mono text-xs"
+									class="bg-background/60 text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 text-xs"
 								>
 									{#if project.command}
 										<span class="text-muted-foreground mr-1.5 select-none">$</span>{project.command}
