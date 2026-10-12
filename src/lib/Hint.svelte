@@ -1,7 +1,26 @@
 <script lang="ts">
-	type Kind = 'cube' | 'vitals' | 'fingerprint' | 'ball';
+	type Kind = 'cube' | 'vitals' | 'fingerprint' | 'ball' | 'film' | 'credits';
 
-	let { label, kind, caption }: { label: string; kind: Kind; caption: string } = $props();
+	let {
+		label,
+		kind,
+		caption,
+		year,
+		credits = [],
+		href,
+		italic = false
+	}: {
+		label: string;
+		kind: Kind;
+		caption?: string;
+		/** Shown inside the frame for kind="film" */
+		year?: number;
+		/** Rolled like end credits for kind="credits" */
+		credits?: { title: string; year: number }[];
+		/** Makes the term a link as well */
+		href?: string;
+		italic?: boolean;
+	} = $props();
 
 	let host: HTMLElement;
 	let tip: HTMLElement;
@@ -19,11 +38,17 @@
 	}
 </script>
 
-<span
+<svelte:element
+	this={href ? 'a' : 'span'}
 	bind:this={host}
-	class="hint text-foreground/90 decoration-foreground/30 relative inline-block cursor-default whitespace-nowrap underline decoration-dotted underline-offset-4 outline-none"
-	role="button"
-	tabindex="0"
+	{href}
+	target={href ? '_blank' : undefined}
+	rel={href ? 'noopener noreferrer' : undefined}
+	class="hint text-foreground/90 decoration-foreground/30 relative inline-block whitespace-nowrap underline underline-offset-4 outline-none {href
+		? ''
+		: 'cursor-default decoration-dotted'} {italic ? 'italic' : ''}"
+	role={href ? undefined : 'button'}
+	tabindex={href ? undefined : 0}
 	onmouseenter={place}
 	onfocus={place}
 >
@@ -31,11 +56,41 @@
 	<span
 		bind:this={tip}
 		role="tooltip"
-		class="tip bg-card border-foreground/10 pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 flex w-44 flex-col items-center gap-3 rounded-xl border px-4 pt-5 pb-3 whitespace-normal shadow-xl shadow-black/30"
+		class="tip bg-card border-foreground/10 pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 flex flex-col items-center gap-3 rounded-xl border px-4 whitespace-normal not-italic shadow-xl shadow-black/30 {kind ===
+		'film'
+			? 'py-3'
+			: 'w-44 pt-5 pb-3'}"
 		style="--shift: {shift}px"
 	>
-		<span class="flex h-14 items-center justify-center">
-			{#if kind === 'cube'}
+		<span class="flex min-h-14 items-center justify-center">
+			{#if kind === 'film'}
+				<svg class="h-12 w-[4.5rem]" viewBox="0 0 72 48" fill="none">
+					<rect x="1" y="1" width="70" height="46" rx="4" fill="currentColor" opacity="0.08" />
+					<line class="sprockets" x1="0" y1="7" x2="72" y2="7" />
+					<line class="sprockets" x1="0" y1="41" x2="72" y2="41" />
+					<rect x="6" y="13" width="60" height="22" rx="2" stroke="currentColor" opacity="0.3" />
+					<text
+						x="36"
+						y="28.5"
+						text-anchor="middle"
+						fill="currentColor"
+						font-size="11"
+						font-weight="600"
+						style="font-variant-numeric: tabular-nums">{year}</text
+					>
+				</svg>
+			{:else if kind === 'credits'}
+				<span class="roll-window">
+					<span class="roll">
+						{#each credits as credit}
+							<span class="flex justify-between gap-3 text-[11px] leading-5">
+								<span class="text-foreground/90">{credit.title}</span>
+								<span class="text-muted-foreground tabular-nums">{credit.year}</span>
+							</span>
+						{/each}
+					</span>
+				</span>
+			{:else if kind === 'cube'}
 				<span class="scene">
 					<span class="cube">
 						{#each ['front', 'back', 'left', 'right', 'top', 'bottom'] as face}
@@ -85,9 +140,11 @@
 				</svg>
 			{/if}
 		</span>
-		<span class="text-muted-foreground text-center text-xs leading-snug">{caption}</span>
+		{#if caption}
+			<span class="text-muted-foreground text-center text-xs leading-snug">{caption}</span>
+		{/if}
 	</span>
-</span>
+</svelte:element>
 
 <style>
 	.tip {
@@ -104,12 +161,47 @@
 	}
 
 	/* Animations only run while the popover is showing */
-	.tip :is(.cube, .ring, .ridge, .ball, .shadow) {
+	.tip :is(.cube, .ring, .ridge, .ball, .shadow, .sprockets, .roll) {
 		animation-play-state: paused;
 	}
-	.hint:hover .tip :is(.cube, .ring, .ridge, .ball, .shadow),
-	.hint:focus .tip :is(.cube, .ring, .ridge, .ball, .shadow) {
+	.hint:hover .tip :is(.cube, .ring, .ridge, .ball, .shadow, .sprockets, .roll),
+	.hint:focus .tip :is(.cube, .ring, .ridge, .ball, .shadow, .sprockets, .roll) {
 		animation-play-state: running;
+	}
+
+	/* Film frame with running sprocket holes */
+	.sprockets {
+		stroke: currentColor;
+		stroke-width: 4;
+		stroke-dasharray: 4 5;
+		opacity: 0.45;
+		animation: run 600ms linear infinite;
+	}
+	@keyframes run {
+		to {
+			stroke-dashoffset: -9;
+		}
+	}
+
+	/* End-credits roll */
+	.roll-window {
+		display: block;
+		width: 9rem;
+		height: 4.5rem;
+		overflow: hidden;
+		mask-image: linear-gradient(transparent, black 25%, black 75%, transparent);
+	}
+	.roll {
+		display: block;
+		animation: roll 9s linear infinite;
+	}
+	@keyframes roll {
+		from {
+			transform: translateY(1.5rem);
+		}
+		to {
+			transform: translateY(-100%);
+		}
 	}
 
 	/* Wireframe cube */
@@ -234,8 +326,12 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.tip :is(.cube, .ridge, .ball, .shadow) {
+		.tip :is(.cube, .ridge, .ball, .shadow, .sprockets, .roll) {
 			animation: none !important;
+		}
+		.roll-window {
+			height: auto;
+			mask-image: none;
 		}
 		.ring {
 			stroke-dashoffset: 8;

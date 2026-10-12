@@ -19,6 +19,14 @@
 		return languageColors[lang] || '#6b7280';
 	}
 
+	// Point the card's glow at the cursor
+	function spotlight(event: MouseEvent) {
+		const card = event.currentTarget as HTMLElement;
+		const rect = card.getBoundingClientRect();
+		card.style.setProperty('--x', `${event.clientX - rect.left}px`);
+		card.style.setProperty('--y', `${event.clientY - rect.top}px`);
+	}
+
 	function isLive(url?: string): boolean {
 		return !!url && !url.includes('github.com');
 	}
@@ -35,6 +43,16 @@
 		}
 		return out;
 	}
+
+	const films = [
+		{ title: 'Home', year: 2015 },
+		{ title: 'Penguins of Madagascar', year: 2014 },
+		{ title: 'How to Train Your Dragon 2', year: 2014 },
+		{ title: 'Mr. Peabody & Sherman', year: 2014 },
+		{ title: 'Rise of the Guardians', year: 2012 },
+		{ title: 'Madagascar 3', year: 2012 },
+		{ title: 'Puss in Boots', year: 2011 }
+	];
 
 	const featured = highlights.flatMap((name) => projects.find((p) => p.name === name) ?? []);
 	const rest = projects.filter((p) => !highlights.includes(p.name));
@@ -120,15 +138,17 @@
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Prior to that, I was a Lead Technical Director at
 				<Hint label="DreamWorks Animation" kind="ball" caption="Squash and stretch." />. I worked on
-				<em>How to Train Your Dragon 2</em>, <em>Madagascar 3</em>, <em>Puss in Boots</em>, and{' '}
-				<a
+				<Hint label="How to Train Your Dragon 2" kind="film" year={2014} italic />,
+				<Hint label="Madagascar 3" kind="film" year={2012} italic />,
+				<Hint label="Puss in Boots" kind="film" year={2011} italic />,
+				<Hint label="Rise of the Guardians" kind="film" year={2012} italic />, and{' '}
+				<Hint
+					label="several others"
+					kind="credits"
+					credits={films}
+					caption="Seven features at DreamWorks."
 					href="https://www.imdb.com/name/nm4162617/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-foreground/90 decoration-foreground/30 underline underline-offset-4 transition-opacity hover:opacity-70"
-				>
-					several others</a
-				>.
+				/>.
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				I studied Electrical & Electronics Engineering at BITS Pilani and earned my MBA from The
@@ -169,9 +189,12 @@
 							href={project.url}
 							target={project.url ? '_blank' : undefined}
 							rel={project.url ? 'noopener noreferrer' : undefined}
-							class="group bg-card border-foreground/10 flex flex-col rounded-xl border p-4 transition-colors {project.url
+							class="card group bg-card border-foreground/10 relative flex flex-col overflow-hidden rounded-xl border p-4 transition-colors {project.url
 								? 'hover:border-foreground/40'
 								: ''}"
+							style={`--glow: ${getDotColor(project.languages[0])};`}
+							onmousemove={spotlight}
+							role={project.url ? undefined : 'group'}
 						>
 							<div class="flex items-center justify-between gap-3">
 								<h3 class="text-foreground font-medium tracking-tight">{project.name}</h3>
@@ -282,3 +305,26 @@
 		</div>
 	</div>
 </main>
+
+<style>
+	/* A soft light in the project's language color that follows the cursor */
+	:global(.card)::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			220px circle at var(--x, 50%) var(--y, 0%),
+			color-mix(in oklab, var(--glow) 16%, transparent),
+			transparent 70%
+		);
+		opacity: 0;
+		transition: opacity 250ms;
+		pointer-events: none;
+	}
+	:global(.card:hover)::before {
+		opacity: 1;
+	}
+	:global(.card) > :global(*) {
+		position: relative;
+	}
+</style>
