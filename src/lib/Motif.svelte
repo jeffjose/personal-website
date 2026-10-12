@@ -211,7 +211,7 @@
 			transform: scale(1);
 		}
 		35% {
-			transform: scale(1.28, 0.82);
+			transform: scale(1.08, 0.88);
 		}
 		100% {
 			transform: scale(1);
@@ -298,7 +298,7 @@
 			animation-timing-function: ease-in;
 		}
 		18% {
-			transform: translateY(0) scale(1.14, 0.7);
+			transform: translateY(0) scale(1.05, 0.76);
 			opacity: 1;
 			animation-timing-function: ease-out;
 		}
@@ -307,7 +307,7 @@
 			animation-timing-function: ease-in;
 		}
 		42% {
-			transform: translateY(0) scale(1.07, 0.86);
+			transform: translateY(0) scale(1.03, 0.88);
 			animation-timing-function: ease-out;
 		}
 		50% {
@@ -345,7 +345,7 @@
 			transform: scale(1);
 		}
 		85% {
-			transform: scale(1.18, 0.92);
+			transform: scale(1.06, 0.94);
 		}
 	}
 	@keyframes row-a {
@@ -391,7 +391,7 @@
 			transform: scale(1);
 		}
 		63% {
-			transform: scale(1.1, 0.84);
+			transform: scale(1.04, 0.86);
 		}
 	}
 	@keyframes piece {
@@ -414,7 +414,7 @@
 			transform: scale(1);
 		}
 		80% {
-			transform: scale(1.12, 0.86);
+			transform: scale(1.04, 0.88);
 		}
 	}
 	@keyframes twinkle {
