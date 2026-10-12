@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { projects, categories } from '$lib/data/projects';
+	import { projects, categories, highlights } from '$lib/data/projects';
 	import type { Category, Project } from '$lib/data/projects';
 	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 	import Star from 'lucide-svelte/icons/star';
@@ -35,8 +35,8 @@
 		return out;
 	}
 
-	const featured = mix(projects.filter((p) => p.featured));
-	const rest = projects.filter((p) => !p.featured);
+	const featured = highlights.flatMap((name) => projects.find((p) => p.name === name) ?? []);
+	const rest = projects.filter((p) => !highlights.includes(p.name));
 	const years = [...new Set(rest.map((p) => p.year))].sort((a, b) => b - a);
 	const mixed = years.flatMap((y) => mix(rest.filter((p) => p.year === y)));
 	const filters = categories
@@ -198,14 +198,21 @@
 					</a>
 				</div>
 
-				<!-- Featured -->
-				<div class="grid gap-3 sm:grid-cols-2">
+				<!-- Highlights -->
+				<div>
+					<h3 class="text-muted-foreground mb-3 text-xs font-medium tracking-wider uppercase">
+						Highlights
+					</h3>
+					<div class="grid gap-3 sm:grid-cols-2">
 					{#each featured as project}
-						<a
+						<svelte:element
+							this={project.url ? 'a' : 'div'}
 							href={project.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group border-border hover:border-foreground/30 hover:bg-muted/40 flex flex-col rounded-xl border p-4 transition-colors"
+							target={project.url ? '_blank' : undefined}
+							rel={project.url ? 'noopener noreferrer' : undefined}
+							class="group bg-card border-foreground/10 flex flex-col rounded-xl border p-4 transition-colors {project.url
+								? 'hover:border-foreground/40'
+								: ''}"
 						>
 							<div class="flex items-center justify-between gap-3">
 								<h3 class="text-foreground font-medium tracking-tight">{project.name}</h3>
@@ -214,7 +221,7 @@
 										<Star class="h-3 w-3" />
 										{project.stars}
 									</span>
-								{:else}
+								{:else if project.url}
 									<ArrowUpRight
 										class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors"
 									/>
@@ -223,15 +230,17 @@
 							<p class="text-muted-foreground mt-1.5 flex-1 text-sm leading-relaxed">
 								{project.description}
 							</p>
-							<div
-								class="bg-muted text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 font-mono text-xs"
-							>
-								{#if project.command}
-									<span class="text-muted-foreground mr-1.5 select-none">$</span>{project.command}
-								{:else if project.url}
-									{project.url.replace(/^https?:\/\//, '')}
-								{/if}
-							</div>
+							{#if project.command || isLive(project.url)}
+								<div
+									class="bg-background/60 text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 font-mono text-xs"
+								>
+									{#if project.command}
+										<span class="text-muted-foreground mr-1.5 select-none">$</span>{project.command}
+									{:else}
+										{project.url?.replace(/^https?:\/\//, '')}
+									{/if}
+								</div>
+							{/if}
 							<div class="text-muted-foreground mt-3 flex items-center gap-3 text-xs">
 								{#each project.languages as language}
 									<span class="flex items-center gap-1.5">
@@ -244,12 +253,16 @@
 								{/each}
 								<span class="ml-auto tabular-nums">{project.year}</span>
 							</div>
-						</a>
+						</svelte:element>
 					{/each}
+					</div>
 				</div>
 
 				<!-- Everything else -->
 				<div>
+					<h3 class="text-muted-foreground mb-3 text-xs font-medium tracking-wider uppercase">
+						Everything else
+					</h3>
 					<div class="mb-4 flex flex-wrap gap-2">
 						{#each [{ id: 'all' as const, label: 'All', count: rest.length }, ...filters] as filter}
 							<button

@@ -8,9 +8,7 @@ export interface Project {
 	url?: string;
 	languages: string[];
 	category: Category;
-	/** Shown as a card at the top instead of a row in the list */
-	featured?: boolean;
-	/** One real invocation, shown on featured cards */
+	/** One real invocation, shown on highlight cards */
 	command?: string;
 	stars?: number;
 }
@@ -22,6 +20,22 @@ export const categories: { id: Category; label: string }[] = [
 	{ id: 'web', label: 'Web' }
 ];
 
+/** Shown as cards above the list, in this order */
+export const highlights = [
+	'icons',
+	'graphprix',
+	'jog',
+	'moneypile',
+	'aim',
+	'magicfs',
+	'seal',
+	'tget',
+	'safeclean',
+	'mediainfo',
+	'twig',
+	'timeago-cli'
+];
+
 export const projects: Project[] = [
 	// Command line
 	{
@@ -31,7 +45,6 @@ export const projects: Project[] = [
 		url: 'https://github.com/jeffjose/tget',
 		languages: ['JavaScript'],
 		category: 'cli',
-		featured: true,
 		command: "tget 'magnet:?xt=urn:btih:…'",
 		stars: 628
 	},
@@ -42,7 +55,6 @@ export const projects: Project[] = [
 		url: 'https://github.com/jeffjose/wat',
 		languages: ['Rust'],
 		category: 'cli',
-		featured: true,
 		command: 'wat ~/project'
 	},
 	{
@@ -52,7 +64,8 @@ export const projects: Project[] = [
 			'Present a directory in whatever order you want, so that * expands to it. Sort, shuffle, filter.',
 		url: 'https://github.com/jeffjose/magicfs',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'magicfs -s random && feh *'
 	},
 	{
 		name: 'ccpace',
@@ -92,7 +105,8 @@ export const projects: Project[] = [
 		description: 'Safely clean up build artifacts and dependency caches to reclaim disk space.',
 		url: 'https://github.com/jeffjose/safeclean',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'safeclean ~/projects'
 	},
 	{
 		name: 'wgqr',
@@ -123,7 +137,8 @@ export const projects: Project[] = [
 		description: 'A fast shell prompt with daemon caching and multi-shell support.',
 		url: 'https://github.com/jeffjose/twig',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'twig --prompt'
 	},
 	{
 		name: 'seal',
@@ -131,7 +146,8 @@ export const projects: Project[] = [
 		description: 'Simple, secure file encryption.',
 		url: 'https://github.com/jeffjose/seal',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'seal open -- mpv movie.mkv'
 	},
 	{
 		name: 'randr',
@@ -147,7 +163,8 @@ export const projects: Project[] = [
 		description: 'A media file analyzer with filtering, sorting, and caching.',
 		url: 'https://github.com/jeffjose/mediainfo',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'mediainfo ~/videos'
 	},
 	{
 		name: 'audtag',
@@ -187,7 +204,8 @@ export const projects: Project[] = [
 		description: 'Convert RFC 2822 dates to short humanized strings. Handy in prompts.',
 		url: 'https://github.com/jeffjose/timeago-cli',
 		languages: ['Rust'],
-		category: 'cli'
+		category: 'cli',
+		command: 'timeago "$(date -R)"'
 	},
 
 	// Linux desktop
@@ -198,7 +216,6 @@ export const projects: Project[] = [
 		url: 'https://github.com/jeffjose/hotshot',
 		languages: ['Rust'],
 		category: 'desktop',
-		featured: true,
 		command: 'hotshot capture region'
 	},
 	{
@@ -207,7 +224,8 @@ export const projects: Project[] = [
 		description: 'An image viewer. Like feh, but mine.',
 		url: 'https://github.com/jeffjose/jog',
 		languages: ['Rust'],
-		category: 'desktop'
+		category: 'desktop',
+		command: 'jog ~/photos'
 	},
 	{
 		name: 'duomo',
@@ -226,7 +244,6 @@ export const projects: Project[] = [
 		url: 'https://github.com/jeffjose/aim',
 		languages: ['Rust'],
 		category: 'android',
-		featured: true,
 		command: 'aim screenshot -o photo.png'
 	},
 	{
@@ -255,8 +272,7 @@ export const projects: Project[] = [
 			'A fast, searchable browser for 200+ open-source icon sets with instant preview, copy, and export.',
 		url: 'https://icons.jeffjose.workers.dev',
 		languages: ['Svelte', 'TypeScript'],
-		category: 'web',
-		featured: true
+		category: 'web'
 	},
 	{
 		name: 'redline',
@@ -265,8 +281,7 @@ export const projects: Project[] = [
 			'A semantic diff viewer for prose: what an editor moved, reworded, split, merged, or cut.',
 		url: 'https://github.com/jeffjose/redline',
 		languages: ['TypeScript', 'Svelte'],
-		category: 'web',
-		featured: true
+		category: 'web'
 	},
 	{
 		name: 'graphprix',
