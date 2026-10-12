@@ -51,7 +51,7 @@
 	--secondary: oklch(0.274 0.006 286.033);
 	--secondary-foreground: oklch(0.985 0.002 247);
 	--muted: oklch(0.274 0.006 286.033);
-	--muted-foreground: oklch(0.552 0.016 285.938);
+	--muted-foreground: oklch(0.705 0.015 286.067);
 	--accent: oklch(0.274 0.006 286.033);
 	--accent-foreground: oklch(0.985 0.002 247);
 	--destructive: oklch(0.704 0.191 22.216);
@@ -74,6 +74,7 @@
 }
 
 @theme inline {
+	--font-sans: 'Inter', system-ui, sans-serif;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -116,7 +117,10 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground antialiased;
+	}
+	p {
+		text-wrap: pretty;
 	}
 
 	/* Scrollbar: hidden by default, visible on hover */

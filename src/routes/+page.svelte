@@ -51,13 +51,14 @@
 </script>
 
 <main class="min-h-screen">
-	<div class="mx-auto max-w-2xl px-6 py-32">
+	<div class="mx-auto max-w-2xl px-6 py-16 sm:py-28">
 		<div class="space-y-6">
 			<div class="flex items-center justify-between">
-				<p class="text-foreground text-lg leading-relaxed font-medium">Hi, I'm Jeffrey</p>
+				<h1 class="text-foreground text-2xl font-semibold tracking-tight">Hi, I’m Jeffrey</h1>
 				<div class="flex items-center gap-4">
 					<a
 						href="https://twitter.com/jeffjose"
+						aria-label="X (Twitter)"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-foreground transition-colors"
@@ -70,6 +71,7 @@
 					</a>
 					<a
 						href="https://github.com/jeffjose"
+						aria-label="GitHub"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-foreground transition-colors"
@@ -82,6 +84,7 @@
 					</a>
 					<a
 						href="https://linkedin.com/in/jeffreyjose"
+						aria-label="LinkedIn"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-foreground transition-colors"
@@ -95,7 +98,7 @@
 				</div>
 			</div>
 			<p class="text-muted-foreground text-base leading-relaxed">
-				I'm a Product Manager at
+				I’m a Product Manager at
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="none">
 						<path
@@ -115,7 +118,7 @@
 							fill="#EA4335"
 						/>
 					</svg>
-					<span class="text-foreground/70">Google</span></span
+					<span class="text-foreground/90">Google</span></span
 				>, working on
 				<span class="inline-flex items-baseline gap-1">
 					<svg class="inline h-3.5 w-3.5 self-center" viewBox="0 0 24 24" fill="#3DDC84">
@@ -123,7 +126,7 @@
 							d="M17.523 15.341c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm-11.046 0c-.5 0-.91.41-.91.91s.41.91.91.91.91-.41.91-.91-.41-.91-.91-.91zm11.4-6.7l1.93-3.35c.11-.19.05-.43-.14-.54-.19-.11-.43-.05-.54.14l-1.95 3.38C15.47 7.64 13.79 7.27 12 7.27s-3.47.37-5.17 1.01L4.88 4.9c-.11-.19-.35-.25-.54-.14-.19.11-.25.35-.14.54l1.93 3.35C2.92 10.41 1 13.27 1 16.5h22c0-3.23-1.92-6.09-5.12-7.86z"
 						/>
 					</svg>
-					<span class="text-foreground/70">Android Graphics</span></span
+					<span class="text-foreground/90">Android Graphics</span></span
 				>.
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
@@ -147,7 +150,7 @@
 							fill="#EA4335"
 						/>
 					</svg>
-					<span class="text-foreground/70">Google Search</span></span
+					<span class="text-foreground/90">Google Search</span></span
 				>, I led the launch of Core Web Vitals, metrics that became the industry standard for
 				measuring web performance, alongside Page Experience Ranking. At Chrome, I worked on anti-fingerprinting to make the web more private.
 			</p>
@@ -163,13 +166,13 @@
 							d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
 						/>
 					</svg>
-					<span class="text-foreground/70">DreamWorks Animation</span></span
-				>. I worked on movies like How To Train Your Dragon 2, Madagascar 3, Puss In Boots, and{' '}
+					<span class="text-foreground/90">DreamWorks Animation</span></span
+				>. I worked on movies like <em>How To Train Your Dragon 2</em>, <em>Madagascar 3</em>, <em>Puss In Boots</em>, and{' '}
 				<a
 					href="https://www.imdb.com/name/nm4162617/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-foreground/70 underline underline-offset-4 transition-opacity hover:opacity-70"
+					class="text-foreground/90 decoration-foreground/30 underline underline-offset-4 transition-opacity hover:opacity-70"
 				>
 					several others</a
 				>.
@@ -178,12 +181,12 @@
 				I studied Electrical & Electronics Engineering at BITS Pilani and earned my MBA from The
 				Wharton School.
 			</p>
-			<div class="border-border/30 mt-16 border-t"></div>
+			<div class="border-foreground/10 mt-10 border-t"></div>
 
 			<!-- Projects Section -->
 			<div class="mt-10 space-y-10">
 				<div class="flex items-baseline justify-between">
-					<h2 class="text-foreground text-xl font-semibold">
+					<h2 class="text-foreground text-xl font-semibold tracking-tight">
 						Projects <span class="text-muted-foreground text-base font-normal"
 							>{projects.length}</span
 						>
@@ -302,7 +305,7 @@
 											class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs tabular-nums sm:w-28 sm:justify-end"
 										>
 											{#if isLive(project.url)}
-												<span class="text-foreground/70">live</span>
+												<span class="text-foreground/90">live</span>
 											{:else}
 												<span class="flex items-center gap-1.5">
 													<span
