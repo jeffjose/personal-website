@@ -3,6 +3,7 @@
 	import type { Category, Project } from '$lib/data/projects';
 	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 	import Star from 'lucide-svelte/icons/star';
+	import Hint from '$lib/Hint.svelte';
 
 	const languageColors: Record<string, string> = {
 		Rust: '#dea584',
@@ -99,17 +100,26 @@
 			</div>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Product Manager at <span class="text-foreground/90">Google</span>, working on
-				<span class="text-foreground/90">Android Graphics</span>.
+				<Hint label="Android Graphics" kind="cube" caption="Drawing every frame, on time." />.
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Previously at <span class="text-foreground/90">Google Search</span>, I led the launch of
-				Core Web Vitals and Page Experience Ranking. The metrics became the industry standard for
-				measuring web performance. Then on Chrome, I worked on anti-fingerprinting to make the web
+				<Hint
+					label="Core Web Vitals"
+					kind="vitals"
+					caption="Loading, responsiveness, visual stability."
+				/> and Page Experience Ranking. The metrics became the industry standard for
+				measuring web performance. Then on Chrome, I worked on
+				<Hint
+					label="anti-fingerprinting"
+					kind="fingerprint"
+					caption="Making browsers harder to tell apart."
+				/> to make the web
 				more private.
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Prior to that, I was a Lead Technical Director at
-				<span class="text-foreground/90">DreamWorks Animation</span>. I worked on
+				<Hint label="DreamWorks Animation" kind="ball" caption="Squash and stretch." />. I worked on
 				<em>How to Train Your Dragon 2</em>, <em>Madagascar 3</em>, <em>Puss in Boots</em>, and{' '}
 				<a
 					href="https://www.imdb.com/name/nm4162617/"
