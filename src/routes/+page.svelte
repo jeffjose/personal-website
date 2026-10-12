@@ -19,12 +19,29 @@
 		return languageColors[lang] || '#6b7280';
 	}
 
-	// Point the card's glow at the cursor
-	function spotlight(event: MouseEvent) {
-		const card = event.currentTarget as HTMLElement;
-		const rect = card.getBoundingClientRect();
-		card.style.setProperty('--x', `${event.clientX - rect.left}px`);
-		card.style.setProperty('--y', `${event.clientY - rect.top}px`);
+	function chipText(project: Project): string {
+		return project.command ?? project.url?.replace(/^https?:\/\//, '') ?? '';
+	}
+
+	// Retype a card's command while the card is hovered
+	let typed = $state<Record<string, string>>({});
+	const typers: Record<string, ReturnType<typeof setInterval>> = {};
+
+	function retype(project: Project) {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const text = chipText(project);
+		let length = 0;
+		clearInterval(typers[project.name]);
+		typed[project.name] = '';
+		typers[project.name] = setInterval(() => {
+			typed[project.name] = text.slice(0, ++length);
+			if (length >= text.length) clearInterval(typers[project.name]);
+		}, 40);
+	}
+
+	function settle(project: Project) {
+		clearInterval(typers[project.name]);
+		delete typed[project.name];
 	}
 
 	function isLive(url?: string): boolean {
@@ -44,14 +61,34 @@
 		return out;
 	}
 
-	const films = [
+	const androidSlides = [
+		{ kind: 'compose' as const, caption: 'Composition' },
+		{ kind: 'schedule' as const, caption: 'Scheduling' },
+		{ kind: 'decode' as const, caption: 'Image decoding' },
+		{ kind: 'displays' as const, caption: 'Multi-display' }
+	];
+
+	const dreamworksSlides = [
+		{ kind: 'ball' as const, caption: 'Animation' },
+		{ kind: 'light' as const, caption: 'Lighting' },
+		{ kind: 'render' as const, caption: 'Rendering' },
+		{ kind: 'particles' as const, caption: 'Effects' }
+	];
+
+	const credits = [
 		{ title: 'Home', year: 2015 },
 		{ title: 'Penguins of Madagascar', year: 2014 },
+		{ title: 'Rocky and Bullwinkle', year: 2014 },
 		{ title: 'How to Train Your Dragon 2', year: 2014 },
 		{ title: 'Mr. Peabody & Sherman', year: 2014 },
+		{ title: 'Madly Madagascar', year: 2013 },
 		{ title: 'Rise of the Guardians', year: 2012 },
-		{ title: 'Madagascar 3', year: 2012 },
-		{ title: 'Puss in Boots', year: 2011 }
+		{ title: "Madagascar 3: Europe's Most Wanted", year: 2012 },
+		{ title: 'Puss in Boots', year: 2011 },
+		{ title: 'The Pig Who Cried Werewolf', year: 2011 },
+		{ title: 'Shrek: Thriller Night', year: 2011 },
+		{ title: "Donkey's Caroling Christmas-tacular", year: 2010 },
+		{ title: 'Scared Shrekless', year: 2010 }
 	];
 
 	const featured = highlights.flatMap((name) => projects.find((p) => p.name === name) ?? []);
@@ -118,7 +155,7 @@
 			</div>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Product Manager at <span class="text-foreground/90">Google</span>, working on
-				<Hint label="Android Graphics" kind="cube" caption="Drawing every frame, on time." />.
+				<Hint label="Android Graphics" slides={androidSlides} />.
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Previously at <span class="text-foreground/90">Google Search</span>, I led the launch of
@@ -137,16 +174,15 @@
 			</p>
 			<p class="text-muted-foreground text-base leading-relaxed">
 				Prior to that, I was a Lead Technical Director at
-				<Hint label="DreamWorks Animation" kind="ball" caption="Squash and stretch." />. I worked on
-				<Hint label="How to Train Your Dragon 2" kind="film" year={2014} italic />,
-				<Hint label="Madagascar 3" kind="film" year={2012} italic />,
-				<Hint label="Puss in Boots" kind="film" year={2011} italic />,
-				<Hint label="Rise of the Guardians" kind="film" year={2012} italic />, and{' '}
+				<Hint label="DreamWorks Animation" slides={dreamworksSlides} />. I worked on
+				<Hint label="How to Train Your Dragon 2" kind="poster" poster="/posters/how-to-train-your-dragon-2.jpg" italic />,
+				<Hint label="Madagascar 3" kind="poster" poster="/posters/madagascar-3.jpg" italic />,
+				<Hint label="Puss in Boots" kind="poster" poster="/posters/puss-in-boots.jpg" italic />,
+				<Hint label="Rise of the Guardians" kind="poster" poster="/posters/rise-of-the-guardians.jpg" italic />, and{' '}
 				<Hint
 					label="several others"
 					kind="credits"
-					credits={films}
-					caption="Seven features at DreamWorks."
+					{credits}
 					href="https://www.imdb.com/name/nm4162617/"
 				/>.
 			</p>
@@ -189,11 +225,11 @@
 							href={project.url}
 							target={project.url ? '_blank' : undefined}
 							rel={project.url ? 'noopener noreferrer' : undefined}
-							class="card group bg-card border-foreground/10 relative flex flex-col overflow-hidden rounded-xl border p-4 transition-colors {project.url
+							class="group bg-card border-foreground/10 flex flex-col rounded-xl border p-4 transition-colors {project.url
 								? 'hover:border-foreground/40'
 								: ''}"
-							style={`--glow: ${getDotColor(project.languages[0])};`}
-							onmousemove={spotlight}
+							onmouseenter={() => retype(project)}
+							onmouseleave={() => settle(project)}
 							role={project.url ? undefined : 'group'}
 						>
 							<div class="flex items-center justify-between gap-3">
@@ -205,7 +241,7 @@
 									</span>
 								{:else if project.url}
 									<ArrowUpRight
-										class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors"
+										class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
 									/>
 								{/if}
 							</div>
@@ -214,13 +250,13 @@
 							</p>
 							{#if project.command || isLive(project.url)}
 								<div
-									class="bg-background/60 text-foreground/70 mt-4 truncate rounded-md px-2.5 py-1.5 text-xs"
+									class="bg-background/60 text-foreground/70 mt-4 min-h-7 truncate rounded-md px-2.5 py-1.5 text-xs"
 								>
 									{#if project.command}
-										<span class="text-muted-foreground mr-1.5 select-none">$</span>{project.command}
-									{:else}
-										{project.url?.replace(/^https?:\/\//, '')}
-									{/if}
+										<span class="text-muted-foreground mr-1.5 select-none">$</span>
+									{/if}{typed[project.name] ?? chipText(project)}<span
+										class="bg-foreground/70 ml-0.5 hidden h-3 w-px animate-pulse align-middle group-hover:inline-block"
+									></span>
 								</div>
 							{/if}
 							<div class="text-muted-foreground mt-3 flex items-center gap-3 text-xs">
@@ -305,26 +341,3 @@
 		</div>
 	</div>
 </main>
-
-<style>
-	/* A soft light in the project's language color that follows the cursor */
-	:global(.card)::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: radial-gradient(
-			220px circle at var(--x, 50%) var(--y, 0%),
-			color-mix(in oklab, var(--glow) 16%, transparent),
-			transparent 70%
-		);
-		opacity: 0;
-		transition: opacity 250ms;
-		pointer-events: none;
-	}
-	:global(.card:hover)::before {
-		opacity: 1;
-	}
-	:global(.card) > :global(*) {
-		position: relative;
-	}
-</style>
