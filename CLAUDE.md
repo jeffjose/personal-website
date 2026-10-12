@@ -23,6 +23,9 @@ pnpm lint       # Run Prettier check
 
 # Testing
 pnpm test       # Run Vitest tests
+
+# Deploy
+pnpm run deploy # Build and deploy to Cloudflare Workers (not automatic on push)
 ```
 
 ## Architecture
