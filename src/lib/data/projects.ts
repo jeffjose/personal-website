@@ -287,6 +287,7 @@ export const projects: Project[] = [
 		name: 'graphprix',
 		year: 2026,
 		description: 'A trading-terminal-style analysis tool for Formula 1 telemetry and race data.',
+		url: 'https://graphprix.com',
 		languages: ['Svelte', 'TypeScript', 'Python'],
 		category: 'web'
 	},
