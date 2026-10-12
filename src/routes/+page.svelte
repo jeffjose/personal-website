@@ -203,7 +203,7 @@
 
 				<!-- Highlights -->
 				<div>
-					<h3 class="text-muted-foreground mb-3 text-xs font-medium tracking-wider uppercase">
+					<h3 class="text-foreground/90 mb-3 text-sm font-medium">
 						Highlights
 					</h3>
 					<div class="grid gap-3 sm:grid-cols-2">
@@ -263,7 +263,7 @@
 
 				<!-- Everything else -->
 				<div>
-					<h3 class="text-muted-foreground mb-3 text-xs font-medium tracking-wider uppercase">
+					<h3 class="text-foreground/90 mb-3 text-sm font-medium">
 						Everything else
 					</h3>
 					<div class="mb-4 flex flex-wrap gap-2">
