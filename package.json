@@ -33,11 +33,5 @@
 	},
 	"engines": {
 		"node": ">=20.0.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"cookie": ">=0.7.0",
-			"yaml": ">=2.8.3"
-		}
 	}
 }
