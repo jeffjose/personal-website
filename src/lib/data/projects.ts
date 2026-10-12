@@ -270,7 +270,7 @@ export const projects: Project[] = [
 		year: 2026,
 		description:
 			'A fast, searchable browser for 200+ open-source icon sets with instant preview, copy, and export.',
-		url: 'https://icons.jeffjose.workers.dev',
+		url: 'https://jeffreyjose.com/icons',
 		languages: ['Svelte', 'TypeScript'],
 		category: 'web'
 	},
@@ -294,6 +294,7 @@ export const projects: Project[] = [
 		name: 'moneypile',
 		year: 2026,
 		description: 'A personal finance tracker.',
+		url: 'https://moneypile.io',
 		languages: ['Svelte', 'TypeScript'],
 		category: 'web'
 	},
