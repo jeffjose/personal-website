@@ -78,6 +78,11 @@
 		index = 0;
 	}
 
+	// A clicked link keeps focus, which would leave its popover open behind the new tab
+	function dismiss() {
+		if (href) host.blur();
+	}
+
 	$effect(() => hide);
 </script>
 
@@ -112,6 +117,7 @@
 	onmouseleave={hide}
 	onfocus={show}
 	onblur={hide}
+	onclick={dismiss}
 >
 	{label}
 	<span

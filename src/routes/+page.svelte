@@ -4,6 +4,7 @@
 	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
 	import Star from 'lucide-svelte/icons/star';
 	import Hint from '$lib/Hint.svelte';
+	import Motif from '$lib/Motif.svelte';
 
 	const languageColors: Record<string, string> = {
 		Rust: '#dea584',
@@ -233,7 +234,13 @@
 							role={project.url ? undefined : 'group'}
 						>
 							<div class="flex items-center justify-between gap-3">
-								<h3 class="text-foreground font-medium tracking-tight">{project.name}</h3>
+								<div class="flex items-center gap-2.5">
+									<Motif
+										name={project.name}
+										class="text-muted-foreground group-hover:text-foreground h-5 w-5 shrink-0 transition-colors"
+									/>
+									<h3 class="text-foreground font-medium tracking-tight">{project.name}</h3>
+								</div>
 								{#if project.stars}
 									<span class="text-muted-foreground flex items-center gap-1 text-xs tabular-nums">
 										<Star class="h-3 w-3" />
